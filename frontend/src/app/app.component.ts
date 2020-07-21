@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, Select } from '@ngxs/store';
+import { AddAnimal } from './store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'bt-root',
@@ -7,6 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'frontend';
+
+  @Select((state: any) => state.animals) animals$: Observable<any>;
+
+  constructor(
+    private store: Store,
+  ) {}
 
   ngOnInit() {
     if (typeof Worker !== 'undefined') {
@@ -20,5 +29,9 @@ export class AppComponent implements OnInit {
       // Web workers are not supported in this environment.
       // You should add a fallback so that your program still executes correctly.
     }
+  }
+
+  addAnimal(name: string) {
+    this.store.dispatch(new AddAnimal(name));
   }
 }

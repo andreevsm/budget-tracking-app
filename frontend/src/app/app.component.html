@@ -521,6 +521,14 @@
 
 </div>
 
+<div>
+  <button (click)="addAnimal('Носорог')">Animal</button>
+
+  <p>
+    {{ (animals$ | async).name }}
+  </p>
+</div>
+
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
