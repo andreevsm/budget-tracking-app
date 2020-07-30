@@ -17,6 +17,7 @@ module.exports = {
       parserOptions: {
         ecmaVersion: 2020,
         sourceType: 'module',
+        project: './tsconfig.eslint.json',
       },
       plugins: ['@angular-eslint/template'],
       processor: '@angular-eslint/template/extract-inline-html',
@@ -25,6 +26,7 @@ module.exports = {
 			files: ['src/**/*.spec.ts', 'src/**/*.d.ts'],
 			parserOptions: {
 				project: './src/tsconfig.spec.json',
+        project: './tsconfig.eslint.json',
 			},
 			extends: ['plugin:jasmine/recommended'],
 			plugins: ['jasmine'],
@@ -42,6 +44,7 @@ module.exports = {
       parserOptions: {
         ecmaVersion: 2020,
         sourceType: 'module',
+        project: './tsconfig.eslint.json',
 			},
 			rules: {
         'import/no-unresolved': 'off',

@@ -17,10 +17,12 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.0.4",
+    "@angular/cdk": "^10.1.1",
     "@angular/common": "~10.0.4",
     "@angular/compiler": "~10.0.4",
     "@angular/core": "~10.0.4",
     "@angular/forms": "~10.0.4",
+    "@angular/material": "^10.1.1",
     "@angular/platform-browser": "~10.0.4",
     "@angular/platform-browser-dynamic": "~10.0.4",
     "@angular/platform-server": "~10.0.4",
@@ -78,15 +80,5 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.9.7"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged --relative"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts}": [
-      "eslint --fix"
-    ]
   }
 }

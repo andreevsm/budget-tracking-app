@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
-import { AddAnimal } from './store';
 import { Observable } from 'rxjs';
+import { AddAnimal } from './store';
 
 @Component({
   selector: 'bt-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   title = 'frontend';
 
   @Select((state: any) => state.animals) animals$: Observable<any>;
 
-  constructor(
-    private store: Store,
-  ) {}
+  constructor(private store: Store) {}
 
   ngOnInit() {
     if (typeof Worker !== 'undefined') {
