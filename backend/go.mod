@@ -1,4 +1,4 @@
-module github.com/andreevsm/budget-tracking-app
+module github.com/andreevsm/budget-tracking-app/backend
 
 go 1.14
 
