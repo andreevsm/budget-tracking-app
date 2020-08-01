@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/BurntSushi/toml"
-	"github.com/andreevsm/budget-tracking-app/internal/app/apiserver"
+	"github.com/andreevsm/budget-tracking-app/backend/internal/app/apiserver"
 )
 
 var (
