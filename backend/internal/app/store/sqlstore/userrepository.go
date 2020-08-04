@@ -1,4 +1,4 @@
-package store
+package sqlstore
 
 import "github.com/andreevsm/budget-tracking-app/backend/internal/app/model"
 
