@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"net/http"
 
+	"github.com/gorilla/sessions"
+
 	"github.com/andreevsm/budget-tracking-app/backend/internal/app/store/sqlstore"
 )
 
@@ -16,9 +18,10 @@ func Start(config *Config) error {
 
 	defer db.Close()
 	store := sqlstore.New(db)
-	s := newServer(store)
+	sessionStore := sessions.NewCookieStore([]byte(config.SessionKey))
+	srv := newServer(store, sessionStore)
 
-	return http.ListenAndServe(config.BindAddr, s)
+	return http.ListenAndServe(config.BindAddr, srv)
 }
 
 func newDB(databaseURL string) (*sql.DB, error) {
