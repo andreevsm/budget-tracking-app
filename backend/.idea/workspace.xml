@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f7957b74-c102-4ec0-a1a3-0177442c27ec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/backend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/app/apiserver/responseWriter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiserver" beforeDir="false" afterPath="$PROJECT_DIR$/apiserver" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/app/apiserver/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/apiserver/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/app/apiserver/server_internal_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/apiserver/server_internal_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/app/store/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/store/repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/app/store/sqlstore/userrepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/store/sqlstore/userrepository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/app/store/sqlstore/userrepository_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/store/sqlstore/userrepository_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/app/store/teststore/store.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/store/teststore/store.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/app/store/teststore/userrepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/store/teststore/userrepository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/app/store/teststore/userrepository_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/store/teststore/userrepository_test.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="/usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1fiEsWE9i5SJqq30y2uzeCQDTPp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager" selected="Go Test.TestServer_AuthenticateUser in github.com/andreevsm/budget-tracking-app/backend/internal/app/apiserver">
+    <configuration name="TestServer_AuthenticateUser in github.com/andreevsm/budget-tracking-app/backend/internal/app/apiserver" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <working_directory value="$PROJECT_DIR$/internal/app/apiserver" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/andreevsm/budget-tracking-app/backend/internal/app/apiserver" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^TestServer_AuthenticateUser$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestUserRepository_Find in github.com/andreevsm/budget-tracking-app/backend/internal/app/store/sqlstore" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <working_directory value="$PROJECT_DIR$/internal/app/store/sqlstore" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/andreevsm/budget-tracking-app/backend/internal/app/store/sqlstore" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^TestUserRepository_Find$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.TestServer_AuthenticateUser in github.com/andreevsm/budget-tracking-app/backend/internal/app/apiserver" />
+        <item itemvalue="Go Test.TestUserRepository_Find in github.com/andreevsm/budget-tracking-app/backend/internal/app/store/sqlstore" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="520" y="115" key="#GOPATH" timestamp="1596734092483">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="520" y="115" key="#GOPATH/0.0.1440.900/-231.-1080.1920.1080@0.0.1440.900" timestamp="1596734092483" />
+    <state x="520" y="290" key="#Go_Modules" timestamp="1596692752610">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="520" y="290" key="#Go_Modules/0.0.1440.900@0.0.1440.900" timestamp="1596692752610" />
+    <state width="1398" height="287" key="GridCell.Tab.0.bottom" timestamp="1596736503840">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="287" key="GridCell.Tab.0.bottom/0.0.1440.900/-231.-1080.1920.1080@0.0.1440.900" timestamp="1596736503840" />
+    <state width="1398" height="287" key="GridCell.Tab.0.center" timestamp="1596736503839">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="287" key="GridCell.Tab.0.center/0.0.1440.900/-231.-1080.1920.1080@0.0.1440.900" timestamp="1596736503839" />
+    <state width="1398" height="287" key="GridCell.Tab.0.left" timestamp="1596736503838">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="287" key="GridCell.Tab.0.left/0.0.1440.900/-231.-1080.1920.1080@0.0.1440.900" timestamp="1596736503838" />
+    <state width="1398" height="287" key="GridCell.Tab.0.right" timestamp="1596736503840">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="287" key="GridCell.Tab.0.right/0.0.1440.900/-231.-1080.1920.1080@0.0.1440.900" timestamp="1596736503840" />
+    <state x="418" y="82" width="604" height="735" key="find.popup" timestamp="1596737156342">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="418" y="82" width="604" height="735" key="find.popup/0.0.1440.900/-231.-1080.1920.1080@0.0.1440.900" timestamp="1596737156342" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1596735355215">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900/-231.-1080.1920.1080@0.0.1440.900" timestamp="1596735355215" />
+  </component>
+</project>
