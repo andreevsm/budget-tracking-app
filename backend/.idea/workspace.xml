@@ -26,21 +26,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7957b74-c102-4ec0-a1a3-0177442c27ec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/backend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/app/apiserver/responseWriter.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiserver" beforeDir="false" afterPath="$PROJECT_DIR$/apiserver" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/app/apiserver/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/apiserver/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/app/apiserver/server_internal_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/apiserver/server_internal_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/app/store/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/store/repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/app/store/sqlstore/userrepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/store/sqlstore/userrepository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/app/store/sqlstore/userrepository_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/store/sqlstore/userrepository_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/app/store/teststore/store.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/store/teststore/store.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/app/store/teststore/userrepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/store/teststore/userrepository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/app/store/teststore/userrepository_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/store/teststore/userrepository_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +67,7 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.web.browsers" />
   </component>
   <component name="RunManager" selected="Go Test.TestServer_AuthenticateUser in github.com/andreevsm/budget-tracking-app/backend/internal/app/apiserver">
     <configuration name="TestServer_AuthenticateUser in github.com/andreevsm/budget-tracking-app/backend/internal/app/apiserver" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -151,22 +139,30 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="520" y="290" key="#Go_Modules/0.0.1440.900@0.0.1440.900" timestamp="1596692752610" />
-    <state width="1398" height="287" key="GridCell.Tab.0.bottom" timestamp="1596736503840">
+    <state width="1398" height="287" key="GridCell.Tab.0.bottom" timestamp="1596738928572">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="287" key="GridCell.Tab.0.bottom/0.0.1440.900/-231.-1080.1920.1080@0.0.1440.900" timestamp="1596738667647" />
+    <state width="1398" height="287" key="GridCell.Tab.0.bottom/0.23.1440.877/-231.-1057.1920.1057@0.23.1440.877" timestamp="1596738928572" />
+    <state width="1398" height="287" key="GridCell.Tab.0.center" timestamp="1596738928567">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="287" key="GridCell.Tab.0.center/0.0.1440.900/-231.-1080.1920.1080@0.0.1440.900" timestamp="1596738667645" />
+    <state width="1398" height="287" key="GridCell.Tab.0.center/0.23.1440.877/-231.-1057.1920.1057@0.23.1440.877" timestamp="1596738928567" />
+    <state width="1398" height="287" key="GridCell.Tab.0.left" timestamp="1596738928566">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="287" key="GridCell.Tab.0.left/0.0.1440.900/-231.-1080.1920.1080@0.0.1440.900" timestamp="1596738667644" />
+    <state width="1398" height="287" key="GridCell.Tab.0.left/0.23.1440.877/-231.-1057.1920.1057@0.23.1440.877" timestamp="1596738928566" />
+    <state width="1398" height="287" key="GridCell.Tab.0.right" timestamp="1596738928571">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="287" key="GridCell.Tab.0.right/0.0.1440.900/-231.-1080.1920.1080@0.0.1440.900" timestamp="1596738667646" />
+    <state width="1398" height="287" key="GridCell.Tab.0.right/0.23.1440.877/-231.-1057.1920.1057@0.23.1440.877" timestamp="1596738928571" />
+    <state x="384" y="86" width="900" height="722" key="SettingsEditor" timestamp="1597089949474">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="287" key="GridCell.Tab.0.bottom/0.0.1440.900/-231.-1080.1920.1080@0.0.1440.900" timestamp="1596736503840" />
-    <state width="1398" height="287" key="GridCell.Tab.0.center" timestamp="1596736503839">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="287" key="GridCell.Tab.0.center/0.0.1440.900/-231.-1080.1920.1080@0.0.1440.900" timestamp="1596736503839" />
-    <state width="1398" height="287" key="GridCell.Tab.0.left" timestamp="1596736503838">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="287" key="GridCell.Tab.0.left/0.0.1440.900/-231.-1080.1920.1080@0.0.1440.900" timestamp="1596736503838" />
-    <state width="1398" height="287" key="GridCell.Tab.0.right" timestamp="1596736503840">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="287" key="GridCell.Tab.0.right/0.0.1440.900/-231.-1080.1920.1080@0.0.1440.900" timestamp="1596736503840" />
+    <state x="384" y="86" width="900" height="722" key="SettingsEditor/0.0.1440.900/-231.-1080.1920.1080@0.0.1440.900" timestamp="1597089949474" />
     <state x="418" y="82" width="604" height="735" key="find.popup" timestamp="1596737156342">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
