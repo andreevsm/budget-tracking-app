@@ -47,10 +47,10 @@ module.exports = {
         project: './tsconfig.eslint.json',
 			},
 			rules: {
-        'import/no-unresolved': 'off',
-        'import/prefer-default-export': 'off',
-        'class-methods-use-this': 'off',
-        'lines-between-class-members': 'off',
+        'import/no-unresolved': 0,
+        'import/prefer-default-export': 0,
+        'class-methods-use-this': 0,
+        'lines-between-class-members': 0,
         '@typescript-eslint/unbound-method': [
           'error',
           {

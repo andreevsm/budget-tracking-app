@@ -1,27 +1,35 @@
-# Frontend
+# Функции приложения
+1. Пользователь может создавать/редактировать/удалять счет, а также иметь счет в разной валюте
+2. Пользователь может переводить средства между счетами согласно конвертации
+3. Основные функции со счетом:
+- Оплатить или перевести
+- Пополнить счет
+- Информация о счете
+- Настройки (закрыть счет, Переименовать и тд)
+- История операций
+4. Добавлять расходам категорию
+5. Анализ финансов в контексте счета и всех счетов: расходы и зачисления. Диаграммы/графики
+6. Фильтр в графиках по категориям
+7. Блок с курсом валют
+8. Пользователь может открыть вклад
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.5.
+# Счет
+```
+Уникальный идентификатор
+Дата создания счета
+Наименование
+Описание
+Валюта
+Номер счета
+Тип счета (обычный, премиум и тд)
+```
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# Пользователь
+```
+Уникальный идентификатор
+Фамилия
+Имя
+Отчество
+Почта
+Пароль
+```
