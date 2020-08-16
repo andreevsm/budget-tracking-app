@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { AddAnimal } from './store';
 
 @Component({
-  selector: 'bt-root',
+  selector: 'bg-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

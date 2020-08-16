@@ -10,9 +10,10 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { AnimalsState } from './store';
 import { MaterialModule } from './material/material.module';
+import { HeaderComponent } from './core/components/header/header.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,

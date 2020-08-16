@@ -7,7 +7,7 @@
     ],
     "@angular-eslint/component-selector": [
       "error",
-      { "type": "element", "prefix": "bt", "style": "kebab-case" }
+      { "type": "element", "prefix": "bg", "style": "kebab-case" }
     ]
   },
   "overrides": [
