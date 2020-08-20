@@ -1,0 +1,12 @@
+@import '../assets/scss/variables.scss';
+
+:host {
+  max-width: $container-width;
+}
+
+.app {
+
+  &__main {
+    
+  }
+}
