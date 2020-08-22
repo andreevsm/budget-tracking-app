@@ -1,4 +1,8 @@
+import { Store, Select } from '@ngxs/store';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { AccountState, AccountActions, IAccount } from '../models';
 
 @Component({
   selector: 'bg-main',
@@ -7,5 +11,11 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainComponent implements OnInit {
-  public ngOnInit(): void {}
+  @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
+
+  constructor(private store: Store) {}
+
+  public ngOnInit(): void {
+    this.store.dispatch(new AccountActions.LoadAll());
+  }
 }

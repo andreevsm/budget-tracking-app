@@ -5,10 +5,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { environment } from '../environments/environment';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
-import { AnimalsState } from './store';
 import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './core/components/header/header.component';
 
@@ -18,9 +18,7 @@ import { HeaderComponent } from './core/components/header/header.component';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    NgxsModule.forRoot([AnimalsState], {
-      developmentMode: !environment.production,
-    }),
+    NgxsModule.forRoot(),
     CommonModule,
     BrowserAnimationsModule, // перенести в Core
     MaterialModule,
