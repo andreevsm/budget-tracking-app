@@ -1,4 +1,4 @@
-<div class="spinner">
+<div class="spinner" *ngIf="spinner$ | async">
   <mat-progress-spinner [value]="50" [mode]="'indeterminate'" [color]="'primary'"></mat-progress-spinner>
 </div>
 

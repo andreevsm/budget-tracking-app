@@ -1,7 +1,8 @@
-import { Action, State, StateContext, Selector } from '@ngxs/store';
+import { Action, State, StateContext, Selector, Store } from '@ngxs/store';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs/operators';
+import { tap, finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { CoreActions } from 'src/app/core/store';
 
 import { AccountService } from './account.service';
 import { AccountActions } from './account.action';
@@ -19,7 +20,7 @@ export interface IAccountState {
 })
 @Injectable()
 export class AccountState {
-  constructor(private accountService: AccountService) {}
+  constructor(private accountService: AccountService, private store: Store) {}
 
   @Selector()
   public static accounts(state: IAccountState): IAccount[] {
@@ -28,6 +29,8 @@ export class AccountState {
 
   @Action(AccountActions.LoadAll)
   public loadAccounts({ setState, getState }: StateContext<IAccountState>): Observable<IAccount[]> {
+    this.store.dispatch(new CoreActions.ShowSpinner());
+
     return this.accountService.loadAccounts().pipe(
       tap((accounts) =>
         setState({
@@ -35,6 +38,7 @@ export class AccountState {
           accounts,
         }),
       ),
+      finalize(() => this.store.dispatch(new CoreActions.HideSpinner())),
     );
   }
 }
