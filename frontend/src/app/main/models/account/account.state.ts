@@ -41,4 +41,22 @@ export class AccountState {
       finalize(() => this.store.dispatch(new CoreActions.HideSpinner())),
     );
   }
+
+  @Action(AccountActions.Delete)
+  public deleteAccount(
+    { setState, getState }: StateContext<IAccountState>,
+    { id }: AccountActions.Delete,
+  ): Observable<IAccount[]> {
+    this.store.dispatch(new CoreActions.ShowSpinner());
+
+    return this.accountService.deleteAccount(id).pipe(
+      tap((accounts) =>
+        setState({
+          ...getState(),
+          accounts,
+        }),
+      ),
+      finalize(() => this.store.dispatch(new CoreActions.HideSpinner())),
+    );
+  }
 }

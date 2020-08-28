@@ -16,7 +16,7 @@ export const ACCOUNTS: IAccount[] = [
     createdAt: new Date('2020-11-01'),
     description: 'Это мой счет 2',
     currency: Currency.RUB,
-    accountNumber: 1231312,
+    accountNumber: 2524322,
     type: AccountType.Free,
   },
   {
@@ -25,7 +25,7 @@ export const ACCOUNTS: IAccount[] = [
     createdAt: new Date('2020-08-17'),
     description: 'Это мой счет 1',
     currency: Currency.USD,
-    accountNumber: 1231312,
+    accountNumber: 6365465,
     type: AccountType.Free,
   },
 ];

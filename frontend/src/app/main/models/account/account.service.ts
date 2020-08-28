@@ -8,6 +8,10 @@ import { ACCOUNTS } from './account.mock';
 Injectable();
 export class AccountService {
   public loadAccounts(): Observable<IAccount[]> {
-    return of(ACCOUNTS).pipe(delay(1000));
+    return of(ACCOUNTS).pipe(delay(300));
+  }
+
+  public deleteAccount(id: number): Observable<IAccount[]> {
+    return of(ACCOUNTS.filter((account) => account.id !== id)).pipe(delay(300));
   }
 }
