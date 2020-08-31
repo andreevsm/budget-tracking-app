@@ -16,7 +16,7 @@ import { filter, takeUntil } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  links = [
+  public links = [
     {
       label: 'Главная',
       href: '/',
@@ -31,12 +31,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     },
   ];
 
-  activeLinkIndex = -1;
+  public activeLinkIndex = -1;
   private destroy$ = new ReplaySubject();
 
   constructor(private router: Router, private cd: ChangeDetectorRef) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.router.events
       .pipe(
         filter((event) => event instanceof NavigationEnd),
@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }
