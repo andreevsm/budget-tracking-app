@@ -26,9 +26,15 @@
     </div>
 
     <div class="main--add flex jc-center ai-center">
-      <button mat-fab color="primary">
+      <button mat-fab color="primary" [matMenuTriggerFor]="menu">
         <mat-icon>add</mat-icon>
       </button>
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngFor="let button of menuButtons" (click)="button.click()">
+          <span>{{ button.text }}</span>
+        </button>
+      </mat-menu>
     </div>
 
   </div>

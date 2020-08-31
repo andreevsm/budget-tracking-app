@@ -5,7 +5,8 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 
-import { MaterialModule } from './material/material.module';
+import { MaterialModule } from '../shared/material/material.module';
+
 import { HeaderComponent, SpinnerComponent } from './components';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 import { CoreState } from './store';
@@ -14,10 +15,10 @@ import { CoreState } from './store';
   declarations: [HeaderComponent, SpinnerComponent],
   imports: [
     CommonModule,
-    MaterialModule,
     BrowserAnimationsModule,
     RouterModule,
     NgxsModule.forFeature([CoreState]),
+    MaterialModule,
   ],
   exports: [HeaderComponent, SpinnerComponent],
   providers: [
