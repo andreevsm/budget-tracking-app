@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxsModule } from '@ngxs/store';
 
-import { MaterialModule } from '../shared/material/material.module';
+import { SharedModule } from '../shared/shared.module';
 
 import { AccountState, AccountService } from './models';
 import { MainRoutingModule } from './main.routing';
@@ -11,7 +11,7 @@ import { EditAccountComponent } from './modals/edit-account/edit-account.compone
 
 @NgModule({
   declarations: [MainComponent, EditAccountComponent],
-  imports: [CommonModule, MainRoutingModule, NgxsModule.forFeature([AccountState]), MaterialModule],
+  imports: [CommonModule, MainRoutingModule, NgxsModule.forFeature([AccountState]), SharedModule],
   providers: [AccountService],
 })
 export class MainModule {}

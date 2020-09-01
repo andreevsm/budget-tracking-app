@@ -1,1 +1,34 @@
-<p>edit-account works!</p>
+<div class="account">
+  <form [formGroup]="form" class="flex fd-column account--form">
+    
+    <mat-form-field class="account--field">
+      <mat-label>Название счета</mat-label>
+      <input matInput placeholder="Мой счет" formControlName="name">
+    </mat-form-field>
+  
+    <mat-form-field class="account--field">
+      <mat-label>Описание</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="account--field">
+      <mat-label>Тип счета</mat-label>
+      <input matInput formControlName="type">
+    </mat-form-field>
+
+    <mat-form-field class="account--field">
+      <mat-label>Валюта</mat-label>
+      <input matInput formControlName="currency">
+    </mat-form-field>
+
+    <mat-form-field class="account--field">
+      <mat-label>Номер счета</mat-label>
+      <input matInput formControlName="accountNumber">
+    </mat-form-field>
+
+    <mat-form-field class="account--field">
+      <mat-label>Дата создания</mat-label>
+      <input matInput formControlName="createdAt">
+    </mat-form-field>
+  </form>
+</div>

@@ -64,7 +64,15 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   private onEditAccount(account: IAccount): void {
-    console.log('edit', account);
+    this.dialog
+      .open(EditAccountComponent, {
+        data: account,
+      })
+      .afterClosed()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((result) => {
+        console.log('result', result);
+      });
   }
 
   private onViewAccount(account: IAccount): void {
