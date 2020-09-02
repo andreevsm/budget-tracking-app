@@ -59,4 +59,23 @@ export class AccountState {
       finalize(() => this.store.dispatch(new CoreActions.HideSpinner())),
     );
   }
+
+  @Action(AccountActions.Create)
+  public createAccount(
+    { setState, getState }: StateContext<IAccountState>,
+    { account }: AccountActions.Create,
+  ): Observable<IAccount[]> {
+    this.store.dispatch(new CoreActions.ShowSpinner());
+
+    return this.accountService.createAccount(account).pipe(
+      tap((accounts) => {
+        console.log('a', accounts);
+        setState({
+          ...getState(),
+          accounts,
+        });
+      }),
+      finalize(() => this.store.dispatch(new CoreActions.HideSpinner())),
+    );
+  }
 }

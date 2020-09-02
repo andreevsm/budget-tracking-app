@@ -14,4 +14,14 @@ export class AccountService {
   public deleteAccount(id: number): Observable<IAccount[]> {
     return of(ACCOUNTS.filter((account) => account.id !== id)).pipe(delay(300));
   }
+
+  public createAccount(account: IAccount): Observable<IAccount[]> {
+    ACCOUNTS.push({
+      ...account,
+      id: ACCOUNTS.length + 1,
+      accountNumber: Math.random(),
+      createdAt: new Date(),
+    });
+    return of(ACCOUNTS).pipe(delay(300));
+  }
 }

@@ -98,7 +98,9 @@ export class MainComponent implements OnInit, OnDestroy {
   private onCreateAccount(): void {
     console.log('create account');
     this.dialog
-      .open(EditAccountComponent)
+      .open(EditAccountComponent, {
+        data: {},
+      })
       .afterClosed()
       .pipe(takeUntil(this.destroy$))
       .subscribe((result) => {

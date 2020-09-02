@@ -1,5 +1,5 @@
 <div class="account">
-  <form [formGroup]="form" class="flex fd-column account--form">
+  <form [formGroup]="form" class="flex fd-column account--form" (submit)="onSubmitForm()">
     
     <mat-form-field class="account--field">
       <mat-label>Название счета</mat-label>
@@ -30,5 +30,8 @@
       <mat-label>Дата создания</mat-label>
       <input matInput formControlName="createdAt">
     </mat-form-field>
+
+    <button type="submit" mat-raised-button color="primary">Создать</button>
+    <button mat-raised-button>Отменить</button>
   </form>
 </div>

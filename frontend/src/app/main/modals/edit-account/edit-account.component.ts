@@ -1,8 +1,9 @@
 import { Component, ChangeDetectionStrategy, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngxs/store';
 
-import { IAccount } from '../../models';
+import { IAccount, AccountActions } from '../../models';
 
 @Component({
   selector: 'bg-edit-account',
@@ -17,6 +18,7 @@ export class EditAccountComponent implements OnInit {
     public dialogRef: MatDialogRef<EditAccountComponent>,
     @Inject(MAT_DIALOG_DATA) private data: IAccount,
     private formBuilder: FormBuilder,
+    private store: Store,
   ) {}
 
   public ngOnInit(): void {
@@ -25,11 +27,17 @@ export class EditAccountComponent implements OnInit {
     // this.form;
   }
 
+  public onSubmitForm(): void {
+    console.log('form 2', this.form.value);
+
+    this.store.dispatch(new AccountActions.Create(this.form.value));
+  }
+
   private buildForm(): void {
     const {
       name = '',
       description = '',
-      type = null,
+      type = 0,
       currency = 'RUB',
       accountNumber = null,
       createdAt = null,
