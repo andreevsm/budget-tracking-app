@@ -70,9 +70,7 @@ export class MainComponent implements OnInit, OnDestroy {
       })
       .afterClosed()
       .pipe(takeUntil(this.destroy$))
-      .subscribe((result) => {
-        console.log('result', result);
-      });
+      .subscribe();
   }
 
   private onViewAccount(account: IAccount): void {
@@ -96,15 +94,12 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   private onCreateAccount(): void {
-    console.log('create account');
     this.dialog
       .open(EditAccountComponent, {
         data: {},
       })
       .afterClosed()
       .pipe(takeUntil(this.destroy$))
-      .subscribe((result) => {
-        console.log('result', result);
-      });
+      .subscribe();
   }
 }

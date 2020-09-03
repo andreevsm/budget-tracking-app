@@ -24,6 +24,7 @@ export class AccountState {
 
   @Selector()
   public static accounts(state: IAccountState): IAccount[] {
+    console.log('accounts', state);
     return state.accounts;
   }
 
@@ -68,13 +69,30 @@ export class AccountState {
     this.store.dispatch(new CoreActions.ShowSpinner());
 
     return this.accountService.createAccount(account).pipe(
-      tap((accounts) => {
-        console.log('a', accounts);
+      tap((accounts) =>
         setState({
           ...getState(),
           accounts,
-        });
-      }),
+        }),
+      ),
+      finalize(() => this.store.dispatch(new CoreActions.HideSpinner())),
+    );
+  }
+
+  @Action(AccountActions.Update)
+  public editAccount(
+    { setState, getState }: StateContext<IAccountState>,
+    { account }: AccountActions.Create,
+  ): Observable<IAccount[]> {
+    this.store.dispatch(new CoreActions.ShowSpinner());
+
+    return this.accountService.editAccount(account).pipe(
+      tap((accounts) =>
+        setState({
+          ...getState(),
+          accounts,
+        }),
+      ),
       finalize(() => this.store.dispatch(new CoreActions.HideSpinner())),
     );
   }

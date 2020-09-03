@@ -22,6 +22,18 @@ export class AccountService {
       accountNumber: Math.random(),
       createdAt: new Date(),
     });
-    return of(ACCOUNTS).pipe(delay(300));
+    return of([...ACCOUNTS]).pipe(delay(300));
+  }
+
+  public editAccount(editedAccount: IAccount): Observable<IAccount[]> {
+    const editedAccountIndex = ACCOUNTS.findIndex((account) => account.id === editedAccount.id);
+
+    console.log('editedAccountIndex', editedAccountIndex);
+
+    return of([
+      ...ACCOUNTS.slice(0, editedAccountIndex),
+      editedAccount,
+      ...ACCOUNTS.slice(editedAccountIndex),
+    ]).pipe(delay(300));
   }
 }

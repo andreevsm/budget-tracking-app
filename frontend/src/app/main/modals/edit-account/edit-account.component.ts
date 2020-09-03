@@ -23,14 +23,16 @@ export class EditAccountComponent implements OnInit {
 
   public ngOnInit(): void {
     this.buildForm();
-    console.log('data', this.data);
-    // this.form;
   }
 
   public onSubmitForm(): void {
-    console.log('form 2', this.form.value);
+    console.log('data', this.data);
 
-    this.store.dispatch(new AccountActions.Create(this.form.value));
+    if (typeof this.data.id === 'undefined') {
+      this.store.dispatch(new AccountActions.Create(this.form.value));
+    } else {
+      this.store.dispatch(new AccountActions.Update(this.form.value));
+    }
   }
 
   private buildForm(): void {
