@@ -24,7 +24,6 @@ export class AccountState {
 
   @Selector()
   public static accounts(state: IAccountState): IAccount[] {
-    console.log('accounts', state);
     return state.accounts;
   }
 

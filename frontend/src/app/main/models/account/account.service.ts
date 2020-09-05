@@ -28,12 +28,10 @@ export class AccountService {
   public editAccount(editedAccount: IAccount): Observable<IAccount[]> {
     const editedAccountIndex = ACCOUNTS.findIndex((account) => account.id === editedAccount.id);
 
-    console.log('editedAccountIndex', editedAccountIndex);
-
     return of([
       ...ACCOUNTS.slice(0, editedAccountIndex),
       editedAccount,
-      ...ACCOUNTS.slice(editedAccountIndex),
+      ...ACCOUNTS.slice(editedAccountIndex + 1),
     ]).pipe(delay(300));
   }
 }

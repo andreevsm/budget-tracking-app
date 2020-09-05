@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "include": [
     "src/**/*.ts",
-    ".eslintrc.js",
+    ".eslintrc.json",
     "tests/**/*.ts",
     "jest.config.js",
   ],

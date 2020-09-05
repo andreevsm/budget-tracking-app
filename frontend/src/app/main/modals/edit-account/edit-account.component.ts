@@ -26,7 +26,7 @@ export class EditAccountComponent implements OnInit {
   }
 
   public onSubmitForm(): void {
-    console.log('data', this.data);
+    console.log('data', typeof this.data.id);
 
     if (typeof this.data.id === 'undefined') {
       this.store.dispatch(new AccountActions.Create(this.form.value));
@@ -43,9 +43,11 @@ export class EditAccountComponent implements OnInit {
       currency = 'RUB',
       accountNumber = null,
       createdAt = null,
+      id = null,
     } = this.data;
 
     this.form = this.formBuilder.group({
+      id: [id],
       name: [name, Validators.required],
       description: [description],
       type: [type],
