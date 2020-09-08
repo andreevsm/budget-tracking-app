@@ -6,6 +6,9 @@ import { takeUntil } from 'rxjs/operators';
 
 import { AccountState, AccountActions, IAccount } from '../models';
 import { EditAccountComponent } from '../modals/edit-account/edit-account.component';
+import { PaymentState } from '../models/payment/payment.state';
+import { IPayment } from '../models/payment/payment.interface';
+import { PaymentActions } from '../models/payment/payment.action';
 
 @Component({
   selector: 'bg-main',
@@ -15,6 +18,7 @@ import { EditAccountComponent } from '../modals/edit-account/edit-account.compon
 })
 export class MainComponent implements OnInit, OnDestroy {
   @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
+  @Select(PaymentState.payments) public payments$: Observable<IPayment[]>;
 
   public buttons = [
     {
@@ -56,6 +60,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.store.dispatch(new AccountActions.LoadAll());
+    this.store.dispatch(new PaymentActions.LoadAll());
   }
 
   public ngOnDestroy(): void {
