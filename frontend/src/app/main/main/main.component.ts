@@ -3,6 +3,7 @@ import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/
 import { Observable, ReplaySubject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { takeUntil } from 'rxjs/operators';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AccountState, AccountActions, IAccount } from '../models';
 import { EditAccountComponent } from '../modals/edit-account/edit-account.component';
@@ -54,18 +55,41 @@ export class MainComponent implements OnInit, OnDestroy {
     },
   ];
 
+  public form: FormGroup;
+
+  public categories = [
+    {
+      id: 1,
+      name: 'Домашний интернет',
+    },
+    {
+      id: 2,
+      name: 'Продукты',
+    },
+    {
+      id: 3,
+      name: 'Транспорт',
+    },
+  ];
+
   private destroy$ = new ReplaySubject();
 
-  constructor(private store: Store, private dialog: MatDialog) {}
+  constructor(private store: Store, private dialog: MatDialog, private fb: FormBuilder) {}
 
   public ngOnInit(): void {
     this.store.dispatch(new AccountActions.LoadAll());
     this.store.dispatch(new PaymentActions.LoadAll());
+
+    this.buildForm();
   }
 
   public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  public onSubmit(): void {
+    console.log('form', this.form.value);
   }
 
   private onEditAccount(account: IAccount): void {
@@ -106,5 +130,13 @@ export class MainComponent implements OnInit, OnDestroy {
       .afterClosed()
       .pipe(takeUntil(this.destroy$))
       .subscribe();
+  }
+
+  private buildForm(): void {
+    this.form = this.fb.group({
+      date: [new Date(), [Validators.required]],
+      amount: [null, [Validators.required]],
+      category: [null],
+    });
   }
 }
