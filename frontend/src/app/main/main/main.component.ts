@@ -5,11 +5,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { takeUntil } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { AccountState, AccountActions, IAccount } from '../models';
+import { AccountState, AccountActions, IAccount, ExpansesActions } from '../models';
 import { EditAccountComponent } from '../modals/edit-account/edit-account.component';
-import { PaymentState } from '../models/payment/payment.state';
-import { IPayment } from '../models/payment/payment.interface';
-import { PaymentActions } from '../models/payment/payment.action';
+import { IExpense } from '../models/expanses/expanses.interface';
+import { ExpansesState } from '../models/expanses/expanses.state';
 
 @Component({
   selector: 'bg-main',
@@ -19,7 +18,7 @@ import { PaymentActions } from '../models/payment/payment.action';
 })
 export class MainComponent implements OnInit, OnDestroy {
   @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
-  @Select(PaymentState.payments) public payments$: Observable<IPayment[]>;
+  @Select(ExpansesState.expanses) public expanses$: Observable<IExpense[]>;
 
   public buttons = [
     {
@@ -78,7 +77,6 @@ export class MainComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.store.dispatch(new AccountActions.LoadAll());
-    this.store.dispatch(new PaymentActions.LoadAll());
 
     this.buildForm();
   }
@@ -90,6 +88,9 @@ export class MainComponent implements OnInit, OnDestroy {
 
   public onSubmit(): void {
     console.log('form', this.form.value);
+    this.store.dispatch(new ExpansesActions.Add(this.form.value));
+    this.form.get('amount')?.reset();
+    this.form.get('categoryId')?.reset();
   }
 
   private onEditAccount(account: IAccount): void {
@@ -136,7 +137,7 @@ export class MainComponent implements OnInit, OnDestroy {
     this.form = this.fb.group({
       date: [new Date(), [Validators.required]],
       amount: [null, [Validators.required]],
-      category: [null],
+      categoryId: [null],
     });
   }
 }

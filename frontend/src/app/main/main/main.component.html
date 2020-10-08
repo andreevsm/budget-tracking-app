@@ -18,7 +18,7 @@
           Категории
         </mat-card-title>
         <mat-card-content>
-          <mat-radio-group formControlName="category">
+          <mat-radio-group formControlName="categoryId">
             <mat-radio-button *ngFor="let category of categories" [value]="category.id">
               {{category.name}}
             </mat-radio-button>
@@ -31,9 +31,9 @@
 
     <div class="main--accounts">
 
-      <mat-card class="payment" *ngFor="let payment of payments$ | async">
+      <mat-card class="payment" *ngFor="let expense of expanses$ | async">
         <mat-card-title>
-          {{ payment.amount }}
+          {{ expense.amount }}
         </mat-card-title>
         <!-- <mat-card-actions>
           <button mat-icon-button class="account--button" *ngFor="let button of buttons" (click)="button.click(payment)">
