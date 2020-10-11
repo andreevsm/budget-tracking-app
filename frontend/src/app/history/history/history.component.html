@@ -1,1 +1,3 @@
-<p>history works!</p>
+<div *ngFor="let expense of expanses$ | async">
+  <div>{{ expense.amount }}</div>
+</div>
