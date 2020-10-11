@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
 import { finalize } from 'rxjs/operators';
 
-import { CoreActions } from '../store';
+import { UIActions } from '../store';
 
 @Injectable()
 export class SpinnerInterceptor implements HttpInterceptor {
@@ -14,8 +14,8 @@ export class SpinnerInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
-    this.store.dispatch(new CoreActions.ShowSpinner());
+    this.store.dispatch(new UIActions.ShowSpinner());
 
-    return next.handle(request).pipe(finalize(() => new CoreActions.HideSpinner()));
+    return next.handle(request).pipe(finalize(() => new UIActions.HideSpinner()));
   }
 }

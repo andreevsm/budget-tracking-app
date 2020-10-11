@@ -5,10 +5,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { takeUntil } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { AccountState, AccountActions, IAccount, ExpansesActions } from '../models';
+import { ExpansesState, IExpense, ExpansesActions } from '../../core/store';
+import { AccountState, AccountActions, IAccount } from '../models';
 import { EditAccountComponent } from '../modals/edit-account/edit-account.component';
-import { IExpense } from '../models/expanses/expanses.interface';
-import { ExpansesState } from '../models/expanses/expanses.state';
 
 @Component({
   selector: 'bg-main',
@@ -36,10 +35,10 @@ export class MainComponent implements OnInit, OnDestroy {
   ];
 
   public menuButtons = [
-    {
-      text: 'Перевести',
-      click: (): void => this.onSendMoney(),
-    },
+    // {
+    //   text: 'Создать счет',
+    //   click: (): void => this.onSendMoney(),
+    // },
     {
       text: 'Оплатить',
       click: (): void => this.onPay(),
@@ -68,6 +67,17 @@ export class MainComponent implements OnInit, OnDestroy {
     {
       id: 3,
       name: 'Транспорт',
+    },
+  ];
+
+  public balances = [
+    {
+      id: 1,
+      name: 'Расходы',
+    },
+    {
+      id: 2,
+      name: 'Доходы',
     },
   ];
 
@@ -138,6 +148,7 @@ export class MainComponent implements OnInit, OnDestroy {
       date: [new Date(), [Validators.required]],
       amount: [null, [Validators.required]],
       categoryId: [null],
+      balanceId: [null],
     });
   }
 }

@@ -1,8 +1,9 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
-import { CoreActions } from 'src/app/core/store';
 import { tap, finalize } from 'rxjs/operators';
+
+import { UIActions } from '../ui';
 
 import { ExpansesActions } from './expanses.actions';
 import { IExpense } from './expanses.interface';
@@ -29,7 +30,7 @@ export class ExpansesState {
 
   @Action(ExpansesActions.LoadAll)
   public loadAll({ setState, getState }: StateContext<IExpansesState>): Observable<IExpense[]> {
-    this.store.dispatch(new CoreActions.ShowSpinner());
+    this.store.dispatch(new UIActions.ShowSpinner());
     const expansesState = getState();
 
     return this.expansesService.loadAll(expansesState.expanses).pipe(
@@ -39,7 +40,7 @@ export class ExpansesState {
           expanses,
         }),
       ),
-      finalize(() => this.store.dispatch(new CoreActions.HideSpinner())),
+      finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
     );
   }
 
@@ -48,7 +49,7 @@ export class ExpansesState {
     { setState, getState }: StateContext<IExpansesState>,
     { expense }: ExpansesActions.Add,
   ): Observable<IExpense[]> {
-    this.store.dispatch(new CoreActions.ShowSpinner());
+    this.store.dispatch(new UIActions.ShowSpinner());
     const currentExpanses = getState();
 
     return this.expansesService.add(currentExpanses.expanses, expense).pipe(
@@ -59,7 +60,7 @@ export class ExpansesState {
           expanses,
         });
       }),
-      finalize(() => this.store.dispatch(new CoreActions.HideSpinner())),
+      finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
     );
   }
 }

@@ -9,7 +9,7 @@ import { MaterialModule } from '../shared/material/material.module';
 
 import { HeaderComponent, SpinnerComponent } from './components';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
-import { CoreState } from './store';
+import { UIState, ExpansesState, ExpansesService } from './store';
 
 @NgModule({
   declarations: [HeaderComponent, SpinnerComponent],
@@ -17,7 +17,7 @@ import { CoreState } from './store';
     CommonModule,
     BrowserAnimationsModule,
     RouterModule,
-    NgxsModule.forFeature([CoreState]),
+    NgxsModule.forRoot([UIState, ExpansesState]),
     MaterialModule,
   ],
   exports: [HeaderComponent, SpinnerComponent],
@@ -27,6 +27,7 @@ import { CoreState } from './store';
       useClass: SpinnerInterceptor,
       multi: true,
     },
+    ExpansesService,
   ],
 })
 export class CoreModule {}

@@ -13,6 +13,12 @@
         <input matInput formControlName="amount">
       </mat-form-field>
 
+      <mat-radio-group formControlName="balanceId">
+        <mat-radio-button *ngFor="let balance of balances" [value]="balance.id">
+          {{balance.name}}
+        </mat-radio-button>
+      </mat-radio-group>
+
       <mat-card>
         <mat-card-title>
           Категории

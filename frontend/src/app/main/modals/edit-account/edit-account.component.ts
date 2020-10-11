@@ -39,7 +39,6 @@ export class EditAccountComponent implements OnInit {
     const {
       name = '',
       description = '',
-      type = 0,
       currency = 'RUB',
       accountNumber = null,
       createdAt = null,
@@ -50,7 +49,6 @@ export class EditAccountComponent implements OnInit {
       id: [id],
       name: [name, Validators.required],
       description: [description],
-      type: [type],
       currency: [currency, Validators.required],
       accountNumber: [
         {

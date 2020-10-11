@@ -4,8 +4,6 @@ import { NgxsModule } from '@ngxs/store';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { ExpansesService } from './models/expanses/expanses.service';
-import { ExpansesState } from './models/expanses/expanses.state';
 import { AccountState, AccountService } from './models';
 import { MainRoutingModule } from './main.routing';
 import { MainComponent } from './main/main.component';
@@ -13,12 +11,7 @@ import { EditAccountComponent } from './modals/edit-account/edit-account.compone
 
 @NgModule({
   declarations: [MainComponent, EditAccountComponent],
-  imports: [
-    CommonModule,
-    MainRoutingModule,
-    NgxsModule.forFeature([AccountState, ExpansesState]),
-    SharedModule,
-  ],
-  providers: [AccountService, ExpansesService],
+  imports: [CommonModule, MainRoutingModule, NgxsModule.forFeature([AccountState]), SharedModule],
+  providers: [AccountService],
 })
 export class MainModule {}

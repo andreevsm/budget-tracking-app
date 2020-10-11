@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
-import { CoreState } from '../../store/core.state';
+import { UIState } from '../../store';
 
 @Component({
   selector: 'bg-spinner',
@@ -11,5 +11,5 @@ import { CoreState } from '../../store/core.state';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpinnerComponent {
-  @Select(CoreState.spinner) public spinner$: Observable<boolean>;
+  @Select(UIState.spinner) public spinner$: Observable<boolean>;
 }
