@@ -7,17 +7,17 @@ import { NgxsModule } from '@ngxs/store';
 
 import { MaterialModule } from '../shared/material/material.module';
 
-import { HeaderComponent, SpinnerComponent } from './components';
+import { HeaderComponent, SpinnerComponent, SidenavComponent } from './components';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 import { UIState, ExpansesState, ExpansesService } from './store';
 
 @NgModule({
-  declarations: [HeaderComponent, SpinnerComponent],
+  declarations: [HeaderComponent, SpinnerComponent, SidenavComponent],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
     RouterModule,
-    NgxsModule.forRoot([UIState, ExpansesState]),
+    NgxsModule.forFeature([UIState, ExpansesState]),
     MaterialModule,
   ],
   exports: [HeaderComponent, SpinnerComponent],

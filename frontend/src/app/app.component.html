@@ -4,6 +4,14 @@
   <bg-header></bg-header>
 
   <div class="app__main">
-    <router-outlet></router-outlet>
+    <mat-sidenav-container>
+      <mat-sidenav mode="side" [opened]="true">
+        Sidenav content
+      </mat-sidenav>
+    
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
   </div>
 </div>

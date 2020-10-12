@@ -54,7 +54,6 @@ export class ExpansesState {
 
     return this.expansesService.add(currentExpanses.expanses, expense).pipe(
       tap((expanses) => {
-        console.log('expanses', expanses);
         return setState({
           ...getState(),
           expanses,

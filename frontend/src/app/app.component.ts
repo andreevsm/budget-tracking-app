@@ -1,4 +1,6 @@
+import { ExpansesActions } from 'src/app/core/store';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'bg-root',
@@ -7,7 +9,14 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
+  constructor(private store: Store) {}
+
   public ngOnInit(): void {
+    this.store.dispatch(new ExpansesActions.LoadAll());
+    this.createWorker();
+  }
+
+  private createWorker(): void {
     if (typeof Worker !== 'undefined') {
       // Create a new
       const worker = new Worker('./app.worker', { type: 'module' });
