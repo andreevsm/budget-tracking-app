@@ -2,6 +2,8 @@ import { ExpansesActions } from 'src/app/core/store';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngxs/store';
 
+import { UserActions } from './core/store/user/user.actions';
+
 @Component({
   selector: 'bg-root',
   templateUrl: './app.component.html',
@@ -13,6 +15,7 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     this.store.dispatch(new ExpansesActions.LoadAll());
+    this.store.dispatch(new UserActions.Load());
     this.createWorker();
   }
 

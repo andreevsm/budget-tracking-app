@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 
 import { UIActions } from './ui.actions';
 
-export interface IUIState {
+interface IUIState {
   spinner: boolean;
 }
 
 @State<IUIState>({
-  name: 'core',
+  name: 'ui',
   defaults: {
     spinner: false,
   },

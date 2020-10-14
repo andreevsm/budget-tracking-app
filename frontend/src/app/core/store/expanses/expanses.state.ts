@@ -9,7 +9,7 @@ import { ExpansesActions } from './expanses.actions';
 import { IExpense } from './expanses.interface';
 import { ExpansesService } from './expanses.service';
 
-export interface IExpansesState {
+interface IExpansesState {
   expanses: IExpense[];
 }
 

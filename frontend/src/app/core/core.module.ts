@@ -7,6 +7,8 @@ import { NgxsModule } from '@ngxs/store';
 
 import { MaterialModule } from '../shared/material/material.module';
 
+import { UserService } from './store/user/user.service';
+import { UserState } from './store/user/user.state';
 import { HeaderComponent, SpinnerComponent, SidenavComponent } from './components';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 import { UIState, ExpansesState, ExpansesService } from './store';
@@ -17,7 +19,7 @@ import { UIState, ExpansesState, ExpansesService } from './store';
     CommonModule,
     BrowserAnimationsModule,
     RouterModule,
-    NgxsModule.forFeature([UIState, ExpansesState]),
+    NgxsModule.forFeature([UIState, ExpansesState, UserState]),
     MaterialModule,
   ],
   exports: [HeaderComponent, SpinnerComponent],
@@ -28,6 +30,7 @@ import { UIState, ExpansesState, ExpansesService } from './store';
       multi: true,
     },
     ExpansesService,
+    UserService,
   ],
 })
 export class CoreModule {}
