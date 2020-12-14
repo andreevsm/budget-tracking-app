@@ -34,3 +34,28 @@
 Почта
 Пароль
 ```
+
+Памятка по docker
+
+docker ps - просмотр контейнеров
+docker rm -rf <name> - удаление контейнера
+docker stop <name> - остановка контейнера
+docker run -p 5555:80 —name pgadmin -e PGADMIN_DEFAULT_EMAIL=«aandreev.sm@gmail.com» -e PGADMIN_DEFAULT_PASSWORD=«password» dpage/pgadmin4
+psql -h localhost -p 5432 -U postgres
+docker exec -it  <name> bash
+docker run -p 5432:5432 --name budget-app -e POSTGRES_PASSWORD=1q2w3e4r5t6y -d postgres
+docker stop $(docker ps -a -q) - остановка всех контейнеров
+docker rm $(docker ps -a -q) - удаление всех контейнеров
+
+docker exec -it budget-app bash
+psql -U postgres
+
+CREATE TABLE IF NOT EXISTS accounts (
+	id serial PRIMARY KEY,
+	userid int NOT NULL,
+	FOREIGN KEY (userId) REFERENCES users (id),
+	name VARCHAR(55) NOT NULL,
+	description VARCHAR(255)
+)
+
+docker run --name budget-db -p 5432:5432 -v /Users/sergeyandreev/my-projects/budget-tracking-app/data/budget:/var/lib/postgresql/data postgres
