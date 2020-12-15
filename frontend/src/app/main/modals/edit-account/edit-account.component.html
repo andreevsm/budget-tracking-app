@@ -1,11 +1,11 @@
 <div class="account">
   <form [formGroup]="form" class="flex fd-column account--form" (submit)="onSubmitForm()">
-    
+
     <mat-form-field class="account--field">
       <mat-label>Название счета</mat-label>
       <input matInput placeholder="Мой счет" formControlName="name">
     </mat-form-field>
-  
+
     <mat-form-field class="account--field">
       <mat-label>Описание</mat-label>
       <textarea matInput formControlName="description"></textarea>

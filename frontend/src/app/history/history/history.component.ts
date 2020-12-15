@@ -1,9 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { IExpense, ExpansesActions } from 'src/app/core/store';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {Select, Store} from '@ngxs/store';
+import {Observable} from 'rxjs';
+import {IExpense, ExpansesActions} from 'src/app/core/store';
 
-import { ExpansesState } from '../../core/store/expanses/expanses.state';
+import {ExpansesState} from '../../core/store/expanses/expanses.state';
 
 @Component({
   selector: 'bg-history',
@@ -14,7 +14,8 @@ import { ExpansesState } from '../../core/store/expanses/expanses.state';
 export class HistoryComponent implements OnInit {
   @Select(ExpansesState.expanses) public expanses$: Observable<IExpense[]>;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store) {
+  }
 
   public ngOnInit(): void {
     this.store.dispatch(new ExpansesActions.LoadAll());

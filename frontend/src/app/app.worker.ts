@@ -1,4 +1,4 @@
-addEventListener('message', ({ data }) => {
+addEventListener('message', ({data}) => {
   const response = `worker response to ${data}`;
   postMessage(response);
 });

@@ -13,14 +13,6 @@
   "overrides": [
     {
       "files": ["src/**/*.spec.ts", "src/**/*.d.ts"],
-      "parserOptions": { "project": "./tsconfig.eslint.json" },
-      "extends": ["plugin:jasmine/recommended"],
-      "plugins": ["jasmine"],
-      "env": { "jasmine": true },
-      "rules": { "@typescript-eslint/no-unused-vars": 0 }
-    },
-    {
-      "files": ["src/**/*.spec.ts", "src/**/*.d.ts"],
       "parserOptions": {
         "project": "./src/tsconfig.spec.json"
       },

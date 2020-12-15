@@ -1,4 +1,4 @@
-import { IAccount } from './account.interface';
+import {IAccount} from './account.interface';
 
 export namespace AccountActions {
   export class LoadAll {
@@ -7,16 +7,22 @@ export namespace AccountActions {
 
   export class Delete {
     public static readonly type = '[Accounts] Delete account';
-    constructor(public id: number) {}
+
+    constructor(public id: number) {
+    }
   }
 
   export class Create {
     public static readonly type = '[Accounts] Create account';
-    constructor(public account: IAccount) {}
+
+    constructor(public account: IAccount) {
+    }
   }
 
   export class Update {
     public static readonly type = '[Accounts] Update account';
-    constructor(public account: IAccount) {}
+
+    constructor(public account: IAccount) {
+    }
   }
 }

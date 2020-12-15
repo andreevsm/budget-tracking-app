@@ -5,18 +5,18 @@
     </h1>
 
     <div class="header--user-info">
-      
+
     </div>
   </div>
 
 
   <nav mat-tab-nav-bar>
     <a mat-tab-link
-      *ngFor="let link of links"
-      [routerLink]="link.href"
-      routerLinkActive
-      #rla="routerLinkActive"
-      [active]="rla.isActive"
+       *ngFor="let link of links"
+       [routerLink]="link.href"
+       routerLinkActive
+       #rla="routerLinkActive"
+       [active]="rla.isActive"
     >
       {{ link.label }}
     </a>

@@ -1,8 +1,8 @@
-import { Observable, of } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { delay } from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {delay} from 'rxjs/operators';
 
-import { IExpense } from './expanses.interface';
+import {IExpense} from './expanses.interface';
 
 @Injectable()
 export class ExpansesService {

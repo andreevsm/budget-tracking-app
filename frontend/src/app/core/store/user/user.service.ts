@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Observable, of} from 'rxjs';
 
-import { IUser } from './user.interface';
+import {IUser} from './user.interface';
 
 @Injectable()
 export class UserService {

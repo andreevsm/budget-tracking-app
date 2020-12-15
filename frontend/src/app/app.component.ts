@@ -1,8 +1,8 @@
-import { ExpansesActions } from 'src/app/core/store';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Store } from '@ngxs/store';
+import {ExpansesActions} from 'src/app/core/store';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {Store} from '@ngxs/store';
 
-import { UserActions } from './core/store/user/user.actions';
+import {UserActions} from './core/store/user/user.actions';
 
 @Component({
   selector: 'bg-root',
@@ -11,7 +11,8 @@ import { UserActions } from './core/store/user/user.actions';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
-  constructor(private store: Store) {}
+  constructor(private store: Store) {
+  }
 
   public ngOnInit(): void {
     this.store.dispatch(new ExpansesActions.LoadAll());
@@ -22,7 +23,7 @@ export class AppComponent implements OnInit {
   private createWorker(): void {
     if (typeof Worker !== 'undefined') {
       // Create a new
-      const worker = new Worker('./app.worker', { type: 'module' });
+      const worker = new Worker('./app.worker', {type: 'module'});
       // worker.onmessage = ({ data }) => {
       //   console.log(`page got message: ${data}`);
       // };

@@ -5,9 +5,9 @@ import {
   OnDestroy,
   ChangeDetectorRef,
 } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { ReplaySubject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import {Router, NavigationEnd} from '@angular/router';
+import {ReplaySubject} from 'rxjs';
+import {filter, takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'bg-header',
@@ -34,7 +34,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public activeLinkIndex = -1;
   private destroy$ = new ReplaySubject();
 
-  constructor(private router: Router, private cd: ChangeDetectorRef) {}
+  constructor(private router: Router, private cd: ChangeDetectorRef) {
+  }
 
   public ngOnInit(): void {
     this.router.events

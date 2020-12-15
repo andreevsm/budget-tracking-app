@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
-import { AngularUniversalModule } from '@nestjs/ng-universal';
-import { join } from 'path';
-import { AppServerModule } from '../src/main.server';
+import {Module} from '@nestjs/common';
+import {AngularUniversalModule} from '@nestjs/ng-universal';
+import {join} from 'path';
+import {AppServerModule} from '../src/main.server';
 
 @Module({
   imports: [
@@ -11,4 +11,5 @@ import { AppServerModule } from '../src/main.server';
     })
   ]
 })
-export class AppModule {}
+export class AppModule {
+}

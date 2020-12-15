@@ -59,3 +59,13 @@ CREATE TABLE IF NOT EXISTS accounts (
 )
 
 docker run --name budget-db -p 5432:5432 -v /Users/sergeyandreev/my-projects/budget-tracking-app/data/budget:/var/lib/postgresql/data postgres
+
+
+CREATE TABLE IF NOT EXISTS operations (
+	id serial PRIMARY KEY NOT NULL,
+	account_id int NOT NULL,
+	FOREIGN KEY(account_id) REFERENCES accounts(id),
+	amount int NOT NULL,
+)
+
+1q2w3e4r5t6y

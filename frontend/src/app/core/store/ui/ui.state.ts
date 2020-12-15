@@ -1,7 +1,7 @@
-import { Action, State, StateContext, Selector } from '@ngxs/store';
-import { Injectable } from '@angular/core';
+import {Action, State, StateContext, Selector} from '@ngxs/store';
+import {Injectable} from '@angular/core';
 
-import { UIActions } from './ui.actions';
+import {UIActions} from './ui.actions';
 
 interface IUIState {
   spinner: boolean;
@@ -21,7 +21,7 @@ export class UIState {
   }
 
   @Action(UIActions.ShowSpinner)
-  public showSpinner({ setState, getState }: StateContext<IUIState>): void {
+  public showSpinner({setState, getState}: StateContext<IUIState>): void {
     setState({
       ...getState(),
       spinner: true,
@@ -29,7 +29,7 @@ export class UIState {
   }
 
   @Action(UIActions.HideSpinner)
-  public hideSpinner({ setState, getState }: StateContext<IUIState>): void {
+  public hideSpinner({setState, getState}: StateContext<IUIState>): void {
     setState({
       ...getState(),
       spinner: false,

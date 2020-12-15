@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
-import { MainModule } from './main/main.module';
-import { HistoryModule } from './history/history.module';
-import { StatisticsModule } from './statistics/statistics.module';
+import {MainModule} from './main/main.module';
+import {HistoryModule} from './history/history.module';
+import {StatisticsModule} from './statistics/statistics.module';
 
 const routes: Routes = [
   {
@@ -31,4 +31,5 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

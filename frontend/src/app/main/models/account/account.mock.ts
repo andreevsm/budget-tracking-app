@@ -1,4 +1,4 @@
-import { IAccount, AccountType, Currency } from './account.interface';
+import {IAccount, AccountType, Currency} from './account.interface';
 
 export const ACCOUNTS: IAccount[] = [
   {

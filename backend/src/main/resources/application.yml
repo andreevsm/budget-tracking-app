@@ -1,0 +1,6 @@
+app:
+  datasource:
+    jdbc-url: jdbc:postgresql://localhost:5432/budget
+    username: postgres
+    password: 1q2w3e4r5t6y
+    pool-size: 30
