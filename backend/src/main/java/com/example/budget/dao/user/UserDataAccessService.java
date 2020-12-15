@@ -28,7 +28,7 @@ public class UserDataAccessService implements UserDao {
 
     @Override
     public List<User> selectAllUsers() {
-        final String sql = "SELECT * from user";
+        final String sql = "SELECT * from users";
 
         return jdbcTemplate.query(sql, (result, i) -> {
             return new User(
