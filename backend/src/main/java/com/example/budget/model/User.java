@@ -1,24 +1,34 @@
 package com.example.budget.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
+import javax.persistence.*;
+
+@Data
+@Entity
+@Table(name = "users")
 public class User {
-    private final int id;
-    private final String login;
-    private final String email;
-    private final String passwordHash;
 
-    public User(
-            @JsonProperty("id") int id,
-            @JsonProperty("login") String login,
-            @JsonProperty("email") String email,
-            @JsonProperty("passwordHash") String passwordHash
-    ) {
-        this.id = id;
-        this.email = email;
-        this.login = login;
-        this.passwordHash = passwordHash;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "login")
+    private String login;
+
+    @Column(name = "password_hash")
+    private String passwordHash;
+
+    @Column(name = "email")
+    private String email;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "role")
+    private Role role;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "status")
+    private Status status;
 
     public int getId() {
         return id;
