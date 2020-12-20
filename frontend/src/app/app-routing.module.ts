@@ -1,9 +1,10 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-import {MainModule} from './main/main.module';
-import {HistoryModule} from './history/history.module';
-import {StatisticsModule} from './statistics/statistics.module';
+import { MainModule } from './main/main.module';
+import { HistoryModule } from './history/history.module';
+import { StatisticsModule } from './statistics/statistics.module';
+import { LoginModule } from './login/login.module';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
     loadChildren: (): Promise<typeof StatisticsModule> =>
       import('./statistics/statistics.module').then((m) => m.StatisticsModule),
   },
+  {
+    path: 'login',
+    loadChildren: (): Promise<typeof LoginModule> =>
+      import('./login/login.module').then((m) => m.LoginModule),
+  },
 ];
 
 @NgModule({
@@ -31,5 +37,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

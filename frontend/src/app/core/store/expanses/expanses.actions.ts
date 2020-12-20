@@ -1,4 +1,4 @@
-import {IExpense} from './expanses.interface';
+import { IExpense } from './expanses.interface';
 
 export namespace ExpansesActions {
   export class LoadAll {
@@ -8,7 +8,6 @@ export namespace ExpansesActions {
   export class Add {
     public static readonly type = '[Expanses] Add expanses';
 
-    constructor(public expense: IExpense) {
-    }
+    constructor(public expense: IExpense) {}
   }
 }

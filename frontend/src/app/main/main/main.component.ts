@@ -1,13 +1,13 @@
-import {Store, Select} from '@ngxs/store';
-import {Component, OnInit, ChangeDetectionStrategy, OnDestroy} from '@angular/core';
-import {Observable, ReplaySubject} from 'rxjs';
-import {MatDialog} from '@angular/material/dialog';
-import {takeUntil} from 'rxjs/operators';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Store, Select } from '@ngxs/store';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { Observable, ReplaySubject } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { takeUntil } from 'rxjs/operators';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import {ExpansesState, IExpense, ExpansesActions} from '../../core/store';
-import {AccountState, AccountActions, IAccount} from '../models';
-import {EditAccountComponent} from '../modals/edit-account/edit-account.component';
+import { ExpansesState, IExpense, ExpansesActions } from '../../core/store';
+import { AccountState, AccountActions, IAccount } from '../models';
+import { EditAccountComponent } from '../modals/edit-account/edit-account.component';
 
 @Component({
   selector: 'bg-main',
@@ -83,8 +83,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
   private destroy$ = new ReplaySubject();
 
-  constructor(private store: Store, private dialog: MatDialog, private fb: FormBuilder) {
-  }
+  constructor(private store: Store, private dialog: MatDialog, private fb: FormBuilder) {}
 
   public ngOnInit(): void {
     this.store.dispatch(new AccountActions.LoadAll());

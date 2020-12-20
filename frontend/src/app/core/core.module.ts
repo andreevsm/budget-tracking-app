@@ -1,17 +1,18 @@
-import {RouterModule} from '@angular/router';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {NgxsModule} from '@ngxs/store';
+import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule, PLATFORM_ID } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgxsModule } from '@ngxs/store';
 
-import {MaterialModule} from '../shared/material/material.module';
+import { MaterialModule } from '../shared/material/material.module';
 
-import {UserService} from './store/user/user.service';
-import {UserState} from './store/user/user.state';
-import {HeaderComponent, SpinnerComponent, SidenavComponent} from './components';
-import {SpinnerInterceptor} from './interceptors/spinner.interceptor';
-import {UIState, ExpansesState, ExpansesService} from './store';
+import { AuthService } from './store/auth/auth.service';
+import { HeaderComponent, SpinnerComponent, SidenavComponent } from './components';
+import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
+import { UIState, ExpansesState, ExpansesService } from './store';
+import { localStorageFactory, LOCAL_STORAGE } from './services/local-storage.service';
+import { AuthState } from './store/auth';
 
 @NgModule({
   declarations: [HeaderComponent, SpinnerComponent, SidenavComponent],
@@ -19,7 +20,7 @@ import {UIState, ExpansesState, ExpansesService} from './store';
     CommonModule,
     BrowserAnimationsModule,
     RouterModule,
-    NgxsModule.forFeature([UIState, ExpansesState, UserState]),
+    NgxsModule.forFeature([UIState, ExpansesState, AuthState]),
     MaterialModule,
   ],
   exports: [HeaderComponent, SpinnerComponent],
@@ -30,8 +31,12 @@ import {UIState, ExpansesState, ExpansesService} from './store';
       multi: true,
     },
     ExpansesService,
-    UserService,
+    AuthService,
+    {
+      provide: LOCAL_STORAGE,
+      useFactory: localStorageFactory,
+      deps: [PLATFORM_ID],
+    },
   ],
 })
-export class CoreModule {
-}
+export class CoreModule {}

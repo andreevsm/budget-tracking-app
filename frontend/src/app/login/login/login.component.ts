@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngxs/store';
+import { AuthActions } from 'src/app/core/store/auth';
 
 @Component({
   selector: 'bg-login',
@@ -10,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   public form: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private store: Store) {}
 
   public ngOnInit(): void {
     this.form = this.fb.group({
@@ -19,7 +21,16 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  public onSubmit(): void {
-    console.log('form', this.form);
+  public onSubmit(event: Event): void {
+    event.preventDefault();
+
+    const { email, password } = this.form.getRawValue();
+
+    this.store.dispatch(
+      new AuthActions.Login({
+        email,
+        password,
+      }),
+    );
   }
 }

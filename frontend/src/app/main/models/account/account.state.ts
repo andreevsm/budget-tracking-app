@@ -1,13 +1,13 @@
-import {Action, State, StateContext, Selector, Store} from '@ngxs/store';
-import {Injectable} from '@angular/core';
-import {tap, finalize} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import { Action, State, StateContext, Selector, Store } from '@ngxs/store';
+import { Injectable } from '@angular/core';
+import { tap, finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
-import {UIActions} from '../../../core/store';
+import { UIActions } from '../../../core/store';
 
-import {AccountService} from './account.service';
-import {AccountActions} from './account.action';
-import {IAccount} from './account.interface';
+import { AccountService } from './account.service';
+import { AccountActions } from './account.action';
+import { IAccount } from './account.interface';
 
 export interface IAccountState {
   accounts: IAccount[];
@@ -21,8 +21,7 @@ export interface IAccountState {
 })
 @Injectable()
 export class AccountState {
-  constructor(private accountService: AccountService, private store: Store) {
-  }
+  constructor(private accountService: AccountService, private store: Store) {}
 
   @Selector()
   public static accounts(state: IAccountState): IAccount[] {
@@ -30,7 +29,7 @@ export class AccountState {
   }
 
   @Action(AccountActions.LoadAll)
-  public loadAccounts({setState, getState}: StateContext<IAccountState>): Observable<IAccount[]> {
+  public loadAccounts({ setState, getState }: StateContext<IAccountState>): Observable<IAccount[]> {
     this.store.dispatch(new UIActions.ShowSpinner());
 
     return this.accountService.loadAccounts().pipe(
@@ -46,8 +45,8 @@ export class AccountState {
 
   @Action(AccountActions.Delete)
   public deleteAccount(
-    {setState, getState}: StateContext<IAccountState>,
-    {id}: AccountActions.Delete,
+    { setState, getState }: StateContext<IAccountState>,
+    { id }: AccountActions.Delete,
   ): Observable<IAccount[]> {
     this.store.dispatch(new UIActions.ShowSpinner());
 
@@ -64,8 +63,8 @@ export class AccountState {
 
   @Action(AccountActions.Create)
   public createAccount(
-    {setState, getState}: StateContext<IAccountState>,
-    {account}: AccountActions.Create,
+    { setState, getState }: StateContext<IAccountState>,
+    { account }: AccountActions.Create,
   ): Observable<IAccount[]> {
     this.store.dispatch(new UIActions.ShowSpinner());
 
@@ -82,8 +81,8 @@ export class AccountState {
 
   @Action(AccountActions.Update)
   public editAccount(
-    {setState, getState}: StateContext<IAccountState>,
-    {account}: AccountActions.Create,
+    { setState, getState }: StateContext<IAccountState>,
+    { account }: AccountActions.Create,
   ): Observable<IAccount[]> {
     this.store.dispatch(new UIActions.ShowSpinner());
 
