@@ -1,0 +1,13 @@
+version: '2.2'
+services:
+  db:
+    image: postgres:latest
+    container_name: budget
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db:/var/lib/postgresql/data/pgdata
+    environment:
+      POSTGRES_PASSWORD: 1q2w3e4r5t6y
+      PGDATA: /var/lib/postgresql/data/pgdata
+    restart: always
