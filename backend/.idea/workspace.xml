@@ -5,31 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8aa5ebab-8fc5-4803-96a6-4e975aa8ead0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/controller/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/model/Developer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/model/Permission.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/model/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/model/Status.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/rest/AuthenticationRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/rest/AuthenticationRestControllerV1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/rest/DeveloperRestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/security/JwtAuthenticationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/security/JwtConfigurer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/security/JwtTokenFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/security/JwtTokenProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/security/SecurityUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/security/UserDetailsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/welcome.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/success.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/user/UserDataAccessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/user/UserDataAccessService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1_UsersTable.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backup/backup.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/13395/pg_internal.init" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/1247" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/1247" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/1249" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/1249" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/1249_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/1249_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/1259" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/1259" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/16402" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/16402" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/16407" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/16407" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/16409" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/16409" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/16419" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/16419" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/16421" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/16421" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/16429" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/16429" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/16435" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/16435" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/16437" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/16437" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/2224" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2224" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/2604" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2604" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/2608" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2608" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/2610" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2610" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/2659" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2659" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/2662" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2662" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/2663" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2663" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/3534" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/3534" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/5002" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/5002" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/../db/global/pg_control" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../db/global/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/db_0.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_0.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/db_13395.stat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/db_16384.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_16384.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/global.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/global.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_wal/000000010000000000000001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/postmaster.pid" beforeDir="false" afterPath="$PROJECT_DIR$/../db/postmaster.pid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +73,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -71,22 +84,18 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="BudgetApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="backend" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.budget.BudgetApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <envs>
+        <env name="POSTGRES_URL" value="jdbc:postgresql://localhost:5432/budget" />
+        <env name="POSTGRES_USERNAME" value="postgres" />
+        <env name="POSTGRES_PASSWORD" value="1q2w3e4r5t6y" />
+      </envs>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -103,6 +112,7 @@
       <workItem from="1608052583437" duration="7557000" />
       <workItem from="1608228702759" duration="2088000" />
       <workItem from="1608230990196" duration="12385000" />
+      <workItem from="1608655422644" duration="3063000" />
     </task>
     <servers />
   </component>

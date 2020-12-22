@@ -1,8 +1,8 @@
-version: '2.2'
+version: '3'
 services:
   db:
+    container_name: db
     image: postgres:latest
-    container_name: budget
     ports:
       - 5432:5432
     volumes:
@@ -11,3 +11,16 @@ services:
       POSTGRES_PASSWORD: 1q2w3e4r5t6y
       PGDATA: /var/lib/postgresql/data/pgdata
     restart: always
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+    ports:
+      - 8080:8080
+    environment:
+      POSTGRES_URL: jdbc:postgresql://db:5432/budget
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: 1q2w3e4r5t6y
+    restart: always
+    links:
+      - db
