@@ -39,11 +39,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
             <version>3.2.0</version>
@@ -91,6 +86,7 @@
     </dependencies>
 
     <build>
+        <finalName>budget-backend</finalName>
         <plugins>
             <plugin>
                 <groupId>org.asciidoctor</groupId>
