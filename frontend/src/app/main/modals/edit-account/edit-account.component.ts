@@ -1,9 +1,9 @@
-import {Component, ChangeDetectionStrategy, OnInit, Inject} from '@angular/core';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Store} from '@ngxs/store';
+import { Component, ChangeDetectionStrategy, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngxs/store';
 
-import {IAccount, AccountActions} from '../../models';
+import { IAccount, AccountActions } from '../../models';
 
 @Component({
   selector: 'bg-edit-account',
@@ -19,8 +19,7 @@ export class EditAccountComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private data: IAccount,
     private formBuilder: FormBuilder,
     private store: Store,
-  ) {
-  }
+  ) {}
 
   public ngOnInit(): void {
     this.buildForm();

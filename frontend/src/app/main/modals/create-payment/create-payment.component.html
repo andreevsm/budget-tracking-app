@@ -1,0 +1,30 @@
+<div class="root">
+
+  <form [formGroup]="form" (submit)="onSubmit()">
+
+    <div>
+      <label for="category">Категория</label>
+      <input formControlName="category" id="category" type="text">
+    </div>
+
+    <div>
+      <label for="amount">Сумма</label>
+      <input formControlName="amount" id="amount" type="text">
+    </div>
+
+    <div>
+      <label for="currency">Валюта</label>
+      <input formControlName="currency" id="currency" type="text">
+    </div>
+
+    <div>
+      <label for="expense">Расходы</label>
+      <input formControlName="currency" id="expense" value="expense" type="radio">
+
+      <label for="income">Доходы</label>
+      <input formControlName="currency" id="income" value="income" type="radio">
+    </div>
+
+    <button type="submit">Добавить</button>
+  </form>
+</div>

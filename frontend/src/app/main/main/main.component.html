@@ -1,5 +1,5 @@
 <div class="root">
-  <div class="main">
+  <!-- <div class="main">
     <form [formGroup]="form" (submit)="onSubmit()">
       <mat-form-field appearance="fill">
         <mat-label>Choose a date</mat-label>
@@ -41,11 +41,6 @@
         <mat-card-title>
           {{ expense.amount }}
         </mat-card-title>
-        <!-- <mat-card-actions>
-          <button mat-icon-button class="account--button" *ngFor="let button of buttons" (click)="button.click(payment)">
-            <mat-icon>{{ button.icon }}</mat-icon>
-          </button>
-        </mat-card-actions> -->
       </mat-card>
     </div>
 
@@ -60,9 +55,45 @@
         </button>
       </mat-menu>
     </div>
+  </div> -->
+
+  <div class="account">
+
+    <h1>
+      Счет 1
+    </h1>
+
+    <div>{{ currentDate }}</div>
+
+    <button (click)="onAddItem()">добавить</button>
+
+    <div>
+      +500 руб.
+    </div>
+
+
+
+    <ul>
+      <li>
+        <div>
+          <div>Питание</div>
+          <div>490 руб.</div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <div>Спорт</div>
+          <div>4190 руб.</div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <div>Учеба</div>
+          <div>250 руб.</div>
+        </div>
+      </li>
+    </ul>
 
 
   </div>
-
-
 </div>

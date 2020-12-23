@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExpansesState, IExpense, ExpansesActions } from '../../core/store';
 import { AccountState, AccountActions, IAccount } from '../models';
 import { EditAccountComponent } from '../modals/edit-account/edit-account.component';
+import { CreatePaymentComponent } from '../modals';
 
 @Component({
   selector: 'bg-main',
@@ -83,6 +84,8 @@ export class MainComponent implements OnInit, OnDestroy {
 
   private destroy$ = new ReplaySubject();
 
+  public currentDate = new Date();
+
   constructor(private store: Store, private dialog: MatDialog, private fb: FormBuilder) {}
 
   public ngOnInit(): void {
@@ -101,6 +104,14 @@ export class MainComponent implements OnInit, OnDestroy {
     this.store.dispatch(new ExpansesActions.Add(this.form.value));
     this.form.get('amount')?.reset();
     this.form.get('categoryId')?.reset();
+  }
+
+  public onAddItem(): void {
+    this.dialog
+      .open(CreatePaymentComponent)
+      .afterClosed()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe();
   }
 
   private onEditAccount(account: IAccount): void {
