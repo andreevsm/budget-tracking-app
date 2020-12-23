@@ -57,39 +57,27 @@
     </div>
   </div> -->
 
-  <div class="account">
+  <div class="account" *ngIf="currentAccount$ | async as currentAccount">
 
     <h1>
-      Счет 1
+      {{ currentAccount.name }}
     </h1>
 
     <div>{{ currentDate }}</div>
-
-    <button (click)="onAddItem()">добавить</button>
 
     <div>
       +500 руб.
     </div>
 
 
+    <button (click)="onAddItem()">добавить</button>
+
 
     <ul>
-      <li>
+      <li *ngFor="let payment of currentAccount.payments">
         <div>
-          <div>Питание</div>
-          <div>490 руб.</div>
-        </div>
-      </li>
-      <li>
-        <div>
-          <div>Спорт</div>
-          <div>4190 руб.</div>
-        </div>
-      </li>
-      <li>
-        <div>
-          <div>Учеба</div>
-          <div>250 руб.</div>
+          <div>{{ payment.category.name }}</div>
+          <div>{{ payment.amount }} {{ payment.currency }}  {{ payment.type }}</div>
         </div>
       </li>
     </ul>

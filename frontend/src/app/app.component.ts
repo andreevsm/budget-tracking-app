@@ -1,6 +1,9 @@
 import { ExpansesActions } from 'src/app/core/store';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Store } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+
+import { AccountState, IAccount } from './main/models';
 
 @Component({
   selector: 'bg-root',
@@ -9,6 +12,8 @@ import { Store } from '@ngxs/store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
+  @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
+
   constructor(private store: Store) {}
 
   public ngOnInit(): void {

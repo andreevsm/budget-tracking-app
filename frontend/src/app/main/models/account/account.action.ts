@@ -26,6 +26,6 @@ export namespace AccountActions {
   export class AddPayment {
     public static readonly type = '[Accounts] Add payment';
 
-    constructor(public payment: INewPayment) {}
+    constructor(public accountId: number, public payment: INewPayment) {}
   }
 }

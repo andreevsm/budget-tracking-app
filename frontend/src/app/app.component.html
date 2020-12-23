@@ -5,17 +5,13 @@
 
   <div class="app__main">
     <mat-sidenav-container>
-      <mat-sidenav mode="side" [opened]="true">
+      <mat-sidenav mode="side" [opened]="false">
         <div>
           <ul>
-            <li>
-              Счет 1
-            </li>
-            <li>
-              Счет 2
-            </li>
-            <li>
-              Счет 3
+            <li *ngFor="let account of accounts$ | async">
+              <a [routerLink]="account.id">
+                {{ account.name }}
+              </a>
             </li>
           </ul>
         </div>

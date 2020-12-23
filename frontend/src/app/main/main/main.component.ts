@@ -2,7 +2,7 @@ import { Store, Select } from '@ngxs/store';
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { takeUntil } from 'rxjs/operators';
+import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ExpansesState, IExpense, ExpansesActions } from '../../core/store';
@@ -18,7 +18,11 @@ import { CreatePaymentComponent } from '../modals';
 })
 export class MainComponent implements OnInit, OnDestroy {
   @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
+  // @Select(AccountState.currentAccount) public currentAccount$: Observable<IAccount[]>;
+
   @Select(ExpansesState.expanses) public expanses$: Observable<IExpense[]>;
+
+  public currentAccount$: Observable<IAccount>;
 
   public buttons = [
     {
@@ -90,6 +94,11 @@ export class MainComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.store.dispatch(new AccountActions.LoadAll());
+
+    this.currentAccount$ = this.accounts$.pipe(
+      map((accounts) => accounts.find((account) => account.id === 1) as IAccount),
+      tap((data) => console.log('data', data)),
+    );
 
     this.buildForm();
   }
