@@ -6,7 +6,7 @@ import { Observable, ReplaySubject } from 'rxjs';
 import { map, tap, takeUntil } from 'rxjs/operators';
 import { AccountState, IAccount, AccountActions } from 'src/app/core/store';
 
-import { CreatePaymentComponent, EditAccountComponent } from '../../modals';
+import { CreatePaymentComponent } from '../../modals';
 
 @Component({
   selector: 'bg-account',
@@ -20,10 +20,10 @@ export class AccountComponent implements OnInit, OnDestroy {
   public currentAccount$: Observable<IAccount>;
 
   public buttons = [
-    {
-      icon: 'edit',
-      click: (account: IAccount): void => this.onEditAccount(account),
-    },
+    // {
+    //   icon: 'edit',
+    //   click: (account: IAccount): void => this.onEditAccount(account),
+    // },
     {
       icon: 'remove_red_eye',
       click: (account: IAccount): void => this.onViewAccount(account),
@@ -47,10 +47,10 @@ export class AccountComponent implements OnInit, OnDestroy {
       text: 'Пополнить ',
       click: (): void => this.onFillAccount(),
     },
-    {
-      text: 'Создать счет',
-      click: (): void => this.onCreateAccount(),
-    },
+    // {
+    //   text: 'Создать счет',
+    //   click: (): void => this.onCreateAccount(),
+    // },
   ];
 
   public form: FormGroup;
@@ -92,16 +92,6 @@ export class AccountComponent implements OnInit, OnDestroy {
       .subscribe();
   }
 
-  private onEditAccount(account: IAccount): void {
-    this.dialog
-      .open(EditAccountComponent, {
-        data: account,
-      })
-      .afterClosed()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe();
-  }
-
   private onViewAccount(account: IAccount): void {
     console.log('view', account);
   }
@@ -120,16 +110,6 @@ export class AccountComponent implements OnInit, OnDestroy {
 
   private onFillAccount(): void {
     console.log('fill account');
-  }
-
-  private onCreateAccount(): void {
-    this.dialog
-      .open(EditAccountComponent, {
-        data: {},
-      })
-      .afterClosed()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe();
   }
 
   private buildForm(): void {

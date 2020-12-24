@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
+import { take } from 'rxjs/operators';
 import { INewPayment, AccountActions } from 'src/app/core/store';
 
 @Component({
@@ -18,13 +19,16 @@ export class CreatePaymentComponent implements OnInit {
     this.buildForm();
   }
 
-  public onSubmit(): void {
-    const { category, amount, currency, type } = this.form.getRawValue();
+  public onSubmit(event: Event): void {
+    event.preventDefault();
+    console.log(this.form.getRawValue());
+    const { category, amount, currency, type, categoryColor } = this.form.getRawValue();
 
     const payment: INewPayment = {
       category: {
         id: 4,
         name: category,
+        color: categoryColor,
       },
       amount,
       currency,
@@ -37,6 +41,7 @@ export class CreatePaymentComponent implements OnInit {
   private buildForm(): void {
     this.form = this.fb.group({
       category: ['', [Validators.required]],
+      categoryColor: ['', [Validators.required]],
       description: [''],
       currency: ['', [Validators.required]],
       amount: ['', [Validators.required]],

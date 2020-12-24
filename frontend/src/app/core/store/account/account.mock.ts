@@ -6,6 +6,7 @@ export const PAYMENTS: IPayment[] = [
     category: {
       id: 1,
       name: 'Спорт',
+      color: '#ffbf00',
     },
     amount: 500,
     currency: 'RUB',
@@ -16,6 +17,7 @@ export const PAYMENTS: IPayment[] = [
     category: {
       id: 2,
       name: 'Книги',
+      color: '#00bfff',
     },
     amount: 1500,
     currency: 'RUB',
@@ -26,6 +28,7 @@ export const PAYMENTS: IPayment[] = [
     category: {
       id: 3,
       name: 'Работа',
+      color: '#bf00ff',
     },
     amount: 500,
     currency: 'RUB',

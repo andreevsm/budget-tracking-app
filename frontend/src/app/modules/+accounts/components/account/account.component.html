@@ -26,31 +26,37 @@
 
       <ul class="account__payments payments">
         <li class="payments__date">
-          <time>Сегодня</time>
-        </li>
-        <li
-          class="payments__payment payment"
-          *ngFor="let payment of currentAccount.payments"
-        >
-          <div class="payment__name">
-            {{ payment.category.name }}
-          </div>
-          <div class="payment__amount">
-            <span
-              class="payment__value"
-              [ngClass]="{
-                'payment__value': true,
-                'payment__value_income': payment.type === 'INCOME',
-                'payment__value_expense': payment.type === 'EXPENSE'
-              }"
+          <h3 class="payments__title">
+            Сегодня
+          </h3>
+          <ul class="payments__list">
+            <li
+              class="payments__payment payment"
+              *ngFor="let payment of currentAccount.payments"
             >
-              {{ payment.amount | currency: payment.currency : 'symbol-narrow' }}
-            </span>
-          </div>
+              <div class="payment__name" [style.color]="payment.category.color">
+                {{ payment.category.name }}
+              </div>
+              <div class="payment__amount">
+                <span
+                  class="payment__value"
+                  [ngClass]="{
+                    'payment__value': true,
+                    'payment__value_income': payment.type === 'INCOME',
+                    'payment__value_expense': payment.type === 'EXPENSE'
+                  }"
+                >
+                  {{ payment.amount | currency: payment.currency : 'symbol-narrow' }}
+                </span>
+              </div>
+            </li>
+          </ul>
         </li>
 
         <li class="payments__date">
-          <time>Вчера</time>
+          <h3 class="payments__title">
+            Вчера
+          </h3>
         </li>
       </ul>
     </main>

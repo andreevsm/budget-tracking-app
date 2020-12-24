@@ -1,0 +1,35 @@
+.root {
+  width: 50rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &__control {
+    flex: 1;
+  }
+
+  &__control-group {
+    display: flex;
+    flex-direction: row;
+
+    .form__control + .form__control {
+      margin-left: 2rem;
+    }
+  }
+
+  &__radio + &__radio {
+    margin-left: 1rem;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+  }
+
+  &__button + &__button {
+    margin-left: 1rem;
+  }
+}

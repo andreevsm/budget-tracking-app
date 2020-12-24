@@ -1,30 +1,60 @@
 <div class="root">
+  <div class="payment">
+    <form class="payment__form form" [formGroup]="form" (submit)="onSubmit($event)">
 
-  <form [formGroup]="form" (submit)="onSubmit()">
+      <div class="form__control-group">
+        <mat-form-field class="form__control">
+          <mat-label>Категория</mat-label>
+          <input matInput placeholder="Спорт" formControlName="category">
+        </mat-form-field>
+  
+        <mat-form-field class="form__control">
+          <mat-label>Цвет</mat-label>
+          <input matInput type="color" formControlName="categoryColor">
+        </mat-form-field>
+      </div>
 
-    <div>
-      <label for="category">Категория</label>
-      <input formControlName="category" id="category" type="text">
-    </div>
+      <div class="form__control-group">
+        <mat-form-field class="form__control">
+          <mat-label>Сумма</mat-label>
+          <input matInput formControlName="amount">
+        </mat-form-field>
+  
+        <mat-form-field class="form__control">
+          <mat-label>Валюта</mat-label>
+          <input matInput formControlName="currency">
+        </mat-form-field>
+      </div>
 
-    <div>
-      <label for="amount">Сумма</label>
-      <input formControlName="amount" id="amount" type="text">
-    </div>
+      <mat-radio-group
+        class="form__control"
+        formControlName="type"
+      >
+        <mat-radio-button class="form__radio" value="expense">
+          Расходы
+        </mat-radio-button>
+        <mat-radio-button class="form__radio" value="income">
+          Доходы
+        </mat-radio-button>
+      </mat-radio-group>
 
-    <div>
-      <label for="currency">Валюта</label>
-      <input formControlName="currency" id="currency" type="text">
-    </div>
-
-    <div>
-      <label for="expense">Расходы</label>
-      <input formControlName="type" id="expense" value="expense" type="radio">
-
-      <label for="income">Доходы</label>
-      <input formControlName="type" id="income" value="income" type="radio">
-    </div>
-
-    <button type="submit">Добавить</button>
-  </form>
+      <div class="form__buttons">
+        <button
+          class="form__button"
+          mat-flat-button mat-dialog-close
+        >
+          Отмена
+        </button>
+        <button
+          class="form__button"
+          mat-flat-button
+          color="primary"
+          [mat-dialog-close]="true"
+          type="submit"
+        >
+          Добавить
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
