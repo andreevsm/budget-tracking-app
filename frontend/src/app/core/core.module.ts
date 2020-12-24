@@ -10,17 +10,17 @@ import { MaterialModule } from '../shared/material/material.module';
 import { AuthService } from './store/auth/auth.service';
 import { HeaderComponent, SpinnerComponent, SidenavComponent } from './components';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
-import { UIState, ExpansesState, ExpansesService } from './store';
+import { UIState, AuthState, AccountState, AccountService } from './store';
 import { localStorageFactory, LOCAL_STORAGE } from './services/local-storage.service';
-import { AuthState } from './store/auth';
+import { MainLayoutComponent } from './layouts';
 
 @NgModule({
-  declarations: [HeaderComponent, SpinnerComponent, SidenavComponent],
+  declarations: [HeaderComponent, SpinnerComponent, SidenavComponent, MainLayoutComponent],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
     RouterModule,
-    NgxsModule.forFeature([UIState, ExpansesState, AuthState]),
+    NgxsModule.forFeature([UIState, AccountState, AuthState]),
     MaterialModule,
   ],
   exports: [HeaderComponent, SpinnerComponent],
@@ -30,7 +30,7 @@ import { AuthState } from './store/auth';
       useClass: SpinnerInterceptor,
       multi: true,
     },
-    ExpansesService,
+    AccountService,
     AuthService,
     {
       provide: LOCAL_STORAGE,

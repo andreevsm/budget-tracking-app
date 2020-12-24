@@ -1,9 +1,8 @@
-import { ExpansesActions } from 'src/app/core/store';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
-import { AccountState, IAccount } from './main/models';
+import { AccountState, IAccount } from './core/store';
 
 @Component({
   selector: 'bg-root',
@@ -17,7 +16,6 @@ export class AppComponent implements OnInit {
   constructor(private store: Store) {}
 
   public ngOnInit(): void {
-    this.store.dispatch(new ExpansesActions.LoadAll());
     this.createWorker();
   }
 

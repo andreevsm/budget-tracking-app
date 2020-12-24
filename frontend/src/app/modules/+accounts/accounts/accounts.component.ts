@@ -1,26 +1,21 @@
-import { Store, Select } from '@ngxs/store';
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
-import { Observable, ReplaySubject } from 'rxjs';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { ExpansesState, IExpense, ExpansesActions } from '../../core/store';
-import { AccountState, AccountActions, IAccount } from '../models';
-import { EditAccountComponent } from '../modals/edit-account/edit-account.component';
-import { CreatePaymentComponent } from '../modals';
+import { Select, Store } from '@ngxs/store';
+import { Observable, ReplaySubject } from 'rxjs';
+import { map, tap, takeUntil } from 'rxjs/operators';
+import { AccountState, IAccount, AccountActions } from 'src/app/core/store';
+import { CreatePaymentComponent, EditAccountComponent } from '../modals';
 
 @Component({
-  selector: 'bg-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'bg-accounts',
+  templateUrl: './accounts.component.html',
+  styleUrls: ['./accounts.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MainComponent implements OnInit, OnDestroy {
+export class AccountsComponent implements OnInit, OnDestroy {
   @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
   // @Select(AccountState.currentAccount) public currentAccount$: Observable<IAccount[]>;
-
-  @Select(ExpansesState.expanses) public expanses$: Observable<IExpense[]>;
 
   public currentAccount$: Observable<IAccount>;
 
@@ -110,7 +105,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
   public onSubmit(): void {
     console.log('form', this.form.value);
-    this.store.dispatch(new ExpansesActions.Add(this.form.value));
+    // this.store.dispatch(new ExpansesActions.Add(this.form.value));
     this.form.get('amount')?.reset();
     this.form.get('categoryId')?.reset();
   }

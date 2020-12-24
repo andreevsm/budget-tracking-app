@@ -1,8 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
-
-import { AccountActions, INewPayment } from '../../models';
+import { INewPayment, AccountActions } from 'src/app/core/store';
 
 @Component({
   selector: 'bg-create-payment',

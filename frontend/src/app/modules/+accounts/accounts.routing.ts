@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { MainComponent } from './main/main.component';
+import { AccountsComponent } from './accounts/accounts.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MainComponent,
-    // redirectTo: 'login',
+    component: AccountsComponent,
   },
 ];
 

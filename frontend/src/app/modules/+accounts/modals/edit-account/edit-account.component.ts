@@ -2,8 +2,7 @@ import { Component, ChangeDetectionStrategy, OnInit, Inject } from '@angular/cor
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
-
-import { IAccount, AccountActions } from '../../models';
+import { IAccount, AccountActions } from 'src/app/core/store';
 
 @Component({
   selector: 'bg-edit-account',

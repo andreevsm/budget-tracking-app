@@ -1,9 +1,9 @@
-import { Action, State, StateContext, Selector, Store, createSelector } from '@ngxs/store';
+import { Action, State, StateContext, Selector, Store } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { tap, finalize, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-import { UIActions } from '../../../core/store';
+import { UIActions } from '../ui';
 
 import { AccountService } from './account.service';
 import { AccountActions } from './account.action';
