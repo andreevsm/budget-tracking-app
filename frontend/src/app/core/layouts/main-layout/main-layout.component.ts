@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
-import { AccountState, IAccount } from '../../store';
+import { AccountActions, AccountState, IAccount } from '../../store';
 
 @Component({
   selector: 'bg-main-layout',
@@ -13,7 +13,11 @@ import { AccountState, IAccount } from '../../store';
 export class MainLayoutComponent implements OnInit {
   @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
 
-  constructor() {}
+  public isSidenavShown = false;
 
-  ngOnInit(): void {}
+  constructor(private store: Store) {}
+
+  public ngOnInit(): void {
+    this.store.dispatch(new AccountActions.LoadAll());
+  }
 }

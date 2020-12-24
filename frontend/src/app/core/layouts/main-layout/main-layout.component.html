@@ -1,14 +1,21 @@
 <div class="root">
   <div class="main">
-    <bg-header></bg-header>
+    <bg-header
+      (showSidenav)="isSidenavShown = !isSidenavShown"
+    ></bg-header>
 
     <div class="main__content">
-      <mat-sidenav-container class="main__sidenav">
-        <mat-sidenav mode="side" [opened]="false">
-          <div>
+      <mat-sidenav-container class="main__sidenav-container">
+        <mat-sidenav mode="side" [opened]="isSidenavShown">
+          <div class="main__sidenav">
             <ul>
+              <li>
+                <a [routerLink]="'/accounts'">
+                  Счета
+                </a>
+              </li>
               <li *ngFor="let account of accounts$ | async">
-                <a [routerLink]="account.id">
+                <a [routerLink]="'/accounts/' + account.id">
                   {{ account.name }}
                 </a>
               </li>

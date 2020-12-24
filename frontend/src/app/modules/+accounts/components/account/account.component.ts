@@ -62,8 +62,6 @@ export class AccountComponent implements OnInit, OnDestroy {
   constructor(private store: Store, private dialog: MatDialog, private fb: FormBuilder) {}
 
   public ngOnInit(): void {
-    this.store.dispatch(new AccountActions.LoadAll());
-
     this.currentAccount$ = this.accounts$.pipe(
       map((accounts) => accounts.find((account) => account.id === 1) as IAccount),
       tap((data) => console.log('data', data)),

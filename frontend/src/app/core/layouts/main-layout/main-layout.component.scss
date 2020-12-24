@@ -12,7 +12,11 @@
   height: 100%;
 
   &__content,
-  &__sidenav {
+  &__sidenav-container {
     height: 100%;
+  }
+
+  &__sidenav {
+    width: 20rem;
   }
 }

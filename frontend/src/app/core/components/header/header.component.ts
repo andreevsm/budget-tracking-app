@@ -4,6 +4,8 @@ import {
   ChangeDetectionStrategy,
   OnDestroy,
   ChangeDetectorRef,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
@@ -16,6 +18,8 @@ import { filter, takeUntil } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  @Output() public showSidenav = new EventEmitter();
+
   public links = [
     {
       label: 'Главная',
