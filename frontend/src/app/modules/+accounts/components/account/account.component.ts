@@ -5,17 +5,17 @@ import { Select, Store } from '@ngxs/store';
 import { Observable, ReplaySubject } from 'rxjs';
 import { map, tap, takeUntil } from 'rxjs/operators';
 import { AccountState, IAccount, AccountActions } from 'src/app/core/store';
-import { CreatePaymentComponent, EditAccountComponent } from '../modals';
+
+import { CreatePaymentComponent, EditAccountComponent } from '../../modals';
 
 @Component({
-  selector: 'bg-accounts',
-  templateUrl: './accounts.component.html',
-  styleUrls: ['./accounts.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'bg-account',
+  templateUrl: './account.component.html',
+  styleUrls: ['./account.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AccountsComponent implements OnInit, OnDestroy {
+export class AccountComponent implements OnInit, OnDestroy {
   @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
-  // @Select(AccountState.currentAccount) public currentAccount$: Observable<IAccount[]>;
 
   public currentAccount$: Observable<IAccount>;
 
@@ -54,32 +54,6 @@ export class AccountsComponent implements OnInit, OnDestroy {
   ];
 
   public form: FormGroup;
-
-  public categories = [
-    {
-      id: 1,
-      name: 'Домашний интернет',
-    },
-    {
-      id: 2,
-      name: 'Продукты',
-    },
-    {
-      id: 3,
-      name: 'Транспорт',
-    },
-  ];
-
-  public balances = [
-    {
-      id: 1,
-      name: 'Расходы',
-    },
-    {
-      id: 2,
-      name: 'Доходы',
-    },
-  ];
 
   private destroy$ = new ReplaySubject();
 

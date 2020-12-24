@@ -1,25 +1,2 @@
+<router-outlet></router-outlet>
 <bg-spinner></bg-spinner>
-
-<div class="app">
-  <bg-header></bg-header>
-
-  <div class="app__main">
-    <mat-sidenav-container>
-      <mat-sidenav mode="side" [opened]="false">
-        <div>
-          <ul>
-            <li *ngFor="let account of accounts$ | async">
-              <a [routerLink]="account.id">
-                {{ account.name }}
-              </a>
-            </li>
-          </ul>
-        </div>
-      </mat-sidenav>
-
-      <mat-sidenav-content>
-        <router-outlet></router-outlet>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
-  </div>
-</div>

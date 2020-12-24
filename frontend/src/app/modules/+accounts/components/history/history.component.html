@@ -1,0 +1,17 @@
+<div class="root" *ngIf="currentAccount$ | async as currentAccount">
+
+  <div class="history">
+
+    <ul>
+      <li *ngFor="let payment of currentAccount.payments">
+        <div>
+          <div>{{ payment.category.name }}</div>
+          <div>{{ payment.amount }} {{ payment.currency }}  {{ payment.type }}</div>
+        </div>
+      </li>
+    </ul>
+
+
+  </div>
+
+</div>

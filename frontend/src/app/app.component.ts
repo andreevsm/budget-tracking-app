@@ -1,8 +1,4 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
-
-import { AccountState, IAccount } from './core/store';
 
 @Component({
   selector: 'bg-root',
@@ -11,10 +7,6 @@ import { AccountState, IAccount } from './core/store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
-  @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
-
-  constructor(private store: Store) {}
-
   public ngOnInit(): void {
     this.createWorker();
   }
