@@ -1,0 +1,118 @@
+@import '../../../../../assets/scss/variables.scss';
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.account {
+  max-width: 90rem;
+  width: 100%;
+  padding: $gutter;
+
+  &__title {
+    font-size: 4rem;
+    margin: 1rem 0;
+  }
+
+  &__main {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__amount {
+  }
+
+  &__payments {
+    margin-left: 7rem;
+  }
+}
+
+.amount {
+  width: 30rem;
+  height: 30rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__incomes,
+  &__expense {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  &__incomes {
+    border: 1rem solid red;
+  }
+
+  &__expense {
+    border: 1rem solid green;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__value {
+    font-size: 3.5rem;
+  }
+
+  &__add {
+    font-size: 2.2rem;
+  }
+}
+
+.payments {
+  width: 30rem;
+
+  &__date {
+    color: grey;
+    font-weight: bold;
+    font-size: 2.2rem;
+
+    &:last-of-type {
+      margin-top: 5rem;
+    }
+  }
+
+  .payments__payment:first-child {
+    margin-top: 4rem;
+
+  }
+}
+
+.payment {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  & + & {
+    margin-top: 1rem;
+  }
+
+  &__name {
+    font-size: 2.2rem;
+  }
+
+  &__value {
+    font-weight: bold;
+
+    &_income {
+      color: green;
+    }
+
+    &_expense {
+      color: red;
+    }
+  }
+
+}

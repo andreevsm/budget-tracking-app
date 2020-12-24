@@ -3,3 +3,16 @@
 :host {
   max-width: $container-width;
 }
+
+.root {
+  height: 100%;
+}
+
+.main {
+  height: 100%;
+
+  &__content,
+  &__sidenav {
+    height: 100%;
+  }
+}

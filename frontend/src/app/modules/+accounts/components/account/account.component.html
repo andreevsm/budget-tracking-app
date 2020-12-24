@@ -1,86 +1,60 @@
 <div class="root">
-  <!-- <div class="main">
-    <form [formGroup]="form" (submit)="onSubmit()">
-      <mat-form-field appearance="fill">
-        <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Сумма</mat-label>
-        <input matInput formControlName="amount">
-      </mat-form-field>
-
-      <mat-radio-group formControlName="balanceId">
-        <mat-radio-button *ngFor="let balance of balances" [value]="balance.id">
-          {{balance.name}}
-        </mat-radio-button>
-      </mat-radio-group>
-
-      <mat-card>
-        <mat-card-title>
-          Категории
-        </mat-card-title>
-        <mat-card-content>
-          <mat-radio-group formControlName="categoryId">
-            <mat-radio-button *ngFor="let category of categories" [value]="category.id">
-              {{category.name}}
-            </mat-radio-button>
-          </mat-radio-group>
-        </mat-card-content>
-      </mat-card>
-
-      <button type="submit" [disabled]="form.invalid">Добавить</button>
-    </form>
-
-    <div class="main--accounts">
-
-      <mat-card class="payment" *ngFor="let expense of expanses$ | async">
-        <mat-card-title>
-          {{ expense.amount }}
-        </mat-card-title>
-      </mat-card>
-    </div>
-
-    <div class="main--add flex jc-center ai-center">
-      <button mat-fab color="primary" [matMenuTriggerFor]="menu">
-        <mat-icon>add</mat-icon>
-      </button>
-
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item *ngFor="let button of menuButtons" (click)="button.click()">
-          <span>{{ button.text }}</span>
-        </button>
-      </mat-menu>
-    </div>
-  </div> -->
-
   <div class="account" *ngIf="currentAccount$ | async as currentAccount">
 
-    <h1>
+    <h1 class="account__title">
       {{ currentAccount.name }}
     </h1>
 
-    <div>{{ currentDate }}</div>
-
-    <div>
-      +500 руб.
-    </div>
-
-
-    <button (click)="onAddItem()">добавить</button>
-
-
-    <ul>
-      <li *ngFor="let payment of currentAccount.payments">
-        <div>
-          <div>{{ payment.category.name }}</div>
-          <div>{{ payment.amount }} {{ payment.currency }}  {{ payment.type }}</div>
+    <main class="account__main">
+      <div class="account__amount amount">
+        <div class="amount__incomes"></div>
+        <div class="amount__expense"></div>
+        <div class="amount__inner">
+          <p class="amount__value">
+            +500 руб.
+          </p>
+          <button
+            mat-button
+            color="primary"
+            class="account__add"
+            (click)="onAddItem()"
+          >
+            Добавить
+          </button>
         </div>
-      </li>
-    </ul>
+      </div>
+
+      <ul class="account__payments payments">
+        <li class="payments__date">
+          <time>Сегодня</time>
+        </li>
+        <li
+          class="payments__payment payment"
+          *ngFor="let payment of currentAccount.payments"
+        >
+          <div class="payment__name">
+            {{ payment.category.name }}
+          </div>
+          <div class="payment__amount">
+            <span
+              class="payment__value"
+              [ngClass]="{
+                'payment__value': true,
+                'payment__value_income': payment.type === 'INCOME',
+                'payment__value_expense': payment.type === 'EXPENSE'
+              }"
+            >
+              {{ payment.amount | currency: payment.currency : 'symbol-narrow' }}
+            </span>
+          </div>
+        </li>
+
+        <li class="payments__date">
+          <time>Вчера</time>
+        </li>
+      </ul>
+    </main>
+
 
 
   </div>

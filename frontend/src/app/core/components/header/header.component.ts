@@ -19,15 +19,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public links = [
     {
       label: 'Главная',
-      href: '/accounts',
+      href: '/accounts/1',
     },
     {
       label: 'История',
-      href: '/history',
+      href: '/accounts/1/history',
     },
     {
       label: 'Статистика',
-      href: '/statistics',
+      href: '/accounts/1/statistics',
     },
   ];
 
