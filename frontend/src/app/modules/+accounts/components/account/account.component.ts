@@ -1,9 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { Observable, ReplaySubject } from 'rxjs';
-import { map, tap, takeUntil } from 'rxjs/operators';
+import { map, tap, takeUntil, switchMap } from 'rxjs/operators';
 import { AccountState, IAccount, AccountActions } from 'src/app/core/store';
 
 import { CreatePaymentComponent } from '../../modals';
@@ -55,19 +56,19 @@ export class AccountComponent implements OnInit, OnDestroy {
 
   public form: FormGroup;
 
+  private currentAccountId: number;
   private destroy$ = new ReplaySubject();
 
-  public currentDate = new Date();
-
-  constructor(private store: Store, private dialog: MatDialog, private fb: FormBuilder) {}
+  constructor(
+    private store: Store,
+    private dialog: MatDialog,
+    private fb: FormBuilder,
+    private activatedRoute: ActivatedRoute,
+  ) {}
 
   public ngOnInit(): void {
-    this.currentAccount$ = this.accounts$.pipe(
-      map((accounts) => accounts.find((account) => account.id === 1) as IAccount),
-      tap((data) => console.log('data', data)),
-    );
-
     this.buildForm();
+    this.subscribeToRoute();
   }
 
   public ngOnDestroy(): void {
@@ -84,10 +85,27 @@ export class AccountComponent implements OnInit, OnDestroy {
 
   public onAddItem(): void {
     this.dialog
-      .open(CreatePaymentComponent)
+      .open(CreatePaymentComponent, {
+        data: {
+          accountId: this.currentAccountId,
+        },
+      })
       .afterClosed()
       .pipe(takeUntil(this.destroy$))
       .subscribe();
+  }
+
+  private subscribeToRoute(): void {
+    this.currentAccount$ = this.activatedRoute.params.pipe(
+      tap(({ id }) => {
+        this.currentAccountId = id;
+      }),
+      switchMap(({ id }) =>
+        this.accounts$.pipe(
+          map((accounts) => accounts.find((account) => account.id === +id) as IAccount),
+        ),
+      ),
+    );
   }
 
   private onViewAccount(account: IAccount): void {

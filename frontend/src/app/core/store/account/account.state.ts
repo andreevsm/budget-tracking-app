@@ -1,6 +1,6 @@
 import { Action, State, StateContext, Selector, Store } from '@ngxs/store';
 import { Injectable } from '@angular/core';
-import { tap, finalize, map } from 'rxjs/operators';
+import { tap, finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { UIActions } from '../ui';
@@ -107,33 +107,26 @@ export class AccountState {
   public addPayment(
     { setState, getState }: StateContext<IAccountState>,
     { accountId, payment }: AccountActions.AddPayment,
-  ): Observable<IAccount[]> {
+  ): void {
     this.store.dispatch(new UIActions.ShowSpinner());
 
-    return this.accountService.loadAccounts().pipe(
-      map((accounts) => {
-        const account = accounts.find((it) => it.id === accountId) as IAccount;
+    const account = getState().accounts.find((it) => it.id === +accountId) as IAccount;
+    const newAccount: IAccount = {
+      ...account,
+      payments: [
+        ...(account?.payments ?? []),
+        {
+          id: account?.payments.length + 1,
+          ...payment,
+        },
+      ],
+    };
 
-        const newAccount: IAccount = {
-          ...account,
-          payments: [
-            ...account?.payments,
-            {
-              id: 4,
-              ...payment,
-            },
-          ],
-        };
+    setState({
+      ...getState(),
+      accounts: [...getState().accounts.filter((it) => it.id !== +accountId), newAccount],
+    });
 
-        return [...accounts.filter((it) => it.id !== accountId), newAccount];
-      }),
-      tap((accounts) =>
-        setState({
-          ...getState(),
-          accounts,
-        }),
-      ),
-      finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
-    );
+    this.store.dispatch(new UIActions.HideSpinner());
   }
 }

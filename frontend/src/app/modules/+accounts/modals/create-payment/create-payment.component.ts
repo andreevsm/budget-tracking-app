@@ -1,5 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngxs/store';
 import { INewPayment, AccountActions } from 'src/app/core/store';
 
@@ -12,7 +13,11 @@ import { INewPayment, AccountActions } from 'src/app/core/store';
 export class CreatePaymentComponent implements OnInit {
   public form: FormGroup;
 
-  constructor(private fb: FormBuilder, private store: Store) {}
+  constructor(
+    private fb: FormBuilder,
+    private store: Store,
+    @Inject(MAT_DIALOG_DATA) public data: { accountId: number },
+  ) {}
 
   public ngOnInit(): void {
     this.buildForm();
@@ -34,7 +39,7 @@ export class CreatePaymentComponent implements OnInit {
       type,
     };
 
-    this.store.dispatch(new AccountActions.AddPayment(1, payment));
+    this.store.dispatch(new AccountActions.AddPayment(this.data.accountId, payment));
   }
 
   private buildForm(): void {
