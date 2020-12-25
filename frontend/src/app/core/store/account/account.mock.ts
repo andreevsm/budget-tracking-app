@@ -43,8 +43,6 @@ export const ACCOUNTS: IAccount[] = [
     createdAt: new Date('2019-04-20'),
     description: 'Это мой счет 1',
     currency: Currency.EUR,
-    accountNumber: 1231312,
-    type: AccountType.Free,
     payments: PAYMENTS,
   },
 ];

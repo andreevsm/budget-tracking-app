@@ -11,14 +11,14 @@
     <button (click)="showSidenav.emit()">Сайдбар</button>
   </div>
 
-
-  <nav mat-tab-nav-bar>
-    <a mat-tab-link
-       *ngFor="let link of links"
-       [routerLink]="link.href"
-       routerLinkActive
-       #rla="routerLinkActive"
-       [active]="rla.isActive"
+  <nav mat-tab-nav-bar backgroundColor="primary">
+    <a
+      mat-tab-link
+      *ngFor="let link of links"
+      [routerLink]="link.href"
+      routerLinkActive
+      #rla="routerLinkActive"
+      [active]="rla.isActive"
     >
       {{ link.label }}
     </a>

@@ -1,4 +1,4 @@
-import { IAccount, INewPayment } from './account.interface';
+import { IAccount, INewAccount, INewPayment } from './account.interface';
 
 export namespace AccountActions {
   export class LoadAll {
@@ -14,7 +14,7 @@ export namespace AccountActions {
   export class Create {
     public static readonly type = '[Accounts] Create account';
 
-    constructor(public account: IAccount) {}
+    constructor(public account: INewAccount) {}
   }
 
   export class Update {

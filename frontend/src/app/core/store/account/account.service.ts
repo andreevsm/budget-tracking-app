@@ -1,9 +1,9 @@
-import {Observable, of} from 'rxjs';
-import {delay} from 'rxjs/operators';
-import {Injectable} from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 
-import {IAccount} from './account.interface';
-import {ACCOUNTS} from './account.mock';
+import { IAccount, INewAccount } from './account.interface';
+import { ACCOUNTS } from './account.mock';
 
 @Injectable()
 export class AccountService {
@@ -15,12 +15,11 @@ export class AccountService {
     return of(ACCOUNTS.filter((account) => account.id !== id)).pipe(delay(300));
   }
 
-  public createAccount(account: IAccount): Observable<IAccount[]> {
+  public createAccount(account: INewAccount): Observable<IAccount[]> {
     ACCOUNTS.push({
       ...account,
       id: ACCOUNTS.length + 1,
-      accountNumber: Math.random(),
-      createdAt: new Date(),
+      payments: [],
     });
     return of([...ACCOUNTS]).pipe(delay(300));
   }

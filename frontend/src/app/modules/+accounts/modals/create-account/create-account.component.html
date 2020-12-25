@@ -1,0 +1,43 @@
+<div class="root">
+
+  <div class="account">
+
+    <form
+      class="account--form form"
+      [formGroup]="form"
+      (submit)="onSubmit($event)"
+    >
+
+      <mat-form-field class="form--control">
+        <mat-label>Название</mat-label>
+        <input matInput placeholder="Мой счет" formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field class="form--control">
+        <mat-label>Описание</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="form--control">
+        <mat-label>Валюта</mat-label>
+        <input matInput placeholder="USD" formControlName="currency">
+      </mat-form-field>
+
+
+      <div class="form--buttons">
+        <button mat-flat-button mat-dialog-close>Отмена</button>
+        <button
+          mat-flat-button
+          color="primary"
+          [mat-dialog-close]="true"
+          type="submit"
+        >
+          Создать
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

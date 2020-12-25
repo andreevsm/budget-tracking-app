@@ -88,7 +88,7 @@ export class AccountState {
   @Action(AccountActions.Update)
   public editAccount(
     { setState, getState }: StateContext<IAccountState>,
-    { account }: AccountActions.Create,
+    { account }: AccountActions.Update,
   ): Observable<IAccount[]> {
     this.store.dispatch(new UIActions.ShowSpinner());
 

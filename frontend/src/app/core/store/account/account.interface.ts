@@ -4,10 +4,10 @@ export interface IAccount {
   name: string;
   description: string;
   currency: Currency; // поменять на тип валюты
-  accountNumber: number;
-  type: AccountType; // поменять на енам (обычный премиум и тд)
   payments: IPayment[];
 }
+
+export type INewAccount = Omit<IAccount, 'id' | 'payments'>;
 
 export const enum AccountType {
   Free,
