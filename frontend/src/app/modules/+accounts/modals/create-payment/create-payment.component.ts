@@ -25,7 +25,6 @@ export class CreatePaymentComponent implements OnInit {
 
   public onSubmit(event: Event): void {
     event.preventDefault();
-    console.log(this.form.getRawValue());
     const { category, amount, currency, type, categoryColor } = this.form.getRawValue();
 
     const payment: INewPayment = {
@@ -37,6 +36,7 @@ export class CreatePaymentComponent implements OnInit {
       amount,
       currency,
       type,
+      createdAt: new Date(),
     };
 
     this.store.dispatch(new AccountActions.AddPayment(this.data.accountId, payment));

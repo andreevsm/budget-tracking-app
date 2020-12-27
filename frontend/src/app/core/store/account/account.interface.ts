@@ -3,16 +3,11 @@ export interface IAccount {
   createdAt: Date;
   name: string;
   description: string;
-  currency: Currency; // поменять на тип валюты
+  currency: Currency;
   payments: IPayment[];
 }
 
 export type INewAccount = Omit<IAccount, 'id' | 'payments'>;
-
-export const enum AccountType {
-  Free,
-  Premium,
-}
 
 export enum Currency {
   USD = 'USD',
@@ -37,6 +32,7 @@ export interface IPayment {
   amount: number;
   currency: keyof typeof Currency;
   type: keyof typeof PaymentType;
+  createdAt: Date;
 }
 
 export type INewPayment = Omit<IPayment, 'id'>;
