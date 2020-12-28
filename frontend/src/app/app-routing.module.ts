@@ -22,6 +22,10 @@ const routes: Routes = [
     loadChildren: (): Promise<typeof LoginModule> =>
       import('./modules/+login/login.module').then((m) => m.LoginModule),
   },
+  {
+    path: '**',
+    redirectTo: 'accounts',
+  },
 ];
 
 @NgModule({

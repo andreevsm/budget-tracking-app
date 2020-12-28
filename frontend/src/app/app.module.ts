@@ -16,7 +16,7 @@ import { AppComponent } from './app.component';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    NgxsModule.forRoot(),
+    NgxsModule.forRoot([], { developmentMode: !environment.production }),
     CoreModule,
     SharedModule,
   ],

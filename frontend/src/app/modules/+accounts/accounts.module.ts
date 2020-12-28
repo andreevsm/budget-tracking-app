@@ -5,7 +5,13 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { MainRoutingModule } from './accounts.routing';
 import { CreatePaymentComponent, CreateAccountComponent } from './modals';
-import { AccountComponent, AccountsComponent, HistoryComponent } from './components';
+import {
+  AccountComponent,
+  AccountsComponent,
+  HistoryComponent,
+  StatisticsComponent,
+} from './components';
+import { StatisticsContainerComponent } from './containers';
 
 @NgModule({
   declarations: [
@@ -14,6 +20,8 @@ import { AccountComponent, AccountsComponent, HistoryComponent } from './compone
     AccountComponent,
     HistoryComponent,
     CreateAccountComponent,
+    StatisticsContainerComponent,
+    StatisticsComponent,
   ],
   imports: [CommonModule, MainRoutingModule, SharedModule],
 })
