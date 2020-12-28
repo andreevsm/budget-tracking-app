@@ -6,6 +6,7 @@ import {
   AfterViewInit,
   ElementRef,
 } from '@angular/core';
+import { IPayment } from 'src/app/core/store';
 
 import { StatisticsChartService } from './statistics-chart.service';
 
@@ -19,7 +20,7 @@ import { StatisticsChartService } from './statistics-chart.service';
 export class StatisticsComponent implements AfterViewInit {
   @ViewChild('chart') public chartElementRef: ElementRef<HTMLCanvasElement>;
 
-  @Input() public accountId: number;
+  @Input() public payments: IPayment[];
 
   public chart: Chart;
 

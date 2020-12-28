@@ -1,7 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
+import { AccountState, IAccount, IPayment } from 'src/app/core/store';
 
 @Component({
   selector: 'bg-statistics-container',
@@ -10,7 +12,12 @@ import { map } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StatisticsContainerComponent implements OnInit {
+  @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
+
   public accountId$: Observable<number>;
+  public payments$: Observable<IPayment[]>;
+
+  private currentAccountId: number;
 
   constructor(private activatedRoute: ActivatedRoute) {}
 
@@ -19,6 +26,18 @@ export class StatisticsContainerComponent implements OnInit {
   }
 
   private subscribeToRoute(): void {
-    this.accountId$ = this.activatedRoute.params.pipe(map(({ id }) => +id));
+    this.payments$ = this.activatedRoute.params.pipe(
+      map(({ id }) => +id),
+      tap((id) => {
+        this.currentAccountId = id;
+      }),
+      switchMap((id) =>
+        this.accounts$.pipe(
+          filter((accounts) => accounts.length > 0),
+          map((accounts) => accounts.find((account) => account.id === +id) as IAccount),
+          map(({ payments }) => payments),
+        ),
+      ),
+    );
   }
 }
