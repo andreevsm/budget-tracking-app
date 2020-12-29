@@ -9,9 +9,9 @@ import {
 } from '@angular/core';
 import { getMonth } from 'date-fns';
 import { IPayment } from 'src/app/core/store';
-import { MONTHS, MONTH_LIST } from 'src/app/fixtures';
+import { MONTHS } from 'src/app/fixtures';
 
-import { IChartDatum, StatisticsChartService } from './statistics-chart.service';
+import { StatisticsChartService } from './statistics-chart.service';
 
 @Component({
   selector: 'bg-statistics',
@@ -35,11 +35,10 @@ export class StatisticsComponent implements AfterViewInit {
     this.buildChart();
   }
 
-  private parsePaymentsToDataChart(): IChartDatum[] {
-    return this.payments.map(({ createdAt, amount }) => ({
-      x: MONTH_LIST[getMonth(createdAt)],
-      y: amount,
-    }));
+  private groupPaymentsByMonths(): IPayment[][] {
+    return MONTHS.map((month, index) => {
+      return this.payments.filter(({ createdAt }) => getMonth(createdAt) === index);
+    });
   }
 
   private buildChart(): void {
@@ -47,16 +46,28 @@ export class StatisticsComponent implements AfterViewInit {
       this.isCreated = isCreated;
     });
 
-    this.chartService.addLabels(MONTH_LIST);
+    console.log(this.groupPaymentsByMonths());
+
+    const groupedPayments = this.groupPaymentsByMonths();
+
+    const expenses = groupedPayments.map((payments) =>
+      payments.reduce((prev, curr) => (curr.type === 'EXPENSE' ? prev + curr.amount : prev), 0),
+    );
+
+    const incomes = groupedPayments.map((payments) =>
+      payments.reduce((prev, curr) => (curr.type === 'INCOME' ? prev + curr.amount : prev), 0),
+    );
+
+    this.chartService.addLabels(MONTHS);
     this.chartService.addBlock({
       label: 'История расходов',
-      data: this.payments.filter(({ type }) => type === 'EXPENSE').map(({ amount }) => amount),
+      data: expenses,
       backgroundColor: 'red',
     });
 
     this.chartService.addBlock({
       label: 'История доходов',
-      data: this.payments.filter(({ type }) => type === 'INCOME').map(({ amount }) => amount),
+      data: incomes,
       backgroundColor: 'green',
     });
   }

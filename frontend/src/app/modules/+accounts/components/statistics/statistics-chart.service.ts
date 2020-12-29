@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as Chart from 'chart.js';
 
-import { MONTH_LIST } from '../../../../fixtures';
-
 export interface IChartDatum {
   x: string;
   y: number;
