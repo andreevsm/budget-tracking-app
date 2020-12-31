@@ -1,7 +1,10 @@
-import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { Select } from '@ngxs/store';
+import { Observable, Subject } from 'rxjs';
+import { filter, takeUntil, tap } from 'rxjs/operators';
+import { AccountState, IAccount } from 'src/app/core/store';
 
 import { CreateAccountComponent } from '../../modals/create-account/create-account.component';
 
@@ -11,10 +14,16 @@ import { CreateAccountComponent } from '../../modals/create-account/create-accou
   styleUrls: ['./accounts.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AccountsComponent implements OnDestroy {
+export class AccountsComponent implements OnInit, OnDestroy {
+  @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
+
   private destroy$ = new Subject();
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private router: Router) {}
+
+  public ngOnInit(): void {
+    this.subscribeToAccounts();
+  }
 
   public ngOnDestroy(): void {
     this.destroy$.next();
@@ -27,5 +36,16 @@ export class AccountsComponent implements OnDestroy {
       .afterClosed()
       .pipe(takeUntil(this.destroy$))
       .subscribe();
+  }
+
+  private subscribeToAccounts(): void {
+    this.accounts$
+      .pipe(
+        filter((accounts) => accounts.length > 0),
+        takeUntil(this.destroy$),
+      )
+      .subscribe((accounts) => {
+        this.router.navigate(['/accounts', accounts[0].id]);
+      });
   }
 }

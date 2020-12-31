@@ -68,6 +68,7 @@ export class AccountComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.buildForm();
+
     this.subscribeToRoute();
   }
 
