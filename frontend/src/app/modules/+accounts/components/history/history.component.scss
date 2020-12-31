@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.history {
+  max-width: 30rem;
+  width: 100%;
+
+  &__table {
+    width: 100%;
+  }
+}

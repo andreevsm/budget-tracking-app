@@ -12,6 +12,7 @@ import {
   StatisticsComponent,
 } from './components';
 import { StatisticsContainerComponent } from './containers';
+import { HistoryContainerComponent } from './containers/history-container/history-container.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { StatisticsContainerComponent } from './containers';
     CreateAccountComponent,
     StatisticsContainerComponent,
     StatisticsComponent,
+    HistoryContainerComponent,
   ],
   imports: [CommonModule, MainRoutingModule, SharedModule],
 })

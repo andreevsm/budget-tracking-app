@@ -1,8 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { AccountState, IAccount } from 'src/app/core/store';
+import { Component, OnInit, ChangeDetectionStrategy, Input, OnChanges } from '@angular/core';
+import { getMonth } from 'date-fns';
+import { IPayment } from 'src/app/core/store';
+import { MONTHS } from 'src/app/fixtures';
 
 @Component({
   selector: 'bg-history',
@@ -10,17 +9,49 @@ import { AccountState, IAccount } from 'src/app/core/store';
   styleUrls: ['./history.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HistoryComponent implements OnInit {
-  @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
+export class HistoryComponent implements OnInit, OnChanges {
+  @Input() public payments: any[] = [];
 
-  public currentAccount$: Observable<IAccount>;
+  public displayedColumns = ['category', 'amount'];
 
-  constructor(private store: Store) {}
+  public ngOnInit(): void {}
 
-  public ngOnInit(): void {
-    this.currentAccount$ = this.accounts$.pipe(
-      map((accounts) => accounts.find((account) => account.id === 1) as IAccount),
-      tap((data) => console.log('data', data)),
-    );
+  public ngOnChanges(): void {
+    this.groupPaymentsByDay();
+    console.log('payments', this.payments);
+  }
+
+  public isGroup(index: number, item: any): boolean {
+    return item.grouped;
+  }
+
+  private groupPaymentsByDay(): any {
+    // const groupedPaymentsByMonths = MONTHS.map((month, index) => {
+    //   return this.payments.filter(({ createdAt }) => getMonth(createdAt) === index);
+    // });
+
+    const groupedPayments: Record<string, IPayment[]> = {};
+
+    this.payments.forEach((payment) => {
+      const date = payment.createdAt.toString();
+
+      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+      if (groupedPayments[date]) {
+        groupedPayments[date] = [...groupedPayments[date], payment];
+      } else {
+        groupedPayments[date] = [payment];
+      }
+    });
+
+    this.payments = Object.entries(groupedPayments)
+      .map(([key, value]) => {
+        return [
+          {
+            grouped: key,
+          },
+          ...value,
+        ];
+      })
+      .flat();
   }
 }

@@ -14,6 +14,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [],
@@ -34,6 +35,7 @@ import { MatListModule } from '@angular/material/list';
     MatSidenavModule,
     MatRadioModule,
     MatListModule,
+    MatTableModule,
   ],
   exports: [
     MatCardModule,
@@ -51,6 +53,7 @@ import { MatListModule } from '@angular/material/list';
     MatSidenavModule,
     MatRadioModule,
     MatListModule,
+    MatTableModule,
   ],
   providers: [MatDatepickerModule],
 })

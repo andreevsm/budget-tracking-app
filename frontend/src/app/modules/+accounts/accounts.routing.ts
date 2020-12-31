@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AccountComponent, AccountsComponent, HistoryComponent } from './components';
-import { StatisticsContainerComponent } from './containers';
+import { AccountComponent, AccountsComponent } from './components';
+import { HistoryContainerComponent, StatisticsContainerComponent } from './containers';
 
 const routes: Routes = [
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
       },
       {
         path: ':id/history',
-        component: HistoryComponent,
+        component: HistoryContainerComponent,
       },
       {
         path: ':id/statistics',
