@@ -8,8 +8,7 @@ import java.util.Optional;
 public interface UserDao {
     int insertUser(User user);
 
-    default int addUser(User user) { return insertUser(user);
-    }
+    default int addUser(User user) { return insertUser(user); }
 
     List<User> selectAllUsers();
     Optional<User> selectUserById(int id);

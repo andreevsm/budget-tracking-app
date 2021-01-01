@@ -1,9 +1,10 @@
-package com.example.budget.api;
+package com.example.budget.rest;
 
 import com.example.budget.model.Account;
 import com.example.budget.services.AccountService;
 import org.hibernate.type.AnyType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +23,7 @@ public class AccountController {
     }
 
     @GetMapping
-    public AnyType getAllAccounts() {
+    public List<Account> getAllAccounts() {
         return accountService.getAllAccounts();
     }
 }
