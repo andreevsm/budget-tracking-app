@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
@@ -7,8 +8,19 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
+  constructor(private http: HttpClient) {}
+
   public ngOnInit(): void {
     this.createWorker();
+
+    this.http
+      .get('/api/accounts', {
+        headers: new HttpHeaders({
+          Authorization:
+            'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYwOTUxMjc3NCwiZXhwIjoxNjEwMTE3NTc0fQ.2ozml80E23TTJiYn-oF_WQnIkz2TCr3n3dRw-BHcZLA',
+        }),
+      })
+      .subscribe((data) => console.log('data', data));
   }
 
   private createWorker(): void {

@@ -37,7 +37,7 @@
             "webWorkerTsConfig": "tsconfig.worker.json",
             "allowedCommonJsDependencies": [
               "chart.js"
-            ]
+            ],
           },
           "configurations": {
             "production": {
@@ -74,7 +74,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "frontend:build"
+            "browserTarget": "frontend:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
