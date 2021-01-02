@@ -32,6 +32,6 @@ public class AccountController {
         System.out.println("id: " + id);
         System.out.println("authentication: " + authentication);
 
-        return accountService.getAllAccounts();
+        return accountService.getAllAccounts(Integer.parseInt(id));
     }
 }

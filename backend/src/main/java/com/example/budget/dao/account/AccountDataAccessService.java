@@ -26,8 +26,8 @@ public class AccountDataAccessService implements AccountDao {
     }
 
     @Override
-    public List<Account> selectAllAccounts() {
-        final String sql = "SELECT * from accounts";
+    public List<Account> selectAllAccounts(int userId) {
+        final String sql = String.format("SELECT * from accounts WHERE user_id = %d", userId) ;
 
         return jdbcTemplate.query(sql, (result, i) -> {
             return new Account(

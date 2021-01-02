@@ -13,7 +13,7 @@ public interface AccountDao {
         return insertAccount(account);
     }
 
-    List<Account> selectAllAccounts();
+    List<Account> selectAllAccounts(int userId);
     Optional<Account> selectAccountById(int id);
 
     int deleteAccountById(int id);
