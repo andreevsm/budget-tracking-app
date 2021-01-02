@@ -4,6 +4,7 @@ import {
   CanActivate,
   CanLoad,
   Route,
+  Router,
   RouterStateSnapshot,
   UrlSegment,
   UrlTree,
@@ -14,15 +15,22 @@ import { AuthService } from '../store/auth';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate, CanLoad {
-  constructor(private authService: AuthService) {}
-  public canLoad(
-    route: Route,
-    segments: UrlSegment[],
-  ): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+  constructor(private authService: AuthService, private router: Router) {}
+
+  public canLoad(): boolean {
+    if (this.authService.getAccessToken() !== null) {
+      return true;
+    }
+
+    this.router.navigate(['/accounts']);
     return false;
   }
 
-  public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  public canActivate(): boolean {
+    if (this.authService.getAccessToken() !== null) {
+      return true;
+    }
+    this.router.navigate(['/accounts']);
     return false;
   }
 }

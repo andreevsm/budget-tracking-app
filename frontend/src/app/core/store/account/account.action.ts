@@ -28,4 +28,10 @@ export namespace AccountActions {
 
     constructor(public accountId: number, public payment: INewPayment) {}
   }
+
+  export class LoadPayments {
+    public static readonly type = '[Accounts] Load Payments';
+
+    constructor(public accountId: number) {}
+  }
 }

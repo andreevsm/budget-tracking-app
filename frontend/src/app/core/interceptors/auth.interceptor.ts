@@ -12,10 +12,14 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
-    const patchedRequest = request.clone({
-      headers: request.headers.set('Authorization', this.authService.getAccessToken() ?? ''),
-    });
+    const token = this.authService.getAccessToken();
 
-    return next.handle(patchedRequest);
+    if (token) {
+      request = request.clone({
+        headers: request.headers.set('Authorization', token),
+      });
+    }
+
+    return next.handle(request);
   }
 }

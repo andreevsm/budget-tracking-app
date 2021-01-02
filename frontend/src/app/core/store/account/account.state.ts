@@ -49,6 +49,15 @@ export class AccountState {
     );
   }
 
+  @Action(AccountActions.LoadPayments)
+  public loadPayments({ setState, getState }: StateContext<IAccountState>, payload: number): any {
+    this.store.dispatch(new UIActions.ShowSpinner());
+
+    return this.accountService
+      .loadPayments(payload)
+      .pipe(finalize(() => this.store.dispatch(new UIActions.HideSpinner())));
+  }
+
   @Action(AccountActions.Delete)
   public deleteAccount(
     { setState, getState }: StateContext<IAccountState>,

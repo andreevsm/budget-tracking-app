@@ -1,14 +1,29 @@
 import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { delay, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { PAYMENTS_API } from '../../constants';
 
 import { IAccount, INewAccount } from './account.interface';
 import { ACCOUNTS } from './account.mock';
 
 @Injectable()
 export class AccountService {
+  constructor(private http: HttpClient) {}
+
   public loadAccounts(): Observable<IAccount[]> {
     return of(ACCOUNTS).pipe(delay(300));
+  }
+
+  public loadPayments(accountId: number): Observable<any> {
+    return this.http
+      .get(PAYMENTS_API, {
+        params: {
+          accountId: accountId.toString(),
+        },
+      })
+      .pipe(tap((data) => console.log('data', data)));
   }
 
   public deleteAccount(id: number): Observable<IAccount[]> {
