@@ -1,6 +1,5 @@
 <div class="root">
   <div class="account" *ngIf="currentAccount$ | async as currentAccount">
-
     <h1 class="account__title">
       {{ currentAccount.name }}
     </h1>
@@ -13,12 +12,7 @@
           <p class="amount__value">
             +500 руб.
           </p>
-          <button
-            mat-button
-            color="primary"
-            class="account__add"
-            (click)="onAddItem()"
-          >
+          <button mat-button color="primary" class="account__add" (click)="onAddItem()">
             Добавить
           </button>
         </div>
@@ -30,10 +24,7 @@
             Сегодня
           </h3>
           <ul class="payments__list">
-            <li
-              class="payments__payment payment"
-              *ngFor="let payment of currentAccount.payments"
-            >
+            <li class="payments__payment payment" *ngFor="let payment of currentAccount.payments">
               <div class="payment__name" [style.color]="payment.category.color">
                 {{ payment.category.name }}
               </div>
@@ -41,12 +32,12 @@
                 <span
                   class="payment__value"
                   [ngClass]="{
-                    'payment__value': true,
-                    'payment__value_income': payment.type === 'INCOME',
-                    'payment__value_expense': payment.type === 'EXPENSE'
+                    payment__value: true,
+                    payment__value_income: payment.type === 'INCOME',
+                    payment__value_expense: payment.type === 'EXPENSE'
                   }"
                 >
-                  {{ payment.amount | currency: payment.currency : 'symbol-narrow' }}
+                  {{ payment.amount | currency: payment.currency:'symbol-narrow' }}
                 </span>
               </div>
             </li>
@@ -60,8 +51,5 @@
         </li>
       </ul>
     </main>
-
-
-
   </div>
 </div>
