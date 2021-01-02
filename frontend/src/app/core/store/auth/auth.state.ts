@@ -7,7 +7,7 @@ import { UIActions } from '../ui';
 
 import { AuthService } from './auth.service';
 import { AuthActions } from './auth.actions';
-import { IRequestUser, IUser } from './auth.interface';
+import { IResponseUser, IUser } from './auth.interface';
 
 interface IAuthState {
   user: IUser;
@@ -36,18 +36,32 @@ export class AuthState {
   @Action(AuthActions.Login)
   public login(
     { setState, getState }: StateContext<IAuthState>,
-    payload: IRequestUser,
-  ): Observable<IUser> {
+    { payload }: AuthActions.Login,
+  ): Observable<IResponseUser | null> {
     this.store.dispatch(new UIActions.ShowSpinner());
 
-    return this.userService.login(payload).pipe(
-      tap((user) =>
-        setState({
-          ...getState(),
-          user,
+    console.log('1', payload);
+
+    const { email, password } = payload;
+
+    return this.userService
+      .login({
+        email,
+        password,
+      })
+      .pipe(
+        tap((response) => {
+          if (response !== null) {
+            setState({
+              ...getState(),
+              user: {
+                ...getState().user,
+                email: response.email,
+              },
+            });
+          }
         }),
-      ),
-      finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
-    );
+        finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
+      );
   }
 }

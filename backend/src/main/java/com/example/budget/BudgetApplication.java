@@ -18,7 +18,7 @@ public class BudgetApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("api/v1/accounts").allowedOrigins("*");
+                registry.addMapping("/**").allowedOrigins("*");
             }
         };
     }

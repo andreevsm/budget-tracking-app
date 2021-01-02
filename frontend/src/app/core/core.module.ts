@@ -9,10 +9,10 @@ import { MaterialModule } from '../shared/material/material.module';
 
 import { AuthService } from './store/auth/auth.service';
 import { HeaderComponent, SpinnerComponent, SidenavComponent } from './components';
-import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 import { UIState, AuthState, AccountState, AccountService } from './store';
 import { localStorageFactory, LOCAL_STORAGE } from './services/local-storage.service';
 import { MainLayoutComponent } from './layouts';
+import { AuthInterceptor, SpinnerInterceptor } from './interceptors';
 
 @NgModule({
   declarations: [HeaderComponent, SpinnerComponent, SidenavComponent, MainLayoutComponent],
@@ -28,6 +28,11 @@ import { MainLayoutComponent } from './layouts';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: SpinnerInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true,
     },
     AccountService,

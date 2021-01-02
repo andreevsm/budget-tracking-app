@@ -39,7 +39,10 @@ public class AuthenticationRestControllerV1 {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
             User user = userRepository.findByEmail(request.getEmail()).orElseThrow(() -> new UsernameNotFoundException("User does not exist"));
-            String token = jwtTokenProvider.createToken(request.getEmail(), user.getRole().name());
+
+            System.out.println("user: " + user);
+
+            String token = jwtTokenProvider.createToken(user.getId(), request.getEmail(), user.getRole().name());
             Map<Object, Object> response = new HashMap<>();
             response.put("email", request.getEmail());
             response.put("token", token);

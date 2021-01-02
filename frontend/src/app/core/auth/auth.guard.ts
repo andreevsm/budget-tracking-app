@@ -15,14 +15,14 @@ import { AuthService } from '../store/auth';
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate, CanLoad {
   constructor(private authService: AuthService) {}
-  canLoad(
+  public canLoad(
     route: Route,
     segments: UrlSegment[],
   ): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     return false;
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     return false;
   }
 }

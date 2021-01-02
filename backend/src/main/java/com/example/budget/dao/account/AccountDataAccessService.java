@@ -1,6 +1,7 @@
 package com.example.budget.dao.account;
 
 import com.example.budget.model.Account;
+import com.example.budget.security.JwtTokenProvider;
 import org.hibernate.type.AnyType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

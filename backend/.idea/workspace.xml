@@ -5,33 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8aa5ebab-8fc5-4803-96a6-4e975aa8ead0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/account/AccountDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/account/AccountDataAccessService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/model/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/rest/AccountController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/services/AccountService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_0.stat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_13395.stat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_16384.stat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/global.stat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../db/postmaster.pid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/BudgetApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/BudgetApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/controller/AuthController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/user/FakeUserDataAccessService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/user/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/user/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/account/AccountDataAccessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/account/AccountDataAccessService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/rest/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/rest/AccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/rest/AuthenticationRestControllerV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/rest/AuthenticationRestControllerV1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/security/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/security/JwtTokenProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/security/SecurityUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/security/SecurityUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/security/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/security/UserDetailsServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/base/13395/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/13395/pg_internal.init" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/pg_internal.init" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/../db/global/pg_control" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../db/global/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/pg_stat/db_0.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/pg_stat/db_13395.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/pg_stat/db_16384.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/pg_stat/global.stat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/db_0.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_0.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/db_13395.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_13395.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/db_16384.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_16384.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/global.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/global.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_wal/000000010000000000000001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/postmaster.pid" beforeDir="false" afterPath="$PROJECT_DIR$/../db/postmaster.pid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/auth/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/auth/auth.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/core.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/core.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/interceptors/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/interceptors/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/interceptors/spinner.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/interceptors/spinner.interceptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/store/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/store/auth/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/store/auth/auth.state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/store/auth/auth.state.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,17 +79,6 @@
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="BudgetApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="backend" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.budget.BudgetApplication" />
@@ -124,7 +112,8 @@
       <workItem from="1609507622784" duration="480000" />
       <workItem from="1609508112975" duration="32000" />
       <workItem from="1609508471166" duration="31000" />
-      <workItem from="1609508642471" duration="3984000" />
+      <workItem from="1609508642471" duration="4312000" />
+      <workItem from="1609608678174" duration="4389000" />
     </task>
     <servers />
   </component>

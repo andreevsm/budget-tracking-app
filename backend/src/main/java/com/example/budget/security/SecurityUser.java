@@ -12,16 +12,22 @@ import java.util.List;
 
 @Data
 public class SecurityUser implements UserDetails {
+    private final int userId;
     private final String username;
     private final String password;
     private final List<SimpleGrantedAuthority> authorities;
     private final boolean isActive;
 
-    public SecurityUser(String username, String password, List<SimpleGrantedAuthority> authorities, boolean isActive) {
+    public SecurityUser(int userId, String username, String password, List<SimpleGrantedAuthority> authorities, boolean isActive) {
+        this.userId = userId;
         this.username = username;
         this.password = password;
         this.authorities = authorities;
         this.isActive = isActive;
+    }
+
+    public int getUserId() {
+        return userId;
     }
 
     @Override

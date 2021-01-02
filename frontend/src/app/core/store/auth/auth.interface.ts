@@ -10,3 +10,8 @@ export interface IRequestUser {
   email: string;
   password: string;
 }
+
+export interface IResponseUser {
+  email: string;
+  token: string;
+}
