@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuard } from './core/auth';
+import { LoginGuard } from './core/auth/login.guard';
 import { MainLayoutComponent } from './core/layouts';
 import { LoginModule, MainModule } from './modules';
 
@@ -8,6 +10,8 @@ const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'accounts' },
       {
@@ -19,6 +23,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    canLoad: [LoginGuard],
+    canActivate: [LoginGuard],
     loadChildren: (): Promise<typeof LoginModule> =>
       import('./modules/+login/login.module').then((m) => m.LoginModule),
   },
