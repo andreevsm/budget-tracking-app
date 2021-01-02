@@ -1,7 +1,7 @@
 <div class="root">
-  <div class="account" *ngIf="currentAccount$ | async as currentAccount">
+  <div class="account">
     <h1 class="account__title">
-      {{ currentAccount.name }}
+      {{ account.name }}
     </h1>
 
     <main class="account__main">
@@ -24,7 +24,7 @@
             Сегодня
           </h3>
           <ul class="payments__list">
-            <li class="payments__payment payment" *ngFor="let payment of currentAccount.payments">
+            <li class="payments__payment payment" *ngFor="let payment of account.payments">
               <div class="payment__name" [style.color]="payment.category.color">
                 {{ payment.category.name }}
               </div>

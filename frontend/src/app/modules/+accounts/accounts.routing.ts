@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AccountComponent, AccountsComponent } from './components';
 import { HistoryContainerComponent, StatisticsContainerComponent } from './containers';
+import { AccountContainerComponent } from './containers/account-container/account-container.component';
+import { AccountLayoutComponent } from './layouts';
 
 const routes: Routes = [
   {
@@ -11,15 +13,21 @@ const routes: Routes = [
     children: [
       {
         path: ':id',
-        component: AccountComponent,
-      },
-      {
-        path: ':id/history',
-        component: HistoryContainerComponent,
-      },
-      {
-        path: ':id/statistics',
-        component: StatisticsContainerComponent,
+        component: AccountLayoutComponent,
+        children: [
+          {
+            path: '',
+            component: AccountContainerComponent,
+          },
+          {
+            path: 'history',
+            component: HistoryContainerComponent,
+          },
+          {
+            path: 'statistics',
+            component: StatisticsContainerComponent,
+          },
+        ],
       },
     ],
   },

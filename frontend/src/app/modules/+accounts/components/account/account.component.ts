@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -16,9 +16,7 @@ import { CreatePaymentComponent } from '../../modals';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccountComponent implements OnInit, OnDestroy {
-  @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
-
-  public currentAccount$: Observable<IAccount>;
+  @Input() public account: IAccount;
 
   public buttons = [
     // {
@@ -68,8 +66,6 @@ export class AccountComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.buildForm();
-
-    this.subscribeToRoute();
   }
 
   public ngOnDestroy(): void {
@@ -94,19 +90,6 @@ export class AccountComponent implements OnInit, OnDestroy {
       .afterClosed()
       .pipe(takeUntil(this.destroy$))
       .subscribe();
-  }
-
-  private subscribeToRoute(): void {
-    this.currentAccount$ = this.activatedRoute.params.pipe(
-      tap(({ id }) => {
-        this.currentAccountId = id;
-      }),
-      switchMap(({ id }) =>
-        this.accounts$.pipe(
-          map((accounts) => accounts.find((account) => account.id === +id) as IAccount),
-        ),
-      ),
-    );
   }
 
   private onViewAccount(account: IAccount): void {

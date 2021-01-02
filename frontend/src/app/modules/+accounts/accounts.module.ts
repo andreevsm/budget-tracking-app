@@ -13,6 +13,8 @@ import {
 } from './components';
 import { StatisticsContainerComponent } from './containers';
 import { HistoryContainerComponent } from './containers/history-container/history-container.component';
+import { AccountContainerComponent } from './containers/account-container/account-container.component';
+import { AccountsContainerComponent } from './containers/accounts-container/accounts-container.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { HistoryContainerComponent } from './containers/history-container/histor
     StatisticsContainerComponent,
     StatisticsComponent,
     HistoryContainerComponent,
+    AccountContainerComponent,
+    AccountsContainerComponent,
   ],
   imports: [CommonModule, MainRoutingModule, SharedModule],
 })
