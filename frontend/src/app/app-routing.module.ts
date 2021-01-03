@@ -23,8 +23,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    canLoad: [LoginGuard],
-    canActivate: [LoginGuard],
+    // canLoad: [LoginGuard],
+    // canActivate: [LoginGuard],
     loadChildren: (): Promise<typeof LoginModule> =>
       import('./modules/+login/login.module').then((m) => m.LoginModule),
   },

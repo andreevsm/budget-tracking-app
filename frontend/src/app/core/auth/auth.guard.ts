@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate, CanLoad {
       return true;
     }
 
-    this.router.navigate(['/accounts']);
+    this.router.navigate(['/login']);
     return false;
   }
 
@@ -30,7 +30,8 @@ export class AuthGuard implements CanActivate, CanLoad {
     if (this.authService.getAccessToken() !== null) {
       return true;
     }
-    this.router.navigate(['/accounts']);
+
+    this.router.navigate(['/login']);
     return false;
   }
 }

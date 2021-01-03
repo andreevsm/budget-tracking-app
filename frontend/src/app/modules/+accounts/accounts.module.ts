@@ -11,10 +11,13 @@ import {
   HistoryComponent,
   StatisticsComponent,
 } from './components';
-import { StatisticsContainerComponent } from './containers';
-import { HistoryContainerComponent } from './containers/history-container/history-container.component';
-import { AccountContainerComponent } from './containers/account-container/account-container.component';
-import { AccountsContainerComponent } from './containers/accounts-container/accounts-container.component';
+import {
+  StatisticsContainerComponent,
+  HistoryContainerComponent,
+  AccountContainerComponent,
+  AccountsContainerComponent,
+} from './containers';
+import { AccountLayoutComponent } from './layouts';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { AccountsContainerComponent } from './containers/accounts-container/acco
     HistoryContainerComponent,
     AccountContainerComponent,
     AccountsContainerComponent,
+    AccountLayoutComponent,
   ],
   imports: [CommonModule, MainRoutingModule, SharedModule],
 })

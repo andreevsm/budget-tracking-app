@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AccountComponent, AccountsComponent } from './components';
-import { HistoryContainerComponent, StatisticsContainerComponent } from './containers';
-import { AccountContainerComponent } from './containers/account-container/account-container.component';
+import {
+  HistoryContainerComponent,
+  StatisticsContainerComponent,
+  AccountContainerComponent,
+  AccountsContainerComponent,
+} from './containers';
 import { AccountLayoutComponent } from './layouts';
 
 const routes: Routes = [
   {
     path: '',
-    component: AccountsComponent,
+    component: AccountsContainerComponent,
     children: [
       {
         path: ':id',

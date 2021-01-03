@@ -1,5 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { throwError, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -12,7 +13,11 @@ const ACCESS_TOKEN = 'access_token';
 
 @Injectable()
 export class AuthService {
-  constructor(private http: HttpClient, private localStorage: LocalStorage) {}
+  constructor(
+    private http: HttpClient,
+    private localStorage: LocalStorage,
+    private router: Router,
+  ) {}
 
   public login(payload: IRequestUser): Observable<IResponseUser | null> {
     console.log('payload', payload);
@@ -27,6 +32,7 @@ export class AuthService {
       }),
       map((response: IResponseUser) => {
         if (response !== null) {
+          this.router.navigate(['/']);
           return response;
         }
 
