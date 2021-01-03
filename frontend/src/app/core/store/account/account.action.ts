@@ -40,4 +40,8 @@ export namespace AccountActions {
 
     constructor(public accountId: number) {}
   }
+
+  export class LoadCategories {
+    public static readonly type = '[Accounts] Load Categories';
+  }
 }

@@ -7,3 +7,4 @@ export const LOGIN_API = `${AUTH_API}/login`;
 
 export const ACCOUNTS_API = `${API}/accounts`;
 export const PAYMENTS_API = `${API}/payments`;
+export const CATEGORIES_API = `${API}/categories`;

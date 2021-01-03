@@ -1,11 +1,11 @@
 import { Observable, of } from 'rxjs';
-import { delay, tap } from 'rxjs/operators';
+import { delay } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { ACCOUNTS_API, PAYMENTS_API } from '../../constants';
+import { ACCOUNTS_API, CATEGORIES_API, PAYMENTS_API } from '../../constants';
 
-import { IAccount, INewAccount } from './account.interface';
+import { IAccount, ICategory, INewAccount, IPayment } from './account.interface';
 import { ACCOUNTS } from './account.mock';
 
 @Injectable()
@@ -20,14 +20,16 @@ export class AccountService {
     return this.http.get<IAccount | null>(`${ACCOUNTS_API}/${id}`);
   }
 
-  public loadPayments(accountId: number): Observable<any> {
-    return this.http
-      .get(PAYMENTS_API, {
-        params: {
-          accountId: accountId.toString(),
-        },
-      })
-      .pipe(tap((data) => console.log('data', data)));
+  public loadPayments(accountId: number): Observable<IPayment[]> {
+    return this.http.get<IPayment[]>(PAYMENTS_API, {
+      params: {
+        accountId: accountId.toString(),
+      },
+    });
+  }
+
+  public loadCategories(): Observable<ICategory[]> {
+    return this.http.get<ICategory[]>(CATEGORIES_API);
   }
 
   public deleteAccount(id: number): Observable<IAccount[]> {

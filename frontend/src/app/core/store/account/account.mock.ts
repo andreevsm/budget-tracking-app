@@ -3,11 +3,7 @@ import { IAccount, Currency, IPayment } from './account.interface';
 export const PAYMENTS: IPayment[] = [
   {
     id: 1,
-    category: {
-      id: 1,
-      name: 'Спорт',
-      color: '#ffbf00',
-    },
+    categoryId: 1,
     amount: 500,
     currency: 'RUB',
     type: 'EXPENSE',
@@ -15,11 +11,7 @@ export const PAYMENTS: IPayment[] = [
   },
   {
     id: 2,
-    category: {
-      id: 2,
-      name: 'Книги',
-      color: '#00bfff',
-    },
+    categoryId: 2,
     amount: 1500,
     currency: 'RUB',
     type: 'EXPENSE',
@@ -27,11 +19,7 @@ export const PAYMENTS: IPayment[] = [
   },
   {
     id: 3,
-    category: {
-      id: 3,
-      name: 'Работа',
-      color: '#bf00ff',
-    },
+    categoryId: 3,
     amount: 500,
     currency: 'RUB',
     type: 'INCOME',

@@ -1,11 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Select, Store } from '@ngxs/store';
+import { Select } from '@ngxs/store';
 import { forkJoin, Observable } from 'rxjs';
-import { tap, switchMap, map } from 'rxjs/operators';
-import { AccountService, AccountState, IAccount } from 'src/app/core/store';
+import { switchMap, map } from 'rxjs/operators';
+import { AccountService, AccountState, IAccount, ICategory } from 'src/app/core/store';
 
 @Component({
   selector: 'bg-account-container',
@@ -15,16 +13,11 @@ import { AccountService, AccountState, IAccount } from 'src/app/core/store';
 })
 export class AccountContainerComponent implements OnInit {
   @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
-  public currentAccount$: Observable<IAccount>;
-  private currentAccountId: number;
+  @Select(AccountState.categories) public categories$: Observable<Record<number, ICategory>>;
 
-  constructor(
-    private store: Store,
-    private dialog: MatDialog,
-    private fb: FormBuilder,
-    private activatedRoute: ActivatedRoute,
-    private accountService: AccountService,
-  ) {}
+  public currentAccount$: Observable<IAccount>;
+
+  constructor(private activatedRoute: ActivatedRoute, private accountService: AccountService) {}
 
   public ngOnInit(): void {
     this.subscribeToRoute();
@@ -32,9 +25,6 @@ export class AccountContainerComponent implements OnInit {
 
   private subscribeToRoute(): void {
     this.currentAccount$ = this.activatedRoute.params.pipe(
-      tap(({ id }) => {
-        this.currentAccountId = id;
-      }),
       switchMap(({ id }) =>
         forkJoin([
           this.accountService.loadAccountById(id),

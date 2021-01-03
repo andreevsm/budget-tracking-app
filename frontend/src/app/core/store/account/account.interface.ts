@@ -24,11 +24,12 @@ export interface ICategory {
   id: number;
   name: string;
   color: string;
+  createdAt: Date;
 }
 
 export interface IPayment {
   id: number;
-  category: ICategory;
+  categoryId: number;
   amount: number;
   currency: keyof typeof Currency;
   type: keyof typeof PaymentType;

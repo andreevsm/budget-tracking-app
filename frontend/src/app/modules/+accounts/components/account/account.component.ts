@@ -5,14 +5,15 @@ import {
   OnDestroy,
   Input,
   OnChanges,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
-import { Select, Store } from '@ngxs/store';
-import { Observable, ReplaySubject } from 'rxjs';
-import { map, tap, takeUntil, switchMap } from 'rxjs/operators';
-import { AccountState, IAccount, AccountActions } from 'src/app/core/store';
+import { Store } from '@ngxs/store';
+import { ReplaySubject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { IAccount, AccountActions, ICategory, IPayment } from 'src/app/core/store';
+import { NgChanges } from 'src/app/utils';
 
 import { CreatePaymentComponent } from '../../modals';
 
@@ -24,6 +25,7 @@ import { CreatePaymentComponent } from '../../modals';
 })
 export class AccountComponent implements OnChanges, OnInit, OnDestroy {
   @Input() public account: IAccount;
+  @Input() public categories: Record<number, ICategory>;
 
   public buttons = [
     // {
@@ -60,6 +62,8 @@ export class AccountComponent implements OnChanges, OnInit, OnDestroy {
   ];
 
   public form: FormGroup;
+  public todayPayments: IPayment[] = [];
+  public yesterdayPayments: IPayment[] = [];
 
   private currentAccountId: number;
   private destroy$ = new ReplaySubject();
@@ -68,11 +72,15 @@ export class AccountComponent implements OnChanges, OnInit, OnDestroy {
     private store: Store,
     private dialog: MatDialog,
     private fb: FormBuilder,
-    private activatedRoute: ActivatedRoute,
+    private cdr: ChangeDetectorRef,
   ) {}
 
-  public ngOnChanges(): void {
+  public ngOnChanges(changes: NgChanges<AccountComponent>): void {
     console.log('account', this.account);
+
+    if (changes.account) {
+      this.preparePayments();
+    }
   }
 
   public ngOnInit(): void {
@@ -130,5 +138,28 @@ export class AccountComponent implements OnChanges, OnInit, OnDestroy {
       categoryId: [null],
       balanceId: [null],
     });
+  }
+
+  private preparePayments(): void {
+    const date = new Date();
+    date.setHours(0, 0, 0, 0);
+
+    console.log('date', date.toUTCString());
+
+    this.todayPayments = this.account.payments.filter(
+      (payment) => new Date(payment.createdAt).getDate() === date.getDate(),
+    );
+
+    console.log('todayPayments', this.todayPayments);
+
+    date.setDate(date.getDate() - 1);
+
+    new Date();
+    this.yesterdayPayments = this.account.payments.filter(
+      (payment) => new Date(payment.createdAt).getDate() === date.getDate(),
+    );
+    console.log('yesterdayPayments', this.yesterdayPayments);
+
+    this.cdr.markForCheck();
   }
 }

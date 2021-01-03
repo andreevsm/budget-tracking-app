@@ -28,11 +28,7 @@ export class CreatePaymentComponent implements OnInit {
     const { category, amount, currency, type, categoryColor } = this.form.getRawValue();
 
     const payment: INewPayment = {
-      category: {
-        id: 4,
-        name: category,
-        color: categoryColor,
-      },
+      categoryId: 4,
       amount,
       currency,
       type,

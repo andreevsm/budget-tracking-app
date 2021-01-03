@@ -1,8 +1,8 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
-import {Select} from '@ngxs/store';
-import {Observable} from 'rxjs';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 
-import {UIState} from '../../store';
+import { UIState } from '../../store';
 
 @Component({
   selector: 'bg-spinner',

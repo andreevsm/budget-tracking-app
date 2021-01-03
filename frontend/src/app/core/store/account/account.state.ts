@@ -7,16 +7,18 @@ import { UIActions } from '../ui';
 
 import { AccountService } from './account.service';
 import { AccountActions } from './account.action';
-import { IAccount } from './account.interface';
+import { IAccount, ICategory } from './account.interface';
 
 export interface IAccountState {
   accounts: IAccount[];
+  categories: Record<number, ICategory>;
 }
 
 @State<IAccountState>({
   name: 'account',
   defaults: {
     accounts: [],
+    categories: {},
   },
 })
 @Injectable()
@@ -26,6 +28,11 @@ export class AccountState {
   @Selector()
   public static accounts(state: IAccountState): IAccount[] {
     return state.accounts;
+  }
+
+  @Selector()
+  public static categories(state: IAccountState): Record<number, ICategory> {
+    return state.categories;
   }
 
   @Selector()
@@ -56,6 +63,26 @@ export class AccountState {
     return this.accountService
       .loadPayments(payload)
       .pipe(finalize(() => this.store.dispatch(new UIActions.HideSpinner())));
+  }
+
+  @Action(AccountActions.LoadCategories)
+  public loadCategories({ setState, getState }: StateContext<IAccountState>): any {
+    this.store.dispatch(new UIActions.ShowSpinner());
+
+    return this.accountService.loadCategories().pipe(
+      tap((categoryList) => {
+        const categories = categoryList.reduce((acc, cur, i) => {
+          acc[cur.id] = cur;
+          return acc;
+        }, {});
+
+        setState({
+          ...getState(),
+          categories,
+        });
+      }),
+      finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
+    );
   }
 
   @Action(AccountActions.Delete)

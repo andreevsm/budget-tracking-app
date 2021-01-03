@@ -24,9 +24,9 @@
             Сегодня
           </h3>
           <ul class="payments__list">
-            <li class="payments__payment payment" *ngFor="let payment of account.payments">
-              <div class="payment__name" [style.color]="payment?.category?.color">
-                {{ payment?.category?.name }}
+            <li class="payments__payment payment" *ngFor="let payment of todayPayments">
+              <div class="payment__name" [style.color]="categories[payment?.categoryId]?.color">
+                {{ categories[payment?.categoryId]?.name }}
               </div>
               <div class="payment__amount">
                 <span
