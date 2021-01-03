@@ -2,7 +2,6 @@ package com.example.budget.services;
 
 import com.example.budget.dao.account.AccountDao;
 import com.example.budget.model.Account;
-import org.hibernate.type.AnyType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

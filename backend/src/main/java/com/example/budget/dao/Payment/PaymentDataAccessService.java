@@ -25,6 +25,7 @@ public class PaymentDataAccessService implements  PaymentDao {
             return new Payment(
                     result.getInt("id"),
                     result.getInt("account_id"),
+                    result.getInt("category_id"),
                     result.getInt("amount"),
                     result.getString("currency"),
                     result.getString("type_of_operation"),
