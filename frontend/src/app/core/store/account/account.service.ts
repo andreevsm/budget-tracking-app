@@ -3,7 +3,7 @@ import { delay, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { PAYMENTS_API } from '../../constants';
+import { ACCOUNTS_API, PAYMENTS_API } from '../../constants';
 
 import { IAccount, INewAccount } from './account.interface';
 import { ACCOUNTS } from './account.mock';
@@ -13,7 +13,11 @@ export class AccountService {
   constructor(private http: HttpClient) {}
 
   public loadAccounts(): Observable<IAccount[]> {
-    return of(ACCOUNTS).pipe(delay(300));
+    return this.http.get<IAccount[]>(ACCOUNTS_API);
+  }
+
+  public loadAccountById(id: number): Observable<IAccount | null> {
+    return this.http.get<IAccount | null>(`${ACCOUNTS_API}/${id}`);
   }
 
   public loadPayments(accountId: number): Observable<any> {

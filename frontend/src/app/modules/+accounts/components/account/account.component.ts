@@ -1,4 +1,11 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  OnDestroy,
+  Input,
+  OnChanges,
+} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -15,7 +22,7 @@ import { CreatePaymentComponent } from '../../modals';
   styleUrls: ['./account.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AccountComponent implements OnInit, OnDestroy {
+export class AccountComponent implements OnChanges, OnInit, OnDestroy {
   @Input() public account: IAccount;
 
   public buttons = [
@@ -63,6 +70,10 @@ export class AccountComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
   ) {}
+
+  public ngOnChanges(): void {
+    console.log('account', this.account);
+  }
 
   public ngOnInit(): void {
     this.buildForm();

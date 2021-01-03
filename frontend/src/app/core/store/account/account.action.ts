@@ -5,6 +5,12 @@ export namespace AccountActions {
     public static readonly type = '[Accounts] Load accounts';
   }
 
+  export class LoadById {
+    public static readonly type = '[Accounts] Load By Id';
+
+    constructor(public accountId: number) {}
+  }
+
   export class Delete {
     public static readonly type = '[Accounts] Delete account';
 

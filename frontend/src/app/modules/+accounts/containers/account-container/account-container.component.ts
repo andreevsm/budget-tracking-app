@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { tap, switchMap, map } from 'rxjs/operators';
-import { AccountState, IAccount } from 'src/app/core/store';
+import { AccountService, AccountState, IAccount } from 'src/app/core/store';
 
 @Component({
   selector: 'bg-account-container',
@@ -23,6 +23,7 @@ export class AccountContainerComponent implements OnInit {
     private dialog: MatDialog,
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
+    private accountService: AccountService,
   ) {}
 
   public ngOnInit(): void {
@@ -34,11 +35,7 @@ export class AccountContainerComponent implements OnInit {
       tap(({ id }) => {
         this.currentAccountId = id;
       }),
-      switchMap(({ id }) =>
-        this.accounts$.pipe(
-          map((accounts) => accounts.find((account) => account.id === +id) as IAccount),
-        ),
-      ),
+      switchMap(({ id }) => this.accountService.loadAccountById(id)),
     );
   }
 }

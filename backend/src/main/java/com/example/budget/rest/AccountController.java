@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping("api/v1/accounts")
 @RestController
@@ -26,12 +27,12 @@ public class AccountController {
 
     @GetMapping
     public List<Account> getAllAccounts(@RequestHeader(value = "Authorization") String authorizationToken) {
-        Authentication authentication = jwtTokenProvider.getAuthentication(authorizationToken);
         String id = jwtTokenProvider.getUserId(authorizationToken);
-
-        System.out.println("id: " + id);
-        System.out.println("authentication: " + authentication);
-
         return accountService.getAllAccounts(Integer.parseInt(id));
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Account> getById(@PathVariable int id) {
+        return accountService.getAccountById(id);
     }
 }
