@@ -7,22 +7,10 @@
     <list default="true" id="8aa5ebab-8fc5-4803-96a6-4e975aa8ead0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/account/AccountDataAccessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/account/AccountDataAccessService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/rest/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/rest/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/services/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/1247" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/1247" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/1249" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/1249" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/16399" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/16399" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/16412" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/16412" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2610" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2610" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/3501" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/3501" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/../db/global/pg_control" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/db_0.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_0.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/db_13395.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_13395.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/db_16384.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_16384.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/global.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/global.stat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_wal/000000010000000000000001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/pg_xact/0000" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_xact/0000" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/store/account/account.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/store/account/account.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

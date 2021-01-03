@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { tap, switchMap, map } from 'rxjs/operators';
 import { AccountService, AccountState, IAccount } from 'src/app/core/store';
 
@@ -35,7 +35,17 @@ export class AccountContainerComponent implements OnInit {
       tap(({ id }) => {
         this.currentAccountId = id;
       }),
-      switchMap(({ id }) => this.accountService.loadAccountById(id)),
+      switchMap(({ id }) =>
+        forkJoin([
+          this.accountService.loadAccountById(id),
+          this.accountService.loadPayments(id),
+        ]).pipe(
+          map(([account, payments]) => ({
+            ...account,
+            payments,
+          })),
+        ),
+      ),
     );
   }
 }

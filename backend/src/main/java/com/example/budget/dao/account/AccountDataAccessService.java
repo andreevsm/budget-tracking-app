@@ -43,10 +43,6 @@ public class AccountDataAccessService implements AccountDao {
 
     @Override
     public Optional<Account> selectAccountById(int id) {
-
-
-//        final String sql = String.format("SELECT * from accounts WHERE accounts.id = %d", id);
-
         final String sql = "SELECT * FROM accounts WHERE id= ?";
 
 
