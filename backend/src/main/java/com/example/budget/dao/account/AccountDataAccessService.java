@@ -1,8 +1,6 @@
 package com.example.budget.dao.account;
 
 import com.example.budget.model.Account;
-import com.example.budget.security.JwtTokenProvider;
-import org.hibernate.type.AnyType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -23,6 +21,27 @@ public class AccountDataAccessService implements AccountDao {
     @Override
     public int insertAccount(Account account) {
         return 0;
+    }
+
+    @Override
+    public int addAccount(int userId, Account account) {
+        final String sql = String.format(
+                "INSERT INTO accounts (user_id, name, description, created_at, currency) VALUES(?, ?, ?, ?, ?::currency)",
+                userId,
+                account.getName(),
+                account.getDescription(),
+                account.getCreatedAt(),
+                account.getCurrency()
+        );
+
+        return jdbcTemplate.update(
+                sql,
+                userId,
+                account.getName(),
+                account.getDescription(),
+                account.getCreatedAt(),
+                account.getCurrency()
+        );
     }
 
     @Override
@@ -66,15 +85,5 @@ public class AccountDataAccessService implements AccountDao {
         );
 
         return Optional.ofNullable(account);
-    }
-
-    @Override
-    public int deleteAccountById(int id) {
-        return 0;
-    }
-
-    @Override
-    public int updateAccountById(int id, Account account) {
-        return 0;
     }
 }

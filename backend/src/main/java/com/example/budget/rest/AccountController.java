@@ -31,8 +31,18 @@ public class AccountController {
         return accountService.getAllAccounts(Integer.parseInt(id));
     }
 
+    @PostMapping
+    public int addAccount(
+            @RequestHeader(value = "Authorization") String authorizationToken,
+            @RequestBody Account account
+    ) {
+        String id = jwtTokenProvider.getUserId(authorizationToken);
+        return accountService.addAccount(Integer.parseInt(id), account);
+    }
+
     @GetMapping("/{id}")
     public Optional<Account> getById(@PathVariable int id) {
         return accountService.getAccountById(id);
     }
+
 }

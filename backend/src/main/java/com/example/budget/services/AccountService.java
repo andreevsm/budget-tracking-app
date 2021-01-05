@@ -22,6 +22,10 @@ public class AccountService {
         return accountDao.selectAllAccounts(userId);
     }
 
+    public int addAccount(int userId, Account account) {
+        return accountDao.addAccount(userId, account);
+    }
+
     public Optional<Account> getAccountById(int id) {
         return accountDao.selectAccountById(id);
     }

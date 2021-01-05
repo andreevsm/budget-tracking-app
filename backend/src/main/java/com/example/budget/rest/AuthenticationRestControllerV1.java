@@ -40,8 +40,6 @@ public class AuthenticationRestControllerV1 {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
             User user = userRepository.findByEmail(request.getEmail()).orElseThrow(() -> new UsernameNotFoundException("User does not exist"));
 
-            System.out.println("user: " + user);
-
             String token = jwtTokenProvider.createToken(user.getId(), request.getEmail(), user.getRole().name());
             Map<Object, Object> response = new HashMap<>();
             response.put("email", request.getEmail());
@@ -56,5 +54,24 @@ public class AuthenticationRestControllerV1 {
     public void logout(HttpServletRequest request, HttpServletResponse response) {
         SecurityContextLogoutHandler securityContextLogoutHandler = new SecurityContextLogoutHandler();
         securityContextLogoutHandler.logout(request, response, null);
+    }
+
+    @PostMapping("/signup")
+    public ResponseEntity<?> signUp(@RequestBody AuthenticationRequestDTO request) {
+
+
+
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+            User user = userRepository.findByEmail(request.getEmail()).orElseThrow(() -> new UsernameNotFoundException("User does not exist"));
+
+            String token = jwtTokenProvider.createToken(user.getId(), request.getEmail(), user.getRole().name());
+            Map<Object, Object> response = new HashMap<>();
+            response.put("email", request.getEmail());
+            response.put("token", token);
+            return ResponseEntity.ok(response);
+        } catch (AuthenticationException e) {
+            return new ResponseEntity<>("Invalid email/password combination", HttpStatus.FORBIDDEN);
+        }
     }
 }
