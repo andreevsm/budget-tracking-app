@@ -11,6 +11,10 @@ export interface IRequestUser {
   password: string;
 }
 
+export interface IRequestNewUser extends IRequestUser {
+  login: string;
+}
+
 export interface IResponseUser {
   email: string;
   token: string;

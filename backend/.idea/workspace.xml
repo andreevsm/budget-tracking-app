@@ -5,56 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8aa5ebab-8fc5-4803-96a6-4e975aa8ead0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_0.stat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_16384.stat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/global.stat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/rest/RegistrationDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/account/AccountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/account/AccountDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/account/AccountDataAccessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/account/AccountDataAccessService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/rest/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/rest/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/rest/AuthenticationRestControllerV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/rest/AuthenticationRestControllerV1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/services/AccountService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/base/13395/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/13395/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/1247" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/1247" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/1249" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/1249" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/1259" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/1259" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/16399" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/16403" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2224" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2224" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2579" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2579" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2604" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2604" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2606" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2606" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2606_vm" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2606_vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2608" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2608" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2610" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2610" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2656" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2656" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2657" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2657" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2658" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2658" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2659" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2659" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2662" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2662" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2663" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2663" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2664" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2664" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2665" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2665" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2666" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2666" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2667" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2667" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2673" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2673" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/base/16384/16437" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/16437" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/base/16384/2674" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2674" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2678" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2678" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2679" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2679" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2703" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2703" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/2704" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/2704" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/3455" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/3455" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16384/5002" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/5002" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/pg_internal.init" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/../db/global/pg_control" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../db/global/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/pg_stat/db_0.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/pg_stat/db_13395.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/pg_stat/db_16384.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/pg_stat/global.stat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/db_0.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_0.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/db_13395.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_13395.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/db_16384.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_16384.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/global.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/global.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_wal/000000010000000000000001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/pg_xact/0000" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_xact/0000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/postmaster.pid" beforeDir="false" afterPath="$PROJECT_DIR$/../db/postmaster.pid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/auth/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/auth/auth.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/components/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/components/header/header.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/components/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/components/header/header.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/constants/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/constants/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/layouts/main-layout/main-layout.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/layouts/main-layout/main-layout.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/layouts/main-layout/main-layout.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/layouts/main-layout/main-layout.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/store/auth/auth.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/store/auth/auth.actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/store/auth/auth.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/store/auth/auth.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/store/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/store/auth/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/store/auth/auth.state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/store/auth/auth.state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modules/+login/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modules/+login/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modules/+login/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modules/+login/login/login.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +127,8 @@
       <workItem from="1609707065324" duration="2031000" />
       <workItem from="1609758107184" duration="482000" />
       <workItem from="1609874869981" duration="2607000" />
-      <workItem from="1609882911430" duration="380000" />
+      <workItem from="1609882911430" duration="2518000" />
+      <workItem from="1609887194744" duration="603000" />
     </task>
     <servers />
   </component>

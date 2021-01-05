@@ -30,6 +30,10 @@ public class User {
     @Column(name = "status")
     private Status status;
 
+    public User() {
+
+    }
+
     public int getId() {
         return id;
     }
@@ -44,5 +48,19 @@ public class User {
 
     public String getPasswordHash() {
         return passwordHash;
+    }
+
+    public User(
+            String login,
+            String passwordHash,
+            String email,
+            Role role,
+            Status status
+    ) {
+        this.login = login;
+        this.passwordHash = passwordHash;
+        this.email = email;
+        this.role = role;
+        this.status = status;
     }
 }

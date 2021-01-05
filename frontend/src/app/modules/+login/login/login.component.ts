@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { AuthActions } from 'src/app/core/store/auth';
 
@@ -12,7 +13,7 @@ import { AuthActions } from 'src/app/core/store/auth';
 export class LoginComponent implements OnInit {
   public form: FormGroup;
 
-  constructor(private fb: FormBuilder, private store: Store) {}
+  constructor(private fb: FormBuilder, private store: Store, private router: Router) {}
 
   public ngOnInit(): void {
     this.form = this.fb.group({

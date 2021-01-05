@@ -5,6 +5,7 @@ import { AuthGuard } from './core/auth';
 import { LoginGuard } from './core/auth/login.guard';
 import { MainLayoutComponent } from './core/layouts';
 import { LoginModule, MainModule } from './modules';
+import { SignUpModule } from './modules/+sign-up/sign-up.module';
 
 const routes: Routes = [
   {
@@ -27,6 +28,13 @@ const routes: Routes = [
     // canActivate: [LoginGuard],
     loadChildren: (): Promise<typeof LoginModule> =>
       import('./modules/+login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'signup',
+    // canLoad: [LoginGuard],
+    // canActivate: [LoginGuard],
+    loadChildren: (): Promise<typeof SignUpModule> =>
+      import('./modules/+sign-up/sign-up.module').then((m) => m.SignUpModule),
   },
   {
     path: '**',

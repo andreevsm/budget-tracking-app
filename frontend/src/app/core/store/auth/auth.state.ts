@@ -40,28 +40,55 @@ export class AuthState {
   ): Observable<IResponseUser | null> {
     this.store.dispatch(new UIActions.ShowSpinner());
 
-    console.log('1', payload);
+    return this.userService.login(payload).pipe(
+      tap((response) => {
+        if (response !== null) {
+          setState({
+            ...getState(),
+            user: {
+              ...getState().user,
+              email: response.email,
+            },
+          });
+        }
+      }),
+      finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
+    );
+  }
 
-    const { email, password } = payload;
+  @Action(AuthActions.SignUp)
+  public signUp(
+    { setState, getState }: StateContext<IAuthState>,
+    { payload }: AuthActions.SignUp,
+  ): Observable<IResponseUser | null> {
+    this.store.dispatch(new UIActions.ShowSpinner());
 
-    return this.userService
-      .login({
-        email,
-        password,
-      })
-      .pipe(
-        tap((response) => {
-          if (response !== null) {
-            setState({
-              ...getState(),
-              user: {
-                ...getState().user,
-                email: response.email,
-              },
-            });
-          }
-        }),
-        finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
-      );
+    return this.userService.signUp(payload).pipe(
+      tap((response) => {
+        if (response !== null) {
+          setState({
+            ...getState(),
+            user: {
+              ...getState().user,
+              email: response.email,
+            },
+          });
+        }
+      }),
+      finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
+    );
+  }
+
+  @Action(AuthActions.Logout)
+  public logout({ setState, getState }: StateContext<IAuthState>): Observable<any> {
+    this.store.dispatch(new UIActions.ShowSpinner());
+
+    return this.userService.logout().pipe(
+      tap(() => {
+        this.userService.clearStorage();
+        this.userService.navigateToLogin();
+      }),
+      finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
+    );
   }
 }

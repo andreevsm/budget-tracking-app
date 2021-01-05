@@ -1,4 +1,4 @@
-import { IRequestUser } from './auth.interface';
+import { IRequestNewUser, IRequestUser } from './auth.interface';
 
 export namespace AuthActions {
   export class Load {
@@ -9,5 +9,15 @@ export namespace AuthActions {
     public static readonly type = '[Auth] Login';
 
     constructor(public payload: IRequestUser) {}
+  }
+
+  export class SignUp {
+    public static readonly type = '[Auth] Sign Up';
+
+    constructor(public payload: IRequestNewUser) {}
+  }
+
+  export class Logout {
+    public static readonly type = '[Auth] Logout';
   }
 }

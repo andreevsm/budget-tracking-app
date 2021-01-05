@@ -4,6 +4,8 @@ export const API = `${BASE_API}${VERSION_API}`;
 
 export const AUTH_API = `${API}/auth`;
 export const LOGIN_API = `${AUTH_API}/login`;
+export const LOGOUT_API = `${AUTH_API}/logout`;
+export const SIGN_UP_API = `${AUTH_API}/signup`;
 
 export const ACCOUNTS_API = `${API}/accounts`;
 export const PAYMENTS_API = `${API}/payments`;

@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
-import { AccountActions, AccountState, IAccount } from '../../store';
+import { AccountActions, AccountState, AuthActions, IAccount } from '../../store';
 
 @Component({
   selector: 'bg-main-layout',
@@ -20,5 +20,9 @@ export class MainLayoutComponent implements OnInit {
   public ngOnInit(): void {
     this.store.dispatch(new AccountActions.LoadAll());
     this.store.dispatch(new AccountActions.LoadCategories());
+  }
+
+  public onLogout(): void {
+    this.store.dispatch(new AuthActions.Logout());
   }
 }

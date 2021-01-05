@@ -19,6 +19,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @Output() public showSidenav = new EventEmitter();
+  @Output() public logout = new EventEmitter();
 
   public links = [
     {
