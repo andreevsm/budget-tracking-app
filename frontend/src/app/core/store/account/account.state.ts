@@ -107,18 +107,12 @@ export class AccountState {
   public createAccount(
     { setState, getState }: StateContext<IAccountState>,
     { account }: AccountActions.Create,
-  ): Observable<IAccount[]> {
+  ): Observable<number> {
     this.store.dispatch(new UIActions.ShowSpinner());
 
-    return this.accountService.createAccount(account).pipe(
-      tap((accounts) =>
-        setState({
-          ...getState(),
-          accounts,
-        }),
-      ),
-      finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
-    );
+    return this.accountService
+      .createAccount(account)
+      .pipe(finalize(() => this.store.dispatch(new UIActions.HideSpinner())));
   }
 
   @Action(AccountActions.Update)

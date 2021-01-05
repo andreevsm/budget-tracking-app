@@ -1,9 +1,12 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Select } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { AccountState, IAccount } from 'src/app/core/store';
+
+import { CreateAccountComponent } from '../../modals';
 
 @Component({
   selector: 'bg-accounts-container',
@@ -16,7 +19,7 @@ export class AccountsContainerComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject();
 
-  constructor(private router: Router) {}
+  constructor(private dialog: MatDialog, private router: Router) {}
 
   public ngOnInit(): void {
     this.subscribeToAccounts();
@@ -25,6 +28,14 @@ export class AccountsContainerComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  public onAddAccount(): void {
+    this.dialog
+      .open(CreateAccountComponent)
+      .afterClosed()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe();
   }
 
   private subscribeToAccounts(): void {

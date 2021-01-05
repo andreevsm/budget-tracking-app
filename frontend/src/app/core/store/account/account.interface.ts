@@ -1,6 +1,6 @@
 export interface IAccount {
   id: number;
-  createdAt: Date;
+  createdAt: string;
   name: string;
   description: string;
   currency: Currency;

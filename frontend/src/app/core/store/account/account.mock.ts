@@ -31,7 +31,7 @@ export const ACCOUNTS: IAccount[] = [
   {
     id: 1,
     name: 'Счет 1',
-    createdAt: new Date('2019-04-20'),
+    createdAt: '2019-04-20',
     description: 'Это мой счет 1',
     currency: Currency.EUR,
     payments: PAYMENTS,

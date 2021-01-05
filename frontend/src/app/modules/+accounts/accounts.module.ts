@@ -7,7 +7,6 @@ import { MainRoutingModule } from './accounts.routing';
 import { CreatePaymentComponent, CreateAccountComponent } from './modals';
 import {
   AccountComponent,
-  AccountsComponent,
   HistoryComponent,
   StatisticsComponent,
 } from './components';
@@ -22,7 +21,6 @@ import { AccountLayoutComponent } from './layouts';
 @NgModule({
   declarations: [
     CreatePaymentComponent,
-    AccountsComponent,
     AccountComponent,
     HistoryComponent,
     CreateAccountComponent,

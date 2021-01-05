@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { AccountActions, INewAccount } from 'src/app/core/store';
+import { parseDateToString } from 'src/app/utils';
 
 @Component({
   selector: 'bg-create-account',
@@ -22,12 +23,11 @@ export class CreateAccountComponent implements OnInit {
     event.preventDefault();
 
     const { name, description, currency } = this.form.getRawValue();
-
     const account: INewAccount = {
       name,
       description,
       currency,
-      createdAt: new Date(),
+      createdAt: parseDateToString(new Date()),
     };
 
     this.store.dispatch(new AccountActions.Create(account));
@@ -35,9 +35,9 @@ export class CreateAccountComponent implements OnInit {
 
   private buildForm(): void {
     this.form = this.fb.group({
-      name: ['', [Validators.required]],
-      description: [''],
-      currency: ['', [Validators.required]],
+      name: ['Мой счет 4', [Validators.required]],
+      description: ['Пример'],
+      currency: ['RUB', [Validators.required]],
     });
   }
 }

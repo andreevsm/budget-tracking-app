@@ -36,13 +36,8 @@ export class AccountService {
     return of(ACCOUNTS.filter((account) => account.id !== id)).pipe(delay(300));
   }
 
-  public createAccount(account: INewAccount): Observable<IAccount[]> {
-    ACCOUNTS.push({
-      ...account,
-      id: ACCOUNTS.length + 1,
-      payments: [],
-    });
-    return of([...ACCOUNTS]).pipe(delay(300));
+  public createAccount(account: INewAccount): Observable<number> {
+    return this.http.post<number>(ACCOUNTS_API, account);
   }
 
   public editAccount(editedAccount: IAccount): Observable<IAccount[]> {
