@@ -23,4 +23,8 @@ public class PaymentService {
     public List<Payment> getPaymentsByAccountId(int accountId) {
         return paymentDao.selectPaymentsByAccountId(accountId);
     }
+
+    public int addPayment(Payment payment) {
+        return paymentDao.addPayment(payment);
+    }
 }

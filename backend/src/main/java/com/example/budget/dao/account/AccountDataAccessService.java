@@ -25,14 +25,7 @@ public class AccountDataAccessService implements AccountDao {
 
     @Override
     public int addAccount(int userId, Account account) {
-        final String sql = String.format(
-                "INSERT INTO accounts (user_id, name, description, created_at, currency) VALUES(?, ?, ?, ?, ?::currency)",
-                userId,
-                account.getName(),
-                account.getDescription(),
-                account.getCreatedAt(),
-                account.getCurrency()
-        );
+        final String sql = "INSERT INTO accounts (user_id, name, description, created_at, currency) VALUES(?, ?, ?, ?, ?::currency)";
 
         return jdbcTemplate.update(
                 sql,

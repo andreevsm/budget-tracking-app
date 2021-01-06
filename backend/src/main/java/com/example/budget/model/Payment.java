@@ -51,6 +51,22 @@ public class Payment {
         this.createdAt = createdAt;
     }
 
+    public Payment (
+            int accountId,
+            int categoryId,
+            int amount,
+            String currency,
+            String operationType,
+            Date createdAt
+    ) {
+        this.accountId = accountId;
+        this.categoryId = categoryId;
+        this.amount = amount;
+        this.currency = currency;
+        this.operationType = operationType;
+        this.createdAt = createdAt;
+    }
+
     public Payment() {
 
     }

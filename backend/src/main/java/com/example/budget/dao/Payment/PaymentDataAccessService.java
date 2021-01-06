@@ -33,4 +33,19 @@ public class PaymentDataAccessService implements  PaymentDao {
             );
         });
     }
+
+    @Override
+    public int addPayment(Payment payment) {
+        final String sql = "INSERT INTO payments (account_id, amount, type_of_operation, category_id, created_at, currency) VALUES (?, ?, ?::type_of_operation, ?, ?, ?::currency)";
+
+        return jdbcTemplate.update(
+                sql,
+                payment.getAccountId(),
+                payment.getAmount(),
+                payment.getOperationType(),
+                payment.getCategoryId(),
+                payment.getCreatedAt(),
+                payment.getCurrency()
+        );
+    }
 }
