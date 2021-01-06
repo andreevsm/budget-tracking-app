@@ -8,7 +8,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   public ngOnInit(): void {
-    this.createWorker();
+    // this.createWorker();
   }
 
   private createWorker(): void {

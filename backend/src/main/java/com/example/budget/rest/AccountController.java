@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@RequestMapping("api/v1/accounts")
+@RequestMapping("/api/v1/accounts")
 @RestController
 public class AccountController {
 
@@ -25,7 +25,7 @@ public class AccountController {
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public List<Account> getAllAccounts(@RequestHeader(value = "Authorization") String authorizationToken) {
         String id = jwtTokenProvider.getUserId(authorizationToken);
         return accountService.getAllAccounts(Integer.parseInt(id));

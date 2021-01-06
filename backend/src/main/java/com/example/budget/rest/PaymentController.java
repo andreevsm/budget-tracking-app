@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("api/v1/payments")
+@RequestMapping("/api/v1/payments")
 @RestController
 public class PaymentController {
 
@@ -19,7 +19,7 @@ public class PaymentController {
         this.paymentService = paymentService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public List<Payment> getPaymentsByAccountId(@RequestParam int accountId) {
         return paymentService.getPaymentsByAccountId(accountId);
     }

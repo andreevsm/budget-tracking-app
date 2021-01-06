@@ -37,7 +37,7 @@
             "webWorkerTsConfig": "tsconfig.worker.json",
             "allowedCommonJsDependencies": [
               "chart.js"
-            ],
+            ]
           },
           "configurations": {
             "production": {
