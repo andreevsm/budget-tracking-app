@@ -4,7 +4,7 @@ export const parseDateToString = (date: Date): string => {
   const month = date.getMonth() + 1;
   const patchedMonth = month < 10 ? `0${month}` : month;
 
-  const day = date.getDay();
+  const day = date.getDate();
   const patchedDay = day < 10 ? `0${day}` : day;
 
   return `${year}-${patchedMonth}-${patchedDay}`;

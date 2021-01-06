@@ -32,7 +32,7 @@ export namespace AccountActions {
   export class AddPayment {
     public static readonly type = '[Accounts] Add payment';
 
-    constructor(public accountId: number, public payment: INewPayment) {}
+    constructor(public payment: INewPayment) {}
   }
 
   export class LoadPayments {

@@ -65,7 +65,6 @@ export class AccountComponent implements OnChanges, OnInit, OnDestroy {
   public todayPayments: IPayment[] = [];
   public yesterdayPayments: IPayment[] = [];
 
-  private currentAccountId: number;
   private destroy$ = new ReplaySubject();
 
   constructor(
@@ -103,7 +102,7 @@ export class AccountComponent implements OnChanges, OnInit, OnDestroy {
     this.dialog
       .open(CreatePaymentComponent, {
         data: {
-          accountId: this.currentAccountId,
+          accountId: this.account.id,
         },
       })
       .afterClosed()
@@ -154,7 +153,6 @@ export class AccountComponent implements OnChanges, OnInit, OnDestroy {
 
     date.setDate(date.getDate() - 1);
 
-    new Date();
     this.yesterdayPayments = this.account.payments.filter(
       (payment) => new Date(payment.createdAt).getDate() === date.getDate(),
     );

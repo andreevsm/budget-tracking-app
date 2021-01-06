@@ -3,21 +3,30 @@
     <form class="payment__form form" [formGroup]="form" (submit)="onSubmit($event)">
 
       <div class="form__control-group">
-        <mat-form-field class="form__control">
+        <mat-form-field class="form__control" *ngIf="categories$ | async as categories">
           <mat-label>Категория</mat-label>
-          <input matInput placeholder="Спорт" formControlName="category">
+          <mat-select
+            (selectionChange)="onCategoryChange($event)"
+          >  
+            <mat-option
+              *ngFor="let category of Object.values(categories)"
+              [value]="category.id"
+            >
+              {{ category.name }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
   
-        <mat-form-field class="form__control">
+        <!-- <mat-form-field class="form__control">
           <mat-label>Цвет</mat-label>
           <input matInput type="color" formControlName="categoryColor">
-        </mat-form-field>
+        </mat-form-field> -->
       </div>
 
       <div class="form__control-group">
         <mat-form-field class="form__control">
           <mat-label>Сумма</mat-label>
-          <input matInput formControlName="amount">
+          <input matInput type="number" formControlName="amount">
         </mat-form-field>
   
         <mat-form-field class="form__control">
@@ -28,12 +37,12 @@
 
       <mat-radio-group
         class="form__control"
-        formControlName="type"
+        formControlName="operationType"
       >
-        <mat-radio-button class="form__radio" value="expense">
+        <mat-radio-button class="form__radio" value="expenses">
           Расходы
         </mat-radio-button>
-        <mat-radio-button class="form__radio" value="income">
+        <mat-radio-button class="form__radio" value="incomes">
           Доходы
         </mat-radio-button>
       </mat-radio-group>

@@ -3,27 +3,30 @@ import { IAccount, Currency, IPayment } from './account.interface';
 export const PAYMENTS: IPayment[] = [
   {
     id: 1,
+    accountId: 1,
     categoryId: 1,
     amount: 500,
     currency: 'RUB',
-    type: 'EXPENSE',
-    createdAt: new Date('2019-04-20'),
+    operationType: 'EXPENSE',
+    createdAt: '2019-04-20',
   },
   {
     id: 2,
+    accountId: 1,
     categoryId: 2,
     amount: 1500,
     currency: 'RUB',
-    type: 'EXPENSE',
-    createdAt: new Date('2019-04-20'),
+    operationType: 'EXPENSE',
+    createdAt: '2019-04-20',
   },
   {
     id: 3,
+    accountId: 1,
     categoryId: 3,
     amount: 500,
     currency: 'RUB',
-    type: 'INCOME',
-    createdAt: new Date('2019-04-20'),
+    operationType: 'INCOME',
+    createdAt: '2019-04-20',
   },
 ];
 

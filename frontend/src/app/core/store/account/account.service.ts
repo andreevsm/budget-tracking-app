@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { ACCOUNTS_API, CATEGORIES_API, PAYMENTS_API } from '../../constants';
 
-import { IAccount, ICategory, INewAccount, IPayment } from './account.interface';
+import { IAccount, ICategory, INewAccount, INewPayment, IPayment } from './account.interface';
 import { ACCOUNTS } from './account.mock';
 
 @Injectable()
@@ -32,21 +32,11 @@ export class AccountService {
     return this.http.get<ICategory[]>(CATEGORIES_API);
   }
 
-  public deleteAccount(id: number): Observable<IAccount[]> {
-    return of(ACCOUNTS.filter((account) => account.id !== id)).pipe(delay(300));
-  }
-
   public createAccount(account: INewAccount): Observable<number> {
     return this.http.post<number>(ACCOUNTS_API, account);
   }
 
-  public editAccount(editedAccount: IAccount): Observable<IAccount[]> {
-    const editedAccountIndex = ACCOUNTS.findIndex((account) => account.id === editedAccount.id);
-
-    return of([
-      ...ACCOUNTS.slice(0, editedAccountIndex),
-      editedAccount,
-      ...ACCOUNTS.slice(editedAccountIndex + 1),
-    ]).pipe(delay(300));
+  public addPayment(payment: INewPayment): Observable<number> {
+    return this.http.post<number>(PAYMENTS_API, payment);
   }
 }

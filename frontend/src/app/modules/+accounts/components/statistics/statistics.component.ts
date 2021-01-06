@@ -37,7 +37,7 @@ export class StatisticsComponent implements AfterViewInit {
 
   private groupPaymentsByMonths(): IPayment[][] {
     return MONTHS.map((month, index) => {
-      return this.payments.filter(({ createdAt }) => getMonth(createdAt) === index);
+      return this.payments.filter(({ createdAt }) => getMonth(new Date(createdAt)) === index);
     });
   }
 
@@ -51,11 +51,17 @@ export class StatisticsComponent implements AfterViewInit {
     const groupedPayments = this.groupPaymentsByMonths();
 
     const expenses = groupedPayments.map((payments) =>
-      payments.reduce((prev, curr) => (curr.type === 'EXPENSE' ? prev + curr.amount : prev), 0),
+      payments.reduce(
+        (prev, curr) => (curr.operationType === 'EXPENSE' ? prev + curr.amount : prev),
+        0,
+      ),
     );
 
     const incomes = groupedPayments.map((payments) =>
-      payments.reduce((prev, curr) => (curr.type === 'INCOME' ? prev + curr.amount : prev), 0),
+      payments.reduce(
+        (prev, curr) => (curr.operationType === 'EXPENSE' ? prev + curr.amount : prev),
+        0,
+      ),
     );
 
     this.chartService.addLabels(MONTHS);

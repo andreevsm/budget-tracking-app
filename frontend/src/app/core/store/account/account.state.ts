@@ -85,24 +85,6 @@ export class AccountState {
     );
   }
 
-  @Action(AccountActions.Delete)
-  public deleteAccount(
-    { setState, getState }: StateContext<IAccountState>,
-    { id }: AccountActions.Delete,
-  ): Observable<IAccount[]> {
-    this.store.dispatch(new UIActions.ShowSpinner());
-
-    return this.accountService.deleteAccount(id).pipe(
-      tap((accounts) =>
-        setState({
-          ...getState(),
-          accounts,
-        }),
-      ),
-      finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
-    );
-  }
-
   @Action(AccountActions.Create)
   public createAccount(
     { setState, getState }: StateContext<IAccountState>,
@@ -115,48 +97,15 @@ export class AccountState {
       .pipe(finalize(() => this.store.dispatch(new UIActions.HideSpinner())));
   }
 
-  @Action(AccountActions.Update)
-  public editAccount(
-    { setState, getState }: StateContext<IAccountState>,
-    { account }: AccountActions.Update,
-  ): Observable<IAccount[]> {
-    this.store.dispatch(new UIActions.ShowSpinner());
-
-    return this.accountService.editAccount(account).pipe(
-      tap((accounts) =>
-        setState({
-          ...getState(),
-          accounts,
-        }),
-      ),
-      finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
-    );
-  }
-
   @Action(AccountActions.AddPayment)
   public addPayment(
     { setState, getState }: StateContext<IAccountState>,
-    { accountId, payment }: AccountActions.AddPayment,
-  ): void {
+    { payment }: AccountActions.AddPayment,
+  ): Observable<number> {
     this.store.dispatch(new UIActions.ShowSpinner());
 
-    const account = getState().accounts.find((it) => it.id === +accountId) as IAccount;
-    const newAccount: IAccount = {
-      ...account,
-      payments: [
-        ...(account?.payments ?? []),
-        {
-          id: account?.payments.length + 1,
-          ...payment,
-        },
-      ],
-    };
-
-    setState({
-      ...getState(),
-      accounts: [...getState().accounts.filter((it) => it.id !== +accountId), newAccount],
-    });
-
-    this.store.dispatch(new UIActions.HideSpinner());
+    return this.accountService
+      .addPayment(payment)
+      .pipe(finalize(() => this.store.dispatch(new UIActions.HideSpinner())));
   }
 }
