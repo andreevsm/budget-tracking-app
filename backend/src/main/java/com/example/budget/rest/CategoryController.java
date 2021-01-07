@@ -1,6 +1,5 @@
 package com.example.budget.rest;
 
-import com.example.budget.model.Account;
 import com.example.budget.model.Category;
 import com.example.budget.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;

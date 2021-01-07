@@ -11,5 +11,6 @@ public class PaymentDTO {
     private int categoryId;
     private Date createdAt;
     private String currency;
+    private int currencyId;
     private String operationType;
 }

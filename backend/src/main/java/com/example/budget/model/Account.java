@@ -26,43 +26,19 @@ public class Account {
     @Column(name = "created_at")
     private Date createdAt;
 
-    @Column(name = "currency")
-    private String currency;
+    @Column(name = "currency_id")
+    private int currencyId;
 
-    public Account (int id, int userId, String name, String description, String currency, Date createdAt) {
+    public Account (int id, int userId, String name, String description, int currencyId, Date createdAt) {
         this.id = id;
         this.userId = userId;
         this.name = name;
         this.description = description;
-        this.currency = currency;
+        this.currencyId = currencyId;
         this.createdAt = createdAt;
     }
 
     public Account() {
 
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
     }
 }

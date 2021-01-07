@@ -27,7 +27,7 @@ public class PaymentDataAccessService implements  PaymentDao {
                     result.getInt("account_id"),
                     result.getInt("category_id"),
                     result.getInt("amount"),
-                    result.getString("currency"),
+                    result.getInt("currency_id"),
                     result.getString("type_of_operation"),
                     result.getDate("created_at")
             );
@@ -36,7 +36,7 @@ public class PaymentDataAccessService implements  PaymentDao {
 
     @Override
     public int addPayment(Payment payment) {
-        final String sql = "INSERT INTO payments (account_id, amount, type_of_operation, category_id, created_at, currency) VALUES (?, ?, ?::type_of_operation, ?, ?, ?::currency)";
+        final String sql = "INSERT INTO payments (account_id, amount, type_of_operation, category_id, created_at, currency_id) VALUES (?, ?, ?::type_of_operation, ?, ?, ?::currency)";
 
         return jdbcTemplate.update(
                 sql,
@@ -45,7 +45,7 @@ public class PaymentDataAccessService implements  PaymentDao {
                 payment.getOperationType(),
                 payment.getCategoryId(),
                 payment.getCreatedAt(),
-                payment.getCurrency()
+                payment.getCurrencyId()
         );
     }
 }

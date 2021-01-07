@@ -27,8 +27,8 @@ public class Payment {
     @Column(name = "created_at")
     private Date createdAt;
 
-    @Column(name = "currency")
-    private String currency;
+    @Column(name = "currency_id")
+    private int currencyId;
 
     @Column(name = "type_of_operation")
     private String operationType;
@@ -38,7 +38,7 @@ public class Payment {
             int accountId,
             int categoryId,
             int amount,
-            String currency,
+            int currencyId,
             String operationType,
             Date createdAt
     ) {
@@ -46,7 +46,7 @@ public class Payment {
         this.accountId = accountId;
         this.categoryId = categoryId;
         this.amount = amount;
-        this.currency = currency;
+        this.currencyId = currencyId;
         this.operationType = operationType;
         this.createdAt = createdAt;
     }
@@ -55,14 +55,14 @@ public class Payment {
             int accountId,
             int categoryId,
             int amount,
-            String currency,
+            int currencyId,
             String operationType,
             Date createdAt
     ) {
         this.accountId = accountId;
         this.categoryId = categoryId;
         this.amount = amount;
-        this.currency = currency;
+        this.currencyId = currencyId;
         this.operationType = operationType;
         this.createdAt = createdAt;
     }
