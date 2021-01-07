@@ -6,7 +6,7 @@ import { Observable, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { AccountState, IAccount } from 'src/app/core/store';
 
-import { CreateAccountComponent } from '../../modals';
+import { CreateAccountComponent, CreateCategoryComponent } from '../../modals';
 
 @Component({
   selector: 'bg-accounts-container',
@@ -33,6 +33,14 @@ export class AccountsContainerComponent implements OnInit, OnDestroy {
   public onAddAccount(): void {
     this.dialog
       .open(CreateAccountComponent)
+      .afterClosed()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe();
+  }
+
+  public onAddCategory(): void {
+    this.dialog
+      .open(CreateCategoryComponent)
       .afterClosed()
       .pipe(takeUntil(this.destroy$))
       .subscribe();

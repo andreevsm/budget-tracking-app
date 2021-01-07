@@ -1,12 +1,17 @@
-import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { ACCOUNTS_API, CATEGORIES_API, PAYMENTS_API } from '../../constants';
 
-import { IAccount, ICategory, INewAccount, INewPayment, IPayment } from './account.interface';
-import { ACCOUNTS } from './account.mock';
+import {
+  IAccount,
+  ICategory,
+  INewAccount,
+  INewCategory,
+  INewPayment,
+  IPayment,
+} from './account.interface';
 
 @Injectable()
 export class AccountService {
@@ -38,5 +43,9 @@ export class AccountService {
 
   public addPayment(payment: INewPayment): Observable<number> {
     return this.http.post<number>(PAYMENTS_API, payment);
+  }
+
+  public addCategory(category: INewCategory): Observable<number> {
+    return this.http.post<number>(CATEGORIES_API, category);
   }
 }

@@ -15,6 +15,7 @@ import {
   AccountsContainerComponent,
 } from './containers';
 import { AccountLayoutComponent } from './layouts';
+import { CreateCategoryComponent } from './modals/create-category/create-category.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AccountLayoutComponent } from './layouts';
     AccountContainerComponent,
     AccountsContainerComponent,
     AccountLayoutComponent,
+    CreateCategoryComponent,
   ],
   imports: [CommonModule, MainRoutingModule, SharedModule, MatSelectModule, FormsModule],
 })

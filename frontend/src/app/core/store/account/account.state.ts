@@ -108,4 +108,16 @@ export class AccountState {
       .addPayment(payment)
       .pipe(finalize(() => this.store.dispatch(new UIActions.HideSpinner())));
   }
+
+  @Action(AccountActions.AddCategory)
+  public addCategory(
+    { setState, getState }: StateContext<IAccountState>,
+    { category }: AccountActions.AddCategory,
+  ): Observable<number> {
+    this.store.dispatch(new UIActions.ShowSpinner());
+
+    return this.accountService
+      .addCategory(category)
+      .pipe(finalize(() => this.store.dispatch(new UIActions.HideSpinner())));
+  }
 }

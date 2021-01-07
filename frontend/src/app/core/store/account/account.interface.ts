@@ -24,8 +24,10 @@ export interface ICategory {
   id: number;
   name: string;
   color: string;
-  createdAt: Date;
+  createdAt: string;
 }
+
+export type INewCategory = Omit<ICategory, 'id'>;
 
 export interface IPayment {
   id: number;
