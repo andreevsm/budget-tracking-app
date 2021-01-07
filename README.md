@@ -55,3 +55,11 @@ CREATE TABLE IF NOT EXISTS accounts (
 	name VARCHAR(55) NOT NULL,
 	description VARCHAR(255)
 )
+
+./mvnw POSTGRES_URL="jdbc:postgresql://localhost:5432/budget" POSTGRES_USERNAME="postgres" POSTGRES_PASSWORD="1q2w3e4r5t6y" package
+
+./mvnw POSTGRES_URL=jdbc:postgresql://localhost:5432/budget;POSTGRES_USERNAME=postgres;POSTGRES_PASSWORD=1q2w3e4r5t6y package  
+
+export POSTGRES_URL=jdbc:postgresql://localhost:5432/budget
+export POSTGRES_USERNAME=postgres 
+export POSTGRES_PASSWORD=1q2w3e4r5t6y 
