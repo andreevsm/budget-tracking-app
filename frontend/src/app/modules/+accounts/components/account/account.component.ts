@@ -9,10 +9,9 @@ import {
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Store } from '@ngxs/store';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { IAccount, AccountActions, ICategory, IPayment } from 'src/app/core/store';
+import { IAccount, ICategory, IPayment, ICurrency } from 'src/app/core/store';
 import { NgChanges } from 'src/app/utils';
 
 import { CreatePaymentComponent } from '../../modals';
@@ -26,40 +25,7 @@ import { CreatePaymentComponent } from '../../modals';
 export class AccountComponent implements OnChanges, OnInit, OnDestroy {
   @Input() public account: IAccount;
   @Input() public categories: Record<number, ICategory>;
-
-  public buttons = [
-    // {
-    //   icon: 'edit',
-    //   click: (account: IAccount): void => this.onEditAccount(account),
-    // },
-    {
-      icon: 'remove_red_eye',
-      click: (account: IAccount): void => this.onViewAccount(account),
-    },
-    {
-      icon: 'delete',
-      click: (account: IAccount): void => this.onDeleteAccount(account),
-    },
-  ];
-
-  public menuButtons = [
-    // {
-    //   text: 'Создать счет',
-    //   click: (): void => this.onSendMoney(),
-    // },
-    {
-      text: 'Оплатить',
-      click: (): void => this.onPay(),
-    },
-    {
-      text: 'Пополнить ',
-      click: (): void => this.onFillAccount(),
-    },
-    // {
-    //   text: 'Создать счет',
-    //   click: (): void => this.onCreateAccount(),
-    // },
-  ];
+  @Input() public currencies: Record<number, ICurrency>;
 
   public form: FormGroup;
   public todayPayments: IPayment[] = [];
@@ -67,16 +33,9 @@ export class AccountComponent implements OnChanges, OnInit, OnDestroy {
 
   private destroy$ = new ReplaySubject();
 
-  constructor(
-    private store: Store,
-    private dialog: MatDialog,
-    private fb: FormBuilder,
-    private cdr: ChangeDetectorRef,
-  ) {}
+  constructor(private dialog: MatDialog, private fb: FormBuilder, private cdr: ChangeDetectorRef) {}
 
   public ngOnChanges(changes: NgChanges<AccountComponent>): void {
-    console.log('account', this.account);
-
     if (changes.account) {
       this.preparePayments();
     }
@@ -91,13 +50,6 @@ export class AccountComponent implements OnChanges, OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  public onSubmit(): void {
-    console.log('form', this.form.value);
-    // this.store.dispatch(new ExpansesActions.Add(this.form.value));
-    this.form.get('amount')?.reset();
-    this.form.get('categoryId')?.reset();
-  }
-
   public onAddItem(): void {
     this.dialog
       .open(CreatePaymentComponent, {
@@ -108,26 +60,6 @@ export class AccountComponent implements OnChanges, OnInit, OnDestroy {
       .afterClosed()
       .pipe(takeUntil(this.destroy$))
       .subscribe();
-  }
-
-  private onViewAccount(account: IAccount): void {
-    console.log('view', account);
-  }
-
-  private onDeleteAccount(account: IAccount): void {
-    this.store.dispatch(new AccountActions.Delete(account.id));
-  }
-
-  private onSendMoney(): void {
-    console.log('send money');
-  }
-
-  private onPay(): void {
-    console.log('pay');
-  }
-
-  private onFillAccount(): void {
-    console.log('fill account');
   }
 
   private buildForm(): void {
@@ -143,20 +75,15 @@ export class AccountComponent implements OnChanges, OnInit, OnDestroy {
     const date = new Date();
     date.setHours(0, 0, 0, 0);
 
-    console.log('date', date.toUTCString());
-
     this.todayPayments = this.account.payments.filter(
       (payment) => new Date(payment.createdAt).getDate() === date.getDate(),
     );
-
-    console.log('todayPayments', this.todayPayments);
 
     date.setDate(date.getDate() - 1);
 
     this.yesterdayPayments = this.account.payments.filter(
       (payment) => new Date(payment.createdAt).getDate() === date.getDate(),
     );
-    console.log('yesterdayPayments', this.yesterdayPayments);
 
     this.cdr.markForCheck();
   }

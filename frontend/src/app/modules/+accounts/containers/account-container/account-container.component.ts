@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Select } from '@ngxs/store';
 import { forkJoin, Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
-import { AccountService, AccountState, IAccount, ICategory } from 'src/app/core/store';
+import { AccountService, AccountState, IAccount, ICategory, ICurrency } from 'src/app/core/store';
 
 @Component({
   selector: 'bg-account-container',
@@ -14,6 +14,7 @@ import { AccountService, AccountState, IAccount, ICategory } from 'src/app/core/
 export class AccountContainerComponent implements OnInit {
   @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
   @Select(AccountState.categories) public categories$: Observable<Record<number, ICategory>>;
+  @Select(AccountState.currencies) public currencies$: Observable<Record<number, ICurrency>>;
 
   public currentAccount$: Observable<IAccount>;
 

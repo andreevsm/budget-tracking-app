@@ -37,7 +37,7 @@
                     payment__value_expense: payment.type === 'EXPENSE'
                   }"
                 >
-                  {{ payment.amount | currency: payment.currency:'symbol-narrow' }}
+                  {{ payment.amount | currency: currencies[payment.currencyId].name : 'symbol-narrow' }}
                 </span>
               </div>
             </li>
@@ -48,6 +48,25 @@
           <h3 class="payments__title">
             Вчера
           </h3>
+          <ul class="payments__list">
+            <li class="payments__payment payment" *ngFor="let payment of yesterdayPayments">
+              <div class="payment__name" [style.color]="categories[payment?.categoryId]?.color">
+                {{ categories[payment?.categoryId]?.name }}
+              </div>
+              <div class="payment__amount">
+                <span
+                  class="payment__value"
+                  [ngClass]="{
+                    payment__value: true,
+                    payment__value_income: payment.type === 'INCOME',
+                    payment__value_expense: payment.type === 'EXPENSE'
+                  }"
+                >
+                  {{ payment.amount | currency: currencies[payment.currencyId].name : 'symbol-narrow' }}
+                </span>
+              </div>
+            </li>
+          </ul>
         </li>
       </ul>
     </main>
