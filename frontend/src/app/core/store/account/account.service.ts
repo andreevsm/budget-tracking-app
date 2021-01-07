@@ -34,8 +34,12 @@ export class AccountService {
     });
   }
 
-  public loadCategories(): Observable<ICategory[]> {
-    return this.http.get<ICategory[]>(CATEGORIES_API);
+  public loadCategories(accountId: number): Observable<ICategory[]> {
+    return this.http.get<ICategory[]>(CATEGORIES_API, {
+      params: {
+        accountId: accountId.toString(),
+      },
+    });
   }
 
   public loadCurrencies(): Observable<ICurrency[]> {

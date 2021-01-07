@@ -21,8 +21,8 @@ public class CategoryController {
     }
 
     @GetMapping()
-    public List<Category> getAllCategories() {
-        return categoryService.getAllCategories();
+    public List<Category> getAllCategories(@RequestParam int accountId) {
+        return categoryService.getAllCategories(accountId);
     }
 
     @PostMapping

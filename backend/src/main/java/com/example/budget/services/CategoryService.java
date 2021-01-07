@@ -19,8 +19,8 @@ public class CategoryService {
         this.categoryDao = categoryDao;
     }
 
-    public List<Category> getAllCategories() {
-        return categoryDao.selectAllCategories();
+    public List<Category> getAllCategories(int accountId) {
+        return categoryDao.selectAllCategories(accountId);
     }
 
     public int addCategory(Category category) {

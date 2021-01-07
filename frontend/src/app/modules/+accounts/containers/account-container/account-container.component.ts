@@ -1,9 +1,16 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { forkJoin, Observable } from 'rxjs';
-import { switchMap, map } from 'rxjs/operators';
-import { AccountService, AccountState, IAccount, ICategory, ICurrency } from 'src/app/core/store';
+import { switchMap, map, tap } from 'rxjs/operators';
+import {
+  AccountActions,
+  AccountService,
+  AccountState,
+  IAccount,
+  ICategory,
+  ICurrency,
+} from 'src/app/core/store';
 
 @Component({
   selector: 'bg-account-container',
@@ -18,14 +25,22 @@ export class AccountContainerComponent implements OnInit {
 
   public currentAccount$: Observable<IAccount>;
 
-  constructor(private activatedRoute: ActivatedRoute, private accountService: AccountService) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private accountService: AccountService,
+    private store: Store,
+  ) {}
 
   public ngOnInit(): void {
     this.subscribeToRoute();
   }
 
   private subscribeToRoute(): void {
+    // TODO: сделать через стор
     this.currentAccount$ = this.activatedRoute.params.pipe(
+      tap(({ id }) => {
+        this.store.dispatch(new AccountActions.LoadCategories(id));
+      }),
       switchMap(({ id }) =>
         forkJoin([
           this.accountService.loadAccountById(id),

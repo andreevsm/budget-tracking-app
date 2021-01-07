@@ -7,25 +7,21 @@ export namespace AccountActions {
 
   export class LoadById {
     public static readonly type = '[Accounts] Load By Id';
-
     constructor(public accountId: number) {}
   }
 
   export class Delete {
     public static readonly type = '[Accounts] Delete account';
-
     constructor(public id: number) {}
   }
 
   export class Create {
     public static readonly type = '[Accounts] Create account';
-
     constructor(public account: INewAccount) {}
   }
 
   export class Update {
     public static readonly type = '[Accounts] Update account';
-
     constructor(public account: IAccount) {}
   }
 
@@ -37,7 +33,6 @@ export namespace AccountActions {
 
   export class LoadPayments {
     public static readonly type = '[Accounts] Load Payments';
-
     constructor(public accountId: number) {}
   }
 
@@ -47,11 +42,11 @@ export namespace AccountActions {
 
   export class LoadCategories {
     public static readonly type = '[Accounts] Load Categories';
+    constructor(public accountId: number) {}
   }
 
   export class AddCategory {
     public static readonly type = '[Accounts] Add Category';
-
     constructor(public category: INewCategory) {}
   }
 }

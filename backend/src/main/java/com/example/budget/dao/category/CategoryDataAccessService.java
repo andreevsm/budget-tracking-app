@@ -19,15 +19,16 @@ public class CategoryDataAccessService implements CategoryDao {
     }
 
     @Override
-    public List<Category> selectAllCategories() {
-        final String sql = "SELECT * from categories";
+    public List<Category> selectAllCategories(int accountId) {
+        final String sql = String.format("SELECT * from categories WHERE account_id = %d", accountId);
 
         return jdbcTemplate.query(sql, (result, i) -> {
             return new Category(
                     result.getInt("id"),
                     result.getString("name"),
                     result.getString("color"),
-                    result.getDate("created_at")
+                    result.getDate("created_at"),
+                    result.getInt("account_id")
             );
         });
 

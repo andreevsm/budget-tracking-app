@@ -16,8 +16,8 @@ export enum Currency {
 }
 
 export enum PaymentType {
-  INCOME = 'incomes',
-  EXPENSE = 'expenses',
+  INCOMES = 'incomes',
+  EXPENSES = 'expenses',
 }
 
 export interface ICategory {
@@ -33,7 +33,7 @@ export interface IPayment {
   id: number;
   accountId: number;
   amount: number;
-  operationType: keyof typeof PaymentType;
+  operationType: PaymentType;
   categoryId: number;
   createdAt: string;
   currencyId: number;

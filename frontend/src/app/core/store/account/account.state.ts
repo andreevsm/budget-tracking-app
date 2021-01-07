@@ -73,10 +73,13 @@ export class AccountState {
   }
 
   @Action(AccountActions.LoadCategories)
-  public loadCategories({ setState, getState }: StateContext<IAccountState>): any {
+  public loadCategories(
+    { setState, getState }: StateContext<IAccountState>,
+    accountId: number,
+  ): any {
     this.store.dispatch(new UIActions.ShowSpinner());
 
-    return this.accountService.loadCategories().pipe(
+    return this.accountService.loadCategories(accountId).pipe(
       tap((categoryList) => {
         const categories = categoryList.reduce((acc, cur) => {
           acc[cur.id] = cur;

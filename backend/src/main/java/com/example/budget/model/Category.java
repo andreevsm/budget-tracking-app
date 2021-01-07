@@ -22,16 +22,21 @@ public class Category {
     @Column(name = "created_at")
     private Date createdAt;
 
+    @Column(name = "account_id")
+    private int accountId;
+
     public Category(
             int id,
             String name,
             String color,
-            Date createdAt
+            Date createdAt,
+            int accountId
     ) {
         this.id = id;
         this.name = name;
         this.color = color;
         this.createdAt = createdAt;
+        this.accountId = accountId;
     }
 
     public Category() {}

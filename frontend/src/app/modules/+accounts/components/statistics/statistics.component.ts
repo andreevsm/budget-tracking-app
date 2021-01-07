@@ -8,7 +8,7 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { getMonth } from 'date-fns';
-import { IPayment } from 'src/app/core/store';
+import { IPayment, PaymentType } from 'src/app/core/store';
 import { MONTHS } from 'src/app/fixtures';
 
 import { StatisticsChartService } from './statistics-chart.service';
@@ -52,14 +52,14 @@ export class StatisticsComponent implements AfterViewInit {
 
     const expenses = groupedPayments.map((payments) =>
       payments.reduce(
-        (prev, curr) => (curr.operationType === 'EXPENSE' ? prev + curr.amount : prev),
+        (prev, curr) => (curr.operationType === PaymentType.EXPENSES ? prev + curr.amount : prev),
         0,
       ),
     );
 
     const incomes = groupedPayments.map((payments) =>
       payments.reduce(
-        (prev, curr) => (curr.operationType === 'EXPENSE' ? prev + curr.amount : prev),
+        (prev, curr) => (curr.operationType === PaymentType.INCOMES ? prev + curr.amount : prev),
         0,
       ),
     );
