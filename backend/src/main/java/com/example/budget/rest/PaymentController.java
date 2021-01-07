@@ -1,6 +1,5 @@
 package com.example.budget.rest;
 
-import com.example.budget.model.Account;
 import com.example.budget.model.Payment;
 import com.example.budget.services.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,7 @@ public class PaymentController {
                 payment.getAccountId(),
                 payment.getCategoryId(),
                 payment.getAmount(),
-                payment.getCurrency(),
+                payment.getCurrencyId(),
                 payment.getOperationType(),
                 payment.getCreatedAt()
         );

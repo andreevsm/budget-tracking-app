@@ -33,7 +33,7 @@ public class AccountDataAccessService implements AccountDao {
                 account.getName(),
                 account.getDescription(),
                 account.getCreatedAt(),
-                account.getCurrency()
+                account.getCurrencyId()
         );
     }
 
@@ -47,7 +47,7 @@ public class AccountDataAccessService implements AccountDao {
                     result.getInt("user_id"),
                     result.getString("name"),
                     result.getString("description"),
-                    result.getString("currency"),
+                    result.getInt("currency_id"),
                     result.getDate("created_at")
             );
         });
@@ -71,7 +71,7 @@ public class AccountDataAccessService implements AccountDao {
                             result.getInt("user_id"),
                             result.getString("name"),
                             result.getString("description"),
-                            result.getString("currency"),
+                            result.getInt("currency_id"),
                             result.getDate("created_at")
                     );
                 }
