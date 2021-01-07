@@ -48,4 +48,3 @@
  |  5  | Multi Stage Build + Nginx      | :white_check_mark: |
  |  6  | CSS Grid                       | :x:                |
  |  7  | Smart Dumb Components          | :white_check_mark: |
- |  8  | Smart Dumb Components          | :white_check_mark: |
