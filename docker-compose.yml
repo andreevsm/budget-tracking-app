@@ -12,25 +12,25 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
     restart: always
 
-  backend:
-    container_name: backend
-    build:
-      context: ./backend
-    ports:
-      - 8080:8080
-    environment:
-      POSTGRES_URL: jdbc:postgresql://db:5432/budget
-      POSTGRES_USERNAME: postgres
-      POSTGRES_PASSWORD: 1q2w3e4r5t6y
-    restart: always
-    links:
-      - db
+  # backend:
+  #   container_name: backend
+  #   build:
+  #     context: ./backend
+  #   ports:
+  #     - 8080:8080
+  #   environment:
+  #     POSTGRES_URL: jdbc:postgresql://db:5432/budget
+  #     POSTGRES_USERNAME: postgres
+  #     POSTGRES_PASSWORD: 1q2w3e4r5t6y
+  #   restart: always
+  #   links:
+  #     - db
 
-  frontend:
-    container_name: frontend
-    build:
-      context: ./frontend
-    ports:
-      - 4200:80
-    links:
-      - backend
+  # frontend:
+  #   container_name: frontend
+  #   build:
+  #     context: ./frontend
+  #   ports:
+  #     - 4200:80
+  #   links:
+  #     - backend

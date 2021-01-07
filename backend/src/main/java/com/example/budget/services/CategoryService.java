@@ -22,4 +22,8 @@ public class CategoryService {
     public List<Category> getAllCategories() {
         return categoryDao.selectAllCategories();
     }
+
+    public int addCategory(Category category) {
+        return categoryDao.addCategory(category);
+    }
 }

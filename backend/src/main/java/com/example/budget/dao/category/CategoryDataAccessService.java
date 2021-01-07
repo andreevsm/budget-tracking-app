@@ -32,4 +32,16 @@ public class CategoryDataAccessService implements CategoryDao {
         });
 
     }
+
+    @Override
+    public int addCategory(Category category) {
+        final String sql = "INSERT INTO categories (name, color, created_at) VALUES (?, ?, ?)";
+
+        return jdbcTemplate.update(
+                sql,
+                category.getName(),
+                category.getColor(),
+                category.getCreatedAt()
+        );
+    }
 }

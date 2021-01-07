@@ -25,7 +25,7 @@ public class AccountController {
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
-    @GetMapping("/")
+    @GetMapping()
     public List<Account> getAllAccounts(@RequestHeader(value = "Authorization") String authorizationToken) {
         String id = jwtTokenProvider.getUserId(authorizationToken);
         return accountService.getAllAccounts(Integer.parseInt(id));

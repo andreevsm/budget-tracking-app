@@ -1,11 +1,10 @@
 package com.example.budget.rest;
 
+import com.example.budget.model.Account;
 import com.example.budget.model.Category;
 import com.example.budget.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,8 +21,15 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/")
+    @GetMapping()
     public List<Category> getAllCategories() {
         return categoryService.getAllCategories();
+    }
+
+    @PostMapping
+    public int addCategory(
+            @RequestBody Category category
+    ) {
+        return categoryService.addCategory(category);
     }
 }

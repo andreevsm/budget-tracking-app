@@ -19,7 +19,7 @@ public class PaymentController {
         this.paymentService = paymentService;
     }
 
-    @GetMapping("/")
+    @GetMapping()
     public List<Payment> getPaymentsByAccountId(@RequestParam int accountId) {
         return paymentService.getPaymentsByAccountId(accountId);
     }
