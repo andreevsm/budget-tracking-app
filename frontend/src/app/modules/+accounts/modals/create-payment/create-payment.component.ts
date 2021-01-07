@@ -4,7 +4,13 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { INewPayment, AccountActions, AccountState, ICategory } from 'src/app/core/store';
+import {
+  INewPayment,
+  AccountActions,
+  AccountState,
+  ICategory,
+  ICurrency,
+} from 'src/app/core/store';
 import { parseDateToString } from 'src/app/utils';
 
 @Component({
@@ -15,6 +21,7 @@ import { parseDateToString } from 'src/app/utils';
 })
 export class CreatePaymentComponent implements OnInit {
   @Select(AccountState.categories) public categories$: Observable<Record<number, ICategory>>;
+  @Select(AccountState.currencies) public currencies$: Observable<Record<number, ICurrency>>;
 
   public form: FormGroup;
   public Object = Object;
@@ -31,13 +38,13 @@ export class CreatePaymentComponent implements OnInit {
 
   public onSubmit(event: Event): void {
     event.preventDefault();
-    const { categoryId, amount, currency, operationType } = this.form.getRawValue();
+    const { categoryId, amount, currencyId, operationType } = this.form.getRawValue();
 
     const payment: INewPayment = {
       accountId: this.data.accountId,
       categoryId,
       amount,
-      currency,
+      currencyId,
       operationType,
       createdAt: parseDateToString(new Date()),
     };
@@ -56,12 +63,20 @@ export class CreatePaymentComponent implements OnInit {
     );
   }
 
+  public onCurrencyChange(item: MatSelectChange): void {
+    this.form.patchValue(
+      {
+        currencyId: item.value,
+      },
+      { emitEvent: false },
+    );
+  }
+
   private buildForm(): void {
     this.form = this.fb.group({
       categoryId: [null, [Validators.required]],
-      // categoryColor: ['', [Validators.required]],
       description: [''],
-      currency: ['', [Validators.required]],
+      currencyId: [null, [Validators.required]],
       amount: [null, [Validators.required]],
       operationType: ['', [Validators.required]],
     });

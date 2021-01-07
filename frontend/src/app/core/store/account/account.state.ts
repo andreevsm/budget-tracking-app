@@ -7,11 +7,12 @@ import { UIActions } from '../ui';
 
 import { AccountService } from './account.service';
 import { AccountActions } from './account.action';
-import { IAccount, ICategory } from './account.interface';
+import { IAccount, ICategory, ICurrency } from './account.interface';
 
 export interface IAccountState {
   accounts: IAccount[];
   categories: Record<number, ICategory>;
+  currencies: Record<number, ICurrency>;
 }
 
 @State<IAccountState>({
@@ -19,6 +20,7 @@ export interface IAccountState {
   defaults: {
     accounts: [],
     categories: {},
+    currencies: {},
   },
 })
 @Injectable()
@@ -33,6 +35,11 @@ export class AccountState {
   @Selector()
   public static categories(state: IAccountState): Record<number, ICategory> {
     return state.categories;
+  }
+
+  @Selector()
+  public static currencies(state: IAccountState): Record<number, ICurrency> {
+    return state.currencies;
   }
 
   @Selector()
@@ -71,7 +78,7 @@ export class AccountState {
 
     return this.accountService.loadCategories().pipe(
       tap((categoryList) => {
-        const categories = categoryList.reduce((acc, cur, i) => {
+        const categories = categoryList.reduce((acc, cur) => {
           acc[cur.id] = cur;
           return acc;
         }, {});
@@ -79,6 +86,26 @@ export class AccountState {
         setState({
           ...getState(),
           categories,
+        });
+      }),
+      finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
+    );
+  }
+
+  @Action(AccountActions.LoadCurrencies)
+  public loadCurrencies({ setState, getState }: StateContext<IAccountState>): any {
+    this.store.dispatch(new UIActions.ShowSpinner());
+
+    return this.accountService.loadCurrencies().pipe(
+      tap((currencyList) => {
+        const currencies = currencyList.reduce((acc, cur) => {
+          acc[cur.id] = cur;
+          return acc;
+        }, {});
+
+        setState({
+          ...getState(),
+          currencies,
         });
       }),
       finalize(() => this.store.dispatch(new UIActions.HideSpinner())),

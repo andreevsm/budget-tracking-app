@@ -3,7 +3,7 @@ export interface IAccount {
   createdAt: string;
   name: string;
   description: string;
-  currency: Currency;
+  currencyId: number;
   payments: IPayment[];
 }
 
@@ -36,7 +36,13 @@ export interface IPayment {
   operationType: keyof typeof PaymentType;
   categoryId: number;
   createdAt: string;
-  currency: keyof typeof Currency;
+  currencyId: number;
 }
 
 export type INewPayment = Omit<IPayment, 'id'>;
+
+export interface ICurrency {
+  id: number;
+  name: string;
+  createdAt: string;
+}

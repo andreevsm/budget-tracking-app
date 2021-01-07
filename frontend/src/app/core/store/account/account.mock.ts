@@ -1,4 +1,4 @@
-import { IAccount, Currency, IPayment } from './account.interface';
+import { IAccount, IPayment } from './account.interface';
 
 export const PAYMENTS: IPayment[] = [
   {
@@ -6,7 +6,7 @@ export const PAYMENTS: IPayment[] = [
     accountId: 1,
     categoryId: 1,
     amount: 500,
-    currency: 'RUB',
+    currencyId: 2,
     operationType: 'EXPENSE',
     createdAt: '2019-04-20',
   },
@@ -15,7 +15,7 @@ export const PAYMENTS: IPayment[] = [
     accountId: 1,
     categoryId: 2,
     amount: 1500,
-    currency: 'RUB',
+    currencyId: 2,
     operationType: 'EXPENSE',
     createdAt: '2019-04-20',
   },
@@ -24,7 +24,7 @@ export const PAYMENTS: IPayment[] = [
     accountId: 1,
     categoryId: 3,
     amount: 500,
-    currency: 'RUB',
+    currencyId: 2,
     operationType: 'INCOME',
     createdAt: '2019-04-20',
   },
@@ -36,7 +36,7 @@ export const ACCOUNTS: IAccount[] = [
     name: 'Счет 1',
     createdAt: '2019-04-20',
     description: 'Это мой счет 1',
-    currency: Currency.EUR,
+    currencyId: 2,
     payments: PAYMENTS,
   },
 ];

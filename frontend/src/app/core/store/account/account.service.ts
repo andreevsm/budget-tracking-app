@@ -2,11 +2,12 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { ACCOUNTS_API, CATEGORIES_API, PAYMENTS_API } from '../../constants';
+import { ACCOUNTS_API, CATEGORIES_API, CURRENCIES_API, PAYMENTS_API } from '../../constants';
 
 import {
   IAccount,
   ICategory,
+  ICurrency,
   INewAccount,
   INewCategory,
   INewPayment,
@@ -35,6 +36,10 @@ export class AccountService {
 
   public loadCategories(): Observable<ICategory[]> {
     return this.http.get<ICategory[]>(CATEGORIES_API);
+  }
+
+  public loadCurrencies(): Observable<ICurrency[]> {
+    return this.http.get<ICategory[]>(CURRENCIES_API);
   }
 
   public createAccount(account: INewAccount): Observable<number> {

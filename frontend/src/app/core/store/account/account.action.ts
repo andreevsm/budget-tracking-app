@@ -41,6 +41,10 @@ export namespace AccountActions {
     constructor(public accountId: number) {}
   }
 
+  export class LoadCurrencies {
+    public static readonly type = '[Accounts] Load Currencies';
+  }
+
   export class LoadCategories {
     public static readonly type = '[Accounts] Load Categories';
   }

@@ -17,9 +17,18 @@
         <textarea matInput formControlName="description"></textarea>
       </mat-form-field>
 
-      <mat-form-field class="form--control">
+      <mat-form-field class="form--control" *ngIf="currencies$ | async as currencies">
         <mat-label>Валюта</mat-label>
-        <input matInput placeholder="USD" formControlName="currency">
+        <mat-select
+          (selectionChange)="onCurrencyChange($event)"
+        >  
+          <mat-option
+            *ngFor="let currency of Object.values(currencies)"
+            [value]="currency.id"
+          >
+            {{ currency.name }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
       <div class="form--buttons">
