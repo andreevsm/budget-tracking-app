@@ -24,9 +24,6 @@
     justify-content: center;
   }
 
-  &__amount {
-  }
-
   &__payments {
     margin-left: 7rem;
   }
@@ -40,20 +37,20 @@
   justify-content: center;
   align-items: center;
 
-  &__incomes,
-  &__expense {
+  &__circle {
     position: absolute;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-  }
+    border: 1rem solid #f0f0f0;
 
-  &__incomes {
-    border: 1rem solid red;
-  }
+    &-increase {
+      border: 1rem solid red;
+    }
 
-  &__expense {
-    border: 1rem solid green;
+    &-decrease {
+      border: 1rem solid green;
+    }
   }
 
   &__inner {
@@ -113,5 +110,4 @@
       color: red;
     }
   }
-
 }

@@ -10,5 +10,20 @@
 
   &__table {
     width: 100%;
+    background-color: transparent;
+  }
+}
+
+.table {
+  &__tr {
+    background-color: white;
+
+    &_grouped {
+      background-color: inherit;
+
+      span {
+        font-weight: bold;
+      }
+    }
   }
 }

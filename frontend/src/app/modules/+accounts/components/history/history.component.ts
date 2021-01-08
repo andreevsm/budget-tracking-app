@@ -1,7 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, OnChanges } from '@angular/core';
-import { getMonth } from 'date-fns';
-import { IPayment } from 'src/app/core/store';
-import { MONTHS } from 'src/app/fixtures';
+import { Component, ChangeDetectionStrategy, Input, OnChanges } from '@angular/core';
+import { ICategory, ICurrency, IPayment } from 'src/app/core/store';
 
 @Component({
   selector: 'bg-history',
@@ -9,49 +7,45 @@ import { MONTHS } from 'src/app/fixtures';
   styleUrls: ['./history.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HistoryComponent implements OnInit, OnChanges {
-  @Input() public payments: any[] = [];
+export class HistoryComponent implements OnChanges {
+  @Input() public payments: (IPayment | { grouped: string })[] = [];
+  @Input() public categories: Record<number, ICategory>;
+  @Input() public currencies: Record<number, ICurrency>;
 
   public displayedColumns = ['category', 'amount'];
 
-  public ngOnInit(): void {}
-
   public ngOnChanges(): void {
     this.groupPaymentsByDay();
-    console.log('payments', this.payments);
   }
 
-  public isGroup(index: number, item: any): boolean {
-    return item.grouped;
+  public isGroup(index: number, item: { grouped: string }): boolean {
+    return Boolean(item.grouped);
   }
 
   private groupPaymentsByDay(): any {
-    // const groupedPaymentsByMonths = MONTHS.map((month, index) => {
-    //   return this.payments.filter(({ createdAt }) => getMonth(createdAt) === index);
-    // });
-
     const groupedPayments: Record<string, IPayment[]> = {};
 
-    this.payments.forEach((payment) => {
-      const date = payment.createdAt.toString();
+    this.payments
+      .slice()
+      .sort((first: IPayment, second: IPayment) => {
+        const firstTime = new Date(first.createdAt).getTime();
+        const secondTime = new Date(second.createdAt).getTime();
 
-      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-      if (groupedPayments[date]) {
-        groupedPayments[date] = [...groupedPayments[date], payment];
-      } else {
-        groupedPayments[date] = [payment];
-      }
-    });
+        return secondTime - firstTime;
+      })
+      .forEach((payment: IPayment) => {
+        const date = payment.createdAt.toString();
+
+        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+        if (groupedPayments[date]) {
+          groupedPayments[date] = [...groupedPayments[date], payment];
+        } else {
+          groupedPayments[date] = [payment];
+        }
+      });
 
     this.payments = Object.entries(groupedPayments)
-      .map(([key, value]) => {
-        return [
-          {
-            grouped: key,
-          },
-          ...value,
-        ];
-      })
+      .map(([key, value]) => [{ grouped: key }, ...value])
       .flat();
   }
 }

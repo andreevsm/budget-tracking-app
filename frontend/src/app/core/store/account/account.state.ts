@@ -1,7 +1,7 @@
 import { Action, State, StateContext, Selector, Store } from '@ngxs/store';
 import { Injectable } from '@angular/core';
-import { tap, finalize } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { tap, finalize, map } from 'rxjs/operators';
+import { forkJoin, Observable } from 'rxjs';
 
 import { UIActions } from '../ui';
 
@@ -11,6 +11,7 @@ import { IAccount, ICategory, ICurrency } from './account.interface';
 
 export interface IAccountState {
   accounts: IAccount[];
+  currentAccount: IAccount;
   categories: Record<number, ICategory>;
   currencies: Record<number, ICurrency>;
 }
@@ -21,6 +22,7 @@ export interface IAccountState {
     accounts: [],
     categories: {},
     currencies: {},
+    currentAccount: null,
   },
 })
 @Injectable()
@@ -43,9 +45,8 @@ export class AccountState {
   }
 
   @Selector()
-  public static currentAccount(state: IAccountState): (id: number) => IAccount {
-    return (id: number): IAccount =>
-      state.accounts.find((account) => account.id === id) as IAccount;
+  public static currentAccount(state: IAccountState): IAccount {
+    return state.currentAccount;
   }
 
   @Action(AccountActions.LoadAll)
@@ -63,6 +64,28 @@ export class AccountState {
     );
   }
 
+  @Action(AccountActions.LoadById)
+  public loadById(
+    { setState, getState }: StateContext<IAccountState>,
+    { accountId }: AccountActions.LoadById,
+  ): Observable<IAccount> {
+    return forkJoin([
+      this.accountService.loadAccountById(accountId),
+      this.accountService.loadPayments(accountId),
+    ]).pipe(
+      map(([account, payments]) => ({
+        ...account,
+        payments,
+      })),
+      tap((currentAccount) =>
+        setState({
+          ...getState(),
+          currentAccount,
+        }),
+      ),
+    );
+  }
+
   @Action(AccountActions.LoadPayments)
   public loadPayments({ setState, getState }: StateContext<IAccountState>, payload: number): any {
     this.store.dispatch(new UIActions.ShowSpinner());
@@ -75,7 +98,7 @@ export class AccountState {
   @Action(AccountActions.LoadCategories)
   public loadCategories(
     { setState, getState }: StateContext<IAccountState>,
-    accountId: number,
+    { accountId }: AccountActions.LoadCategories,
   ): any {
     this.store.dispatch(new UIActions.ShowSpinner());
 

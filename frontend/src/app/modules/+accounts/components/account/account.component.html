@@ -6,11 +6,16 @@
 
     <main class="account__main">
       <div class="account__amount amount">
-        <div class="amount__incomes"></div>
-        <div class="amount__expense"></div>
+        <div
+          class="amount__circle"
+          [ngClass]="{
+            'amount__circle-increase': (todayPayments | sum : 'amount') > 0,
+            'amount__circle-decrease': (todayPayments | sum : 'amount') < 0
+          }"
+        ></div>
         <div class="amount__inner">
           <p class="amount__value">
-            +500 руб.
+            {{ todayPayments | sum : 'amount' | currency: currencies[account.currencyId].name : 'symbol-narrow' }}
           </p>
           <button mat-button color="primary" class="account__add" (click)="onAddItem()">
             Добавить
@@ -33,8 +38,8 @@
                   class="payment__value"
                   [ngClass]="{
                     payment__value: true,
-                    payment__value_income: payment.type === 'INCOME',
-                    payment__value_expense: payment.type === 'EXPENSE'
+                    payment__value_income: payment.type === 'incomes',
+                    payment__value_expense: payment.type === 'expenses'
                   }"
                 >
                   {{ payment.amount | currency: currencies[payment.currencyId].name : 'symbol-narrow' }}

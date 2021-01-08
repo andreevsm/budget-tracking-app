@@ -1,4 +1,4 @@
-import { IAccount, IPayment } from './account.interface';
+import { IAccount, IPayment, PaymentType } from './account.interface';
 
 export const PAYMENTS: IPayment[] = [
   {
@@ -7,7 +7,7 @@ export const PAYMENTS: IPayment[] = [
     categoryId: 1,
     amount: 500,
     currencyId: 2,
-    operationType: 'EXPENSE',
+    operationType: PaymentType.EXPENSES,
     createdAt: '2019-04-20',
   },
   {
@@ -16,7 +16,7 @@ export const PAYMENTS: IPayment[] = [
     categoryId: 2,
     amount: 1500,
     currencyId: 2,
-    operationType: 'EXPENSE',
+    operationType: PaymentType.EXPENSES,
     createdAt: '2019-04-20',
   },
   {
@@ -25,7 +25,7 @@ export const PAYMENTS: IPayment[] = [
     categoryId: 3,
     amount: 500,
     currencyId: 2,
-    operationType: 'INCOME',
+    operationType: PaymentType.INCOMES,
     createdAt: '2019-04-20',
   },
 ];
