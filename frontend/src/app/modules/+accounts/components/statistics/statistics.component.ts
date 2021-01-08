@@ -8,7 +8,7 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { getMonth } from 'date-fns';
-import { IPayment, PaymentType } from 'src/app/core/store';
+import { ICategory, ICurrency, IPayment, PaymentType } from 'src/app/core/store';
 import { MONTHS } from 'src/app/fixtures';
 
 import { StatisticsChartService } from './statistics-chart.service';
@@ -23,7 +23,9 @@ import { StatisticsChartService } from './statistics-chart.service';
 export class StatisticsComponent implements AfterViewInit {
   @ViewChild('chart') public chartElementRef: ElementRef<HTMLCanvasElement>;
 
-  @Input() public payments: IPayment[];
+  @Input() public payments: IPayment[] = [];
+  @Input() public categories: Record<number, ICategory>;
+  @Input() public currencies: Record<number, ICurrency>;
 
   public chart: Chart;
   public isCreated = false;
@@ -44,6 +46,7 @@ export class StatisticsComponent implements AfterViewInit {
   private buildChart(): void {
     this.chartService.buildChart(this.chartElementRef.nativeElement, (isCreated) => {
       this.isCreated = isCreated;
+      this.cdr.markForCheck();
     });
 
     console.log(this.groupPaymentsByMonths());

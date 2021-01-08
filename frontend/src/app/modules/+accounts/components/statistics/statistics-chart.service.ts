@@ -33,6 +33,8 @@ export class StatisticsChartService {
       },
     });
 
+    console.log('chart', this.chart);
+
     callback(true); // изменить
   }
 

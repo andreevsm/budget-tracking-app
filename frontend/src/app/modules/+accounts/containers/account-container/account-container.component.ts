@@ -11,7 +11,6 @@ import { AccountState, IAccount, ICategory, ICurrency } from 'src/app/core/store
 })
 export class AccountContainerComponent {
   @Select(AccountState.currentAccount) public currentAccount$: Observable<IAccount>;
-  @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
   @Select(AccountState.categories) public categories$: Observable<Record<number, ICategory>>;
   @Select(AccountState.currencies) public currencies$: Observable<Record<number, ICurrency>>;
 }

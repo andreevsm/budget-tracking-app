@@ -47,13 +47,13 @@ export class AccountsContainerComponent implements OnInit, OnDestroy {
   }
 
   private subscribeToAccounts(): void {
-    this.accounts$
-      .pipe(
-        filter((accounts) => accounts?.length > 0),
-        takeUntil(this.destroy$),
-      )
-      .subscribe((accounts) => {
-        this.router.navigate(['/accounts', accounts[0].id]);
-      });
+    // this.accounts$
+    //   .pipe(
+    //     filter((accounts) => accounts?.length > 0),
+    //     takeUntil(this.destroy$),
+    //   )
+    //   .subscribe((accounts) => {
+    //     this.router.navigate(['/accounts', accounts[0].id]);
+    //   });
   }
 }
