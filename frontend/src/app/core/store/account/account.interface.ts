@@ -4,6 +4,7 @@ export interface IAccount {
   name: string;
   description: string;
   currencyId: number;
+  amount: number;
   payments: IPayment[];
 }
 

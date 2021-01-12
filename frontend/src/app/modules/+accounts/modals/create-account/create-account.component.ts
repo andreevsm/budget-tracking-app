@@ -27,12 +27,13 @@ export class CreateAccountComponent implements OnInit {
   public onSubmit(event: Event): void {
     event.preventDefault();
 
-    const { name, description, currencyId } = this.form.getRawValue();
+    const { name, description, currencyId, amount } = this.form.getRawValue();
     const account: INewAccount = {
       name,
       description,
       currencyId,
       createdAt: parseDateToString(new Date()),
+      amount,
     };
 
     this.store.dispatch(new AccountActions.Create(account));
@@ -52,6 +53,7 @@ export class CreateAccountComponent implements OnInit {
       name: ['', [Validators.required]],
       description: [''],
       currencyId: [null, [Validators.required]],
+      amount: [null, [Validators.required]],
     });
   }
 }
