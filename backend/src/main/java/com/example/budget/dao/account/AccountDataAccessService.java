@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +26,7 @@ public class AccountDataAccessService implements AccountDao {
 
     @Override
     public int addAccount(int userId, Account account) {
-        final String sql = "INSERT INTO accounts (user_id, name, description, created_at, currency) VALUES(?, ?, ?, ?, ?::currency)";
+        final String sql = "INSERT INTO accounts (user_id, name, description, created_at, amount, currency_id) VALUES (?, ?, ?, ?, ?, ?)";
 
         return jdbcTemplate.update(
                 sql,
@@ -33,6 +34,7 @@ public class AccountDataAccessService implements AccountDao {
                 account.getName(),
                 account.getDescription(),
                 account.getCreatedAt(),
+                account.getAmount(),
                 account.getCurrencyId()
         );
     }
@@ -48,7 +50,8 @@ public class AccountDataAccessService implements AccountDao {
                     result.getString("name"),
                     result.getString("description"),
                     result.getInt("currency_id"),
-                    result.getDate("created_at")
+                    result.getDate("created_at"),
+                    new BigInteger(Integer.valueOf(result.getInt("amount")).toString())
             );
         });
     }
@@ -56,11 +59,6 @@ public class AccountDataAccessService implements AccountDao {
     @Override
     public Optional<Account> selectAccountById(int id) {
         final String sql = "SELECT * FROM accounts WHERE id= ?";
-
-
-        System.out.println("id: " + id);
-        System.out.println("sql: " + sql);
-
 
         Account account = jdbcTemplate.queryForObject(
                 sql,
@@ -72,7 +70,8 @@ public class AccountDataAccessService implements AccountDao {
                             result.getString("name"),
                             result.getString("description"),
                             result.getInt("currency_id"),
-                            result.getDate("created_at")
+                            result.getDate("created_at"),
+                            new BigInteger(Integer.valueOf(result.getInt("amount")).toString())
                     );
                 }
         );

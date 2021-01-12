@@ -3,10 +3,7 @@ package com.example.budget.rest;
 import com.example.budget.model.Account;
 import com.example.budget.security.JwtTokenProvider;
 import com.example.budget.services.AccountService;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -3,6 +3,7 @@ package com.example.budget.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.Date;
 
 @Data
@@ -29,16 +30,26 @@ public class Account {
     @Column(name = "currency_id")
     private int currencyId;
 
-    public Account (int id, int userId, String name, String description, int currencyId, Date createdAt) {
+    @Column(name = "amount")
+    private BigInteger amount;
+
+    public Account (
+            int id,
+            int userId,
+            String name,
+            String description,
+            int currencyId,
+            Date createdAt,
+            BigInteger amount
+    ) {
         this.id = id;
         this.userId = userId;
         this.name = name;
         this.description = description;
         this.currencyId = currencyId;
         this.createdAt = createdAt;
+        this.amount = amount;
     }
 
-    public Account() {
-
-    }
+    public Account() {}
 }
