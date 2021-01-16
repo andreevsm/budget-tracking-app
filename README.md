@@ -18,12 +18,14 @@ docker rm $(docker ps -a -q) - удаление всех контейнеров
 docker exec -it budget-app bash
 psql -U postgres
 
-CREATE TABLE IF NOT EXISTS accounts (
+CREATE TABLE IF NOT EXISTS transactions (
 	id serial PRIMARY KEY,
-	userid int NOT NULL,
-	FOREIGN KEY (userId) REFERENCES users (id),
-	name VARCHAR(55) NOT NULL,
-	description VARCHAR(255)
+	account_income int not null,
+	account_outcome int not null,
+	income decimal(12, 2) not null,
+	outcome decimal(12, 2) not null,
+	comment VARCHAR(255),
+	created_at TIMESTAMP WITHOUT TIME zone not null
 )
 
 ./mvnw POSTGRES_URL="jdbc:postgresql://localhost:5432/budget" POSTGRES_USERNAME="postgres" POSTGRES_PASSWORD="1q2w3e4r5t6y" package
