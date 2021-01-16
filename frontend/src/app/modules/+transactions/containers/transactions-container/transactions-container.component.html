@@ -1,9 +1,6 @@
 <div class="root">
 
   <div class="transactions">
-
-    <button (click)="onAddTransactionBlock()">Добавить транзакцию</button>
-
     <div class="transactions__wrapper">
       <div class="transactions__filter">
         <bg-transactions-filter></bg-transactions-filter>
@@ -11,10 +8,12 @@
 
       <div class="transactions__main">
         <bg-add-transaction
-          *ngIf="isAddingTransactionShown"
+          (addTransaction)="onTransactionAdd($event)"
         ></bg-add-transaction>
 
-        <bg-transactions-history></bg-transactions-history>
+        <bg-transactions-history
+          [transactions]="transactions$ | async"
+        ></bg-transactions-history>
       </div>
     </div>
 

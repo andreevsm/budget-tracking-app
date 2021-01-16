@@ -2,6 +2,21 @@
   <div class="payment">
     <form class="payment__form form" [formGroup]="form" (submit)="onSubmit($event)">
 
+      <mat-radio-group
+        class="form__control"
+        formControlName="operationType"
+      >
+        <mat-radio-button class="form__radio" value="expenses">
+          Расходы
+        </mat-radio-button>
+        <mat-radio-button class="form__radio" value="incomes">
+          Доходы
+        </mat-radio-button>
+        <mat-radio-button class="form__radio" value="transfer">
+          Перевод
+        </mat-radio-button>
+      </mat-radio-group>
+
       <div class="form__control-group">
         <mat-form-field class="form__control" *ngIf="categories$ | async as categories">
           <mat-label>Категория</mat-label>
@@ -38,18 +53,6 @@
           </mat-select>
         </mat-form-field>
       </div>
-
-      <mat-radio-group
-        class="form__control"
-        formControlName="operationType"
-      >
-        <mat-radio-button class="form__radio" value="expenses">
-          Расходы
-        </mat-radio-button>
-        <mat-radio-button class="form__radio" value="incomes">
-          Доходы
-        </mat-radio-button>
-      </mat-radio-group>
 
       <div class="form__buttons">
         <button

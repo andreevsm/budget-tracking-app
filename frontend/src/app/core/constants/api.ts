@@ -11,3 +11,4 @@ export const ACCOUNTS_API = `${API}/accounts`;
 export const PAYMENTS_API = `${API}/payments`;
 export const CATEGORIES_API = `${API}/categories`;
 export const CURRENCIES_API = `${API}/currencies`;
+export const TRANSACTIONS_API = `${API}/transactions`;

@@ -26,6 +26,7 @@ export interface ICategory {
   name: string;
   color: string;
   createdAt: string;
+  accountId: number;
 }
 
 export type INewCategory = Omit<ICategory, 'id'>;

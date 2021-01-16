@@ -1,4 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+
+import { INewTransaction, ITransaction, TransactionActions, TransactionState } from '../../store';
 
 @Component({
   selector: 'bg-transactions-container',
@@ -7,13 +11,15 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionsContainerComponent implements OnInit {
-  public isAddingTransactionShown = false;
+  @Select(TransactionState.transactions) public transactions$: Observable<ITransaction[]>;
 
-  constructor() {}
+  constructor(private store: Store) {}
 
-  ngOnInit(): void {}
+  public ngOnInit(): void {}
 
-  public onAddTransactionBlock(): void {
-    this.isAddingTransactionShown = true;
+  public onTransactionAdd(transaction: INewTransaction): void {
+    console.log('transaction', transaction);
+
+    this.store.dispatch(new TransactionActions.Add(transaction));
   }
 }

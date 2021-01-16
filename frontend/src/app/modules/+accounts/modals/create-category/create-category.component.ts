@@ -27,6 +27,7 @@ export class CreateCategoryComponent implements OnInit {
       name,
       color,
       createdAt: parseDateToString(new Date()),
+      accountId: 1,
     };
 
     console.log(category);

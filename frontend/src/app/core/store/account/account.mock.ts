@@ -38,5 +38,6 @@ export const ACCOUNTS: IAccount[] = [
     description: 'Это мой счет 1',
     currencyId: 2,
     payments: PAYMENTS,
+    amount: 0,
   },
 ];
