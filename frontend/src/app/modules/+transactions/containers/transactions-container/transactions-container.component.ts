@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
+import { AccountActions, AccountState, IAccount, ICategory } from 'src/app/core/store';
 
 import { INewTransaction, ITransaction, TransactionActions, TransactionState } from '../../store';
 
@@ -11,11 +12,16 @@ import { INewTransaction, ITransaction, TransactionActions, TransactionState } f
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionsContainerComponent implements OnInit {
+  @Select(AccountState.categories) public categories$: Observable<Record<number, ICategory>>;
+  @Select(AccountState.accounts) public accounts$: Observable<Record<number, IAccount>>;
   @Select(TransactionState.transactions) public transactions$: Observable<ITransaction[]>;
 
   constructor(private store: Store) {}
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.store.dispatch(new AccountActions.LoadCategories(1));
+    this.store.dispatch(new TransactionActions.LoadAll());
+  }
 
   public onTransactionAdd(transaction: INewTransaction): void {
     console.log('transaction', transaction);

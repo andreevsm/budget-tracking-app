@@ -1,115 +1,131 @@
-<div class="root">
+<mat-card>
 
-  <div class="add-transaction">
-
-    <button *ngIf="!isTransactionBlockShown" (click)="onShowTransactionBlock()" class="add-transaction__show-block">
-      Добавить транзакцию
-    </button>
-
-    <form
-      *ngIf="isTransactionBlockShown"
-      [formGroup]="form"
-      (submit)="onSubmit()"
+  <mat-card-title>
+    <h3
+      *ngIf="!isTransactionBlockShown" (click)="isTransactionBlockShown = !isTransactionBlockShown"
     >
-      <mat-radio-group
-        class="form__control"
-        formControlName="transactionType"
+      Добавить транзакцию
+    </h3>
+  </mat-card-title>
+
+  <mat-card-content>
+    <div class="add-transaction">
+      <form
+        *ngIf="isTransactionBlockShown"
+        [formGroup]="form"
+        (submit)="onSubmit()"
       >
-        <mat-radio-button class="form__radio" value="expenses">
-          Расходы
-        </mat-radio-button>
-        <mat-radio-button class="form__radio" value="incomes">
-          Доходы
-        </mat-radio-button>
-        <mat-radio-button class="form__radio" value="transfer">
-          Перевод
-        </mat-radio-button>
-      </mat-radio-group>
-  
-
-      <div>
-
-        <div
-          *ngIf="transactionTypeControl.value !== 'transfer'"
+        <mat-radio-group
+          class="form__control"
+          formControlName="transactionType"
         >
+          <mat-radio-button class="form__radio" value="expenses">
+            Расходы
+          </mat-radio-button>
+          <mat-radio-button class="form__radio" value="incomes">
+            Доходы
+          </mat-radio-button>
+          <mat-radio-button class="form__radio" value="transfer">
+            Перевод
+          </mat-radio-button>
+        </mat-radio-group>
+    
+  
+        <div>
+  
+          <div *ngIf="transactionTypeControl.value !== 'transfer'">
 
-          <!-- <mat-form-field class="form__control">
-            <mat-label>Счет</mat-label>
-            <mat-select
-            >
-            </mat-select>
-          </mat-form-field> -->
+            <div class="form__control-group">
+              <mat-form-field class="form__control">
+                <mat-label>Счет</mat-label>
+                <mat-select (selectionChange)="onAccountIncomeChange($event)">
+                  <mat-option
+                    *ngFor="let account of accounts"
+                    [value]="account.id"
+                  >
+                    {{ account.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
 
-
-          <mat-form-field class="form__control">
-            <mat-label>Сумма</mat-label>
-            <input matInput type="number" formControlName="income">
-          </mat-form-field>
-
-          <!-- <div class="form__control-group">
-            <mat-form-field class="form__control" *ngIf="categories$ | async as categories">
-              <mat-label>Категория</mat-label>
+            <mat-form-field class="form__control">
+              <mat-label>Сумма</mat-label>
+              <input matInput type="number" formControlName="income">
+            </mat-form-field>
+  
+            <div class="form__control-group">
+              <mat-form-field class="form__control" *ngIf="categories">
+                <mat-label>Категория</mat-label>
+                <mat-select
+                  (selectionChange)="onCategoryChange($event)"
+                >  
+                  <mat-option
+                    *ngFor="let category of Object.values(categories)"
+                    [value]="category.id"
+                  >
+                    {{ category.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+  
+          </div>
+  
+          <div
+            *ngIf="transactionTypeControl.value === 'transfer'"
+          >
+  
+            <mat-form-field class="form__control">
+              <mat-label>Откуда</mat-label>
               <mat-select
               >
               </mat-select>
             </mat-form-field>
-          </div> -->
-
+          
+  
+            <mat-form-field class="form__control">
+              <mat-label>Куда</mat-label>
+              <mat-select
+              >
+              </mat-select>
+            </mat-form-field>
+  
+            <mat-form-field class="form__control">
+              <mat-label>Сумма снятия</mat-label>
+              <input matInput type="number" formControlName="income">
+            </mat-form-field>
+  
+            <mat-form-field class="form__control">
+              <mat-label>Сумма пополнения</mat-label>
+              <input matInput type="number" formControlName="outcome">
+            </mat-form-field>
+          </div>
+  
         </div>
-
-        <div
-          *ngIf="transactionTypeControl.value === 'transfer'"
-        >
-
-          <mat-form-field class="form__control">
-            <mat-label>Откуда</mat-label>
-            <mat-select
-            >
-            </mat-select>
-          </mat-form-field>
-        
-
-          <mat-form-field class="form__control">
-            <mat-label>Куда</mat-label>
-            <mat-select
-            >
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field class="form__control">
-            <mat-label>Сумма снятия</mat-label>
-            <input matInput type="number" formControlName="income">
-          </mat-form-field>
-
-          <mat-form-field class="form__control">
-            <mat-label>Сумма пополнения</mat-label>
-            <input matInput type="number" formControlName="outcome">
-          </mat-form-field>
+  
+        <div class="form__buttons">
+          <button
+            class="form__button"
+            mat-flat-button
+            (click)="isTransactionBlockShown = !isTransactionBlockShown"
+          >
+            Отмена
+          </button>
+          <button
+            class="form__button"
+            mat-flat-button
+            color="primary"
+            type="submit"
+          >
+            Добавить
+          </button>
         </div>
+  
+      </form>
+  
+    </div>
 
-      </div>
+  </mat-card-content>
 
-      <div class="form__buttons">
-        <button
-          class="form__button"
-          mat-flat-button
-          (click)="isTransactionBlockShown = !isTransactionBlockShown"
-        >
-          Отмена
-        </button>
-        <button
-          class="form__button"
-          mat-flat-button
-          color="primary"
-          [mat-dialog-close]="true"
-          type="submit"
-        >
-          Добавить
-        </button>
-      </div>
-
-    </form>
-
-  </div>
-
-</div>
+</mat-card>

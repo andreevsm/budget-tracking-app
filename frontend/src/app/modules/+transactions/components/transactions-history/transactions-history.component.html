@@ -1,1 +1,14 @@
-<p>transactions-history works!</p>
+
+<mat-card>
+  <mat-card-content>
+
+    <mat-list>
+      <mat-list-item
+        *ngFor="let transaction of transactions"
+      >
+        {{ transaction.id }}
+      </mat-list-item>
+     </mat-list>
+
+  </mat-card-content>
+</mat-card>

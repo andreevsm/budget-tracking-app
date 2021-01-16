@@ -7,6 +7,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { NgxsModule } from '@ngxs/store';
+import { MatListModule } from '@angular/material/list';
 
 import { TransactionsContainerComponent } from './containers/transactions-container/transactions-container.component';
 import { TransactionsRoutingModule } from './transactions.routing';
@@ -31,6 +32,7 @@ import { TransactionState } from './store';
     MatRadioModule,
     MatInputModule,
     MatCardModule,
+    MatListModule,
     NgxsModule.forFeature([TransactionState]),
   ],
 })

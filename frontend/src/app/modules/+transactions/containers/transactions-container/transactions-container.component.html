@@ -8,6 +8,8 @@
 
       <div class="transactions__main">
         <bg-add-transaction
+          [categories]="categories$ | async"
+          [accounts]="accounts$ | async"
           (addTransaction)="onTransactionAdd($event)"
         ></bg-add-transaction>
 
