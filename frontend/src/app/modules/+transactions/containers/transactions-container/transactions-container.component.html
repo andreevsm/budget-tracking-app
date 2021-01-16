@@ -1,0 +1,22 @@
+<div class="root">
+
+  <div class="transactions">
+
+    <button (click)="onAddTransactionBlock()">Добавить транзакцию</button>
+
+    <div class="transactions__wrapper">
+      <div class="transactions__filter">
+        <bg-transactions-filter></bg-transactions-filter>
+      </div>
+
+      <div class="transactions__main">
+        <bg-add-transaction
+          *ngIf="isAddingTransactionShown"
+        ></bg-add-transaction>
+
+        <bg-transactions-history></bg-transactions-history>
+      </div>
+    </div>
+
+  </div>
+</div>
