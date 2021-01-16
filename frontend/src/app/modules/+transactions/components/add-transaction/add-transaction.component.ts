@@ -8,10 +8,25 @@ import {
 } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
-import { IAccount, ICategory } from 'src/app/core/store';
+import { IAccount, ICategory, ICurrency } from 'src/app/core/store';
 import { parseDateToString } from 'src/app/utils';
 
 import { INewTransaction } from '../../store';
+
+// const currencies = {
+//   USD: {
+//     RUB: 75,
+//     EURO: 1.4,
+//   },
+//   RUB: {
+//     USD: 34,
+//     EURO: 1.4,
+//   },
+//   EURO: {
+//     USD: 5,
+//     RUB: 13,
+//   },
+// };
 
 @Component({
   selector: 'bg-add-transaction',
@@ -22,6 +37,7 @@ import { INewTransaction } from '../../store';
 export class AddTransactionComponent implements OnInit {
   @Input() public categories: ICategory[] = [];
   @Input() public accounts: IAccount[] = [];
+  @Input() public currencies: Record<number, ICurrency> = {};
 
   @Output() public addTransaction: EventEmitter<INewTransaction> = new EventEmitter();
 
@@ -40,13 +56,23 @@ export class AddTransactionComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    const { accountIncome, accountOutcome, income, outcome, comment } = this.form.getRawValue();
+    const {
+      transactionType,
+      accountIncome,
+      accountOutcome,
+      income,
+      outcome,
+      comment,
+    } = this.form.getRawValue();
+
+    const patchedIncome = transactionType === 'incomes' ? income : 0;
+    const patchedOutcome = transactionType === 'expenses' ? outcome : 0;
 
     this.addTransaction.emit({
       accountIncome,
       accountOutcome: accountOutcome || accountIncome,
-      income: income ?? 0,
-      outcome: outcome ?? 0,
+      income: patchedIncome,
+      outcome: patchedOutcome,
       comment,
       createdAt: parseDateToString(new Date()),
     });
@@ -60,7 +86,17 @@ export class AddTransactionComponent implements OnInit {
     console.log('item', item);
     this.form.patchValue(
       {
-        accountIncome: item.value,
+        accountIncome: item.value.id,
+      },
+      { emitEvent: false },
+    );
+  }
+
+  public onAccountOutcomeChange(item: MatSelectChange): void {
+    console.log('item', item);
+    this.form.patchValue(
+      {
+        accountOutcome: item.value.id,
       },
       { emitEvent: false },
     );

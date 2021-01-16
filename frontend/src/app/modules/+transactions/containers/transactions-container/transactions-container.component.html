@@ -8,13 +8,18 @@
 
       <div class="transactions__main">
         <bg-add-transaction
+          class="transactions__add-transaction"
           [categories]="categories$ | async"
           [accounts]="accounts$ | async"
+          [currencies]="currencies$ | async"
           (addTransaction)="onTransactionAdd($event)"
         ></bg-add-transaction>
 
         <bg-transactions-history
+          class="transactions__history"
           [transactions]="transactions$ | async"
+          [currencies]="currencies$ | async"
+          [categories]="categories$ | async"
         ></bg-transactions-history>
       </div>
     </div>

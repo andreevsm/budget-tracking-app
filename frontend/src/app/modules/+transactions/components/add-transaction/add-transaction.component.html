@@ -1,11 +1,7 @@
 <mat-card>
 
-  <mat-card-title>
-    <h3
-      *ngIf="!isTransactionBlockShown" (click)="isTransactionBlockShown = !isTransactionBlockShown"
-    >
-      Добавить транзакцию
-    </h3>
+  <mat-card-title *ngIf="!isTransactionBlockShown" (click)="isTransactionBlockShown = !isTransactionBlockShown">
+    Добавить транзакцию
   </mat-card-title>
 
   <mat-card-content>
@@ -72,32 +68,52 @@
   
           </div>
   
-          <div
-            *ngIf="transactionTypeControl.value === 'transfer'"
-          >
-  
+          <div *ngIf="transactionTypeControl.value === 'transfer'">
             <mat-form-field class="form__control">
               <mat-label>Откуда</mat-label>
-              <mat-select
-              >
-              </mat-select>
-            </mat-form-field>
-          
-  
-            <mat-form-field class="form__control">
-              <mat-label>Куда</mat-label>
-              <mat-select
-              >
+              <mat-select #accountIncome (selectionChange)="onAccountIncomeChange($event)">
+                <mat-option
+                  *ngFor="let account of accounts"
+                  [value]="account"
+                >
+                  {{ account.name }}
+                </mat-option>
               </mat-select>
             </mat-form-field>
   
             <mat-form-field class="form__control">
-              <mat-label>Сумма снятия</mat-label>
+              <mat-label>
+                <span>
+                  Сумма снятия
+                </span>
+                <span *ngIf="accountIncome?.value">
+                  {{ currencies[accountIncome?.value.currencyId].name }}
+                </span>
+              </mat-label>
               <input matInput type="number" formControlName="income">
             </mat-form-field>
   
             <mat-form-field class="form__control">
-              <mat-label>Сумма пополнения</mat-label>
+              <mat-label>Куда</mat-label>
+              <mat-select #accountOutcome (selectionChange)="onAccountOutcomeChange($event)">
+                <mat-option
+                  *ngFor="let account of accounts"
+                  [value]="account"
+                >
+                  {{ account.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+  
+            <mat-form-field class="form__control">
+              <mat-label>
+                <span>
+                  Сумма пополнения
+                </span>
+                <span *ngIf="accountOutcome?.value">
+                  {{ currencies[accountOutcome?.value.currencyId].name }}
+                </span>
+              </mat-label>
               <input matInput type="number" formControlName="outcome">
             </mat-form-field>
           </div>
@@ -117,6 +133,7 @@
             mat-flat-button
             color="primary"
             type="submit"
+            [disabled]="form.invalid"
           >
             Добавить
           </button>
