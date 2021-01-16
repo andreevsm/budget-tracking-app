@@ -1,6 +1,12 @@
 <mat-card>
 
-  <mat-card-title *ngIf="!isTransactionBlockShown" (click)="isTransactionBlockShown = !isTransactionBlockShown">
+  <mat-card-title *ngIf="!isTransactionBlockShown">
+    <button
+      mat-icon-button
+      (click)="isTransactionBlockShown = !isTransactionBlockShown"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
     Добавить транзакцию
   </mat-card-title>
 

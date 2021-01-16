@@ -1,7 +1,17 @@
 .transactions {
+  padding: 16px;
 
-  &__add-transaction,
-  &__history {
-    margin: 16px;
+  &__add-transaction {
+    margin-bottom: 16px;
+  }
+
+  &__main {
+    flex: 1;
+    margin-left: 16px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-flow: row wrap;
   }
 }

@@ -29,4 +29,8 @@ export class TransactionsContainerComponent implements OnInit {
 
     this.store.dispatch(new TransactionActions.Add(transaction));
   }
+
+  public onFilterChange(accountsIds: number[]): void {
+    console.log(accountsIds);
+  }
 }
