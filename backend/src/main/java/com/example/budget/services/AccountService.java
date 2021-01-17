@@ -29,4 +29,8 @@ public class AccountService {
     public Optional<Account> getAccountById(int id) {
         return accountDao.selectAccountById(id);
     }
+
+    public int deleteAccount(int id) {
+        return accountDao.deleteAccount(id);
+    }
 }

@@ -12,4 +12,6 @@ public interface AccountDao {
 
     List<Account> selectAllAccounts(int userId);
     Optional<Account> selectAccountById(int id);
+
+    int deleteAccount(int id);
 }

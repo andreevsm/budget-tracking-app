@@ -78,4 +78,17 @@ public class AccountDataAccessService implements AccountDao {
 
         return Optional.ofNullable(account);
     }
+
+    @Override
+    public int deleteAccount(int id) {
+        final String sql = "DELETE FROM accounts WHERE id = ?";
+
+        int result = jdbcTemplate.update(sql, id);
+
+        if (result > 0) {
+            return id;
+        }
+
+        return 0;
+    }
 }

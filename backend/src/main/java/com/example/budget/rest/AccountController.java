@@ -42,4 +42,8 @@ public class AccountController {
         return accountService.getAccountById(id);
     }
 
+    @DeleteMapping("{id}")
+    public int deleteAccount(@PathVariable("id") int id) {
+        return accountService.deleteAccount(id);
+    }
 }
