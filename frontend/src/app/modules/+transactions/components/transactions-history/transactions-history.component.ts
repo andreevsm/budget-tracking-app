@@ -1,5 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, OnChanges } from '@angular/core';
-import { ICategory, ICurrency } from 'src/app/core/store';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Input,
+  OnChanges,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { IAccount, ICategory, ICurrency } from 'src/app/core/store';
 import { getDay } from 'src/app/utils/helpers/get-day.helper';
 
 import { ITransaction } from '../../store';
@@ -14,15 +22,17 @@ export class TransactionsHistoryComponent implements OnInit, OnChanges {
   @Input() public transactions: (ITransaction | { grouped: any })[] = [];
   @Input() public categories: Record<number, ICategory>;
   @Input() public currencies: Record<number, ICurrency>;
+  @Input() public accountsEntity: Record<number, IAccount> = {};
 
-  public displayedColumns = ['category', 'amount', 'account'];
+  @Output() public deleteTransaction = new EventEmitter<number>();
 
-  constructor() {}
+  public displayedColumns = ['category', 'amount', 'account', 'actions'];
 
   public ngOnInit(): void {}
 
   public ngOnChanges(): void {
     console.log('transactions', this.transactions);
+    console.log('accountsEntity', this.accountsEntity);
 
     this.groupPaymentsByDay();
   }

@@ -20,9 +20,11 @@
 
         <bg-transactions-history
           class="transactions__history"
-          [transactions]="transactions$ | async"
+          [transactions]="transactions"
           [currencies]="currencies$ | async"
           [categories]="categories$ | async"
+          [accountsEntity]="accountsEntity$ | async"
+          (deleteTransaction)="onDeleteTransaction($event)"
         ></bg-transactions-history>
       </div>
     </div>

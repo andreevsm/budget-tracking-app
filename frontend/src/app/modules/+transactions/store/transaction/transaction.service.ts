@@ -16,4 +16,8 @@ export class TransactionService {
   public addTransaction(transaction: INewTransaction): Observable<number> {
     return this.http.post<number>(TRANSACTIONS_API, transaction);
   }
+
+  public deleteTransaction(id: number): Observable<number> {
+    return this.http.delete<number>(`${TRANSACTIONS_API}/${id}`);
+  }
 }

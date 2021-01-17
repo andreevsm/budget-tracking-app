@@ -48,4 +48,12 @@ export class TransactionState {
   ): Observable<number> {
     return this.transactionService.addTransaction(transaction);
   }
+
+  @Action(TransactionActions.Delete)
+  public delete(
+    { setState, getState }: StateContext<ITransactionState>,
+    { id }: TransactionActions.Delete,
+  ): Observable<number> {
+    return this.transactionService.deleteTransaction(id);
+  }
 }

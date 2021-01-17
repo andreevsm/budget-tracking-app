@@ -2,6 +2,7 @@ import { Action, State, StateContext, Selector, Store } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { tap, finalize, map } from 'rxjs/operators';
 import { forkJoin, Observable } from 'rxjs';
+import { makeEntityByKey } from 'src/app/utils';
 
 import { UIActions } from '../ui';
 
@@ -10,7 +11,7 @@ import { AccountActions } from './account.action';
 import { IAccount, ICategory, ICurrency } from './account.interface';
 
 export interface IAccountState {
-  accounts: IAccount[];
+  accountsEntity: Record<number, IAccount>;
   currentAccount: IAccount;
   categories: Record<number, ICategory>;
   currencies: Record<number, ICurrency>;
@@ -19,7 +20,7 @@ export interface IAccountState {
 @State<IAccountState>({
   name: 'account',
   defaults: {
-    accounts: [],
+    accountsEntity: {},
     categories: {},
     currencies: {},
     currentAccount: null,
@@ -31,7 +32,12 @@ export class AccountState {
 
   @Selector()
   public static accounts(state: IAccountState): IAccount[] {
-    return state.accounts;
+    return Object.values(state.accountsEntity);
+  }
+
+  @Selector()
+  public static accountsEntity(state: IAccountState): Record<number, IAccount> {
+    return state.accountsEntity;
   }
 
   @Selector()
@@ -57,7 +63,7 @@ export class AccountState {
       tap((accounts) =>
         setState({
           ...getState(),
-          accounts,
+          accountsEntity: makeEntityByKey(accounts, (account) => account.id),
         }),
       ),
       finalize(() => this.store.dispatch(new UIActions.HideSpinner())),

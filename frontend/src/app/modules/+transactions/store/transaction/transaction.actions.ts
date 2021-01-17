@@ -10,4 +10,10 @@ export namespace TransactionActions {
 
     constructor(public transaction: INewTransaction) {}
   }
+
+  export class Delete {
+    public static readonly type = '[Transaction] Delete';
+
+    constructor(public id: number) {}
+  }
 }

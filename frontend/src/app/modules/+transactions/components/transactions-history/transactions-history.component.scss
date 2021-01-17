@@ -23,4 +23,14 @@
       }
     }
   }
+
+  &__td {
+
+    &__account {
+      &__inner {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
 }

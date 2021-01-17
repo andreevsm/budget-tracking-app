@@ -6,6 +6,7 @@ export interface ITransaction {
   outcome: number;
   comment: string;
   createdAt: string;
+  categoryId: number;
 }
 
 export type INewTransaction = Omit<ITransaction, 'id'>;
