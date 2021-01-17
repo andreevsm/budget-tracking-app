@@ -8,12 +8,12 @@ export namespace TransactionActions {
   export class Add {
     public static readonly type = '[Transaction] Add';
 
-    constructor(public transaction: INewTransaction) {}
+    constructor(public newTransaction: INewTransaction) {}
   }
 
   export class Delete {
     public static readonly type = '[Transaction] Delete';
 
-    constructor(public id: number) {}
+    constructor(public deletedId: number) {}
   }
 }

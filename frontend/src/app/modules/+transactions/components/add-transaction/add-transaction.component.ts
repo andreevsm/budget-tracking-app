@@ -10,26 +10,10 @@ import {
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { IAccount, ICategory, ICurrency } from 'src/app/core/store';
 import { parseDateToString } from 'src/app/utils';
 
 import { INewTransaction } from '../../store';
-
-// const currencies = {
-//   USD: {
-//     RUB: 75,
-//     EURO: 1.4,
-//   },
-//   RUB: {
-//     USD: 34,
-//     EURO: 1.4,
-//   },
-//   EURO: {
-//     USD: 5,
-//     RUB: 13,
-//   },
-// };
 
 @Component({
   selector: 'bg-add-transaction',
@@ -93,7 +77,12 @@ export class AddTransactionComponent implements OnInit, OnDestroy {
   }
 
   public onCategoryChange(item: MatSelectChange): void {
-    console.log('item', item);
+    this.form.patchValue(
+      {
+        categoryId: item.value,
+      },
+      { emitEvent: false },
+    );
   }
 
   public onAccountChange(item: MatSelectChange): void {

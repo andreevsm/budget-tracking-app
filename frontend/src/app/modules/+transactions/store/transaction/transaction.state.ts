@@ -44,16 +44,32 @@ export class TransactionState {
   @Action(TransactionActions.Add)
   public add(
     { setState, getState }: StateContext<ITransactionState>,
-    { transaction }: TransactionActions.Add,
-  ): Observable<number> {
-    return this.transactionService.addTransaction(transaction);
+    { newTransaction }: TransactionActions.Add,
+  ): Observable<ITransaction> {
+    return this.transactionService.addTransaction(newTransaction).pipe(
+      tap((transaction) => {
+        setState({
+          ...getState(),
+          transactions: [transaction, ...getState().transactions],
+        });
+      }),
+    );
   }
 
   @Action(TransactionActions.Delete)
   public delete(
     { setState, getState }: StateContext<ITransactionState>,
-    { id }: TransactionActions.Delete,
+    { deletedId }: TransactionActions.Delete,
   ): Observable<number> {
-    return this.transactionService.deleteTransaction(id);
+    return this.transactionService.deleteTransaction(deletedId).pipe(
+      tap(() => {
+        const { transactions } = getState();
+
+        setState({
+          ...getState(),
+          transactions: transactions.filter(({ id }) => id !== deletedId),
+        });
+      }),
+    );
   }
 }
