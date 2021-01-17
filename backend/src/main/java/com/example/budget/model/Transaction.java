@@ -3,7 +3,9 @@ package com.example.budget.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 @Data
 @Entity
@@ -21,16 +23,16 @@ public class Transaction {
     private int accountOutcome;
 
     @Column(name = "income")
-    private int income;
+    private BigDecimal income;
 
     @Column(name = "outcome")
-    private int outcome;
+    private BigDecimal outcome;
 
     @Column(name = "comment")
     private String comment;
 
     @Column(name = "created_at")
-    private Date createdAt;
+    private Timestamp createdAt;
 
     @Column(name = "category_id")
     private int categoryId;
@@ -39,10 +41,10 @@ public class Transaction {
             int id,
             int accountIncome,
             int accountOutcome,
-            int income,
-            int outcome,
+            BigDecimal income,
+            BigDecimal outcome,
             String comment,
-            Date createdAt,
+            Timestamp createdAt,
             int categoryId
     ) {
         this.id = id;
@@ -58,10 +60,10 @@ public class Transaction {
     public Transaction (
             int accountIncome,
             int accountOutcome,
-            int income,
-            int outcome,
+            BigDecimal income,
+            BigDecimal outcome,
             String comment,
-            Date createdAt,
+            Timestamp createdAt,
             int categoryId
     ) {
         this.accountIncome = accountIncome;

@@ -23,7 +23,7 @@ public class TransactionController {
     }
 
     @PostMapping
-    public int addTransaction(
+    public Transaction addTransaction(
             @RequestBody Transaction transaction
     ) {
         Transaction newTransaction = new Transaction(

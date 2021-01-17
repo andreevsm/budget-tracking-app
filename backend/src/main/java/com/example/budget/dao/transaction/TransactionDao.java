@@ -7,6 +7,6 @@ import java.util.List;
 public interface TransactionDao {
 
     List<Transaction> selectTransactions();
-    int addTransaction(Transaction transaction);
+    Transaction addTransaction(Transaction transaction);
     int deleteTransaction(int id);
 }

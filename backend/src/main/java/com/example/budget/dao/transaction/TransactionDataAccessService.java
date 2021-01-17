@@ -3,9 +3,15 @@ package com.example.budget.dao.transaction;
 import com.example.budget.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
+import java.sql.*;
 import java.util.List;
+import java.util.Map;
 
 @Repository("postgres_transactions")
 public class TransactionDataAccessService implements TransactionDao {
@@ -17,54 +23,86 @@ public class TransactionDataAccessService implements TransactionDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
-
     @Override
     public List<Transaction> selectTransactions() {
-        final String sql = "SELECT * FROM transactions";
+        final String sql = "SELECT * FROM transactions ORDER by id desc";
 
         return jdbcTemplate.query(sql, (result, i) -> {
             return new Transaction(
                     result.getInt("id"),
                     result.getInt("account_income"),
                     result.getInt("account_outcome"),
-                    result.getInt("income"),
-                    result.getInt("outcome"),
+                    result.getBigDecimal("income"),
+                    result.getBigDecimal("outcome"),
                     result.getString("comment"),
-                    result.getDate("created_at"),
+                    result.getTimestamp("created_at"),
                     result.getInt("category_id")
             );
         });
     }
 
     @Override
-    public int addTransaction(Transaction transaction) {
+    public Transaction addTransaction(Transaction transaction) {
         final String sql = "INSERT INTO transactions (" +
                 "account_income," +
                 "account_outcome," +
                 "income," +
                 "outcome," +
                 "comment," +
-                "created_at" +
+                "created_at," +
                 "category_id" +
                 ") VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        return jdbcTemplate.update(
-                sql,
-                transaction.getAccountIncome(),
-                transaction.getAccountOutcome(),
-                transaction.getIncome(),
-                transaction.getOutcome(),
-                transaction.getComment(),
-                transaction.getCreatedAt(),
-                transaction.getCategoryId()
-        );
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+
+
+        int result = jdbcTemplate.update(new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+                PreparedStatement preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+                preparedStatement.setInt(1, transaction.getAccountIncome());
+                preparedStatement.setInt(2, transaction.getAccountOutcome());
+                preparedStatement.setBigDecimal(3, transaction.getIncome());
+                preparedStatement.setBigDecimal(4, transaction.getOutcome());
+                preparedStatement.setString(5, transaction.getComment());
+                preparedStatement.setTimestamp(6, transaction.getCreatedAt());
+                preparedStatement.setInt(7, transaction.getCategoryId());
+
+                return preparedStatement;
+            }
+        }, keyHolder);
+
+        if (result > 0) {
+
+            Map<String, Object> keys = keyHolder.getKeys();
+
+            return new Transaction(
+                    (int) keys.get("id"),
+                    (int) keys.get("account_income"),
+                    (int) keys.get("account_outcome"),
+                    (BigDecimal) keys.get("income"),
+                    (BigDecimal) keys.get("outcome"),
+                    (String) keys.get("comment"),
+                    (Timestamp) keys.get("created_at"),
+                    (int) keys.get("category_id")
+            );
+        }
+
+        System.out.println("key: " + keyHolder.getKeys());
+
+        return null;
     }
 
     @Override
     public int deleteTransaction(int id) {
-        final String sql = "DELETE FROM transactions WHERE id = ?";
+        final String sql = String.format("DELETE FROM transactions WHERE id = %d", id);
 
-        return jdbcTemplate.update(sql, id);
+        int result = jdbcTemplate.update(sql);
+
+        if (result > 0) {
+            return id;
+        }
+
+        return 0;
     }
 }

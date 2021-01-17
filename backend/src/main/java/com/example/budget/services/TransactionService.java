@@ -23,7 +23,7 @@ public class TransactionService {
         return transactionDao.selectTransactions();
     }
 
-    public int addTransaction(Transaction transaction) {
+    public Transaction addTransaction(Transaction transaction) {
         return transactionDao.addTransaction(transaction);
     }
     public int deleteTransaction(int id) {
