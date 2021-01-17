@@ -8,8 +8,9 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { getMonth } from 'date-fns';
-import { ICategory, ICurrency, IPayment, PaymentType } from 'src/app/core/store';
+import { IAccount, ICategory, ICurrency, IPayment, PaymentType } from 'src/app/core/store';
 import { MONTHS } from 'src/app/fixtures';
+import { ITransaction } from 'src/app/modules/+transactions/store';
 
 import { StatisticsChartService } from './statistics-chart.service';
 
@@ -26,6 +27,8 @@ export class StatisticsComponent implements AfterViewInit {
   @Input() public payments: IPayment[] = [];
   @Input() public categories: Record<number, ICategory>;
   @Input() public currencies: Record<number, ICurrency>;
+  @Input() public accounts: IAccount[];
+  @Input() public transactions: ITransaction[];
 
   public chart: Chart;
   public isCreated = false;

@@ -5,6 +5,7 @@ import { Select } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AccountState, IAccount } from 'src/app/core/store';
+import { ITransaction, TransactionState } from 'src/app/modules/+transactions/store';
 
 import { CreateAccountComponent, CreateCategoryComponent } from '../../modals';
 
@@ -16,6 +17,9 @@ import { CreateAccountComponent, CreateCategoryComponent } from '../../modals';
 })
 export class AccountsContainerComponent implements OnInit, OnDestroy {
   @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
+  @Select(AccountState.categories) public categories$: Observable<IAccount[]>;
+  @Select(AccountState.currencies) public currencies$: Observable<IAccount[]>;
+  @Select(TransactionState.transactions) public transactions$: Observable<ITransaction[]>;
 
   private destroy$ = new Subject();
 

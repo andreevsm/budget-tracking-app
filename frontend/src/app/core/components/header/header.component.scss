@@ -1,9 +1,33 @@
-
 .header {
-  background-color: #303030;
+  display: flex;
+  align-items: center;
+  background-color: #673ab7;
 
-  &--title {
+  &__title {
     color: white;
     padding: 1.6rem;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+  }
+}
+
+.nav {
+  padding: 1.6rem;
+
+  &__link {
+    color: #fff;
+  }
+
+  &__link + &__link {
+    margin-left: 1.6rem;
+  }
+
+  &__block + &__block {
+    margin-left: 4rem;
   }
 }

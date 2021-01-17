@@ -1,25 +1,50 @@
 <div class="root">
 
-  <div class="accounts">
+  <mat-card class="accounts">
+    <mat-card-title class="accounts__title">
+      Мои счета
+    </mat-card-title>
 
-    <button
-      mat-button
-      color="primary"
-      class="accounts--button"
-      (click)="onAddAccount()"
-    >
-      Добавить счет
-    </button>
+    <mat-card-content class="accounts__content">
+      <mat-nav-list *ngIf="accounts$ | async as accounts">
+        <a
+          mat-list-item
+          *ngFor="let account of accounts"
+          [routerLink]="'/accounts/' + account.id"
+        >
+          {{ account.name }}
+        </a>
+      </mat-nav-list>
+    </mat-card-content>
 
-    <button
-      mat-button
-      color="primary"
-      class="accounts--button"
-      (click)="onAddCategory()"
-    >
-      Добавить категорию
-    </button>
-  </div>
+    <mat-card-actions>
+      <button
+        mat-button
+        color="primary"
+        class="accounts--button"
+        (click)="onAddAccount()"
+      >
+        Добавить счет
+      </button>
+    
+      <button
+        mat-button
+        color="primary"
+        class="accounts--button"
+        (click)="onAddCategory()"
+      >
+        Добавить категорию
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <bg-statistics
+    [payments]="[]"
+    [accounts]="accounts$ | async"
+    [transactions]="transactions$ | async"
+    [categories]="categories$ | async"
+    [currencies]="currencies$ | async"
+  ></bg-statistics>
 
   <router-outlet></router-outlet>
 </div>

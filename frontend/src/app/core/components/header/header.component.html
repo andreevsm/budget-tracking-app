@@ -1,28 +1,29 @@
 <header class="header">
-  <div class="header--top">
-    <h1 class="header--title">
-      Мой бюджет
-    </h1>
+  <h1 class="header__title">
+    Мой бюджет
+  </h1>
 
-    <div class="header--user-info">
+  <nav class="header__nav nav">
 
+    <div class="nav__block">
+      <a
+        *ngFor="let link of links"
+        [routerLink]="link.href"
+        class="nav__link"
+      >
+        {{ link.label }}
+      </a>
     </div>
+
+    <div class="nav__block">
+      <button class="nav__link" (click)="logout.emit()">Logout</button>
+    </div>
+
+  </nav>
+
+  <!-- <div class="header--top">
 
     <button (click)="showSidenav.emit()">Сайдбар</button>
 
-    <button (click)="logout.emit()">Logout</button>
-  </div>
-
-  <!-- <nav mat-tab-nav-bar backgroundColor="primary">
-    <a
-      mat-tab-link
-      *ngFor="let link of links"
-      [routerLink]="link.href"
-      routerLinkActive
-      #rla="routerLinkActive"
-      [active]="rla.isActive"
-    >
-      {{ link.label }}
-    </a>
-  </nav> -->
+  </div> -->
 </header>
