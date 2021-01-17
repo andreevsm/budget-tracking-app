@@ -34,8 +34,15 @@
             Перевод
           </mat-radio-button>
         </mat-radio-group>
-        <div>
 
+        <mat-form-field>
+          <mat-label>Дата</mat-label>
+          <input matInput [matDatepicker]="datePicker" formControlName="createdAt">
+          <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+          <mat-datepicker #datePicker></mat-datepicker>
+        </mat-form-field>
+
+        <div>
           <div *ngIf="transactionTypeControl.value !== 'transfer'">
             <div class="form__control-group">
               <mat-form-field class="form__control">

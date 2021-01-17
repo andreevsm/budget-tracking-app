@@ -42,8 +42,6 @@ export class AddTransactionComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.buildForm();
-
-    this.subscribeToTransactionType();
   }
 
   public ngOnDestroy(): void {
@@ -60,6 +58,7 @@ export class AddTransactionComponent implements OnInit, OnDestroy {
       outcome,
       comment,
       categoryId,
+      createdAt,
     } = this.form.getRawValue();
 
     const patchedIncome = transactionType === 'incomes' ? income : 0;
@@ -71,7 +70,7 @@ export class AddTransactionComponent implements OnInit, OnDestroy {
       income: patchedIncome,
       outcome: patchedOutcome,
       comment,
-      createdAt: parseDateToString(new Date()),
+      createdAt: parseDateToString(new Date(createdAt)),
       categoryId,
     });
   }
@@ -124,16 +123,7 @@ export class AddTransactionComponent implements OnInit, OnDestroy {
       outcome: [null, [Validators.required]],
       comment: [''],
       categoryId: [null, [Validators.required]],
+      createdAt: [new Date(), [Validators.required]],
     });
-  }
-
-  private subscribeToTransactionType(): void {
-    // this.transactionTypeControl.valueChanges.pipe(
-    //   takeUntil(this.destroy$),
-    // ).subscribe(value => {
-    //   if (value === 'transfer') {
-    //     this.form.addControl('')
-    //   }
-    // })
   }
 }

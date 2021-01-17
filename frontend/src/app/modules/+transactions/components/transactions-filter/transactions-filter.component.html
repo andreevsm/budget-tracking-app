@@ -1,28 +1,26 @@
-<mat-card>
+<mat-card class="filter">
 
-  <mat-card-title>
+  <mat-card-title class="filter__title">
     Мои счета
   </mat-card-title>
 
   <mat-card-subtitle>
-
-    <div>
+    <div class="filter__total-info">
       <span>Общая сумма: </span>
       <span>{{ totalAmount | currency : 'RUB' : 'symbol-narrow' }}</span>
     </div>
 
-    <div>
+    <div class="filter__total-info">
       <span>Должен: </span>
       <span>{{ debt | currency : 'RUB' : 'symbol-narrow' }}</span>
     </div>
-
-
   </mat-card-subtitle>
 
-  <mat-card-content>
-    <mat-selection-list
-      (selectionChange)="onSelectionChange($event)"
-    >
+  <mat-card-content
+    *ngIf="accounts.length > 0"
+    class="filter__content"
+  >
+    <mat-selection-list (selectionChange)="onSelectionChange($event)">
       <mat-list-option
         *ngFor="let account of accounts"
         [value]="account.id"

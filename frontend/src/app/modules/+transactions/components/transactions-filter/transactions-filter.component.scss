@@ -1,3 +1,14 @@
 :host {
   display: block;
 }
+
+.filter {
+  &__total-info {
+    display: flex;
+    justify-content: space-between;
+
+    * + * {
+      margin-left: 1rem;
+    }
+  }
+}

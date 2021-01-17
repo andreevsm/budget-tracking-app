@@ -30,8 +30,6 @@ export class TransactionsFilterComponent implements OnInit, OnChanges {
   public ngOnInit(): void {}
 
   public ngOnChanges(changes: NgChanges<TransactionsFilterComponent>): void {
-    console.log('accounts', this.accounts);
-
     if (changes.accounts) {
       this.calculateTotal();
     }
@@ -52,10 +50,32 @@ export class TransactionsFilterComponent implements OnInit, OnChanges {
   private calculateTotal(): void {
     this.totalAmount = this.accounts
       .filter((account) => account.amount > 0)
-      .reduce((prev, curr) => prev + curr.amount, 0);
+      .map(({ currencyId, amount }) => {
+        if (currencyId === 1) {
+          return amount * 73;
+        }
+
+        if (currencyId === 3) {
+          return amount * 89;
+        }
+
+        return amount;
+      })
+      .reduce((prev, curr) => prev + curr, 0);
 
     this.debt = this.accounts
       .filter((account) => account.amount < 0)
-      .reduce((prev, curr) => prev + curr.amount, 0);
+      .map(({ currencyId, amount }) => {
+        if (currencyId === 1) {
+          return amount * 73;
+        }
+
+        if (currencyId === 3) {
+          return amount * 89;
+        }
+
+        return amount;
+      })
+      .reduce((prev, curr) => prev + curr, 0);
   }
 }

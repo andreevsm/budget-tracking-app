@@ -7,10 +7,11 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { NgxsModule } from '@ngxs/store';
-import { MatListModule, MatSelectionList } from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { TransactionsContainerComponent } from './containers/transactions-container/transactions-container.component';
 import { TransactionsRoutingModule } from './transactions.routing';
@@ -39,6 +40,7 @@ import { TransactionState } from './store';
     MatButtonModule,
     MatTableModule,
     MatIconModule,
+    MatDatepickerModule,
     NgxsModule.forFeature([TransactionState]),
   ],
 })

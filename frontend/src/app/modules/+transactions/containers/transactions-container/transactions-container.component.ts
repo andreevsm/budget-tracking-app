@@ -46,7 +46,6 @@ export class TransactionsContainerComponent implements OnInit, OnDestroy {
 
   public onTransactionAdd(transaction: INewTransaction): void {
     console.log('transaction', transaction);
-
     this.store.dispatch(new TransactionActions.Add(transaction));
   }
 
