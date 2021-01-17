@@ -29,6 +29,7 @@ public class CategoryController {
     public int addCategory(
             @RequestBody Category category
     ) {
+        System.out.println(category);
         return categoryService.addCategory(category);
     }
 }
