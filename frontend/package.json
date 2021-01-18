@@ -14,7 +14,8 @@
     "serve:ssr": "node dist/frontend/server/main.js",
     "build:ssr": "ng build --prod && ng run frontend:server:production",
     "prerender": "ng run frontend:prerender",
-    "prebuild:ssr": "ngcc"
+    "prebuild:ssr": "ngcc",
+    "build:stats": "ng build --stats-json"
   },
   "private": true,
   "dependencies": {
