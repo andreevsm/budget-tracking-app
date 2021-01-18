@@ -26,6 +26,10 @@ export class AccountService {
     return this.http.get<IAccount | null>(`${ACCOUNTS_API}/${id}`);
   }
 
+  public deleteAccount(id: number): Observable<number> {
+    return this.http.delete<number>(`${ACCOUNTS_API}/${id}`);
+  }
+
   public loadPayments(accountId: number): Observable<IPayment[]> {
     return this.http.get<IPayment[]>(PAYMENTS_API, {
       params: {

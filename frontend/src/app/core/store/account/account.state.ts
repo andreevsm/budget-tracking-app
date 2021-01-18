@@ -92,6 +92,25 @@ export class AccountState {
     );
   }
 
+  @Action(AccountActions.Delete)
+  public deleteAccount(
+    { setState, getState }: StateContext<IAccountState>,
+    { id }: AccountActions.Delete,
+  ): Observable<number> {
+    return this.accountService.deleteAccount(id).pipe(
+      tap(() => {
+        const accountsEntity = { ...getState().accountsEntity };
+
+        const accounts = Object.values(accountsEntity).filter((account) => account.id !== id);
+
+        setState({
+          ...getState(),
+          accountsEntity: makeEntityByKey(accounts, (account) => account.id),
+        });
+      }),
+    );
+  }
+
   @Action(AccountActions.LoadPayments)
   public loadPayments({ setState, getState }: StateContext<IAccountState>, payload: number): any {
     this.store.dispatch(new UIActions.ShowSpinner());

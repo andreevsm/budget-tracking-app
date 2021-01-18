@@ -7,13 +7,15 @@
 
     <mat-card-content class="accounts__content">
       <mat-nav-list *ngIf="accounts$ | async as accounts">
-        <a
-          mat-list-item
-          *ngFor="let account of accounts"
-          [routerLink]="'/accounts/' + account.id"
-        >
-          {{ account.name }}
-        </a>
+        <mat-list-item *ngFor="let account of accounts">
+          <a matLine [routerLink]="'/accounts/' + account.id">
+            {{ account.name }}
+          </a>
+
+          <button mat-icon-button (click)="onDeleteAccount(account.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
       </mat-nav-list>
     </mat-card-content>
 

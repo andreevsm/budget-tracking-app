@@ -1,10 +1,15 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AccountState, IAccount, ITransaction, TransactionState } from '@core/store';
+import {
+  AccountActions,
+  AccountState,
+  IAccount,
+  ITransaction,
+  TransactionState,
+} from '@core/store';
 
 import { CreateAccountComponent, CreateCategoryComponent } from '../../modals';
 
@@ -14,7 +19,7 @@ import { CreateAccountComponent, CreateCategoryComponent } from '../../modals';
   styleUrls: ['./accounts-container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AccountsContainerComponent implements OnInit, OnDestroy {
+export class AccountsContainerComponent implements OnDestroy {
   @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
   @Select(AccountState.categories) public categories$: Observable<IAccount[]>;
   @Select(AccountState.currencies) public currencies$: Observable<IAccount[]>;
@@ -22,11 +27,7 @@ export class AccountsContainerComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject();
 
-  constructor(private dialog: MatDialog, private router: Router) {}
-
-  public ngOnInit(): void {
-    this.subscribeToAccounts();
-  }
+  constructor(private dialog: MatDialog, private store: Store) {}
 
   public ngOnDestroy(): void {
     this.destroy$.next();
@@ -49,14 +50,7 @@ export class AccountsContainerComponent implements OnInit, OnDestroy {
       .subscribe();
   }
 
-  private subscribeToAccounts(): void {
-    // this.accounts$
-    //   .pipe(
-    //     filter((accounts) => accounts?.length > 0),
-    //     takeUntil(this.destroy$),
-    //   )
-    //   .subscribe((accounts) => {
-    //     this.router.navigate(['/accounts', accounts[0].id]);
-    //   });
+  public onDeleteAccount(id: number): void {
+    this.store.dispatch(new AccountActions.Delete(id));
   }
 }

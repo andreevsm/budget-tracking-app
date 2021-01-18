@@ -24,7 +24,6 @@ export namespace AccountActions {
     public static readonly type = '[Accounts] Update account';
     constructor(public account: IAccount) {}
   }
-
   export class AddPayment {
     public static readonly type = '[Accounts] Add payment';
 
