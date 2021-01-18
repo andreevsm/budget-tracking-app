@@ -10,10 +10,8 @@ import {
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
 import { Subject } from 'rxjs';
-import { IAccount, ICategory, ICurrency } from 'src/app/core/store';
-import { parseDateToString } from 'src/app/utils';
-
-import { INewTransaction } from '../../store';
+import { IAccount, ICategory, ICurrency, INewTransaction } from '@core/store';
+import { parseDateToString } from '@utils/helpers';
 
 @Component({
   selector: 'bg-add-transaction',

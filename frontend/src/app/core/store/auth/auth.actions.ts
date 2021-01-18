@@ -5,8 +5,8 @@ export namespace AuthActions {
     public static readonly type = '[Auth] Load';
   }
 
-  export class Login {
-    public static readonly type = '[Auth] Login';
+  export class SignIn {
+    public static readonly type = '[Auth] Sign In';
 
     constructor(public payload: IRequestUser) {}
   }

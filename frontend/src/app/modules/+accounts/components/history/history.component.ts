@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input, OnChanges } from '@angular/core';
-import { ICategory, ICurrency, IPayment } from 'src/app/core/store';
+import { ICategory, ICurrency, IPayment } from '@core/store';
 
 @Component({
   selector: 'bg-history',

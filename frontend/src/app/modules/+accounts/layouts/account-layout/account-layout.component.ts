@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AccountActions } from 'src/app/core/store';
+import { AccountActions } from '@core/store';
 
 @Component({
   selector: 'bg-account-layout',

@@ -7,10 +7,8 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { IAccount, ICategory, ICurrency } from 'src/app/core/store';
-import { getDay } from 'src/app/utils/helpers/get-day.helper';
-
-import { ITransaction } from '../../store';
+import { IAccount, ICategory, ICurrency, ITransaction } from '@core/store';
+import { getDay } from '@utils/helpers/get-day.helper';
 
 @Component({
   selector: 'bg-transactions-history',

@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
-import { AccountActions, INewCategory } from 'src/app/core/store';
-import { parseDateToString } from 'src/app/utils';
+import { AccountActions, INewCategory } from '@core/store';
+import { parseDateToString } from '@utils/helpers';
 
 @Component({
   selector: 'bg-create-category',

@@ -72,7 +72,7 @@ export class AuthService {
   }
 
   public navigateToLogin(): void {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/signin']);
   }
 
   public clearStorage(): void {

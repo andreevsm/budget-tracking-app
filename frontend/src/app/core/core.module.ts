@@ -13,6 +13,7 @@ import { UIState, AuthState, AccountState, AccountService } from './store';
 import { localStorageFactory, LOCAL_STORAGE } from './services/local-storage.service';
 import { MainLayoutComponent } from './layouts';
 import { AuthInterceptor, SpinnerInterceptor } from './interceptors';
+import { TransactionState } from './store/transaction';
 
 @NgModule({
   declarations: [HeaderComponent, SpinnerComponent, SidenavComponent, MainLayoutComponent],
@@ -20,7 +21,7 @@ import { AuthInterceptor, SpinnerInterceptor } from './interceptors';
     CommonModule,
     BrowserAnimationsModule,
     RouterModule,
-    NgxsModule.forFeature([UIState, AccountState, AuthState]),
+    NgxsModule.forFeature([UIState, AccountState, AuthState, TransactionState]),
     MaterialModule,
   ],
   exports: [HeaderComponent, SpinnerComponent],

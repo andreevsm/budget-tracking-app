@@ -2,7 +2,7 @@ import { Action, State, StateContext, Selector, Store } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { tap, finalize, map } from 'rxjs/operators';
 import { forkJoin, Observable } from 'rxjs';
-import { makeEntityByKey } from 'src/app/utils';
+import { makeEntityByKey } from '@utils/helpers';
 
 import { UIActions } from '../ui';
 

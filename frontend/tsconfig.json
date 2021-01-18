@@ -17,10 +17,18 @@
     "importHelpers": true,
     "target": "es2015",
     "lib": ["dom", "es2019"],
-    "strict": false
+    "strict": false,
+    "paths": {
+      "@core/*": ["src/app/core/*"],
+      "@fixtures/*": ["src/app/fixtures/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@utils/*": ["src/app/utils/*"],
+      "@modules/*": ["src/app/modules/*"],
+      "@environments/*": ["src/environments/*"],
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
-  }
+  },
 }

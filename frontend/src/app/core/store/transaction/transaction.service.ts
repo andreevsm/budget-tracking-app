@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TRANSACTIONS_API } from 'src/app/core/constants';
+import { TRANSACTIONS_API } from '@core/constants';
 
 import { INewTransaction, ITransaction } from './transaction.interface';
 

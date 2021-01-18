@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { environment } from '@environments/environment';
 
 import { AuthGuard } from './core/auth';
-import { LoginGuard } from './core/auth/login.guard';
+// import { LoginGuard } from './core/auth/login.guard';
 import { MainLayoutComponent } from './core/layouts';
-import { LoginModule, MainModule } from './modules';
-import { SignUpModule } from './modules/+sign-up/sign-up.module';
-import { TransactionsModule } from './modules/+transactions/transactions.module';
+import { SignInModule, MainModule, SignUpModule, TransactionsModule } from './modules';
 
 const routes: Routes = [
   {
@@ -29,11 +28,11 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'login',
+    path: 'signin',
     // canLoad: [LoginGuard],
     // canActivate: [LoginGuard],
-    loadChildren: (): Promise<typeof LoginModule> =>
-      import('./modules/+login/login.module').then((m) => m.LoginModule),
+    loadChildren: (): Promise<typeof SignInModule> =>
+      import('./modules/+sign-in/sign-in.module').then((m) => m.SignInModule),
   },
   {
     path: 'signup',
@@ -52,6 +51,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       initialNavigation: 'enabledBlocking',
+      enableTracing: !environment.production,
     }),
   ],
   exports: [RouterModule],

@@ -8,9 +8,8 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { getMonth } from 'date-fns';
-import { IAccount, ICategory, ICurrency, IPayment, PaymentType } from 'src/app/core/store';
-import { MONTHS } from 'src/app/fixtures';
-import { ITransaction } from 'src/app/modules/+transactions/store';
+import { IAccount, ICategory, ICurrency, IPayment, ITransaction, PaymentType } from '@core/store';
+import { MONTHS } from '@fixtures/months';
 
 import { StatisticsChartService } from './statistics-chart.service';
 

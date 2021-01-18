@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { AccountState, IAccount, ICategory, ICurrency } from 'src/app/core/store';
+import { AccountState, IAccount, ICategory, ICurrency } from '@core/store';
 
 @Component({
   selector: 'bg-history-container',

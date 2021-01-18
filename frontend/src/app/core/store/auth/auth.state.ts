@@ -33,10 +33,10 @@ export class AuthState {
     return state.user;
   }
 
-  @Action(AuthActions.Login)
+  @Action(AuthActions.SignIn)
   public login(
     { setState, getState }: StateContext<IAuthState>,
-    { payload }: AuthActions.Login,
+    { payload }: AuthActions.SignIn,
   ): Observable<IResponseUser | null> {
     this.store.dispatch(new UIActions.ShowSpinner());
 

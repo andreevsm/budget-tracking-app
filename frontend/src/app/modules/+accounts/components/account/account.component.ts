@@ -11,8 +11,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { IAccount, ICategory, IPayment, ICurrency } from 'src/app/core/store';
-import { NgChanges } from 'src/app/utils';
+import { IAccount, ICategory, IPayment, ICurrency } from '@core/store';
+import { NgChanges } from '@utils/types';
 
 import { CreatePaymentComponent } from '../../modals';
 

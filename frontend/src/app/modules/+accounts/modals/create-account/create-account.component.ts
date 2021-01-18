@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { AccountActions, AccountState, ICurrency, INewAccount } from 'src/app/core/store';
-import { parseDateToString } from 'src/app/utils';
+import { AccountActions, AccountState, ICurrency, INewAccount } from '@core/store';
+import { parseDateToString } from '@utils/helpers';
 
 @Component({
   selector: 'bg-create-account',

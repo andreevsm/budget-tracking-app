@@ -8,9 +8,17 @@ import {
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AccountActions, AccountState, IAccount, ICategory, ICurrency } from 'src/app/core/store';
-
-import { INewTransaction, ITransaction, TransactionActions, TransactionState } from '../../store';
+import {
+  AccountActions,
+  AccountState,
+  IAccount,
+  ICategory,
+  ICurrency,
+  INewTransaction,
+  ITransaction,
+  TransactionActions,
+  TransactionState,
+} from '@core/store';
 
 @Component({
   selector: 'bg-transactions-container',

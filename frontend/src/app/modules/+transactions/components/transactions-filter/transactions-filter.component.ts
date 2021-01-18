@@ -8,8 +8,8 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { MatSelectionListChange } from '@angular/material/list';
-import { IAccount } from 'src/app/core/store';
-import { NgChanges } from 'src/app/utils';
+import { IAccount } from '@core/store';
+import { NgChanges } from '@utils/types';
 
 @Component({
   selector: 'bg-transactions-filter',

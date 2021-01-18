@@ -4,14 +4,8 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import {
-  INewPayment,
-  AccountActions,
-  AccountState,
-  ICategory,
-  ICurrency,
-} from 'src/app/core/store';
-import { parseDateToString } from 'src/app/utils';
+import { INewPayment, AccountActions, AccountState, ICategory, ICurrency } from '@core/store';
+import { parseDateToString } from '@utils/helpers';
 
 @Component({
   selector: 'bg-create-payment',

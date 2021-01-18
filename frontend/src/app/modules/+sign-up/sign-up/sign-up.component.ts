@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
-import { AuthActions } from 'src/app/core/store';
+import { AuthActions } from '@core/store';
 
 @Component({
   selector: 'bg-sign-up',
@@ -11,6 +11,7 @@ import { AuthActions } from 'src/app/core/store';
 })
 export class SignUpComponent implements OnInit {
   public form: FormGroup;
+  public isPasswordShown = false;
 
   constructor(private fb: FormBuilder, private store: Store) {}
 

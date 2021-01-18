@@ -2,23 +2,24 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { AuthActions } from 'src/app/core/store/auth';
+import { AuthActions } from '@core/store/auth';
 
 @Component({
-  selector: 'bg-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'bg-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent implements OnInit {
+export class SignInComponent implements OnInit {
   public form: FormGroup;
+  public isPasswordShown = false;
 
   constructor(private fb: FormBuilder, private store: Store, private router: Router) {}
 
   public ngOnInit(): void {
     this.form = this.fb.group({
-      email: ['', [Validators.email, Validators.required]],
-      password: ['', [Validators.required]],
+      email: ['user@mail.com', [Validators.email, Validators.required]],
+      password: ['user', [Validators.required]],
     });
   }
 
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.form.getRawValue();
 
     this.store.dispatch(
-      new AuthActions.Login({
+      new AuthActions.SignIn({
         email,
         password,
       }),
