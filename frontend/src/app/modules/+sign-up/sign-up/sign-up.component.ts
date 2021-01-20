@@ -23,9 +23,7 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  public onSubmit(event: Event): void {
-    event.preventDefault();
-
+  public onSubmit(): void {
     const { login, email, password } = this.form.getRawValue();
 
     this.store.dispatch(

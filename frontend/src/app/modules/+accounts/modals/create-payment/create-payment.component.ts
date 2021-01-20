@@ -30,8 +30,7 @@ export class CreatePaymentComponent implements OnInit {
     this.buildForm();
   }
 
-  public onSubmit(event: Event): void {
-    event.preventDefault();
+  public onSubmit(): void {
     const { categoryId, amount, currencyId, operationType } = this.form.getRawValue();
 
     const payment: INewPayment = {

@@ -1,4 +1,4 @@
-<mat-card class="">
+<mat-card>
 
   <mat-card-title
     class="mat-card-title"
@@ -18,7 +18,7 @@
       <form
         *ngIf="isTransactionBlockShown"
         [formGroup]="form"
-        (submit)="onSubmit()"
+        (ngSubmit)="onSubmit()"
       >
         <mat-radio-group
           class="form__control"

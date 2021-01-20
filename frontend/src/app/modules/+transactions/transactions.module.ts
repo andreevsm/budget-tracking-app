@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
@@ -39,6 +39,7 @@ import { TransactionsFilterComponent } from './components/transactions-filter/tr
     MatTableModule,
     MatIconModule,
     MatDatepickerModule,
+    FormsModule,
   ],
 })
 export class TransactionsModule {}

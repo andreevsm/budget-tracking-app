@@ -7,7 +7,7 @@
     </mat-card-title>
 
     <mat-card-content>
-      <form class="sign-in__form form" [formGroup]="form" (submit)="onSubmit($event)">
+      <form class="sign-in__form form" [formGroup]="form" (ngSubmit)="onSubmit()">
         <mat-form-field class="form__control">
           <mat-label>Почта</mat-label>
           <input matInput formControlName="email" type="email">

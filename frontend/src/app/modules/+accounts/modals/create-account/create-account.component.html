@@ -5,7 +5,7 @@
     <form
       class="account--form form"
       [formGroup]="form"
-      (submit)="onSubmit($event)"
+      (ngSubmit)="onSubmit()"
     >
       <mat-form-field class="form--control">
         <mat-label>Название</mat-label>

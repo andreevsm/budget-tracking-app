@@ -23,9 +23,7 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  public onSubmit(event: Event): void {
-    event.preventDefault();
-
+  public onSubmit(): void {
     const { email, password } = this.form.getRawValue();
 
     this.store.dispatch(

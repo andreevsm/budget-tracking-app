@@ -16,7 +16,6 @@ import {
 } from './containers';
 import { AccountLayoutComponent } from './layouts';
 import { CreateCategoryComponent } from './modals/create-category/create-category.component';
-import { AddTransactionComponent } from './modals/add-transaction/add-transaction.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,6 @@ import { AddTransactionComponent } from './modals/add-transaction/add-transactio
     AccountsContainerComponent,
     AccountLayoutComponent,
     CreateCategoryComponent,
-    AddTransactionComponent,
   ],
   imports: [CommonModule, MainRoutingModule, SharedModule, MatSelectModule, FormsModule],
 })

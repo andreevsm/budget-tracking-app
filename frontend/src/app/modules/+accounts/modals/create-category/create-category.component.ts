@@ -19,8 +19,7 @@ export class CreateCategoryComponent implements OnInit {
     this.buildForm();
   }
 
-  public onSubmit(event: Event): void {
-    event.preventDefault();
+  public onSubmit(): void {
     const { name, color } = this.form.getRawValue();
 
     const category: INewCategory = {

@@ -24,9 +24,7 @@ export class CreateAccountComponent implements OnInit {
     this.buildForm();
   }
 
-  public onSubmit(event: Event): void {
-    event.preventDefault();
-
+  public onSubmit(): void {
     const { name, description, currencyId, amount } = this.form.getRawValue();
     const account: INewAccount = {
       name,
