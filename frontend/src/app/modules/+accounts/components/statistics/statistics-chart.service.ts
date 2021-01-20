@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as Chart from 'chart.js';
+import { ChartData, ChartTooltipItem } from 'chart.js';
 
 export interface IChartDatum {
   x: string;
@@ -12,7 +13,7 @@ export class StatisticsChartService {
 
   public buildChart(element: HTMLCanvasElement, callback: (isCreated: boolean) => void): void {
     this.chart = new Chart(element, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: [],
         datasets: [],
@@ -30,6 +31,19 @@ export class StatisticsChartService {
         },
         responsive: true,
         devicePixelRatio: 2, // поменять на глобальную переменную
+        tooltips: {
+          callbacks: {
+            label: (item: ChartTooltipItem, data: ChartData): string => {
+              console.log(item);
+              console.log(data);
+
+              return `
+                ${item.label}
+                ${data.datasets.map((item) => item.data.map((datum) => `${datum}`))}
+              `;
+            },
+          },
+        },
       },
     });
 
@@ -41,6 +55,7 @@ export class StatisticsChartService {
   public addLabels(labels: string[]): void {
     this.chart.data.labels?.push(...labels);
 
+    this.chart.data.datasets.push();
     this.update();
   }
 

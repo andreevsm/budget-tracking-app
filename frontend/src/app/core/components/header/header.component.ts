@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public links = [
     {
-      label: 'Мои счета',
+      label: 'Cчета',
       href: '/accounts',
     },
     {

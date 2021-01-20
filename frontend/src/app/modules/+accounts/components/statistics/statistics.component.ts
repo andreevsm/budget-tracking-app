@@ -6,10 +6,14 @@ import {
   AfterViewInit,
   ElementRef,
   ChangeDetectorRef,
+  OnChanges,
 } from '@angular/core';
-import { getMonth } from 'date-fns';
+import { getMonth, subDays, eachDayOfInterval, isEqual } from 'date-fns';
 import { IAccount, ICategory, ICurrency, IPayment, ITransaction, PaymentType } from '@core/store';
 import { MONTHS } from '@fixtures/months';
+import { ChartPoint } from 'chart.js';
+import { eachOfInterval } from '@fixtures/last-days';
+import { parseDateToString } from '@utils/helpers';
 
 import { StatisticsChartService } from './statistics-chart.service';
 
@@ -20,10 +24,9 @@ import { StatisticsChartService } from './statistics-chart.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [StatisticsChartService],
 })
-export class StatisticsComponent implements AfterViewInit {
+export class StatisticsComponent implements OnChanges, AfterViewInit {
   @ViewChild('chart') public chartElementRef: ElementRef<HTMLCanvasElement>;
 
-  @Input() public payments: IPayment[] = [];
   @Input() public categories: Record<number, ICategory>;
   @Input() public currencies: Record<number, ICurrency>;
   @Input() public accounts: IAccount[];
@@ -34,52 +37,80 @@ export class StatisticsComponent implements AfterViewInit {
 
   constructor(private chartService: StatisticsChartService, private cdr: ChangeDetectorRef) {}
 
+  public ngOnChanges(): void {
+    if (this.chartElementRef) {
+      this.buildChart();
+    }
+  }
+
   public ngAfterViewInit(): void {
-    console.log('payments', this.payments);
     this.buildChart();
   }
 
-  private groupPaymentsByMonths(): IPayment[][] {
-    return MONTHS.map((month, index) => {
-      return this.payments.filter(({ createdAt }) => getMonth(new Date(createdAt)) === index);
-    });
-  }
+  // private groupPaymentsByMonths(): IPayment[][] {
+  //   return MONTHS.map((month, index) => {
+  //     return this.payments.filter(({ createdAt }) => getMonth(new Date(createdAt)) === index);
+  //   });
+  // }
 
   private buildChart(): void {
+    console.log('transactions', this.transactions);
+
     this.chartService.buildChart(this.chartElementRef.nativeElement, (isCreated) => {
       this.isCreated = isCreated;
       this.cdr.markForCheck();
     });
 
-    console.log(this.groupPaymentsByMonths());
+    const lastDays = eachOfInterval(6);
 
-    const groupedPayments = this.groupPaymentsByMonths();
+    console.log(lastDays);
 
-    const expenses = groupedPayments.map((payments) =>
-      payments.reduce(
-        (prev, curr) => (curr.operationType === PaymentType.EXPENSES ? prev + curr.amount : prev),
-        0,
-      ),
-    );
+    // console.log(this.groupPaymentsByMonths());
 
-    const incomes = groupedPayments.map((payments) =>
-      payments.reduce(
-        (prev, curr) => (curr.operationType === PaymentType.INCOMES ? prev + curr.amount : prev),
-        0,
-      ),
-    );
+    // const groupedPayments = this.groupPaymentsByMonths();
 
-    this.chartService.addLabels(MONTHS);
+    const balance = lastDays
+      .map((day) => {
+        return this.transactions.filter((transaction) =>
+          isEqual(
+            new Date(parseDateToString(new Date(transaction.createdAt))).getTime(),
+            new Date(parseDateToString(day)).getTime(),
+          ),
+        );
+      })
+      .map((item) => {
+        return item.reduce((prev, curr) => {
+          if (curr.income === 0) {
+            return prev + curr.outcome;
+          }
+
+          if (curr.outcome === 0) {
+            return prev + curr.income;
+          }
+          return prev + curr.income;
+        }, 0);
+      });
+
+    console.log('balance', balance);
+
+    // const expenses = groupedPayments.map((payments) =>
+    //   payments.reduce(
+    //     (prev, curr) => (curr.operationType === PaymentType.EXPENSES ? prev + curr.amount : prev),
+    //     0,
+    //   ),
+    // );
+
+    // const incomes = groupedPayments.map((payments) =>
+    //   payments.reduce(
+    //     (prev, curr) => (curr.operationType === PaymentType.INCOMES ? prev + curr.amount : prev),
+    //     0,
+    //   ),
+    // );
+
+    this.chartService.addLabels(lastDays.map((day) => day.toDateString()));
     this.chartService.addBlock({
-      label: 'История расходов',
-      data: expenses,
-      backgroundColor: 'red',
-    });
-
-    this.chartService.addBlock({
-      label: 'История доходов',
-      data: incomes,
-      backgroundColor: 'green',
+      label: 'Баланс',
+      data: balance,
     });
   }
 }

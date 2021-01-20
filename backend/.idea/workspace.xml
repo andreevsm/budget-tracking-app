@@ -5,6 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8aa5ebab-8fc5-4803-96a6-4e975aa8ead0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_0.stat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_13395.stat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_16384.stat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/global.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/base/13395/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/13395/pg_internal.init" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16384/pg_internal.init" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/../db/global/pg_control" afterDir="false" />
@@ -14,6 +19,13 @@
       <change beforePath="$PROJECT_DIR$/../db/pg_stat/db_16384.stat" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/pg_stat/global.stat" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_wal/000000010000000000000001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/components/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/components/header/header.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/layouts/main-layout/main-layout.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/layouts/main-layout/main-layout.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modules/+accounts/components/statistics/statistics-chart.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modules/+accounts/components/statistics/statistics-chart.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modules/+accounts/components/statistics/statistics.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modules/+accounts/components/statistics/statistics.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modules/+accounts/containers/accounts-container/accounts-container.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modules/+accounts/containers/accounts-container/accounts-container.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modules/+accounts/containers/statistics-container/statistics-container.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modules/+accounts/containers/statistics-container/statistics-container.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +130,8 @@
       <workItem from="1610882646736" duration="7419000" />
       <workItem from="1610918232175" duration="450000" />
       <workItem from="1610921698747" duration="236000" />
-      <workItem from="1610996812327" duration="212000" />
+      <workItem from="1610996812327" duration="418000" />
+      <workItem from="1611171753208" duration="441000" />
     </task>
     <servers />
   </component>
