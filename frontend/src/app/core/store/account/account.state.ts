@@ -11,7 +11,7 @@ import { IAccount, ICategory, ICurrency } from './account.interface';
 export interface IAccountState {
   accountsEntity: Record<number, IAccount>;
   currentAccount: IAccount;
-  categories: Record<number, ICategory>;
+  categoriesEntity: Record<number, ICategory>;
   currencies: Record<number, ICurrency>;
 }
 
@@ -19,7 +19,7 @@ export interface IAccountState {
   name: 'account',
   defaults: {
     accountsEntity: {},
-    categories: {},
+    categoriesEntity: {},
     currencies: {},
     currentAccount: null,
   },
@@ -40,7 +40,7 @@ export class AccountState {
 
   @Selector()
   public static categories(state: IAccountState): Record<number, ICategory> {
-    return state.categories;
+    return state.categoriesEntity;
   }
 
   @Selector()
@@ -105,15 +105,12 @@ export class AccountState {
     { accountId }: AccountActions.LoadCategories,
   ): any {
     return this.accountService.loadCategories(accountId).pipe(
-      tap((categoryList) => {
-        const categories = categoryList.reduce((acc, cur) => {
-          acc[cur.id] = cur;
-          return acc;
-        }, {});
+      tap((categories) => {
+        const categoriesEntity = makeEntityByKey(categories, (category) => category.id);
 
         setState({
           ...getState(),
-          categories,
+          categoriesEntity,
         });
       }),
     );
@@ -158,7 +155,17 @@ export class AccountState {
   public addCategory(
     { setState, getState }: StateContext<IAccountState>,
     { category }: AccountActions.AddCategory,
-  ): Observable<number> {
-    return this.accountService.addCategory(category);
+  ): Observable<ICategory> {
+    return this.accountService.addCategory(category).pipe(
+      tap((newCategory) => {
+        setState({
+          ...getState(),
+          categoriesEntity: {
+            ...getState().categoriesEntity,
+            [newCategory.id]: newCategory,
+          },
+        });
+      }),
+    );
   }
 }

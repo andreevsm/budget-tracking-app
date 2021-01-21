@@ -3,8 +3,10 @@ package com.example.budget.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 @Data
 @Entity
@@ -25,13 +27,13 @@ public class Account {
     private String description;
 
     @Column(name = "created_at")
-    private Date createdAt;
+    private Timestamp createdAt;
 
     @Column(name = "currency_id")
     private int currencyId;
 
     @Column(name = "amount")
-    private BigInteger amount;
+    private Long amount;
 
     public Account (
             int id,
@@ -39,8 +41,8 @@ public class Account {
             String name,
             String description,
             int currencyId,
-            Date createdAt,
-            BigInteger amount
+            Timestamp createdAt,
+            Long amount
     ) {
         this.id = id;
         this.userId = userId;

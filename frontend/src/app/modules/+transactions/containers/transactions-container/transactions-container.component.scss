@@ -14,4 +14,8 @@
     display: flex;
     flex-flow: row wrap;
   }
+
+  &__filter {
+    min-width: 25rem;
+  }
 }

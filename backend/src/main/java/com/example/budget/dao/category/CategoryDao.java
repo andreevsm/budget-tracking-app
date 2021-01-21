@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface CategoryDao {
     List<Category> selectAllCategories(int accountId);
-    int addCategory(Category category);
+    Category addCategory(Category category);
 }

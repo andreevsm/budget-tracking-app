@@ -29,7 +29,7 @@ public class AccountController {
     }
 
     @PostMapping
-    public int addAccount(
+    public Account addAccount(
             @RequestHeader(value = "Authorization") String authorizationToken,
             @RequestBody Account account
     ) {

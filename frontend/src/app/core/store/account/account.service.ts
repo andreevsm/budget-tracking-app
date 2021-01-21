@@ -38,7 +38,7 @@ export class AccountService {
     return this.http.post<IAccount>(ACCOUNTS_API, account);
   }
 
-  public addCategory(category: INewCategory): Observable<number> {
-    return this.http.post<number>(CATEGORIES_API, category);
+  public addCategory(category: INewCategory): Observable<ICategory> {
+    return this.http.post<ICategory>(CATEGORIES_API, category);
   }
 }

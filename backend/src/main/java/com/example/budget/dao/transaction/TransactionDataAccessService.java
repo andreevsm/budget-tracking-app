@@ -88,8 +88,6 @@ public class TransactionDataAccessService implements TransactionDao {
             );
         }
 
-        System.out.println("key: " + keyHolder.getKeys());
-
         return null;
     }
 

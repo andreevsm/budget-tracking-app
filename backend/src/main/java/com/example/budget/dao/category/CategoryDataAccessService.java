@@ -1,12 +1,19 @@
 package com.example.budget.dao.category;
 
-import com.example.budget.model.Account;
 import com.example.budget.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 @Repository("postgres_categories")
 public class CategoryDataAccessService implements CategoryDao {
@@ -27,7 +34,7 @@ public class CategoryDataAccessService implements CategoryDao {
                     result.getInt("id"),
                     result.getString("name"),
                     result.getString("color"),
-                    result.getDate("created_at"),
+                    result.getTimestamp("created_at"),
                     result.getInt("account_id")
             );
         });
@@ -35,15 +42,43 @@ public class CategoryDataAccessService implements CategoryDao {
     }
 
     @Override
-    public int addCategory(Category category) {
-        final String sql = "INSERT INTO categories (name, color, created_at, account_id) VALUES (?, ?, ?, ?)";
+    public Category addCategory(Category category) {
+        final String sql = "INSERT INTO categories (" +
+                "name," +
+                "color," +
+                "created_at," +
+                "account_id" +
+                ") VALUES (?, ?, ?, ?)";
 
-        return jdbcTemplate.update(
-                sql,
-                category.getName(),
-                category.getColor(),
-                category.getCreatedAt(),
-                category.getAccountId()
-        );
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+
+        int result = jdbcTemplate.update(
+                new PreparedStatementCreator() {
+                    @Override
+                    public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+                        PreparedStatement preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+
+                        preparedStatement.setString(1, category.getName());
+                        preparedStatement.setString(2, category.getColor());
+                        preparedStatement.setTimestamp(3, category.getCreatedAt());
+                        preparedStatement.setInt(4, category.getAccountId());
+
+                        return preparedStatement;
+                    }
+                }, keyHolder);
+
+        if (result > 0) {
+            Map<String, Object> keys = keyHolder.getKeys();
+
+            return new Category(
+                    (int) keys.get("id"),
+                    (String) keys.get("name"),
+                    (String) keys.get("color"),
+                    (Timestamp) keys.get("created_at"),
+                    (int) keys.get("account_id")
+            );
+        }
+
+        return null;
     }
 }

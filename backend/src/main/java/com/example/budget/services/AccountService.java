@@ -22,7 +22,7 @@ public class AccountService {
         return accountDao.selectAllAccounts(userId);
     }
 
-    public int addAccount(int userId, Account account) {
+    public Account addAccount(int userId, Account account) {
         return accountDao.addAccount(userId, account);
     }
 

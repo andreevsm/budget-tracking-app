@@ -3,7 +3,7 @@ package com.example.budget.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Data
 @Entity
@@ -20,7 +20,7 @@ public class Category {
     private String color;
 
     @Column(name = "created_at")
-    private Date createdAt;
+    private Timestamp createdAt;
 
     @Column(name = "account_id")
     private int accountId;
@@ -29,7 +29,7 @@ public class Category {
             int id,
             String name,
             String color,
-            Date createdAt,
+            Timestamp createdAt,
             int accountId
     ) {
         this.id = id;

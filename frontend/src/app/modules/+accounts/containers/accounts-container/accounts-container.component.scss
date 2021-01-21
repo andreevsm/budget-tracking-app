@@ -8,3 +8,15 @@
 .accounts {
   margin-right: 1.6rem;
 }
+
+.link {
+  &__name {
+    display: block;
+  }
+
+  &__description {
+    display: block;
+    font-size: 1.2rem;
+    color: #999;
+  }
+}

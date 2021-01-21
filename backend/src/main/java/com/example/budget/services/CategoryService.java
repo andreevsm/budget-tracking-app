@@ -23,7 +23,7 @@ public class CategoryService {
         return categoryDao.selectAllCategories(accountId);
     }
 
-    public int addCategory(Category category) {
+    public Category addCategory(Category category) {
         return categoryDao.addCategory(category);
     }
 }

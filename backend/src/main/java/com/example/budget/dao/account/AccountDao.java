@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface AccountDao {
     int insertAccount(Account account);
 
-    int addAccount(int userId, Account account);
+    Account addAccount(int userId, Account account);
 
     List<Account> selectAllAccounts(int userId);
     Optional<Account> selectAccountById(int id);

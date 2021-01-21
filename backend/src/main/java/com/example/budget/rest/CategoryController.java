@@ -26,7 +26,7 @@ public class CategoryController {
     }
 
     @PostMapping
-    public int addCategory(
+    public Category addCategory(
             @RequestBody Category category
     ) {
         System.out.println(category);

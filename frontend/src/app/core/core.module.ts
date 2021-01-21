@@ -12,7 +12,7 @@ import { HeaderComponent, SpinnerComponent, SidenavComponent } from './component
 import { UIState, AuthState, AccountState, AccountService } from './store';
 import { localStorageFactory, LOCAL_STORAGE } from './services/local-storage.service';
 import { MainLayoutComponent } from './layouts';
-import { AuthInterceptor, SpinnerInterceptor } from './interceptors';
+import { AuthInterceptor } from './interceptors';
 import { TransactionState } from './store/transaction';
 
 @NgModule({
@@ -26,11 +26,6 @@ import { TransactionState } from './store/transaction';
   ],
   exports: [HeaderComponent, SpinnerComponent],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: SpinnerInterceptor,
-      multi: true,
-    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
