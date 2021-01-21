@@ -8,7 +8,6 @@ export const LOGOUT_API = `${AUTH_API}/logout`;
 export const SIGN_UP_API = `${AUTH_API}/signup`;
 
 export const ACCOUNTS_API = `${API}/accounts`;
-export const PAYMENTS_API = `${API}/payments`;
 export const CATEGORIES_API = `${API}/categories`;
 export const CURRENCIES_API = `${API}/currencies`;
 export const TRANSACTIONS_API = `${API}/transactions`;

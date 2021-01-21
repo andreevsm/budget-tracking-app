@@ -1,4 +1,4 @@
-import { IAccount, INewAccount, INewCategory, INewPayment } from './account.interface';
+import { IAccount, INewAccount, INewCategory } from './account.interface';
 
 export namespace AccountActions {
   export class LoadAll {
@@ -23,16 +23,6 @@ export namespace AccountActions {
   export class Update {
     public static readonly type = '[Accounts] Update account';
     constructor(public account: IAccount) {}
-  }
-  export class AddPayment {
-    public static readonly type = '[Accounts] Add payment';
-
-    constructor(public payment: INewPayment) {}
-  }
-
-  export class LoadPayments {
-    public static readonly type = '[Accounts] Load Payments';
-    constructor(public accountId: number) {}
   }
 
   export class LoadCurrencies {

@@ -1,10 +1,8 @@
 import { Action, State, StateContext, Selector, Store } from '@ngxs/store';
 import { Injectable } from '@angular/core';
-import { tap, finalize, map } from 'rxjs/operators';
-import { forkJoin, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { makeEntityByKey } from '@utils/helpers';
-
-import { UIActions } from '../ui';
 
 import { AccountService } from './account.service';
 import { AccountActions } from './account.action';
@@ -57,8 +55,6 @@ export class AccountState {
 
   @Action(AccountActions.LoadAll)
   public loadAccounts({ setState, getState }: StateContext<IAccountState>): Observable<IAccount[]> {
-    this.store.dispatch(new UIActions.ShowSpinner());
-
     return this.accountService.loadAccounts().pipe(
       tap((accounts) =>
         setState({
@@ -66,7 +62,6 @@ export class AccountState {
           accountsEntity: makeEntityByKey(accounts, (account) => account.id),
         }),
       ),
-      finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
     );
   }
 
@@ -75,14 +70,7 @@ export class AccountState {
     { setState, getState }: StateContext<IAccountState>,
     { accountId }: AccountActions.LoadById,
   ): Observable<IAccount> {
-    return forkJoin([
-      this.accountService.loadAccountById(accountId),
-      this.accountService.loadPayments(accountId),
-    ]).pipe(
-      map(([account, payments]) => ({
-        ...account,
-        payments,
-      })),
+    return this.accountService.loadAccountById(accountId).pipe(
       tap((currentAccount) =>
         setState({
           ...getState(),
@@ -111,22 +99,11 @@ export class AccountState {
     );
   }
 
-  @Action(AccountActions.LoadPayments)
-  public loadPayments({ setState, getState }: StateContext<IAccountState>, payload: number): any {
-    this.store.dispatch(new UIActions.ShowSpinner());
-
-    return this.accountService
-      .loadPayments(payload)
-      .pipe(finalize(() => this.store.dispatch(new UIActions.HideSpinner())));
-  }
-
   @Action(AccountActions.LoadCategories)
   public loadCategories(
     { setState, getState }: StateContext<IAccountState>,
     { accountId }: AccountActions.LoadCategories,
   ): any {
-    this.store.dispatch(new UIActions.ShowSpinner());
-
     return this.accountService.loadCategories(accountId).pipe(
       tap((categoryList) => {
         const categories = categoryList.reduce((acc, cur) => {
@@ -139,14 +116,11 @@ export class AccountState {
           categories,
         });
       }),
-      finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
     );
   }
 
   @Action(AccountActions.LoadCurrencies)
   public loadCurrencies({ setState, getState }: StateContext<IAccountState>): any {
-    this.store.dispatch(new UIActions.ShowSpinner());
-
     return this.accountService.loadCurrencies().pipe(
       tap((currencyList) => {
         const currencies = currencyList.reduce((acc, cur) => {
@@ -159,7 +133,6 @@ export class AccountState {
           currencies,
         });
       }),
-      finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
     );
   }
 
@@ -167,24 +140,18 @@ export class AccountState {
   public createAccount(
     { setState, getState }: StateContext<IAccountState>,
     { account }: AccountActions.Create,
-  ): Observable<number> {
-    this.store.dispatch(new UIActions.ShowSpinner());
-
-    return this.accountService
-      .createAccount(account)
-      .pipe(finalize(() => this.store.dispatch(new UIActions.HideSpinner())));
-  }
-
-  @Action(AccountActions.AddPayment)
-  public addPayment(
-    { setState, getState }: StateContext<IAccountState>,
-    { payment }: AccountActions.AddPayment,
-  ): Observable<number> {
-    this.store.dispatch(new UIActions.ShowSpinner());
-
-    return this.accountService
-      .addPayment(payment)
-      .pipe(finalize(() => this.store.dispatch(new UIActions.HideSpinner())));
+  ): Observable<IAccount> {
+    return this.accountService.createAccount(account).pipe(
+      tap((newAccount) => {
+        setState({
+          ...getState(),
+          accountsEntity: {
+            ...getState().accountsEntity,
+            [newAccount.id]: newAccount,
+          },
+        });
+      }),
+    );
   }
 
   @Action(AccountActions.AddCategory)
@@ -192,10 +159,6 @@ export class AccountState {
     { setState, getState }: StateContext<IAccountState>,
     { category }: AccountActions.AddCategory,
   ): Observable<number> {
-    this.store.dispatch(new UIActions.ShowSpinner());
-
-    return this.accountService
-      .addCategory(category)
-      .pipe(finalize(() => this.store.dispatch(new UIActions.HideSpinner())));
+    return this.accountService.addCategory(category);
   }
 }

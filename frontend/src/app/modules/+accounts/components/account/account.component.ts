@@ -10,11 +10,8 @@ import {
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ReplaySubject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { IAccount, ICategory, IPayment, ICurrency } from '@core/store';
+import { IAccount, ICategory, ICurrency } from '@core/store';
 import { NgChanges } from '@utils/types';
-
-import { CreatePaymentComponent } from '../../modals';
 
 @Component({
   selector: 'bg-account',
@@ -28,8 +25,8 @@ export class AccountComponent implements OnChanges, OnInit, OnDestroy {
   @Input() public currencies: Record<number, ICurrency>;
 
   public form: FormGroup;
-  public todayPayments: IPayment[] = [];
-  public yesterdayPayments: IPayment[] = [];
+  public todayPayments: any[] = [];
+  public yesterdayPayments: any[] = [];
 
   private destroy$ = new ReplaySubject();
 
@@ -50,17 +47,7 @@ export class AccountComponent implements OnChanges, OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  public onAddItem(): void {
-    this.dialog
-      .open(CreatePaymentComponent, {
-        data: {
-          accountId: this.account.id,
-        },
-      })
-      .afterClosed()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe();
-  }
+  public onAddItem(): void {}
 
   private buildForm(): void {
     this.form = this.fb.group({
@@ -75,15 +62,15 @@ export class AccountComponent implements OnChanges, OnInit, OnDestroy {
     const date = new Date();
     date.setHours(0, 0, 0, 0);
 
-    this.todayPayments = this.account.payments.filter(
-      (payment) => new Date(payment.createdAt).getDate() === date.getDate(),
-    );
+    // this.todayPayments = this.account.payments.filter(
+    //   (payment) => new Date(payment.createdAt).getDate() === date.getDate(),
+    // );
 
     date.setDate(date.getDate() - 1);
 
-    this.yesterdayPayments = this.account.payments.filter(
-      (payment) => new Date(payment.createdAt).getDate() === date.getDate(),
-    );
+    // this.yesterdayPayments = this.account.payments.filter(
+    //   (payment) => new Date(payment.createdAt).getDate() === date.getDate(),
+    // );
 
     this.cdr.markForCheck();
   }

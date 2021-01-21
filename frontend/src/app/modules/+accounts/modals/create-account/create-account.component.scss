@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  width: 30rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}

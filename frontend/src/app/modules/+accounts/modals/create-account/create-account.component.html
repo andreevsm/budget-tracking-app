@@ -1,28 +1,26 @@
 <div class="root">
-
   <div class="account">
-
     <form
-      class="account--form form"
+      class="account__form form"
       [formGroup]="form"
       (ngSubmit)="onSubmit()"
     >
-      <mat-form-field class="form--control">
+      <mat-form-field class="form__control">
         <mat-label>Название</mat-label>
         <input matInput placeholder="Мой счет" formControlName="name">
       </mat-form-field>
 
-      <mat-form-field class="form--control">
+      <mat-form-field class="form__control">
         <mat-label>Описание</mat-label>
         <textarea matInput formControlName="description"></textarea>
       </mat-form-field>
 
-      <mat-form-field class="form--control">
+      <mat-form-field class="form__control">
         <mat-label>Остаточная сумма</mat-label>
         <input matInput type="number" formControlName="amount">
       </mat-form-field>
 
-      <mat-form-field class="form--control" *ngIf="currencies$ | async as currencies">
+      <mat-form-field class="form__control" *ngIf="currencies$ | async as currencies">
         <mat-label>Валюта</mat-label>
         <mat-select
           (selectionChange)="onCurrencyChange($event)"
@@ -36,7 +34,7 @@
         </mat-select>
       </mat-form-field>
 
-      <div class="form--buttons">
+      <div class="form__buttons">
         <button mat-flat-button mat-dialog-close>Отмена</button>
         <button
           mat-flat-button
@@ -47,9 +45,6 @@
           Создать
         </button>
       </div>
-
     </form>
-
   </div>
-
 </div>

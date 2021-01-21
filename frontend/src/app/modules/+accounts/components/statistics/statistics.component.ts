@@ -8,10 +8,8 @@ import {
   ChangeDetectorRef,
   OnChanges,
 } from '@angular/core';
-import { getMonth, subDays, eachDayOfInterval, isEqual } from 'date-fns';
-import { IAccount, ICategory, ICurrency, IPayment, ITransaction, PaymentType } from '@core/store';
-import { MONTHS } from '@fixtures/months';
-import { ChartPoint } from 'chart.js';
+import { isEqual } from 'date-fns';
+import { IAccount, ICategory, ICurrency, ITransaction } from '@core/store';
 import { eachOfInterval } from '@fixtures/last-days';
 import { parseDateToString } from '@utils/helpers';
 
@@ -47,12 +45,6 @@ export class StatisticsComponent implements OnChanges, AfterViewInit {
     this.buildChart();
   }
 
-  // private groupPaymentsByMonths(): IPayment[][] {
-  //   return MONTHS.map((month, index) => {
-  //     return this.payments.filter(({ createdAt }) => getMonth(new Date(createdAt)) === index);
-  //   });
-  // }
-
   private buildChart(): void {
     console.log('transactions', this.transactions);
 
@@ -64,10 +56,6 @@ export class StatisticsComponent implements OnChanges, AfterViewInit {
     const lastDays = eachOfInterval(6);
 
     console.log(lastDays);
-
-    // console.log(this.groupPaymentsByMonths());
-
-    // const groupedPayments = this.groupPaymentsByMonths();
 
     const balance = lastDays
       .map((day) => {
@@ -92,20 +80,6 @@ export class StatisticsComponent implements OnChanges, AfterViewInit {
       });
 
     console.log('balance', balance);
-
-    // const expenses = groupedPayments.map((payments) =>
-    //   payments.reduce(
-    //     (prev, curr) => (curr.operationType === PaymentType.EXPENSES ? prev + curr.amount : prev),
-    //     0,
-    //   ),
-    // );
-
-    // const incomes = groupedPayments.map((payments) =>
-    //   payments.reduce(
-    //     (prev, curr) => (curr.operationType === PaymentType.INCOMES ? prev + curr.amount : prev),
-    //     0,
-    //   ),
-    // );
 
     this.chartService.addLabels(lastDays.map((day) => day.toDateString()));
     this.chartService.addBlock({

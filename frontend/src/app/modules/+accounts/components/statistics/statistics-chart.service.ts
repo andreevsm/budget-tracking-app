@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { Injectable } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartData, ChartTooltipItem } from 'chart.js';
@@ -39,7 +40,7 @@ export class StatisticsChartService {
 
               return `
                 ${item.label}
-                ${data.datasets.map((item) => item.data.map((datum) => `${datum}`))}
+                ${data.datasets.map((it) => (it.data as any).map((datum) => `${datum}`))}
               `;
             },
           },

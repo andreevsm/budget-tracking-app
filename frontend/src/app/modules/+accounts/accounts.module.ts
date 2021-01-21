@@ -6,8 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 
 import { MainRoutingModule } from './accounts.routing';
-import { CreatePaymentComponent, CreateAccountComponent } from './modals';
-import { AccountComponent, HistoryComponent, StatisticsComponent } from './components';
+import { CreateAccountComponent } from './modals';
+import { AccountComponent, StatisticsComponent } from './components';
 import {
   StatisticsContainerComponent,
   HistoryContainerComponent,
@@ -19,9 +19,7 @@ import { CreateCategoryComponent } from './modals/create-category/create-categor
 
 @NgModule({
   declarations: [
-    CreatePaymentComponent,
     AccountComponent,
-    HistoryComponent,
     CreateAccountComponent,
     StatisticsContainerComponent,
     StatisticsComponent,

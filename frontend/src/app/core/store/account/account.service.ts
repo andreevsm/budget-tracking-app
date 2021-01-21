@@ -2,17 +2,9 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { ACCOUNTS_API, CATEGORIES_API, CURRENCIES_API, PAYMENTS_API } from '../../constants';
+import { ACCOUNTS_API, CATEGORIES_API, CURRENCIES_API } from '../../constants';
 
-import {
-  IAccount,
-  ICategory,
-  ICurrency,
-  INewAccount,
-  INewCategory,
-  INewPayment,
-  IPayment,
-} from './account.interface';
+import { IAccount, ICategory, ICurrency, INewAccount, INewCategory } from './account.interface';
 
 @Injectable()
 export class AccountService {
@@ -30,14 +22,6 @@ export class AccountService {
     return this.http.delete<number>(`${ACCOUNTS_API}/${id}`);
   }
 
-  public loadPayments(accountId: number): Observable<IPayment[]> {
-    return this.http.get<IPayment[]>(PAYMENTS_API, {
-      params: {
-        accountId: accountId.toString(),
-      },
-    });
-  }
-
   public loadCategories(accountId: number): Observable<ICategory[]> {
     return this.http.get<ICategory[]>(CATEGORIES_API, {
       params: {
@@ -50,12 +34,8 @@ export class AccountService {
     return this.http.get<ICategory[]>(CURRENCIES_API);
   }
 
-  public createAccount(account: INewAccount): Observable<number> {
-    return this.http.post<number>(ACCOUNTS_API, account);
-  }
-
-  public addPayment(payment: INewPayment): Observable<number> {
-    return this.http.post<number>(PAYMENTS_API, payment);
+  public createAccount(account: INewAccount): Observable<IAccount> {
+    return this.http.post<IAccount>(ACCOUNTS_API, account);
   }
 
   public addCategory(category: INewCategory): Observable<number> {

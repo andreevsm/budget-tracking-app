@@ -5,7 +5,6 @@ export interface IAccount {
   description: string;
   currencyId: number;
   amount: number;
-  payments: IPayment[];
 }
 
 export type INewAccount = Omit<IAccount, 'id' | 'payments'>;
@@ -30,18 +29,6 @@ export interface ICategory {
 }
 
 export type INewCategory = Omit<ICategory, 'id'>;
-
-export interface IPayment {
-  id: number;
-  accountId: number;
-  amount: number;
-  operationType: PaymentType;
-  categoryId: number;
-  createdAt: string;
-  currencyId: number;
-}
-
-export type INewPayment = Omit<IPayment, 'id'>;
 
 export interface ICurrency {
   id: number;
