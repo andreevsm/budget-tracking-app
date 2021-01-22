@@ -48,7 +48,7 @@ export class TransactionsHistoryComponent implements OnInit, OnChanges {
         return secondTime - firstTime;
       })
       .forEach((transaction: ITransaction) => {
-        const date = transaction.createdAt.toString();
+        const date = new Date(transaction.createdAt).toDateString();
 
         // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         if (groupedTransactions[date]) {
@@ -57,6 +57,8 @@ export class TransactionsHistoryComponent implements OnInit, OnChanges {
           groupedTransactions[date] = [transaction];
         }
       });
+
+    console.log('groupedTransactions', groupedTransactions);
 
     this.transactions = Object.entries(groupedTransactions)
       .map(([key, value]) => [

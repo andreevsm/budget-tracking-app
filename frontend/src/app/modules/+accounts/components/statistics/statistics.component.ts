@@ -107,49 +107,4 @@ export class StatisticsComponent implements OnChanges {
 
     console.log('balance', balance);
   }
-
-  // private buildChart(): void {
-  //   console.log('chartElementRef', this.chartElementRef);
-
-  //   this.chartService.buildChart(
-  //     this.chartElementRef.nativeElement,
-  //     this.tooltipElementRef.nativeElement,
-  //     (isCreated) => {
-  //       this.isCreated = isCreated;
-  //       this.cdr.markForCheck();
-  //     },
-  //   );
-  // }
-
-  // private addDataToChart(): void {
-  //   const lastDays = eachOfInterval(6);
-
-  //   const balance = lastDays
-  //     .map((day) => {
-  //       return this.transactions.filter((transaction) =>
-  //         isEqual(
-  //           new Date(parseDateToString(new Date(transaction.createdAt))).getTime(),
-  //           new Date(parseDateToString(day)).getTime(),
-  //         ),
-  //       );
-  //     })
-  //     .map((item) => {
-  //       return item.reduce((prev, curr) => {
-  //         if (curr.income === 0) {
-  //           return prev + curr.outcome;
-  //         }
-
-  //         if (curr.outcome === 0) {
-  //           return prev + curr.income;
-  //         }
-  //         return prev + curr.income;
-  //       }, 0);
-  //     });
-
-  //   this.chartService.addLabels(lastDays.map((day) => day.toDateString()));
-  //   this.chartService.addBlock({
-  //     label: 'Баланс',
-  //     data: balance,
-  //   });
-  // }
 }

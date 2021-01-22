@@ -72,7 +72,8 @@
                   {{ currencies[account?.value.currencyId].name }}
                 </span>
               </mat-label>
-              <input matInput type="number" formControlName="income" formControlName="outcome">
+              <input *ngIf="transactionTypeControl.value === 'incomes'" matInput type="number" formControlName="income">
+              <input *ngIf="transactionTypeControl.value === 'expenses'" matInput type="number" formControlName="outcome">
             </mat-form-field>
   
             <div class="form__control-group">
