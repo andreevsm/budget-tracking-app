@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -29,6 +30,13 @@ import { CreateCategoryComponent } from './modals/create-category/create-categor
     AccountLayoutComponent,
     CreateCategoryComponent,
   ],
-  imports: [CommonModule, MainRoutingModule, SharedModule, MatSelectModule, FormsModule],
+  imports: [
+    CommonModule,
+    MainRoutingModule,
+    SharedModule,
+    MatSelectModule,
+    FormsModule,
+    NgxChartsModule,
+  ],
 })
 export class MainModule {}

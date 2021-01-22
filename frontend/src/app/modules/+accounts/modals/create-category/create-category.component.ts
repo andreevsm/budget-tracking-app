@@ -29,8 +29,6 @@ export class CreateCategoryComponent implements OnInit {
       accountId: 1,
     };
 
-    console.log(category);
-
     this.store.dispatch(new AccountActions.AddCategory(category));
   }
 

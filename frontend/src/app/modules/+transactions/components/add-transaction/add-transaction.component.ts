@@ -93,7 +93,6 @@ export class AddTransactionComponent implements OnInit, OnDestroy {
   }
 
   public onAccountIncomeChange(item: MatSelectChange): void {
-    console.log('item', item);
     this.form.patchValue(
       {
         accountIncome: item.value.id,
@@ -103,7 +102,6 @@ export class AddTransactionComponent implements OnInit, OnDestroy {
   }
 
   public onAccountOutcomeChange(item: MatSelectChange): void {
-    console.log('item', item);
     this.form.patchValue(
       {
         accountOutcome: item.value.id,

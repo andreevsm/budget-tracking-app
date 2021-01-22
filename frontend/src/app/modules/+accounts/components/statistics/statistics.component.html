@@ -1,3 +1,12 @@
-<div class="root" [hidden]="isCreated">
-  <canvas #chart width="400" height="400"></canvas>
+<div class="root">
+  <ngx-charts-line-chart
+    [view]="view"
+    [xAxis]="true"
+    [yAxis]="true"
+    [timeline]="true"
+    [results]="results"
+    (select)="onSelect($event)"
+    (activate)="onActivate($event)"
+    (deactivate)="onDeactivate($event)"
+  ></ngx-charts-line-chart>
 </div>

@@ -29,9 +29,6 @@ export class TransactionsHistoryComponent implements OnInit, OnChanges {
   public ngOnInit(): void {}
 
   public ngOnChanges(): void {
-    console.log('transactions', this.transactions);
-    console.log('accountsEntity', this.accountsEntity);
-
     this.groupPaymentsByDay();
   }
 
