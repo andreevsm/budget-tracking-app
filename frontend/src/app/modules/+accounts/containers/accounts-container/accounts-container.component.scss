@@ -1,6 +1,6 @@
 .root {
-  display: flex;
   align-items: flex-start;
+  display: flex;
   flex-flow: row wrap;
   padding: 1.6rem;
 }
@@ -15,8 +15,8 @@
   }
 
   &__description {
+    color: #999;
     display: block;
     font-size: 1.2rem;
-    color: #999;
   }
 }

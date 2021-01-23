@@ -80,7 +80,7 @@ export class AuthState {
   }
 
   @Action(AuthActions.Logout)
-  public logout({ setState, getState }: StateContext<IAuthState>): Observable<any> {
+  public logout(): Observable<any> {
     this.store.dispatch(new UIActions.ShowSpinner());
 
     return this.userService.logout().pipe(

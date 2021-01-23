@@ -2,12 +2,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { AccountActions, INewCategory } from '@core/store';
-import { parseDateToString } from '@utils/helpers';
 
 @Component({
   selector: 'bg-create-category',
   templateUrl: './create-category.component.html',
-  styleUrls: ['./create-category.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateCategoryComponent implements OnInit {

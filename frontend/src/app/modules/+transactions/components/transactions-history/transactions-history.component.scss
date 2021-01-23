@@ -6,8 +6,8 @@
   width: 100%;
 
   &__table {
-    width: 100%;
     background-color: transparent;
+    width: 100%;
   }
 }
 
@@ -25,11 +25,10 @@
   }
 
   &__td {
-
     &__account {
       &__inner {
-        display: flex;
         align-items: center;
+        display: flex;
       }
     }
   }

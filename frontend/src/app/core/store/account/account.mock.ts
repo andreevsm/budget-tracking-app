@@ -1,4 +1,4 @@
-import { IAccount, PaymentType } from './account.interface';
+// import { IAccount, PaymentType } from './account.interface';
 
 // export const PAYMENTS: IPayment[] = [
 //   {

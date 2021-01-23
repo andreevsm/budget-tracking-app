@@ -8,9 +8,8 @@ describe('AddTransactionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddTransactionComponent ]
-    })
-    .compileComponents();
+      declarations: [AddTransactionComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

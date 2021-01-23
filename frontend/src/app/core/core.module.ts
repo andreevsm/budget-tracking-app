@@ -8,7 +8,7 @@ import { NgxsModule } from '@ngxs/store';
 import { MaterialModule } from '../shared/material/material.module';
 
 import { AuthService } from './store/auth/auth.service';
-import { HeaderComponent, SpinnerComponent, SidenavComponent } from './components';
+import { HeaderComponent, SpinnerComponent } from './components';
 import { UIState, AuthState, AccountState, AccountService } from './store';
 import { localStorageFactory, LOCAL_STORAGE } from './services/local-storage.service';
 import { MainLayoutComponent } from './layouts';
@@ -16,7 +16,7 @@ import { AuthInterceptor } from './interceptors';
 import { TransactionState } from './store/transaction';
 
 @NgModule({
-  declarations: [HeaderComponent, SpinnerComponent, SidenavComponent, MainLayoutComponent],
+  declarations: [HeaderComponent, SpinnerComponent, MainLayoutComponent],
   imports: [
     CommonModule,
     BrowserAnimationsModule,

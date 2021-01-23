@@ -15,6 +15,7 @@ export class AuthInterceptor implements HttpInterceptor {
     const token = this.authService.getAccessToken();
 
     if (token) {
+      // eslint-disable-next-line no-param-reassign
       request = request.clone({
         headers: request.headers.set('Authorization', token),
       });

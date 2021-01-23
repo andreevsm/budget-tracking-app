@@ -6,7 +6,6 @@ import { AccountState, IAccount, ICategory, ICurrency } from '@core/store';
 @Component({
   selector: 'bg-account-container',
   templateUrl: './account-container.component.html',
-  styleUrls: ['./account-container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccountContainerComponent {
