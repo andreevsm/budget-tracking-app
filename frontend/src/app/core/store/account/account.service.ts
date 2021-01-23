@@ -38,6 +38,10 @@ export class AccountService {
     return this.http.post<IAccount>(ACCOUNTS_API, account);
   }
 
+  public updateAccount(account: IAccount): Observable<number> {
+    return this.http.put<number>(ACCOUNTS_API, account);
+  }
+
   public addCategory(category: INewCategory): Observable<ICategory> {
     return this.http.post<ICategory>(CATEGORIES_API, category);
   }

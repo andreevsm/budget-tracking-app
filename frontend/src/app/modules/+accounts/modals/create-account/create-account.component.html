@@ -22,9 +22,7 @@
 
       <mat-form-field class="form__control" *ngIf="currencies$ | async as currencies">
         <mat-label>Валюта</mat-label>
-        <mat-select
-          (selectionChange)="onCurrencyChange($event)"
-        >  
+        <mat-select [formControl]="currencyControl">
           <mat-option
             *ngFor="let currency of Object.values(currencies)"
             [value]="currency.id"
@@ -42,7 +40,7 @@
           [mat-dialog-close]="true"
           type="submit"
         >
-          Создать
+          Сохранить
         </button>
       </div>
     </form>

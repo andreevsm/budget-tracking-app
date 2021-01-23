@@ -151,6 +151,26 @@ export class AccountState {
     );
   }
 
+  @Action(AccountActions.Update)
+  public updateAccount(
+    { setState, getState }: StateContext<IAccountState>,
+    { account }: AccountActions.Update,
+  ): Observable<number> {
+    return this.accountService.updateAccount(account).pipe(
+      tap((success) => {
+        if (success) {
+          setState({
+            ...getState(),
+            accountsEntity: {
+              ...getState().accountsEntity,
+              [account.id]: account,
+            },
+          });
+        }
+      }),
+    );
+  }
+
   @Action(AccountActions.AddCategory)
   public addCategory(
     { setState, getState }: StateContext<IAccountState>,

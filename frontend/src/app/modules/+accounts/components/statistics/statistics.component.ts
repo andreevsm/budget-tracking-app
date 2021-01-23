@@ -1,14 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  Input,
-  ViewChild,
-  AfterViewInit,
-  ElementRef,
-  ChangeDetectorRef,
-  OnChanges,
-  NgZone,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, OnChanges } from '@angular/core';
 import { IAccount, ICategory, ICurrency, ITransaction } from '@core/store';
 import { eachOfInterval } from '@fixtures/last-days';
 import { parseDateToString } from '@utils/helpers';
@@ -30,48 +20,14 @@ export class StatisticsComponent implements OnChanges {
   public view: number[] = [800, 400];
   public results = [];
 
-  multi = [
-    {
-      name: 'Транзакции',
-      series: [
-        {
-          name: '1990',
-          value: 62000000,
-        },
-        {
-          name: '2010',
-          value: 73000000,
-        },
-        {
-          name: '2011',
-          value: 89400000,
-        },
-      ],
-    },
-  ];
-
-  constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone) {}
-
   public ngOnChanges(changes: NgChanges<StatisticsComponent>): void {
     if (changes.transactions?.previousValue !== changes.transactions?.currentValue) {
       this.prepareResults();
     }
   }
 
-  public onSelect(data): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-  }
-
-  public onActivate(data): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
-
-  public onDeactivate(data): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  }
-
   private prepareResults(): void {
-    const lastDays = eachOfInterval(6);
+    const lastDays = eachOfInterval(30);
 
     const balance = lastDays
       .map((day) => {
@@ -104,7 +60,5 @@ export class StatisticsComponent implements OnChanges {
         })),
       },
     ];
-
-    console.log('balance', balance);
   }
 }

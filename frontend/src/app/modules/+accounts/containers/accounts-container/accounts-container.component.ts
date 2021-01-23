@@ -42,6 +42,16 @@ export class AccountsContainerComponent implements OnDestroy {
       .subscribe();
   }
 
+  public onEditAccount(account: IAccount): void {
+    this.dialog
+      .open(CreateAccountComponent, {
+        data: account,
+      })
+      .afterClosed()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe();
+  }
+
   public onAddCategory(): void {
     this.dialog
       .open(CreateCategoryComponent)

@@ -1,9 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSelectChange } from '@angular/material/select';
+import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { AccountActions, AccountState, ICurrency, INewAccount } from '@core/store';
+import { Observable, Subject } from 'rxjs';
+import { AccountActions, AccountState, IAccount, ICurrency, INewAccount } from '@core/store';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'bg-create-account',
@@ -16,41 +17,69 @@ export class CreateAccountComponent implements OnInit {
 
   public form: FormGroup;
   public Object = Object;
+  public currencyControl = new FormControl(null, [Validators.required]);
 
-  constructor(private fb: FormBuilder, private store: Store) {}
+  private destroy$ = new Subject();
+
+  constructor(
+    private fb: FormBuilder,
+    private store: Store,
+    @Inject(MAT_DIALOG_DATA) public account?: IAccount,
+  ) {}
 
   public ngOnInit(): void {
     this.buildForm();
+    this.subscribeToCurrency();
   }
 
   public onSubmit(): void {
     const { name, description, currencyId, amount } = this.form.getRawValue();
-    const account: INewAccount = {
-      name,
-      description,
-      currencyId,
-      createdAt: new Date(),
-      amount,
-    };
 
-    this.store.dispatch(new AccountActions.Create(account));
+    const account: IAccount | INewAccount = this.account.id
+      ? {
+          id: this.account.id,
+          name,
+          description,
+          currencyId,
+          createdAt: new Date(),
+          amount,
+        }
+      : {
+          name,
+          description,
+          currencyId,
+          createdAt: new Date(),
+          amount,
+        };
+
+    if (this.account.id) {
+      this.store.dispatch(new AccountActions.Update(account as IAccount));
+    } else {
+      this.store.dispatch(new AccountActions.Create(account));
+    }
   }
 
-  public onCurrencyChange(item: MatSelectChange): void {
-    this.form.patchValue(
-      {
-        currencyId: item.value,
-      },
-      { emitEvent: false },
-    );
+  private subscribeToCurrency(): void {
+    this.currencyControl.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((value) => {
+      this.form.patchValue(
+        {
+          currencyId: value,
+        },
+        { emitEvent: false },
+      );
+    });
   }
 
   private buildForm(): void {
+    const { name, description, currencyId, amount } = this.account || {};
+
+    this.currencyControl.setValue(currencyId, { emitEvent: false });
+
     this.form = this.fb.group({
-      name: ['', [Validators.required]],
-      description: [''],
-      currencyId: [null, [Validators.required]],
-      amount: [null, [Validators.required]],
+      name: [name || '', [Validators.required]],
+      description: [description || ''],
+      currencyId: [currencyId || null, [Validators.required]],
+      amount: [amount || null, [Validators.required]],
     });
   }
 }

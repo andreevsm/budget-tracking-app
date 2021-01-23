@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import {
   HistoryContainerComponent,
-  StatisticsContainerComponent,
   AccountContainerComponent,
   AccountsContainerComponent,
 } from './containers';
@@ -25,10 +24,6 @@ const routes: Routes = [
           {
             path: 'history',
             component: HistoryContainerComponent,
-          },
-          {
-            path: 'statistics',
-            component: StatisticsContainerComponent,
           },
         ],
       },
