@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuard } from './core/auth';
-import { LoginGuard } from './core/auth/login.guard';
 import { MainLayoutComponent } from './core/layouts';
 import { SignInModule, MainModule, SignUpModule, TransactionsModule } from './modules';
 
