@@ -5,7 +5,7 @@ export interface ITransaction {
   income: number;
   outcome: number;
   comment: string;
-  createdAt: string;
+  createdAt: Date;
   categoryId: number;
 }
 

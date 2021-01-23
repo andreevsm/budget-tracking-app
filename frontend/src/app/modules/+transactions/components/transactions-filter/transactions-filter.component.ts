@@ -48,6 +48,10 @@ export class TransactionsFilterComponent implements OnInit, OnChanges {
   }
 
   private calculateTotal(): void {
+    this.accounts.forEach(({ id }) => {
+      this.accountsIds.add(id);
+    });
+
     this.totalAmount = this.accounts
       .filter((account) => account.amount > 0)
       .map(({ currencyId, amount }) => {

@@ -4,7 +4,6 @@ import { MatSelectChange } from '@angular/material/select';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { AccountActions, AccountState, ICurrency, INewAccount } from '@core/store';
-import { parseDateToString } from '@utils/helpers';
 
 @Component({
   selector: 'bg-create-account',
@@ -30,7 +29,7 @@ export class CreateAccountComponent implements OnInit {
       name,
       description,
       currencyId,
-      createdAt: parseDateToString(new Date()),
+      createdAt: new Date(),
       amount,
     };
 

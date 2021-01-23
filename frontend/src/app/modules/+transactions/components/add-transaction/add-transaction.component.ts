@@ -11,7 +11,6 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { MatSelectChange } from '@angular/material/select';
 import { Subject } from 'rxjs';
 import { IAccount, ICategory, ICurrency, INewTransaction } from '@core/store';
-import { parseDateToString } from '@utils/helpers';
 
 @Component({
   selector: 'bg-add-transaction',
@@ -68,7 +67,7 @@ export class AddTransactionComponent implements OnInit, OnDestroy {
       income: patchedIncome,
       outcome: patchedOutcome,
       comment,
-      createdAt: parseDateToString(new Date(createdAt)),
+      createdAt: new Date(createdAt),
       categoryId,
     });
   }

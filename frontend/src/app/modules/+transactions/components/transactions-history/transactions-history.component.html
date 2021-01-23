@@ -1,5 +1,5 @@
-<div class="history">
-  <table class="history__table table" mat-table [dataSource]="transactions">
+<div class="history" *ngIf="accountsEntity">
+  <table class="history__table table" mat-table [dataSource]="groupedTransactions">
     <ng-container matColumnDef="category">
       <th mat-header-cell *matHeaderCellDef>Категория</th>
       <td mat-cell *matCellDef="let element">
@@ -34,10 +34,10 @@
 
         <ng-template #payment>
           <div *ngIf="element.income" style="color: green;">
-            +{{ element.income }}
+            {{ element.income | currency : currencies[accountsEntity[element.accountIncome]?.currencyId]?.name : 'symbol-narrow' }}
           </div>
           <div *ngIf="element.outcome" style="color: red;">
-            -{{ element.outcome }}
+            {{ element.outcome | currency : currencies[accountsEntity[element.accountIncome]?.currencyId]?.name : 'symbol-narrow' }}
           </div>
         </ng-template>
       </td>
@@ -75,10 +75,7 @@
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
         <span>
-          {{ element.grouped.key }}
-        </span>
-        <span>
-          ({{ element.grouped.day }})
+          {{ element.grouped.day }}, {{ element.grouped.key }}
         </span>
       </td>
     </ng-container>
@@ -86,16 +83,12 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
-
-        <div>
-
-          <button
-            mat-icon-button
-            (click)="deleteTransaction.emit(element.id)"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
+        <button
+          mat-icon-button
+          (click)="deleteTransaction.emit(element.id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
       </td>
     </ng-container>
 

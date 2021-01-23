@@ -58,13 +58,13 @@ export class TransactionsContainerComponent implements OnInit, OnDestroy {
 
   public onFilterChange(accountsIds: number[]): void {
     if (accountsIds.length > 0) {
-      this.transactions = this.transactions.filter(
+      this.transactions = this.initialtransactions.filter(
         (transaction) =>
           accountsIds.includes(transaction.accountIncome) ||
           accountsIds.includes(transaction.accountOutcome),
       );
     } else {
-      this.transactions = this.initialtransactions;
+      this.transactions = [];
     }
 
     this.cdr.markForCheck();

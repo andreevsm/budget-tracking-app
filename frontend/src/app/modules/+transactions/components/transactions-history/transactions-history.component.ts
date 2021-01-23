@@ -8,6 +8,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { IAccount, ICategory, ICurrency, ITransaction } from '@core/store';
+import { parseDateToString, parseDateToUIString } from '@utils/helpers';
 import { getDay } from '@utils/helpers/get-day.helper';
 
 @Component({
@@ -17,13 +18,14 @@ import { getDay } from '@utils/helpers/get-day.helper';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionsHistoryComponent implements OnInit, OnChanges {
-  @Input() public transactions: (ITransaction | { grouped: any })[] = [];
+  @Input() public transactions: ITransaction[] = [];
   @Input() public categories: Record<number, ICategory>;
   @Input() public currencies: Record<number, ICurrency>;
-  @Input() public accountsEntity: Record<number, IAccount> = {};
+  @Input() public accountsEntity: Record<number, IAccount>;
 
   @Output() public deleteTransaction = new EventEmitter<number>();
 
+  public groupedTransactions: (ITransaction | { grouped: { key: string; day: string } })[] = [];
   public displayedColumns = ['category', 'amount', 'account', 'actions'];
 
   public ngOnInit(): void {}
@@ -48,9 +50,8 @@ export class TransactionsHistoryComponent implements OnInit, OnChanges {
         return secondTime - firstTime;
       })
       .forEach((transaction: ITransaction) => {
-        const date = new Date(transaction.createdAt).toDateString();
+        const date = parseDateToString(new Date(transaction.createdAt));
 
-        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         if (groupedTransactions[date]) {
           groupedTransactions[date] = [...groupedTransactions[date], transaction];
         } else {
@@ -58,13 +59,11 @@ export class TransactionsHistoryComponent implements OnInit, OnChanges {
         }
       });
 
-    console.log('groupedTransactions', groupedTransactions);
-
-    this.transactions = Object.entries(groupedTransactions)
+    this.groupedTransactions = Object.entries(groupedTransactions)
       .map(([key, value]) => [
         {
           grouped: {
-            key,
+            key: parseDateToUIString(new Date(key)),
             day: getDay(new Date(key)),
           },
         },

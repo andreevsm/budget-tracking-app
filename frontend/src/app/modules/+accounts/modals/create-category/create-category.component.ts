@@ -25,7 +25,7 @@ export class CreateCategoryComponent implements OnInit {
     const category: INewCategory = {
       name,
       color,
-      createdAt: parseDateToString(new Date()),
+      createdAt: new Date(),
       accountId: 1,
     };
 

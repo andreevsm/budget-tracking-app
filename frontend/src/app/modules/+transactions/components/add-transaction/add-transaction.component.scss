@@ -4,5 +4,29 @@
 
 .mat-card-title {
   display: flex;
-    align-items: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &__control {
+    &_radio {
+      display: flex;
+    }
+
+    &_date {
+      max-width: 18rem;
+      width: 100%;
+    }
+  }
+
+  &__control + &__control {
+    margin-left: 1.6rem;
+  }
+
+  &__radio + &__radio {
+    margin-left: 1.6rem;
+  }
 }

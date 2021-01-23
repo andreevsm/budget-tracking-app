@@ -31,7 +31,7 @@ export class AccountService {
   }
 
   public loadCurrencies(): Observable<ICurrency[]> {
-    return this.http.get<ICategory[]>(CURRENCIES_API);
+    return this.http.get<ICurrency[]>(CURRENCIES_API);
   }
 
   public createAccount(account: INewAccount): Observable<IAccount> {

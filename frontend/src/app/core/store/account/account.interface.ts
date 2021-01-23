@@ -1,6 +1,6 @@
 export interface IAccount {
   id: number;
-  createdAt: string;
+  createdAt: Date;
   name: string;
   description: string;
   currencyId: number;
@@ -24,7 +24,7 @@ export interface ICategory {
   id: number;
   name: string;
   color: string;
-  createdAt: string;
+  createdAt: Date;
   accountId: number;
 }
 
