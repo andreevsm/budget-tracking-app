@@ -1,4 +1,4 @@
-package com.example.budget.rest;
+package com.example.budget.controllers;
 
 import com.example.budget.model.Role;
 import com.example.budget.model.Status;

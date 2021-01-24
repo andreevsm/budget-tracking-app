@@ -7,6 +7,8 @@ import {
   AccountActions,
   AccountState,
   IAccount,
+  ICategory,
+  ICurrency,
   ITransaction,
   TransactionState,
 } from '@core/store';
@@ -21,8 +23,8 @@ import { CreateAccountComponent, CreateCategoryComponent } from '../../modals';
 })
 export class AccountsContainerComponent implements OnDestroy {
   @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
-  @Select(AccountState.categories) public categories$: Observable<IAccount[]>;
-  @Select(AccountState.currencies) public currencies$: Observable<IAccount[]>;
+  @Select(AccountState.categories) public categories$: Observable<ICategory[]>;
+  @Select(AccountState.currencies) public currencies$: Observable<ICurrency[]>;
   @Select(TransactionState.transactions) public transactions$: Observable<ITransaction[]>;
 
   private destroy$ = new Subject();

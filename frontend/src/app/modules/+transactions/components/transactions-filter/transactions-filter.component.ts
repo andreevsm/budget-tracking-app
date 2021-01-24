@@ -36,7 +36,7 @@ export class TransactionsFilterComponent implements OnInit, OnChanges {
   }
 
   public onSelectionChange(item: MatSelectionListChange): void {
-    const accountId = item.options[0].value;
+    const accountId = item.option.value;
 
     if (this.accountsIds.has(accountId)) {
       this.accountsIds.delete(accountId);
