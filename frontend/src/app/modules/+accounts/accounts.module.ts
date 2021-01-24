@@ -5,25 +5,23 @@ import { FormsModule } from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { SharedModule } from '@shared/shared.module';
 
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MainRoutingModule } from './accounts.routing';
 import { CreateAccountComponent, CreateCategoryComponent } from './modals';
-import { AccountComponent, StatisticsComponent } from './components';
-import {
-  HistoryContainerComponent,
-  AccountContainerComponent,
-  AccountsContainerComponent,
-} from './containers';
-import { AccountLayoutComponent } from './layouts';
+import { StatisticsComponent } from './components';
+import { AccountsContainerComponent } from './containers';
 
 @NgModule({
   declarations: [
-    AccountComponent,
     CreateAccountComponent,
     StatisticsComponent,
-    HistoryContainerComponent,
-    AccountContainerComponent,
     AccountsContainerComponent,
-    AccountLayoutComponent,
     CreateCategoryComponent,
   ],
   imports: [
@@ -33,6 +31,13 @@ import { AccountLayoutComponent } from './layouts';
     MatSelectModule,
     FormsModule,
     NgxChartsModule,
+    MatIconModule,
+    MatCardModule,
+    MatDialogModule,
+    MatListModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
 })
 export class MainModule {}

@@ -2,6 +2,6 @@
   "extends": "stylelint-config-recommended-scss",
   "plugins": ["stylelint-scss"],
   "rules": {
-    "unit-whitelist": ["rem", "%", "vh", "vw"]
+    "unit-whitelist": ["rem", "%", "vh", "vw", "fr"]
   }
 }

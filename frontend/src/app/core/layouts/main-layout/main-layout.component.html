@@ -1,33 +1,7 @@
-<div class="root">
-  <div class="main">
-    <bg-header
-      (showSidenav)="isSidenavShown = !isSidenavShown"
-      (logout)="onLogout()"
-    ></bg-header>
+<div class="main">
+  <bg-header (logout)="onLogout()"></bg-header>
 
-    <div class="main__content">
-      <mat-sidenav-container class="main__sidenav-container">
-        <mat-sidenav mode="side" [opened]="isSidenavShown">
-          <div class="main__sidenav">
-            <ul>
-              <li>
-                <a [routerLink]="'/accounts'">
-                  Счета
-                </a>
-              </li>
-              <li *ngFor="let account of accounts$ | async">
-                <a [routerLink]="'/accounts/' + account.id">
-                  {{ account.name }}
-                </a>
-              </li>
-            </ul>
-          </div>
-        </mat-sidenav>
-  
-        <mat-sidenav-content>
-          <router-outlet></router-outlet>
-        </mat-sidenav-content>
-      </mat-sidenav-container>
-    </div>
+  <div class="main__content">
+    <router-outlet></router-outlet>
   </div>
 </div>

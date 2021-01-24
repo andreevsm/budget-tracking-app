@@ -18,7 +18,6 @@ import { filter, takeUntil } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  @Output() public showSidenav = new EventEmitter();
   @Output() public logout = new EventEmitter();
 
   public links = [

@@ -1,26 +1,14 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { Store } from '@ngxs/store';
 
-import {
-  AccountActions,
-  AccountState,
-  AuthActions,
-  IAccount,
-  TransactionActions,
-} from '../../store';
+import { AccountActions, AuthActions, TransactionActions } from '../../store';
 
 @Component({
   selector: 'bg-main-layout',
   templateUrl: './main-layout.component.html',
-  styleUrls: ['./main-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainLayoutComponent implements OnInit {
-  @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
-
-  public isSidenavShown = false;
-
   constructor(private store: Store) {}
 
   public ngOnInit(): void {

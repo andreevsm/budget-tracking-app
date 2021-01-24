@@ -1,33 +1,27 @@
-<div class="root">
+<div class="transactions">
+  <aside class="transactions__aside" *ngIf="accounts$ | async as accounts">
+    <bg-transactions-filter
+      [accounts]="accounts"
+      (filterChange)="onFilterChange($event)"
+    ></bg-transactions-filter>
+  </aside>
 
-  <div class="transactions">
-    <div class="transactions__wrapper">
-      <div class="transactions__filter" *ngIf="accounts$ | async as accounts">
-        <bg-transactions-filter
-          [accounts]="accounts"
-          (filterChange)="onFilterChange($event)"
-        ></bg-transactions-filter>
-      </div>
+  <main class="transactions__main">
+    <bg-add-transaction
+      class="transactions__add-transaction"
+      [categories]="categories$ | async"
+      [accounts]="accounts$ | async"
+      [currencies]="currencies$ | async"
+      (addTransaction)="onTransactionAdd($event)"
+    ></bg-add-transaction>
 
-      <div class="transactions__main">
-        <bg-add-transaction
-          class="transactions__add-transaction"
-          [categories]="categories$ | async"
-          [accounts]="accounts$ | async"
-          [currencies]="currencies$ | async"
-          (addTransaction)="onTransactionAdd($event)"
-        ></bg-add-transaction>
-
-        <bg-transactions-history
-          class="transactions__history"
-          [transactions]="transactions"
-          [currencies]="currencies$ | async"
-          [categories]="categories$ | async"
-          [accountsEntity]="accountsEntity$ | async"
-          (deleteTransaction)="onDeleteTransaction($event)"
-        ></bg-transactions-history>
-      </div>
-    </div>
-
-  </div>
+    <bg-transactions-history
+      class="transactions__history"
+      [transactions]="transactions"
+      [currencies]="currencies$ | async"
+      [categories]="categories$ | async"
+      [accountsEntity]="accountsEntity$ | async"
+      (deleteTransaction)="onDeleteTransaction($event)"
+    ></bg-transactions-history>
+  </main>
 </div>

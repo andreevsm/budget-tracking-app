@@ -44,5 +44,5 @@
 | 3   | Развертывание через Docker   | :white_check_mark: |
 | 4   | Требования по Frontend части | :white_check_mark: |
 | 5   | Multi Stage Build + Nginx    | :white_check_mark: |
-| 6   | CSS Grid                     |        :x:         |
+| 6   | CSS Grid                     | :white_check_mark: |
 | 7   | Smart Dumb Components        | :white_check_mark: |

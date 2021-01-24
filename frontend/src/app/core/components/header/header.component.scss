@@ -1,33 +1,37 @@
 .header {
-  align-items: center;
+  display: grid;
+  grid-template-areas: 'header__title header__nav header__logout';
+  grid-template-columns: 2fr 5fr 1fr;
   background-color: #673ab7;
-  display: flex;
+  padding: 1.6rem;
+  align-items: center;
+  column-gap: 1.6rem;
 
   &__title {
-    color: white;
-    padding: 1.6rem;
+    grid-area: header__title;
+    color: #fff;
   }
 
   &__nav {
-    align-items: center;
-    display: flex;
-    flex: 1;
-    justify-content: space-between;
+    grid-area: header__nav;
   }
-}
 
-.nav {
-  padding: 1.6rem;
+  &__logout {
+    grid-area: header__logout;
+    justify-self: center;
+  }
 
   &__link {
     color: #fff;
   }
+}
 
-  &__link + &__link {
-    margin-left: 1.6rem;
+.nav {
+  &__item {
+    display: inline-block;
   }
 
-  &__block + &__block {
-    margin-left: 4rem;
+  &__item + &__item {
+    margin-left: 1.6rem;
   }
 }

@@ -5,8 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 
-import { MaterialModule } from '../shared/material/material.module';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthService } from './store/auth/auth.service';
 import { HeaderComponent, SpinnerComponent } from './components';
 import { UIState, AuthState, AccountState, AccountService } from './store';
@@ -22,7 +21,7 @@ import { TransactionState } from './store/transaction';
     BrowserAnimationsModule,
     RouterModule,
     NgxsModule.forFeature([UIState, AccountState, AuthState, TransactionState]),
-    MaterialModule,
+    MatProgressSpinnerModule,
   ],
   exports: [HeaderComponent, SpinnerComponent],
   providers: [

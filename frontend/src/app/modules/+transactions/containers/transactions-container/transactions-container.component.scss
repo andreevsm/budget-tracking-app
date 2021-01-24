@@ -1,21 +1,6 @@
 .transactions {
   padding: 1.6rem;
-
-  &__add-transaction {
-    margin-bottom: 1.6rem;
-  }
-
-  &__main {
-    flex: 1;
-    margin-left: 1.6rem;
-  }
-
-  &__wrapper {
-    display: flex;
-    flex-flow: row wrap;
-  }
-
-  &__filter {
-    min-width: 25rem;
-  }
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  column-gap: 1.6rem;
 }

@@ -1,60 +1,50 @@
-<div class="root">
+<div class="accounts">
+  <aside class="accounts__aside aside">
+    <mat-card>
+      <mat-card-title>
+        Мои счета
+      </mat-card-title>
 
-  <mat-card class="accounts">
-    <mat-card-title class="accounts__title">
-      Мои счета
-    </mat-card-title>
+      <mat-card-content>
+        <mat-nav-list *ngIf="accounts$ | async as accounts">
+          <mat-list-item *ngFor="let account of accounts">
+            <a matLine class="accounts__link link" [routerLink]="'/accounts/' + account.id">
+              <span class="link__name">
+                {{ account.name }}
+              </span>
+              <span class="link__description" *ngIf="account.description">
+                {{ account.description }}
+              </span>
+            </a>
 
-    <mat-card-content class="accounts__content">
-      <mat-nav-list *ngIf="accounts$ | async as accounts">
-        <mat-list-item *ngFor="let account of accounts">
-          <a matLine class="accounts__link link" [routerLink]="'/accounts/' + account.id">
-            <span class="link__name">
-              {{ account.name }}
-            </span>
-            <span class="link__description" *ngIf="account.description">
-              {{ account.description }}
-            </span>
-          </a>
+            <button mat-icon-button (click)="onEditAccount(account)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="onDeleteAccount(account.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-card-content>
 
-          <button mat-icon-button (click)="onEditAccount(account)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button (click)="onDeleteAccount(account.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-list-item>
-      </mat-nav-list>
-    </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="onAddAccount()">
+          Добавить счет
+        </button>
 
-    <mat-card-actions>
-      <button
-        mat-button
-        color="primary"
-        class="accounts--button"
-        (click)="onAddAccount()"
-      >
-        Добавить счет
-      </button>
-    
-      <button
-        mat-button
-        color="primary"
-        class="accounts--button"
-        (click)="onAddCategory()"
-      >
-        Добавить категорию
-      </button>
-    </mat-card-actions>
-  </mat-card>
+        <button mat-button color="primary" (click)="onAddCategory()">
+          Добавить категорию
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </aside>
 
-  <bg-statistics
-    [accounts]="accounts$ | async"
-    [transactions]="transactions$ | async"
-    [categories]="categories$ | async"
-    [currencies]="currencies$ | async"
-  ></bg-statistics>
-
-  <router-outlet></router-outlet>
+  <main class="accounts__main">
+    <bg-statistics
+      [accounts]="accounts$ | async"
+      [transactions]="transactions$ | async"
+      [categories]="categories$ | async"
+      [currencies]="currencies$ | async"
+    ></bg-statistics>
+  </main>
 </div>
-

@@ -4,26 +4,16 @@
   </h1>
 
   <nav class="header__nav nav">
-
-    <div class="nav__block">
-      <a
-        *ngFor="let link of links"
-        [routerLink]="link.href"
-        class="nav__link"
-      >
-        {{ link.label }}
-      </a>
-    </div>
-
-    <div class="nav__block">
-      <button class="nav__link" (click)="logout.emit()">Logout</button>
-    </div>
-
+    <ul class="nav__list">
+      <li class="nav__item" *ngFor="let link of links">
+        <a [routerLink]="link.href" class="header__link">
+          {{ link.label }}
+        </a>
+      </li>
+    </ul>
   </nav>
 
-  <!-- <div class="header--top">
-
-    <button (click)="showSidenav.emit()">Сайдбар</button>
-
-  </div> -->
+  <div class="header__logout">
+    <button class="header__link" (click)="logout.emit()">Logout</button>
+  </div>
 </header>

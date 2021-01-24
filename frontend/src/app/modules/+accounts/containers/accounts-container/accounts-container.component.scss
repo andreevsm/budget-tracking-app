@@ -1,12 +1,16 @@
-.root {
-  align-items: flex-start;
-  display: flex;
-  flex-flow: row wrap;
-  padding: 1.6rem;
-}
-
 .accounts {
-  margin-right: 1.6rem;
+  padding: 1.6rem;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  column-gap: 1.6rem;
+
+  &__aside {
+    min-width: 34rem;
+  }
+
+  &__main {
+    justify-self: center;
+  }
 }
 
 .link {
