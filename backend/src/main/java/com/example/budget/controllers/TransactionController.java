@@ -1,4 +1,4 @@
-package com.example.budget.rest;
+package com.example.budget.controllers;
 
 import com.example.budget.model.Transaction;
 import com.example.budget.services.TransactionService;

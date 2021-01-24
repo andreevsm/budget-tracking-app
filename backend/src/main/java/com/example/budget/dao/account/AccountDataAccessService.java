@@ -25,8 +25,22 @@ public class AccountDataAccessService implements AccountDao {
     }
 
     @Override
-    public int insertAccount(Account account) {
-        return 0;
+    public int updateAccount(Account account) {
+        final String sql = "UPDATE accounts " +
+                "SET name = ?," +
+                "description = ?," +
+                "amount = ?," +
+                "currency_id = ?" +
+                "WHERE id = ?";
+
+        return jdbcTemplate.update(
+                sql,
+                account.getName(),
+                account.getDescription(),
+                account.getAmount(),
+                account.getCurrencyId(),
+                account.getId()
+        );
     }
 
     @Override

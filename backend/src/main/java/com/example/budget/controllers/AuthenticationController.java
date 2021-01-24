@@ -25,14 +25,14 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/auth")
-public class AuthenticationRestControllerV1 {
+public class AuthenticationController {
 
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
     private final JwtTokenProvider jwtTokenProvider;
     private final PasswordEncoder passwordEncoder;
 
-    public AuthenticationRestControllerV1(
+    public AuthenticationController(
             AuthenticationManager authenticationManager,
             UserRepository userRepository,
             JwtTokenProvider jwtTokenProvider,
@@ -45,7 +45,7 @@ public class AuthenticationRestControllerV1 {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> authenticate(@RequestBody AuthenticationRequestDTO request) {
+    public ResponseEntity<?> authenticate(@RequestBody AuthenticationDTO request) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
             User user = userRepository.findByEmail(request.getEmail()).orElseThrow(() -> new UsernameNotFoundException("User does not exist"));

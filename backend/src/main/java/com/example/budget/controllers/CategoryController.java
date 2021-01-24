@@ -1,4 +1,4 @@
-package com.example.budget.rest;
+package com.example.budget.controllers;
 
 import com.example.budget.model.Category;
 import com.example.budget.services.CategoryService;

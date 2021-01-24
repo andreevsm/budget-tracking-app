@@ -33,4 +33,8 @@ public class AccountService {
     public int deleteAccount(int id) {
         return accountDao.deleteAccount(id);
     }
+
+    public int updateAccount(Account account) {
+        return accountDao.updateAccount(account);
+    }
 }

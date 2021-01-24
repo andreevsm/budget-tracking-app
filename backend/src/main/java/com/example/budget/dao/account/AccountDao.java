@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AccountDao {
-    int insertAccount(Account account);
+    int updateAccount(Account account);
 
     Account addAccount(int userId, Account account);
 

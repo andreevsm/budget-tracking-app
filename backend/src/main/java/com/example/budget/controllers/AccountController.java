@@ -1,4 +1,4 @@
-package com.example.budget.rest;
+package com.example.budget.controllers;
 
 import com.example.budget.model.Account;
 import com.example.budget.security.JwtTokenProvider;
@@ -35,6 +35,11 @@ public class AccountController {
     ) {
         String id = jwtTokenProvider.getUserId(authorizationToken);
         return accountService.addAccount(Integer.parseInt(id), account);
+    }
+
+    @PutMapping()
+    public int updateAccount(@RequestBody Account account) {
+        return accountService.updateAccount(account);
     }
 
     @GetMapping("/{id}")

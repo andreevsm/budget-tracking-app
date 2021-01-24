@@ -1,4 +1,4 @@
-package com.example.budget.rest;
+package com.example.budget.controllers;
 
 import lombok.Data;
 
