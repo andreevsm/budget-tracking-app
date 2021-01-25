@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Action, State, StateContext, Selector, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
+import { Navigate } from '@ngxs/router-plugin';
 import { UIActions } from '../ui';
 
 import { AuthService } from './auth.service';
@@ -50,6 +51,8 @@ export class AuthState {
               email: response.email,
             },
           });
+
+          this.store.dispatch(new Navigate(['/accounts']));
         }
       }),
       finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
@@ -73,6 +76,8 @@ export class AuthState {
               email: response.email,
             },
           });
+
+          this.store.dispatch(new Navigate(['/accounts']));
         }
       }),
       finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
@@ -86,7 +91,7 @@ export class AuthState {
     return this.userService.logout().pipe(
       tap(() => {
         this.userService.clearStorage();
-        this.userService.navigateToLogin();
+        this.store.dispatch(new Navigate(['/signin']));
       }),
       finalize(() => this.store.dispatch(new UIActions.HideSpinner())),
     );

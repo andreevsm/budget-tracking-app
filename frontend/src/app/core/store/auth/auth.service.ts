@@ -30,7 +30,6 @@ export class AuthService {
       }),
       map((response: IResponseUser) => {
         if (response !== null) {
-          this.router.navigate(['/']);
           return response;
         }
 
@@ -51,7 +50,6 @@ export class AuthService {
       }),
       map((response: IResponseUser) => {
         if (response !== null) {
-          this.router.navigate(['/']);
           return response;
         }
 

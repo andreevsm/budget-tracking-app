@@ -6,44 +6,44 @@
 
     <mat-card-content>
       <form class="sign-up__form form" [formGroup]="form" (ngSubmit)="onSubmit()">
-
         <mat-form-field class="form__control">
           <mat-label>Логин</mat-label>
-          <input matInput formControlName="login" type="text">
+          <input matInput formControlName="login" type="text" />
           <mat-icon matSuffix>login</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="form__control">
           <mat-label>Почта</mat-label>
-          <input matInput formControlName="email" type="email">
+          <input matInput formControlName="email" type="email" />
           <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="form__control">
           <mat-label>Пароль</mat-label>
-          <input matInput formControlName="password" [type]="isPasswordShown ? 'text' : 'password'">
+          <input
+            matInput
+            formControlName="password"
+            [type]="isPasswordShown ? 'text' : 'password'"
+          />
           <mat-icon matSuffix (click)="isPasswordShown = !isPasswordShown">remove_red_eye</mat-icon>
         </mat-form-field>
-      </form>
 
-      <div class="form__actions">
-        <button
-          mat-flat-button
-          color="primary"
-          type="submit"
-          class="form__button"
-          [disabled]="form.invalid"
-        >
-          Зарегистрироваться
-        </button>
-  
-        <a
-          class="form__button"
-          [routerLink]="['/signin']"
-        >
-          Войти
-        </a>
-      </div>
+        <div class="form__actions">
+          <button
+            mat-flat-button
+            color="primary"
+            type="submit"
+            class="form__button"
+            [disabled]="form.invalid"
+          >
+            Зарегистрироваться
+          </button>
+
+          <a class="form__button" [routerLink]="['/signin']">
+            Войти
+          </a>
+        </div>
+      </form>
     </mat-card-content>
   </mat-card>
 </div>

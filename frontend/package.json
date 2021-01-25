@@ -37,6 +37,7 @@
     "@nestjs/platform-express": "6.0.0",
     "@nguniversal/express-engine": "9.1.1",
     "@ngxs/devtools-plugin": "3.7.1",
+    "@ngxs/router-plugin": "3.7.1",
     "@ngxs/store": "3.6.2",
     "@swimlane/ngx-charts": "17.0.0",
     "chart.js": "2.9.4",

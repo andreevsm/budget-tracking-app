@@ -5,6 +5,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { environment } from '../environments/environment';
 
 import { SharedModule } from './shared/shared.module';
@@ -19,12 +20,12 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     NgxsModule.forRoot([], { developmentMode: !environment.production }),
+    NgxsRouterPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     CoreModule,
     SharedModule,
     HttpClientModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

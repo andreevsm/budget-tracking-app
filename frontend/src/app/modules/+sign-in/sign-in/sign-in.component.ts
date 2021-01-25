@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { AuthActions } from '@core/store/auth';
 
@@ -14,12 +13,12 @@ export class SignInComponent implements OnInit {
   public form: FormGroup;
   public isPasswordShown = false;
 
-  constructor(private fb: FormBuilder, private store: Store, private router: Router) {}
+  constructor(private fb: FormBuilder, private store: Store) {}
 
   public ngOnInit(): void {
     this.form = this.fb.group({
-      email: ['user@mail.com', [Validators.email, Validators.required]],
-      password: ['user', [Validators.required]],
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', [Validators.required]],
     });
   }
 
