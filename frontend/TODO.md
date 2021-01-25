@@ -21,7 +21,7 @@
 | 3   | Angular         | :white_check_mark: |
 | 4   | Тестирование    |        :x:         |
 | 5   | Паттерны        |        :x:         |
-| 6   | Web workers     |        :x:         |
+| 6   | Web workers     | :white_check_mark: |
 | 7   | Micro-frontend  |        :x:         |
 
 ### Практическая часть
