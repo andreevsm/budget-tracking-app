@@ -40,4 +40,9 @@ public class CategoryController {
         String id = jwtTokenProvider.getUserId(authorizationToken);
         return categoryService.addCategory(category, Integer.parseInt(id));
     }
+
+    @DeleteMapping("{id}")
+    public int deleteAccount(@PathVariable("id") int id) {
+        return categoryService.deleteCategory(id);
+    }
 }

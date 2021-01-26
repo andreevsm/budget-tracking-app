@@ -9,7 +9,6 @@ import { Select, Store } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import {
-  AccountActions,
   AccountState,
   IAccount,
   ICategory,
@@ -41,9 +40,6 @@ export class TransactionsContainerComponent implements OnInit, OnDestroy {
   constructor(private store: Store, private cdr: ChangeDetectorRef) {}
 
   public ngOnInit(): void {
-    this.store.dispatch(new AccountActions.LoadCategories());
-    this.store.dispatch(new TransactionActions.LoadAll());
-
     this.subscribeToTransactions();
   }
 

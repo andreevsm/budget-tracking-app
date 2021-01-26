@@ -41,4 +41,8 @@ export class AccountService {
   public addCategory(category: INewCategory): Observable<ICategory> {
     return this.http.post<ICategory>(CATEGORIES_API, category);
   }
+
+  public deleteCategory(id: number): Observable<number> {
+    return this.http.delete<number>(`${CATEGORIES_API}/${id}`);
+  }
 }

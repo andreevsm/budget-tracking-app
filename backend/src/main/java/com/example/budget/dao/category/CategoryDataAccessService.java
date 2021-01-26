@@ -81,4 +81,17 @@ public class CategoryDataAccessService implements CategoryDao {
 
         return null;
     }
+
+    @Override
+    public int deleteCategory(int id) {
+        final String sql = "DELETE FROM categories WHERE id = ?";
+
+        int result = jdbcTemplate.update(sql, id);
+
+        if (result > 0) {
+            return id;
+        }
+
+        return 0;
+    }
 }

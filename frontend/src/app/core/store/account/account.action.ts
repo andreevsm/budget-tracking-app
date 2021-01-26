@@ -33,6 +33,11 @@ export namespace AccountActions {
     public static readonly type = '[Accounts] Load Categories';
   }
 
+  export class DeleteCategory {
+    public static readonly type = '[Accounts] Delete Category';
+    constructor(public id: number) {}
+  }
+
   export class AddCategory {
     public static readonly type = '[Accounts] Add Category';
     constructor(public category: INewCategory) {}

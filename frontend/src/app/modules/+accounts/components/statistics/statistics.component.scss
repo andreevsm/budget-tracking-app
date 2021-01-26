@@ -2,3 +2,44 @@
   height: 40rem;
   width: 80rem;
 }
+
+.tooltip {
+  padding: 1rem;
+
+  &__header {
+    p + p {
+      margin-top: 0.5rem;
+    }
+  }
+
+  &__balance {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    span + span {
+      margin-left: 1.5rem;
+    }
+  }
+
+  &__date {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__transactions {
+    margin-top: 1rem;
+  }
+}
+
+.transactions {
+  &__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    span + span {
+      margin-left: 1.5rem;
+    }
+  }
+}

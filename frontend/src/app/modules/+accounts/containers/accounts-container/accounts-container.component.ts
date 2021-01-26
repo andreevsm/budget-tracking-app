@@ -23,7 +23,9 @@ import { CreateAccountComponent, CreateCategoryComponent } from '../../modals';
 })
 export class AccountsContainerComponent implements OnDestroy {
   @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
-  @Select(AccountState.categories) public categories$: Observable<ICategory[]>;
+  @Select(AccountState.accountsEntity) public accountsEntity$: Observable<Record<number, IAccount>>;
+  @Select(AccountState.categories) public categories$: Observable<Record<number, ICategory>>;
+  @Select(AccountState.categoriesList) public categoriesList$: Observable<ICategory[]>;
   @Select(AccountState.currencies) public currencies$: Observable<ICurrency[]>;
   @Select(TransactionState.transactions) public transactions$: Observable<ITransaction[]>;
 
@@ -64,5 +66,9 @@ export class AccountsContainerComponent implements OnDestroy {
 
   public onDeleteAccount(id: number): void {
     this.store.dispatch(new AccountActions.Delete(id));
+  }
+
+  public onDeleteCategory(id: number): void {
+    this.store.dispatch(new AccountActions.DeleteCategory(id));
   }
 }

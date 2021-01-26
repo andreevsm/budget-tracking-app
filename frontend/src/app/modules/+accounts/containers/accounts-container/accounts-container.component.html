@@ -1,12 +1,12 @@
 <div class="accounts">
   <aside class="accounts__aside aside">
-    <mat-card>
+    <mat-card class="aside__item">
       <mat-card-title>
-        Мои счета
+        Счета
       </mat-card-title>
 
-      <mat-card-content>
-        <mat-nav-list *ngIf="accounts$ | async as accounts">
+      <mat-card-content *ngIf="accounts$ | async as accounts">
+        <mat-nav-list>
           <mat-list-item *ngFor="let account of accounts">
             <a matLine class="accounts__link link" [routerLink]="'/accounts/' + account.id">
               <span class="link__name">
@@ -31,7 +31,28 @@
         <button mat-button color="primary" (click)="onAddAccount()">
           Добавить счет
         </button>
+      </mat-card-actions>
+    </mat-card>
 
+    <mat-card class="aside__item">
+      <mat-card-title>
+        Категории
+      </mat-card-title>
+
+      <mat-card-content *ngIf="categoriesList$ | async as categories">
+        <mat-nav-list class="categories">
+          <mat-list-item *ngFor="let category of categories">
+            <span class="accounts__category" [style.color]="category.color">{{
+              category.name
+            }}</span>
+            <button mat-icon-button (click)="onDeleteCategory(category.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-card-content>
+
+      <mat-card-actions>
         <button mat-button color="primary" (click)="onAddCategory()">
           Добавить категорию
         </button>
@@ -42,6 +63,7 @@
   <main class="accounts__main">
     <bg-statistics
       [accounts]="accounts$ | async"
+      [accountsEntity]="accountsEntity$ | async"
       [transactions]="transactions$ | async"
       [categories]="categories$ | async"
       [currencies]="currencies$ | async"

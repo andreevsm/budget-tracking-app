@@ -14,6 +14,7 @@ export class MainLayoutComponent implements OnInit {
   public ngOnInit(): void {
     this.store.dispatch(new AccountActions.LoadAll());
     this.store.dispatch(new AccountActions.LoadCurrencies());
+    this.store.dispatch(new AccountActions.LoadCategories());
     this.store.dispatch(new TransactionActions.LoadAll());
   }
 

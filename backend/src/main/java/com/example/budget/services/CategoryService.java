@@ -26,4 +26,8 @@ public class CategoryService {
     public Category addCategory(Category category, int userId) {
         return categoryDao.addCategory(category, userId);
     }
+
+    public int deleteCategory(int id) {
+        return categoryDao.deleteCategory(id);
+    }
 }

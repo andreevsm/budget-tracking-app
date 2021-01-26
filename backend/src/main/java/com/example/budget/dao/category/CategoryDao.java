@@ -7,4 +7,5 @@ import java.util.List;
 public interface CategoryDao {
     List<Category> selectAllCategories(int userId);
     Category addCategory(Category category, int userId);
+    int deleteCategory(int id);
 }

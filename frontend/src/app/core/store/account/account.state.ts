@@ -44,6 +44,11 @@ export class AccountState {
   }
 
   @Selector()
+  public static categoriesList(state: IAccountState): ICategory[] {
+    return Object.values(state.categoriesEntity);
+  }
+
+  @Selector()
   public static currencies(state: IAccountState): Record<number, ICurrency> {
     return state.currencies;
   }
@@ -184,6 +189,25 @@ export class AccountState {
             ...getState().categoriesEntity,
             [newCategory.id]: newCategory,
           },
+        });
+      }),
+    );
+  }
+
+  @Action(AccountActions.DeleteCategory)
+  public deleteCategory(
+    { setState, getState }: StateContext<IAccountState>,
+    { id }: AccountActions.DeleteCategory,
+  ): Observable<number> {
+    return this.accountService.deleteCategory(id).pipe(
+      tap(() => {
+        const categoriesEntity = { ...getState().categoriesEntity };
+
+        const categories = Object.values(categoriesEntity).filter((category) => category.id !== id);
+
+        setState({
+          ...getState(),
+          categoriesEntity: makeEntityByKey(categories, (category) => category.id),
         });
       }),
     );
