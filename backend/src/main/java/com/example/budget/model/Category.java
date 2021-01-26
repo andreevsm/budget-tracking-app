@@ -22,21 +22,21 @@ public class Category {
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    @Column(name = "account_id")
-    private int accountId;
+    @Column(name = "user_id")
+    private int userId;
 
     public Category(
             int id,
             String name,
             String color,
             Timestamp createdAt,
-            int accountId
+            int userId
     ) {
         this.id = id;
         this.name = name;
         this.color = color;
         this.createdAt = createdAt;
-        this.accountId = accountId;
+        this.userId = userId;
     }
 
     public Category() {}

@@ -35,7 +35,7 @@ export class CreateAccountComponent implements OnInit {
   public onSubmit(): void {
     const { name, description, currencyId, amount } = this.form.getRawValue();
 
-    const account: IAccount | INewAccount = this.account.id
+    const account: IAccount | INewAccount = this.account?.id
       ? {
           id: this.account.id,
           name,
@@ -52,7 +52,7 @@ export class CreateAccountComponent implements OnInit {
           amount,
         };
 
-    if (this.account.id) {
+    if (this.account?.id) {
       this.store.dispatch(new AccountActions.Update(account as IAccount));
     } else {
       this.store.dispatch(new AccountActions.Create(account));

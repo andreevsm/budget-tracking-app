@@ -6,6 +6,7 @@ import { AccountActions, INewCategory } from '@core/store';
 @Component({
   selector: 'bg-create-category',
   templateUrl: './create-category.component.html',
+  styleUrls: ['./create-category.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateCategoryComponent implements OnInit {
@@ -24,7 +25,6 @@ export class CreateCategoryComponent implements OnInit {
       name,
       color,
       createdAt: new Date(),
-      accountId: 1,
     };
 
     this.store.dispatch(new AccountActions.AddCategory(category));

@@ -19,6 +19,9 @@ export class StatisticsComponent implements OnChanges {
 
   public view: number[] = [800, 400];
   public results = [];
+  public colorScheme = {
+    domain: ['#673ab7'],
+  };
 
   public ngOnChanges(changes: NgChanges<StatisticsComponent>): void {
     if (changes.transactions?.previousValue !== changes.transactions?.currentValue) {

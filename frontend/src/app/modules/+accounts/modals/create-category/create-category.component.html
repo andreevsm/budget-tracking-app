@@ -1,33 +1,20 @@
-<div class="root">
+<div class="category">
+  <form class="category__form form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="form__control">
+      <mat-label>Название</mat-label>
+      <input matInput placeholder="Спорт" formControlName="name" />
+    </mat-form-field>
 
-  <div class="category">
+    <mat-form-field class="form__control form__control_color">
+      <mat-label>Цвет</mat-label>
+      <input matInput type="color" formControlName="color" />
+    </mat-form-field>
 
-    <form
-      class="category--form form"
-      [formGroup]="form"
-      (ngSubmit)="onSubmit()"
-    >
-      <mat-form-field class="form--control">
-        <mat-label>Название</mat-label>
-        <input matInput placeholder="Спорт" formControlName="name">
-      </mat-form-field>
-
-      <mat-form-field class="form--control">
-        <mat-label>Цвет</mat-label>
-        <input matInput type="color" formControlName="color">
-      </mat-form-field>
-
-      <div class="form--buttons">
-        <button mat-flat-button mat-dialog-close>Отмена</button>
-        <button
-          mat-flat-button
-          color="primary"
-          [mat-dialog-close]="true"
-          type="submit"
-        >
-          Создать
-        </button>
-      </div>
-    </form>
-  </div>
+    <div class="form__buttons">
+      <button mat-flat-button mat-dialog-close>Отмена</button>
+      <button mat-flat-button color="primary" [mat-dialog-close]="true" type="submit">
+        Создать
+      </button>
+    </div>
+  </form>
 </div>

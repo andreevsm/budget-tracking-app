@@ -41,7 +41,7 @@ export class TransactionsContainerComponent implements OnInit, OnDestroy {
   constructor(private store: Store, private cdr: ChangeDetectorRef) {}
 
   public ngOnInit(): void {
-    this.store.dispatch(new AccountActions.LoadCategories(1));
+    this.store.dispatch(new AccountActions.LoadCategories());
     this.store.dispatch(new TransactionActions.LoadAll());
 
     this.subscribeToTransactions();

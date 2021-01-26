@@ -24,8 +24,8 @@ public class TransactionDataAccessService implements TransactionDao {
     }
 
     @Override
-    public List<Transaction> selectTransactions() {
-        final String sql = "SELECT * FROM transactions ORDER by id desc";
+    public List<Transaction> selectTransactions(int userId) {
+        final String sql = String.format("SELECT * FROM transactions WHERE user_id = %d ORDER by id desc", userId);
 
         return jdbcTemplate.query(sql, (result, i) -> {
             return new Transaction(
@@ -36,13 +36,14 @@ public class TransactionDataAccessService implements TransactionDao {
                     result.getBigDecimal("outcome"),
                     result.getString("comment"),
                     result.getTimestamp("created_at"),
-                    result.getInt("category_id")
+                    result.getInt("category_id"),
+                    result.getInt("user_id")
             );
         });
     }
 
     @Override
-    public Transaction addTransaction(Transaction transaction) {
+    public Transaction addTransaction(Transaction transaction, int userId) {
         final String sql = "INSERT INTO transactions (" +
                 "account_income," +
                 "account_outcome," +
@@ -50,8 +51,9 @@ public class TransactionDataAccessService implements TransactionDao {
                 "outcome," +
                 "comment," +
                 "created_at," +
-                "category_id" +
-                ") VALUES (?, ?, ?, ?, ?, ?, ?)";
+                "category_id," +
+                "user_id" +
+                ") VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -67,6 +69,7 @@ public class TransactionDataAccessService implements TransactionDao {
                 preparedStatement.setString(5, transaction.getComment());
                 preparedStatement.setTimestamp(6, transaction.getCreatedAt());
                 preparedStatement.setInt(7, transaction.getCategoryId());
+                preparedStatement.setInt(8, userId);
 
                 return preparedStatement;
             }
@@ -84,7 +87,8 @@ public class TransactionDataAccessService implements TransactionDao {
                     (BigDecimal) keys.get("outcome"),
                     (String) keys.get("comment"),
                     (Timestamp) keys.get("created_at"),
-                    (int) keys.get("category_id")
+                    (int) keys.get("category_id"),
+                    (int) keys.get("user_id")
             );
         }
 
@@ -92,8 +96,8 @@ public class TransactionDataAccessService implements TransactionDao {
     }
 
     @Override
-    public int deleteTransaction(int id) {
-        final String sql = String.format("DELETE FROM transactions WHERE id = %d", id);
+    public int deleteTransaction(int id, int userId) {
+        final String sql = String.format("DELETE FROM transactions WHERE id = %d AND user_id = %d", id, userId);
 
         int result = jdbcTemplate.update(sql);
 

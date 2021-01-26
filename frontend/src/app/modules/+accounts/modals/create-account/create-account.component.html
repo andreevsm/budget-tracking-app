@@ -1,13 +1,9 @@
 <div class="root">
   <div class="account">
-    <form
-      class="account__form form"
-      [formGroup]="form"
-      (ngSubmit)="onSubmit()"
-    >
+    <form class="account__form form" [formGroup]="form" (ngSubmit)="onSubmit()">
       <mat-form-field class="form__control">
         <mat-label>Название</mat-label>
-        <input matInput placeholder="Мой счет" formControlName="name">
+        <input matInput placeholder="Мой счет" formControlName="name" />
       </mat-form-field>
 
       <mat-form-field class="form__control">
@@ -17,16 +13,13 @@
 
       <mat-form-field class="form__control">
         <mat-label>Остаточная сумма</mat-label>
-        <input matInput type="number" formControlName="amount">
+        <input matInput type="number" formControlName="amount" />
       </mat-form-field>
 
       <mat-form-field class="form__control" *ngIf="currencies$ | async as currencies">
         <mat-label>Валюта</mat-label>
         <mat-select [formControl]="currencyControl">
-          <mat-option
-            *ngFor="let currency of Object.values(currencies)"
-            [value]="currency.id"
-          >
+          <mat-option *ngFor="let currency of Object.values(currencies)" [value]="currency.id">
             {{ currency.name }}
           </mat-option>
         </mat-select>
@@ -39,6 +32,7 @@
           color="primary"
           [mat-dialog-close]="true"
           type="submit"
+          [disabled]="form.invalid"
         >
           Сохранить
         </button>

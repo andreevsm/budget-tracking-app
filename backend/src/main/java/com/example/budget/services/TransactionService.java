@@ -19,14 +19,14 @@ public class TransactionService {
         this.transactionDao = transactionDao;
     }
 
-    public List<Transaction> getTransactions() {
-        return transactionDao.selectTransactions();
+    public List<Transaction> getTransactions(int userId) {
+        return transactionDao.selectTransactions(userId);
     }
 
-    public Transaction addTransaction(Transaction transaction) {
-        return transactionDao.addTransaction(transaction);
+    public Transaction addTransaction(Transaction transaction, int userId) {
+        return transactionDao.addTransaction(transaction, userId);
     }
-    public int deleteTransaction(int id) {
-        return transactionDao.deleteTransaction(id);
+    public int deleteTransaction(int id, int userId) {
+        return transactionDao.deleteTransaction(id, userId);
     }
 }

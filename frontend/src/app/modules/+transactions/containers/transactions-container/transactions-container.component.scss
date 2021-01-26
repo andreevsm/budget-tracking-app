@@ -1,6 +1,22 @@
 .transactions {
-  padding: 1.6rem;
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  column-gap: 1.6rem;
+  &__exist {
+    padding: 1.6rem;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    column-gap: 1.6rem;
+  }
+
+  &__empty {
+    height: calc(100vh - 7rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: rgba(#000, 0.5);
+
+    > span {
+      transform: translateY(-7rem);
+    }
+  }
 }

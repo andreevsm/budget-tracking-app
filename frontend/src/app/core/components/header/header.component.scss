@@ -23,6 +23,12 @@
 
   &__link {
     color: #fff;
+    font-weight: bold;
+    font-size: 1.8rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

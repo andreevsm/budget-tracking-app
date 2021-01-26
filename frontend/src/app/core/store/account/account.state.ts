@@ -100,11 +100,11 @@ export class AccountState {
   }
 
   @Action(AccountActions.LoadCategories)
-  public loadCategories(
-    { setState, getState }: StateContext<IAccountState>,
-    { accountId }: AccountActions.LoadCategories,
-  ): any {
-    return this.accountService.loadCategories(accountId).pipe(
+  public loadCategories({
+    setState,
+    getState,
+  }: StateContext<IAccountState>): Observable<ICategory[]> {
+    return this.accountService.loadCategories().pipe(
       tap((categories) => {
         const categoriesEntity = makeEntityByKey(categories, (category) => category.id);
 

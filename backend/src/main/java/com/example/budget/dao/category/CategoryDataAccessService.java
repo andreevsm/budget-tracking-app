@@ -26,8 +26,8 @@ public class CategoryDataAccessService implements CategoryDao {
     }
 
     @Override
-    public List<Category> selectAllCategories(int accountId) {
-        final String sql = String.format("SELECT * from categories WHERE account_id = %d", accountId);
+    public List<Category> selectAllCategories(int userId) {
+        final String sql = String.format("SELECT * from categories WHERE user_id = %d", userId);
 
         return jdbcTemplate.query(sql, (result, i) -> {
             return new Category(
@@ -35,19 +35,19 @@ public class CategoryDataAccessService implements CategoryDao {
                     result.getString("name"),
                     result.getString("color"),
                     result.getTimestamp("created_at"),
-                    result.getInt("account_id")
+                    result.getInt("user_id")
             );
         });
 
     }
 
     @Override
-    public Category addCategory(Category category) {
+    public Category addCategory(Category category, int userId) {
         final String sql = "INSERT INTO categories (" +
                 "name," +
                 "color," +
                 "created_at," +
-                "account_id" +
+                "user_id" +
                 ") VALUES (?, ?, ?, ?)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -61,7 +61,7 @@ public class CategoryDataAccessService implements CategoryDao {
                         preparedStatement.setString(1, category.getName());
                         preparedStatement.setString(2, category.getColor());
                         preparedStatement.setTimestamp(3, category.getCreatedAt());
-                        preparedStatement.setInt(4, category.getAccountId());
+                        preparedStatement.setInt(4, userId);
 
                         return preparedStatement;
                     }
@@ -75,7 +75,7 @@ public class CategoryDataAccessService implements CategoryDao {
                     (String) keys.get("name"),
                     (String) keys.get("color"),
                     (Timestamp) keys.get("created_at"),
-                    (int) keys.get("account_id")
+                    (int) keys.get("user_id")
             );
         }
 

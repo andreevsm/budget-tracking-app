@@ -19,11 +19,11 @@ public class CategoryService {
         this.categoryDao = categoryDao;
     }
 
-    public List<Category> getAllCategories(int accountId) {
-        return categoryDao.selectAllCategories(accountId);
+    public List<Category> getAllCategories(int userId) {
+        return categoryDao.selectAllCategories(userId);
     }
 
-    public Category addCategory(Category category) {
-        return categoryDao.addCategory(category);
+    public Category addCategory(Category category, int userId) {
+        return categoryDao.addCategory(category, userId);
     }
 }

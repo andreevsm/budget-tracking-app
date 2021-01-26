@@ -25,10 +25,10 @@ export interface ICategory {
   name: string;
   color: string;
   createdAt: Date;
-  accountId: number;
+  userId: number;
 }
 
-export type INewCategory = Omit<ICategory, 'id'>;
+export type INewCategory = Omit<ICategory, 'id' | 'userId'>;
 
 export interface ICurrency {
   id: number;

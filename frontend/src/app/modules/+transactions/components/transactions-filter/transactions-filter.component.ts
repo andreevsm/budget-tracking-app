@@ -8,7 +8,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { MatSelectionListChange } from '@angular/material/list';
-import { IAccount } from '@core/store';
+import { IAccount, ITransaction } from '@core/store';
 import { NgChanges } from '@utils/types';
 
 @Component({
@@ -19,6 +19,7 @@ import { NgChanges } from '@utils/types';
 })
 export class TransactionsFilterComponent implements OnInit, OnChanges {
   @Input() public accounts: IAccount[] = [];
+  @Input() public transactions: ITransaction[] = [];
 
   @Output() public filterChange = new EventEmitter<number[]>();
 
@@ -30,7 +31,7 @@ export class TransactionsFilterComponent implements OnInit, OnChanges {
   public ngOnInit(): void {}
 
   public ngOnChanges(changes: NgChanges<TransactionsFilterComponent>): void {
-    if (changes.accounts) {
+    if (changes.accounts || changes.transactions) {
       this.calculateTotal();
     }
   }
@@ -52,34 +53,38 @@ export class TransactionsFilterComponent implements OnInit, OnChanges {
       this.accountsIds.add(id);
     });
 
-    this.totalAmount = this.accounts
-      .filter((account) => account.amount > 0)
-      .map(({ currencyId, amount }) => {
-        if (currencyId === 1) {
-          return amount * 73;
-        }
+    this.totalAmount = this.accounts.reduce((prev, curr) => {
+      const result =
+        prev +
+        this.transactions.reduce((prevTrans, currTrans) => {
+          if (currTrans.accountIncome === currTrans.accountOutcome) {
+            return prevTrans + currTrans.income + currTrans.outcome;
+          }
 
-        if (currencyId === 3) {
-          return amount * 89;
-        }
+          if (currTrans.accountIncome === curr.id) {
+            return prevTrans + currTrans.income;
+          }
 
-        return amount;
-      })
-      .reduce((prev, curr) => prev + curr, 0);
+          if (currTrans.accountOutcome === curr.id) {
+            return prevTrans + currTrans.outcome;
+          }
 
-    this.debt = this.accounts
-      .filter((account) => account.amount < 0)
-      .map(({ currencyId, amount }) => {
-        if (currencyId === 1) {
-          return amount * 73;
-        }
+          return prev;
+        }, curr.amount);
 
-        if (currencyId === 3) {
-          return amount * 89;
-        }
+      if (result < 0) {
+        this.debt += result;
+      }
 
-        return amount;
-      })
-      .reduce((prev, curr) => prev + curr, 0);
+      if (curr.currencyId === 1) {
+        return result * 73;
+      }
+
+      if (curr.currencyId === 3) {
+        return result * 89;
+      }
+
+      return result;
+    }, 0);
   }
 }

@@ -1,27 +1,39 @@
 <div class="transactions">
-  <aside class="transactions__aside" *ngIf="accounts$ | async as accounts">
-    <bg-transactions-filter
-      [accounts]="accounts"
-      (filterChange)="onFilterChange($event)"
-    ></bg-transactions-filter>
-  </aside>
+  <div
+    class="transactions__exist"
+    *ngIf="(accounts$ | async)?.length > 0; else isTransactionsEmpty"
+  >
+    <aside class="transactions__aside">
+      <bg-transactions-filter
+        [accounts]="accounts$ | async"
+        [transactions]="transactions"
+        (filterChange)="onFilterChange($event)"
+      ></bg-transactions-filter>
+    </aside>
 
-  <main class="transactions__main">
-    <bg-add-transaction
-      class="transactions__add-transaction"
-      [categories]="categories$ | async"
-      [accounts]="accounts$ | async"
-      [currencies]="currencies$ | async"
-      (addTransaction)="onTransactionAdd($event)"
-    ></bg-add-transaction>
+    <main class="transactions__main">
+      <bg-add-transaction
+        class="transactions__add-transaction"
+        [categories]="categories$ | async"
+        [accounts]="accounts$ | async"
+        [currencies]="currencies$ | async"
+        (addTransaction)="onTransactionAdd($event)"
+      ></bg-add-transaction>
 
-    <bg-transactions-history
-      class="transactions__history"
-      [transactions]="transactions"
-      [currencies]="currencies$ | async"
-      [categories]="categories$ | async"
-      [accountsEntity]="accountsEntity$ | async"
-      (deleteTransaction)="onDeleteTransaction($event)"
-    ></bg-transactions-history>
-  </main>
+      <bg-transactions-history
+        class="transactions__history"
+        [transactions]="transactions"
+        [currencies]="currencies$ | async"
+        [categories]="categories$ | async"
+        [accountsEntity]="accountsEntity$ | async"
+        (deleteTransaction)="onDeleteTransaction($event)"
+      ></bg-transactions-history>
+    </main>
+  </div>
+
+  <ng-template #isTransactionsEmpty>
+    <div class="transactions__empty">
+      <p>Данные отсутствуют</p>
+    </div>
+  </ng-template>
 </div>

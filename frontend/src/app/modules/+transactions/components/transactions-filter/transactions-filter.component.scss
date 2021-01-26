@@ -13,3 +13,15 @@
     }
   }
 }
+
+.total-info {
+  &__value {
+    &_increase {
+      color: green;
+    }
+
+    &_decrease {
+      color: red;
+    }
+  }
+}

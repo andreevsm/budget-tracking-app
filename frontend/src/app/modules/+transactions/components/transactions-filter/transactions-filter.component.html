@@ -1,34 +1,38 @@
 <mat-card class="filter">
-
   <mat-card-title class="filter__title">
     Мои счета
   </mat-card-title>
 
   <mat-card-subtitle>
-    <div class="filter__total-info">
+    <div class="filter__total-info total-info">
       <span>Общая сумма: </span>
-      <span>{{ totalAmount | currency : 'RUB' : 'symbol-narrow' }}</span>
+      <span
+        class="total-info__value"
+        [ngClass]="{
+          'total-info__value_increase': totalAmount > 0
+        }"
+        >{{ totalAmount | currency: 'RUB':'symbol-narrow' }}</span
+      >
     </div>
 
-    <div class="filter__total-info">
+    <div class="filter__total-info total-info">
       <span>Должен: </span>
-      <span>{{ debt | currency : 'RUB' : 'symbol-narrow' }}</span>
+      <span
+        class="total-info__value"
+        [ngClass]="{
+          'total-info__value_decrease': debt < 0
+        }"
+      >
+        {{ debt | currency: 'RUB':'symbol-narrow' }}
+      </span>
     </div>
   </mat-card-subtitle>
 
-  <mat-card-content
-    *ngIf="accounts.length > 0"
-    class="filter__content"
-  >
+  <mat-card-content *ngIf="accounts.length > 0" class="filter__content">
     <mat-selection-list (selectionChange)="onSelectionChange($event)">
-      <mat-list-option
-        *ngFor="let account of accounts"
-        [value]="account.id"
-        [selected]="true"
-      >
+      <mat-list-option *ngFor="let account of accounts" [value]="account.id" [selected]="true">
         {{ account.name }}
       </mat-list-option>
     </mat-selection-list>
   </mat-card-content>
-
 </mat-card>

@@ -22,12 +22,8 @@ export class AccountService {
     return this.http.delete<number>(`${ACCOUNTS_API}/${id}`);
   }
 
-  public loadCategories(accountId: number): Observable<ICategory[]> {
-    return this.http.get<ICategory[]>(CATEGORIES_API, {
-      params: {
-        accountId: accountId.toString(),
-      },
-    });
+  public loadCategories(): Observable<ICategory[]> {
+    return this.http.get<ICategory[]>(CATEGORIES_API);
   }
 
   public loadCurrencies(): Observable<ICurrency[]> {

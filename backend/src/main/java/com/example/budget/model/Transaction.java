@@ -37,6 +37,9 @@ public class Transaction {
     @Column(name = "category_id")
     private int categoryId;
 
+    @Column(name = "user_id")
+    private int userId;
+
     public Transaction (
             int id,
             int accountIncome,
@@ -45,7 +48,8 @@ public class Transaction {
             BigDecimal outcome,
             String comment,
             Timestamp createdAt,
-            int categoryId
+            int categoryId,
+            int userId
     ) {
         this.id = id;
         this.accountIncome = accountIncome;
@@ -55,6 +59,7 @@ public class Transaction {
         this.comment = comment;
         this.createdAt = createdAt;
         this.categoryId = categoryId;
+        this.userId = userId;
     }
 
     public Transaction (
@@ -64,7 +69,8 @@ public class Transaction {
             BigDecimal outcome,
             String comment,
             Timestamp createdAt,
-            int categoryId
+            int categoryId,
+            int userId
     ) {
         this.accountIncome = accountIncome;
         this.accountOutcome = accountOutcome;
@@ -73,6 +79,7 @@ public class Transaction {
         this.comment = comment;
         this.createdAt = createdAt;
         this.categoryId = categoryId;
+        this.userId = userId;
     }
 
     public Transaction() {}

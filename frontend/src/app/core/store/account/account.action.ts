@@ -31,7 +31,6 @@ export namespace AccountActions {
 
   export class LoadCategories {
     public static readonly type = '[Accounts] Load Categories';
-    constructor(public accountId: number) {}
   }
 
   export class AddCategory {

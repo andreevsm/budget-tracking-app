@@ -1,6 +1,7 @@
 package com.example.budget.controllers;
 
 import com.example.budget.model.Category;
+import com.example.budget.security.JwtTokenProvider;
 import com.example.budget.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,24 +13,31 @@ import java.util.List;
 public class CategoryController {
 
     private final CategoryService categoryService;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Autowired
     public CategoryController(
-            CategoryService categoryService
+            CategoryService categoryService,
+            JwtTokenProvider jwtTokenProvider
     ) {
         this.categoryService = categoryService;
+        this.jwtTokenProvider = jwtTokenProvider;
     }
 
     @GetMapping()
-    public List<Category> getAllCategories(@RequestParam int accountId) {
-        return categoryService.getAllCategories(accountId);
+    public List<Category> getAllCategories(
+            @RequestHeader(value = "Authorization") String authorizationToken
+    ) {
+        String id = jwtTokenProvider.getUserId(authorizationToken);
+        return categoryService.getAllCategories(Integer.parseInt(id));
     }
 
     @PostMapping
     public Category addCategory(
-            @RequestBody Category category
+            @RequestBody Category category,
+            @RequestHeader(value = "Authorization") String authorizationToken
     ) {
-        System.out.println(category);
-        return categoryService.addCategory(category);
+        String id = jwtTokenProvider.getUserId(authorizationToken);
+        return categoryService.addCategory(category, Integer.parseInt(id));
     }
 }

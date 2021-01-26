@@ -1,0 +1,17 @@
+.form {
+  &__control {
+    &_color {
+      max-width: 5rem;
+      width: 100%;
+    }
+  }
+
+  &__control + &__control {
+    margin-left: 1.6rem;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
