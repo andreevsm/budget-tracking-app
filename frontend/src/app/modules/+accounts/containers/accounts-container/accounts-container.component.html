@@ -5,17 +5,27 @@
         Счета
       </mat-card-title>
 
-      <mat-card-content *ngIf="accounts$ | async as accounts">
+      <mat-card-content *ngIf="accounts.length > 0">
         <mat-nav-list>
-          <mat-list-item *ngFor="let account of accounts">
-            <a matLine class="accounts__link link" [routerLink]="'/accounts/' + account.id">
-              <span class="link__name">
-                {{ account.name }}
-              </span>
-              <span class="link__description" *ngIf="account.description">
-                {{ account.description }}
-              </span>
-            </a>
+          <mat-list-item class="accounts__item item" *ngFor="let account of accounts">
+            <div class="item__inner">
+              <p class="item__title">
+                <span class="item__name">
+                  {{ account.name }}
+                </span>
+                <span>
+                  {{
+                    getAmountByAccountId(account.id)
+                      | currency: currencies[account.currencyId]?.name:'symbol-narrow'
+                  }}
+                </span>
+              </p>
+              <p>
+                <span class="item__description" *ngIf="account.description">
+                  {{ account.description }}
+                </span>
+              </p>
+            </div>
 
             <button mat-icon-button (click)="onEditAccount(account)">
               <mat-icon>edit</mat-icon>
@@ -62,11 +72,11 @@
 
   <main class="accounts__main">
     <bg-statistics
-      [accounts]="accounts$ | async"
+      [accounts]="accounts"
       [accountsEntity]="accountsEntity$ | async"
-      [transactions]="transactions$ | async"
+      [transactions]="transactions"
       [categories]="categories$ | async"
-      [currencies]="currencies$ | async"
+      [currencies]="currencies"
     ></bg-statistics>
   </main>
 </div>

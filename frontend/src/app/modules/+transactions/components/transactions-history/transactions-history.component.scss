@@ -31,5 +31,11 @@
         display: flex;
       }
     }
+
+    &__group {
+      &__text {
+        font-size: 1.6rem;
+      }
+    }
   }
 }

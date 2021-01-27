@@ -56,21 +56,25 @@ export class TransactionsFilterComponent implements OnInit, OnChanges {
     this.totalAmount = this.accounts.reduce((prev, curr) => {
       const result =
         prev +
-        this.transactions.reduce((prevTrans, currTrans) => {
-          if (currTrans.accountIncome === currTrans.accountOutcome) {
-            return prevTrans + currTrans.income + currTrans.outcome;
-          }
+        this.transactions
+          .filter((transaction) =>
+            [transaction.accountIncome, transaction.accountOutcome].includes(curr.id),
+          )
+          .reduce((prevTrans, currTrans) => {
+            if (currTrans.accountIncome === currTrans.accountOutcome) {
+              return prevTrans + currTrans.income + currTrans.outcome;
+            }
 
-          if (currTrans.accountIncome === curr.id) {
-            return prevTrans + currTrans.income;
-          }
+            if (currTrans.accountIncome === curr.id) {
+              return prevTrans + currTrans.income;
+            }
 
-          if (currTrans.accountOutcome === curr.id) {
-            return prevTrans + currTrans.outcome;
-          }
+            if (currTrans.accountOutcome === curr.id) {
+              return prevTrans + currTrans.outcome;
+            }
 
-          return prev;
-        }, curr.amount);
+            return prev;
+          }, curr.amount);
 
       if (result < 0) {
         this.debt += result;

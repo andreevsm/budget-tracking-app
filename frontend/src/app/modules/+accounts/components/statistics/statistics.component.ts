@@ -42,29 +42,36 @@ export class StatisticsComponent implements OnChanges {
 
   public getBalanceByDate(date: Date): number {
     return this.accounts.reduce((prev, curr) => {
+      const initialValue =
+        new Date(parseDateToString(new Date(curr.createdAt))).getTime() <=
+        new Date(parseDateToString(date)).getTime()
+          ? curr.amount
+          : 0;
+
       const result =
         prev +
         this.transactions
           .filter(
             (transaction) =>
               new Date(parseDateToString(new Date(transaction.createdAt))).getTime() <=
-              new Date(parseDateToString(date)).getTime(),
+                new Date(parseDateToString(date)).getTime() &&
+              [transaction.accountIncome, transaction.accountOutcome].includes(curr.id),
           )
           .reduce((prevTrans, currTrans) => {
             if (currTrans.accountIncome === currTrans.accountOutcome) {
               return prevTrans + currTrans.income + currTrans.outcome;
             }
 
-            if (currTrans.accountIncome === curr.id) {
+            if (currTrans.outcome === 0) {
               return prevTrans + currTrans.income;
             }
 
-            if (currTrans.accountOutcome === curr.id) {
+            if (currTrans.income === 0) {
               return prevTrans + currTrans.outcome;
             }
 
             return prev;
-          }, curr.amount);
+          }, initialValue);
 
       if (curr.currencyId === 1) {
         return result * 73;
@@ -85,33 +92,38 @@ export class StatisticsComponent implements OnChanges {
 
     const lastDays = eachOfInterval(10);
 
-    console.log('accounts', this.accounts);
-
     const totalAmount = lastDays.map((day) => {
       return this.accounts.reduce((prev, curr) => {
+        const initialValue =
+          new Date(parseDateToString(new Date(curr.createdAt))).getTime() ===
+          new Date(parseDateToString(day)).getTime()
+            ? curr.amount
+            : 0;
+
         const result =
           prev +
           this.transactions
             .filter(
               (transaction) =>
                 new Date(parseDateToString(new Date(transaction.createdAt))).getTime() <=
-                new Date(parseDateToString(day)).getTime(),
+                  new Date(parseDateToString(day)).getTime() &&
+                [transaction.accountIncome, transaction.accountOutcome].includes(curr.id),
             )
             .reduce((prevTrans, currTrans) => {
               if (currTrans.accountIncome === currTrans.accountOutcome) {
                 return prevTrans + currTrans.income + currTrans.outcome;
               }
 
-              if (currTrans.accountIncome === curr.id) {
+              if (currTrans.outcome === 0) {
                 return prevTrans + currTrans.income;
               }
 
-              if (currTrans.accountOutcome === curr.id) {
+              if (currTrans.income === 0) {
                 return prevTrans + currTrans.outcome;
               }
 
               return prev;
-            }, curr.amount);
+            }, initialValue);
 
         if (curr.currencyId === 1) {
           return result * 73;
@@ -124,6 +136,8 @@ export class StatisticsComponent implements OnChanges {
         return result;
       }, 0);
     });
+
+    console.log('totalAmount', totalAmount);
 
     this.results = [
       {

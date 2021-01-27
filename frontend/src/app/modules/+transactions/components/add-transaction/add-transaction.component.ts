@@ -58,8 +58,8 @@ export class AddTransactionComponent implements OnInit, OnDestroy {
       createdAt,
     } = this.form.getRawValue();
 
-    const patchedIncome = transactionType === 'incomes' ? income : 0;
-    const patchedOutcome = transactionType === 'expenses' ? -outcome : 0;
+    const patchedIncome = transactionType === 'expenses' ? 0 : income;
+    const patchedOutcome = transactionType === 'incomes' ? 0 : -outcome;
 
     this.addTransaction.emit({
       accountIncome,

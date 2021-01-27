@@ -44,53 +44,102 @@ public class TransactionDataAccessService implements TransactionDao {
 
     @Override
     public Transaction addTransaction(Transaction transaction, int userId) {
-        final String sql = "INSERT INTO transactions (" +
-                "account_income," +
-                "account_outcome," +
-                "income," +
-                "outcome," +
-                "comment," +
-                "created_at," +
-                "category_id," +
-                "user_id" +
-                ") VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
+        if (transaction.getCategoryId() == 0) {
+            final String sql = "INSERT INTO transactions (" +
+                    "account_income," +
+                    "account_outcome," +
+                    "income," +
+                    "outcome," +
+                    "comment," +
+                    "created_at," +
+                    "user_id" +
+                    ") VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        int result = jdbcTemplate.update(new PreparedStatementCreator() {
-            @Override
-            public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-                PreparedStatement preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-                preparedStatement.setInt(1, transaction.getAccountIncome());
-                preparedStatement.setInt(2, transaction.getAccountOutcome());
-                preparedStatement.setBigDecimal(3, transaction.getIncome());
-                preparedStatement.setBigDecimal(4, transaction.getOutcome());
-                preparedStatement.setString(5, transaction.getComment());
-                preparedStatement.setTimestamp(6, transaction.getCreatedAt());
-                preparedStatement.setInt(7, transaction.getCategoryId());
-                preparedStatement.setInt(8, userId);
 
-                return preparedStatement;
+            int result = jdbcTemplate.update(new PreparedStatementCreator() {
+                @Override
+                public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+                    PreparedStatement preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+                    preparedStatement.setInt(1, transaction.getAccountIncome());
+                    preparedStatement.setInt(2, transaction.getAccountOutcome());
+                    preparedStatement.setBigDecimal(3, transaction.getIncome());
+                    preparedStatement.setBigDecimal(4, transaction.getOutcome());
+                    preparedStatement.setString(5, transaction.getComment());
+                    preparedStatement.setTimestamp(6, transaction.getCreatedAt());
+                    preparedStatement.setInt(7, userId);
+
+                    return preparedStatement;
+                }
+            }, keyHolder);
+
+            if (result > 0) {
+
+                Map<String, Object> keys = keyHolder.getKeys();
+
+                int categoryId = keys.get("category_id") != null ? (int) keys.get("category_id") : 0;
+
+                return new Transaction(
+                        (int) keys.get("id"),
+                        (int) keys.get("account_income"),
+                        (int) keys.get("account_outcome"),
+                        (BigDecimal) keys.get("income"),
+                        (BigDecimal) keys.get("outcome"),
+                        (String) keys.get("comment"),
+                        (Timestamp) keys.get("created_at"),
+                        categoryId,
+                        (int) keys.get("user_id")
+                );
             }
-        }, keyHolder);
+        } else {
+            final String sql = "INSERT INTO transactions (" +
+                    "account_income," +
+                    "account_outcome," +
+                    "income," +
+                    "outcome," +
+                    "comment," +
+                    "created_at," +
+                    "category_id," +
+                    "user_id" +
+                    ") VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-        if (result > 0) {
 
-            Map<String, Object> keys = keyHolder.getKeys();
+            int result = jdbcTemplate.update(new PreparedStatementCreator() {
+                @Override
+                public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+                    PreparedStatement preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+                    preparedStatement.setInt(1, transaction.getAccountIncome());
+                    preparedStatement.setInt(2, transaction.getAccountOutcome());
+                    preparedStatement.setBigDecimal(3, transaction.getIncome());
+                    preparedStatement.setBigDecimal(4, transaction.getOutcome());
+                    preparedStatement.setString(5, transaction.getComment());
+                    preparedStatement.setTimestamp(6, transaction.getCreatedAt());
+                    preparedStatement.setInt(7, transaction.getCategoryId());
+                    preparedStatement.setInt(8, userId);
 
-            return new Transaction(
-                    (int) keys.get("id"),
-                    (int) keys.get("account_income"),
-                    (int) keys.get("account_outcome"),
-                    (BigDecimal) keys.get("income"),
-                    (BigDecimal) keys.get("outcome"),
-                    (String) keys.get("comment"),
-                    (Timestamp) keys.get("created_at"),
-                    (int) keys.get("category_id"),
-                    (int) keys.get("user_id")
-            );
+                    return preparedStatement;
+                }
+            }, keyHolder);
+
+            if (result > 0) {
+
+                Map<String, Object> keys = keyHolder.getKeys();
+
+                return new Transaction(
+                        (int) keys.get("id"),
+                        (int) keys.get("account_income"),
+                        (int) keys.get("account_outcome"),
+                        (BigDecimal) keys.get("income"),
+                        (BigDecimal) keys.get("outcome"),
+                        (String) keys.get("comment"),
+                        (Timestamp) keys.get("created_at"),
+                        (int) keys.get("category_id"),
+                        (int) keys.get("user_id")
+                );
+            }
         }
+
 
         return null;
     }

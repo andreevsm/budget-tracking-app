@@ -17,18 +17,6 @@
   }
 }
 
-.link {
-  &__name {
-    display: block;
-  }
-
-  &__description {
-    color: #999;
-    display: block;
-    font-size: 1.2rem;
-  }
-}
-
 .aside {
   &__item + &__item {
     margin-top: 1.6rem;
@@ -39,4 +27,27 @@
   max-height: 30rem;
   height: 100%;
   overflow-y: auto;
+}
+
+.item {
+  &__inner {
+    flex: 1;
+  }
+
+  &__name {
+    display: block;
+  }
+
+  &__description {
+    color: #999;
+    display: block;
+    font-size: 1.2rem;
+  }
+
+  &__title {
+    display: flex;
+    span + span {
+      margin-left: 1rem;
+    }
+  }
 }

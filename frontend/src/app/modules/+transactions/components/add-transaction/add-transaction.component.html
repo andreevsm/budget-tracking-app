@@ -83,7 +83,7 @@
         <div class="form__row" *ngIf="transactionTypeControl.value === 'transfer'">
           <mat-form-field class="form__control">
             <mat-label>Откуда</mat-label>
-            <mat-select #accountIncome (selectionChange)="onAccountIncomeChange($event)">
+            <mat-select #accountIncome (selectionChange)="onAccountOutcomeChange($event)">
               <mat-option *ngFor="let account of accounts" [value]="account">
                 {{ account.name }}
               </mat-option>
@@ -104,7 +104,7 @@
 
           <mat-form-field class="form__control">
             <mat-label>Куда</mat-label>
-            <mat-select #accountOutcome (selectionChange)="onAccountOutcomeChange($event)">
+            <mat-select #accountOutcome (selectionChange)="onAccountIncomeChange($event)">
               <mat-option *ngFor="let account of accounts" [value]="account">
                 {{ account.name }}
               </mat-option>

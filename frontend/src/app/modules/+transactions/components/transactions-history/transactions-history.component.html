@@ -3,14 +3,18 @@
     <ng-container matColumnDef="category">
       <th mat-header-cell *matHeaderCellDef>Категория</th>
       <td mat-cell *matCellDef="let element">
-        <div *ngIf="element.accountIncome !== element.accountOutcome; then transfer else payment"></div>
+        <div
+          *ngIf="element.accountIncome !== element.accountOutcome; then transfer; else payment"
+        ></div>
 
         <ng-template #transfer>
-          Перевод
+          <span>Перевод</span>
         </ng-template>
 
         <ng-template #payment>
-          {{ categories[element.categoryId]?.name }}
+          <span [style.color]="categories[element.categoryId]?.color">{{
+            categories[element.categoryId]?.name
+          }}</span>
         </ng-template>
       </td>
     </ng-container>
@@ -18,26 +22,48 @@
     <ng-container matColumnDef="amount">
       <th mat-header-cell *matHeaderCellDef>Сумма</th>
       <td mat-cell *matCellDef="let element">
-        <div *ngIf="element.accountIncome !== element.accountOutcome; then transfer else payment"></div>
+        <div
+          *ngIf="element.accountIncome !== element.accountOutcome; then transfer; else payment"
+        ></div>
 
         <ng-template #transfer>
           <div class="table__td__account__inner">
             <span>
-              {{ element.outcome }}
+              {{
+                element.income
+                  | currency
+                    : currencies[accountsEntity[element.accountIncome]?.currencyId]?.name
+                    : 'symbol-narrow'
+              }}
             </span>
             <mat-icon>arrow_right_alt</mat-icon>
             <span>
-              {{ element.income }}
+              {{
+                element.outcome
+                  | currency
+                    : currencies[accountsEntity[element.accountIncome]?.currencyId]?.name
+                    : 'symbol-narrow'
+              }}
             </span>
           </div>
         </ng-template>
 
         <ng-template #payment>
           <div *ngIf="element.income" style="color: green;">
-            {{ element.income | currency : currencies[accountsEntity[element.accountIncome]?.currencyId]?.name : 'symbol-narrow' }}
+            {{
+              element.income
+                | currency
+                  : currencies[accountsEntity[element.accountIncome]?.currencyId]?.name
+                  : 'symbol-narrow'
+            }}
           </div>
           <div *ngIf="element.outcome" style="color: red;">
-            {{ element.outcome | currency : currencies[accountsEntity[element.accountIncome]?.currencyId]?.name : 'symbol-narrow' }}
+            {{
+              element.outcome
+                | currency
+                  : currencies[accountsEntity[element.accountIncome]?.currencyId]?.name
+                  : 'symbol-narrow'
+            }}
           </div>
         </ng-template>
       </td>
@@ -46,16 +72,18 @@
     <ng-container matColumnDef="account">
       <th mat-header-cell *matHeaderCellDef>Счет</th>
       <td mat-cell *matCellDef="let element">
-        <div *ngIf="element.accountIncome !== element.accountOutcome; then transfer else payment"></div>
+        <div
+          *ngIf="element.accountIncome !== element.accountOutcome; then transfer; else payment"
+        ></div>
 
         <ng-template #transfer>
           <div class="table__td__account__inner">
             <span>
-              {{ accountsEntity[element.accountIncome]?.name }}
+              {{ accountsEntity[element.accountOutcome]?.name }}
             </span>
             <mat-icon>arrow_right_alt</mat-icon>
             <span>
-              {{ accountsEntity[element.accountOutcome]?.name }}
+              {{ accountsEntity[element.accountIncome]?.name }}
             </span>
           </div>
         </ng-template>
@@ -74,7 +102,7 @@
     <ng-container matColumnDef="groupHeader">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-        <span>
+        <span class="table__td__group__text">
           {{ element.grouped.day }}, {{ element.grouped.key }}
         </span>
       </td>
@@ -83,10 +111,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
-        <button
-          mat-icon-button
-          (click)="deleteTransaction.emit(element.id)"
-        >
+        <button mat-icon-button (click)="deleteTransaction.emit(element.id)">
           <mat-icon>delete</mat-icon>
         </button>
       </td>
@@ -94,6 +119,10 @@
 
     <tr class="table__tr" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr class="table__tr" mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    <tr class="table__tr table__tr_grouped" mat-row *matRowDef="let row; columns: ['groupHeader']; when: isGroup"></tr>
+    <tr
+      class="table__tr table__tr_grouped"
+      mat-row
+      *matRowDef="let row; columns: ['groupHeader']; when: isGroup"
+    ></tr>
   </table>
 </div>
