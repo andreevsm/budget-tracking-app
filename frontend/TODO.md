@@ -20,7 +20,7 @@
 | 4   | Тестирование    |        :x:         |
 | 5   | Паттерны        |        :x:         |
 | 6   | Web workers     | :white_check_mark: |
-| 7   | Micro-frontend  |        :x:         |
+| 7   | Micro-frontend  | :white_check_mark: |
 
 ### Практическая часть
 
