@@ -1,6 +1,13 @@
-.root {
-  height: 40rem;
-  width: 80rem;
+.statistics {
+  &__title {
+    text-align: center;
+    margin-bottom: 3.2rem;
+  }
+
+  &__chart {
+    height: 40rem;
+    width: 80rem;
+  }
 }
 
 .tooltip {
@@ -37,9 +44,15 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 
     span + span {
       margin-left: 1.5rem;
     }
+  }
+
+  &__amount {
+    display: flex;
+    align-items: center;
   }
 }

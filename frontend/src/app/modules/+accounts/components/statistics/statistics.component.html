@@ -1,78 +1,86 @@
-<div class="root">
-  <ngx-charts-line-chart
-    [view]="view"
-    [xAxis]="true"
-    [yAxis]="true"
-    [timeline]="true"
-    [results]="results"
-    [scheme]="colorScheme"
-    [yAxisTickFormatting]="yAxisTickFormatting"
-  >
-    <ng-template #tooltipTemplate let-model="model">
-      <div class="tooltip">
-        <div class="tooltip__header">
-          <p class="tooltip__date">
-            {{ getDate(model.name) }}
-          </p>
-          <p class="tooltip__balance">
-            <span>Баланс: </span>
-            <span>{{ getBalanceByDate(model.name) }} руб.</span>
-          </p>
+<div class="statistics">
+  <h1 class="statistics__title">
+    Данные о транзакциях за последние 10 дней
+  </h1>
+
+  <div class="statistics__chart">
+    <ngx-charts-line-chart
+      [view]="view"
+      [xAxis]="true"
+      [yAxis]="true"
+      [timeline]="true"
+      [results]="results"
+      [scheme]="colorScheme"
+      [yAxisTickFormatting]="yAxisTickFormatting"
+    >
+      <ng-template #tooltipTemplate let-model="model">
+        <div class="tooltip">
+          <div class="tooltip__header">
+            <p class="tooltip__date">
+              {{ getDate(model.name) }}
+            </p>
+            <p class="tooltip__balance">
+              <span>Баланс: </span>
+              <span>{{ getBalanceByDate(model.name) }} руб.</span>
+            </p>
+          </div>
+
+          <ul class="tooltip__transactions transactions">
+            <li
+              class="transactions__item"
+              *ngFor="let transaction of getTransactionsByDate(model.name)"
+            >
+              <span class="transactions__name">
+                <ng-container *ngIf="transaction.categoryId">
+                  <span [style.color]="categories[transaction.categoryId].color">{{
+                    categories[transaction.categoryId].name
+                  }}</span>
+                </ng-container>
+                <ng-container *ngIf="!transaction.categoryId">
+                  Перевод
+                </ng-container>
+              </span>
+              <span class="transactions__amount">
+                <ng-container *ngIf="transaction.accountIncome !== transaction.accountOutcome">
+                  {{
+                    transaction.outcome
+                      | currency
+                        : currencies[accountsEntity[transaction.accountOutcome]?.currencyId]?.name
+                        : 'symbol-narrow'
+                  }}
+                  <mat-icon>arrow_right_alt</mat-icon>
+                  {{
+                    transaction.income
+                      | currency
+                        : currencies[accountsEntity[transaction.accountIncome]?.currencyId]?.name
+                        : 'symbol-narrow'
+                  }}
+                </ng-container>
+
+                <ng-container *ngIf="transaction.income === 0">
+                  {{
+                    transaction.outcome
+                      | currency
+                        : currencies[accountsEntity[transaction.accountOutcome]?.currencyId]?.name
+                        : 'symbol-narrow'
+                  }}
+                </ng-container>
+
+                <ng-container *ngIf="transaction.outcome === 0">
+                  {{
+                    transaction.income
+                      | currency
+                        : currencies[accountsEntity[transaction.accountIncome]?.currencyId]?.name
+                        : 'symbol-narrow'
+                  }}
+                </ng-container>
+              </span>
+            </li>
+          </ul>
         </div>
-
-        <ul class="tooltip__transactions transactions">
-          <li
-            class="transactions__item"
-            *ngFor="let transaction of getTransactionsByDate(model.name)"
-          >
-            <span class="transactions__name">
-              <ng-container *ngIf="transaction.categoryId">
-                <span [style.color]="categories[transaction.categoryId].color">{{
-                  categories[transaction.categoryId].name
-                }}</span>
-              </ng-container>
-              <ng-container *ngIf="!transaction.categoryId">
-                Перевод
-              </ng-container>
-            </span>
-            <span class="transactions__amount">
-              <ng-container *ngIf="transaction.accountIncome !== transaction.accountOutcome">
-                {{
-                  transaction.outcome
-                    | currency
-                      : currencies[accountsEntity[transaction.accountOutcome]?.currencyId]?.name
-                      : 'symbol-narrow'
-                }}
-                <mat-icon>arrow_right_alt</mat-icon>
-                {{
-                  transaction.income
-                    | currency
-                      : currencies[accountsEntity[transaction.accountIncome]?.currencyId]?.name
-                      : 'symbol-narrow'
-                }}
-              </ng-container>
-
-              <ng-container *ngIf="transaction.income === 0">
-                {{
-                  transaction.outcome
-                    | currency
-                      : currencies[accountsEntity[transaction.accountOutcome]?.currencyId]?.name
-                      : 'symbol-narrow'
-                }}
-              </ng-container>
-
-              <ng-container *ngIf="transaction.outcome === 0">
-                {{
-                  transaction.income
-                    | currency
-                      : currencies[accountsEntity[transaction.accountIncome]?.currencyId]?.name
-                      : 'symbol-narrow'
-                }}
-              </ng-container>
-            </span>
-          </li>
-        </ul>
-      </div>
-    </ng-template>
-  </ngx-charts-line-chart>
+      </ng-template>
+    </ngx-charts-line-chart>
+  </div>
 </div>
+
+<div class="root"></div>

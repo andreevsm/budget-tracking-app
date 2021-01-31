@@ -48,40 +48,38 @@ export class StatisticsComponent implements OnChanges {
           ? curr.amount
           : 0;
 
-      const result =
-        prev +
-        this.transactions
-          .filter(
-            (transaction) =>
-              new Date(parseDateToString(new Date(transaction.createdAt))).getTime() <=
-                new Date(parseDateToString(date)).getTime() &&
-              [transaction.accountIncome, transaction.accountOutcome].includes(curr.id),
-          )
-          .reduce((prevTrans, currTrans) => {
-            if (currTrans.accountIncome === currTrans.accountOutcome) {
-              return prevTrans + currTrans.income + currTrans.outcome;
-            }
+      const result = this.transactions
+        .filter(
+          (transaction) =>
+            new Date(parseDateToString(new Date(transaction.createdAt))).getTime() <=
+              new Date(parseDateToString(date)).getTime() &&
+            [transaction.accountIncome, transaction.accountOutcome].includes(curr.id),
+        )
+        .reduce((prevTrans, currTrans) => {
+          if (currTrans.accountIncome === currTrans.accountOutcome) {
+            return prevTrans + currTrans.income + currTrans.outcome;
+          }
 
-            if (currTrans.outcome === 0) {
-              return prevTrans + currTrans.income;
-            }
+          if (currTrans.accountIncome === curr.id && currTrans.accountOutcome !== curr.id) {
+            return prevTrans + currTrans.income;
+          }
 
-            if (currTrans.income === 0) {
-              return prevTrans + currTrans.outcome;
-            }
+          if (currTrans.accountIncome !== curr.id && currTrans.accountOutcome === curr.id) {
+            return prevTrans + currTrans.outcome;
+          }
 
-            return prev;
-          }, initialValue);
+          return prev;
+        }, initialValue);
 
       if (curr.currencyId === 1) {
-        return result * 73;
+        return prev + result * 73;
       }
 
       if (curr.currencyId === 3) {
-        return result * 89;
+        return prev + result * 89;
       }
 
-      return result;
+      return prev + result;
     }, 0);
   }
 
@@ -90,7 +88,7 @@ export class StatisticsComponent implements OnChanges {
       return;
     }
 
-    const lastDays = eachOfInterval(10);
+    const lastDays = eachOfInterval(9);
 
     const totalAmount = lastDays.map((day) => {
       return this.accounts.reduce((prev, curr) => {
@@ -100,40 +98,38 @@ export class StatisticsComponent implements OnChanges {
             ? curr.amount
             : 0;
 
-        const result =
-          prev +
-          this.transactions
-            .filter(
-              (transaction) =>
-                new Date(parseDateToString(new Date(transaction.createdAt))).getTime() <=
-                  new Date(parseDateToString(day)).getTime() &&
-                [transaction.accountIncome, transaction.accountOutcome].includes(curr.id),
-            )
-            .reduce((prevTrans, currTrans) => {
-              if (currTrans.accountIncome === currTrans.accountOutcome) {
-                return prevTrans + currTrans.income + currTrans.outcome;
-              }
+        const filteredTransactions = this.transactions.filter(
+          (transaction) =>
+            new Date(parseDateToString(new Date(transaction.createdAt))).getTime() <=
+              new Date(parseDateToString(day)).getTime() &&
+            [transaction.accountIncome, transaction.accountOutcome].includes(curr.id),
+        );
 
-              if (currTrans.outcome === 0) {
-                return prevTrans + currTrans.income;
-              }
+        const result = filteredTransactions.reduce((prevTrans, currTrans) => {
+          if (currTrans.accountIncome === currTrans.accountOutcome) {
+            return prevTrans + currTrans.income + currTrans.outcome;
+          }
 
-              if (currTrans.income === 0) {
-                return prevTrans + currTrans.outcome;
-              }
+          if (currTrans.accountIncome === curr.id && currTrans.accountOutcome !== curr.id) {
+            return prevTrans + currTrans.income;
+          }
 
-              return prev;
-            }, initialValue);
+          if (currTrans.accountIncome !== curr.id && currTrans.accountOutcome === curr.id) {
+            return prevTrans + currTrans.outcome;
+          }
+
+          return prev;
+        }, initialValue);
 
         if (curr.currencyId === 1) {
-          return result * 73;
+          return prev + result * 73;
         }
 
         if (curr.currencyId === 3) {
-          return result * 89;
+          return prev + result * 89;
         }
 
-        return result;
+        return prev + result;
       }, 0);
     });
 

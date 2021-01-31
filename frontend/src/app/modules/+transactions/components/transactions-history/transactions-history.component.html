@@ -30,16 +30,16 @@
           <div class="table__td__account__inner">
             <span>
               {{
-                element.income
+                element.outcome
                   | currency
-                    : currencies[accountsEntity[element.accountIncome]?.currencyId]?.name
+                    : currencies[accountsEntity[element.accountOutcome]?.currencyId]?.name
                     : 'symbol-narrow'
               }}
             </span>
             <mat-icon>arrow_right_alt</mat-icon>
             <span>
               {{
-                element.outcome
+                element.income
                   | currency
                     : currencies[accountsEntity[element.accountIncome]?.currencyId]?.name
                     : 'symbol-narrow'

@@ -54,41 +54,39 @@ export class TransactionsFilterComponent implements OnInit, OnChanges {
     });
 
     this.totalAmount = this.accounts.reduce((prev, curr) => {
-      const result =
-        prev +
-        this.transactions
-          .filter((transaction) =>
-            [transaction.accountIncome, transaction.accountOutcome].includes(curr.id),
-          )
-          .reduce((prevTrans, currTrans) => {
-            if (currTrans.accountIncome === currTrans.accountOutcome) {
-              return prevTrans + currTrans.income + currTrans.outcome;
-            }
+      const result = this.transactions
+        .filter((transaction) =>
+          [transaction.accountIncome, transaction.accountOutcome].includes(curr.id),
+        )
+        .reduce((prevTrans, currTrans) => {
+          if (currTrans.accountIncome === currTrans.accountOutcome) {
+            return prevTrans + currTrans.income + currTrans.outcome;
+          }
 
-            if (currTrans.accountIncome === curr.id) {
-              return prevTrans + currTrans.income;
-            }
+          if (currTrans.accountIncome === curr.id) {
+            return prevTrans + currTrans.income;
+          }
 
-            if (currTrans.accountOutcome === curr.id) {
-              return prevTrans + currTrans.outcome;
-            }
+          if (currTrans.accountOutcome === curr.id) {
+            return prevTrans + currTrans.outcome;
+          }
 
-            return prev;
-          }, curr.amount);
+          return prev;
+        }, curr.amount);
 
       if (result < 0) {
         this.debt += result;
       }
 
       if (curr.currencyId === 1) {
-        return result * 73;
+        return prev + result * 73;
       }
 
       if (curr.currencyId === 3) {
-        return result * 89;
+        return prev + result * 89;
       }
 
-      return result;
+      return prev + result;
     }, 0);
   }
 }
