@@ -21,6 +21,7 @@ export class StatisticsComponent implements OnChanges {
   public colorScheme = {
     domain: ['#673ab7'],
   };
+  public daysRange = 9;
 
   public yAxisTickFormatting = (value: number) => `${value} руб.`;
 
@@ -88,7 +89,7 @@ export class StatisticsComponent implements OnChanges {
       return;
     }
 
-    const lastDays = eachOfInterval(9);
+    const lastDays = eachOfInterval(this.daysRange);
 
     const totalAmount = lastDays.map((day) => {
       return this.accounts.reduce((prev, curr) => {
@@ -132,8 +133,6 @@ export class StatisticsComponent implements OnChanges {
         return prev + result;
       }, 0);
     });
-
-    console.log('totalAmount', totalAmount);
 
     this.results = [
       {
