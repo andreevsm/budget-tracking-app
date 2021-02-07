@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { SharedModule } from '@shared/shared.module';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
@@ -27,7 +26,6 @@ import { AccountsContainerComponent } from './containers';
   imports: [
     CommonModule,
     MainRoutingModule,
-    SharedModule,
     MatSelectModule,
     FormsModule,
     NgxChartsModule,
@@ -38,6 +36,7 @@ import { AccountsContainerComponent } from './containers';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    ReactiveFormsModule,
   ],
 })
 export class MainModule {}

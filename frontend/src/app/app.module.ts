@@ -8,7 +8,6 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { environment } from '../environments/environment';
 
-import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +22,6 @@ import { AppComponent } from './app.component';
     NgxsRouterPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     CoreModule,
-    SharedModule,
     HttpClientModule,
   ],
   bootstrap: [AppComponent],
