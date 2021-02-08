@@ -24,11 +24,11 @@
       "@shared/*": ["src/app/shared/*"],
       "@utils/*": ["src/app/utils/*"],
       "@modules/*": ["src/app/modules/*"],
-      "@environments/*": ["src/environments/*"],
+      "@environments/*": ["src/environments/*"]
     }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
-  },
+  }
 }
