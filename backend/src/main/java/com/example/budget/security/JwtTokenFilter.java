@@ -1,6 +1,5 @@
 package com.example.budget.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -28,7 +27,6 @@ public class JwtTokenFilter extends GenericFilterBean {
 
         try {
             if (token != null && jwtTokenProvider.validateToken(token)) {
-
                 Authentication authentication = jwtTokenProvider.getAuthentication(token);
                 if (authentication != null) {
                     SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -37,7 +35,7 @@ public class JwtTokenFilter extends GenericFilterBean {
         } catch (JwtAuthenticationException e) {
             SecurityContextHolder.clearContext();
             ((HttpServletResponse) servletResponse).sendError(e.getHttpStatus().value());
-            throw  new JwtAuthenticationException(e.getMessage());
+            throw new JwtAuthenticationException("JWT token is expired or invalid");
         }
 
         filterChain.doFilter(servletRequest, servletResponse);
