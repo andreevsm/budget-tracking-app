@@ -6,13 +6,23 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { AuthService } from './store/auth/auth.service';
+import { AuthService } from './store/auth';
 import { HeaderComponent, SpinnerComponent } from './components';
-import { UIState, AuthState, AccountState, AccountService } from './store';
+import {
+  UIState,
+  AuthState,
+  AccountState,
+  AccountService,
+  CategoryState,
+  CategoryService,
+  CurrencyState,
+  CurrencyService,
+  TransactionService,
+  TransactionState,
+} from './store';
 import { localStorageFactory, LOCAL_STORAGE } from './services/local-storage.service';
 import { MainLayoutComponent } from './layouts';
 import { AuthInterceptor } from './interceptors';
-import { TransactionState } from './store/transaction';
 
 @NgModule({
   declarations: [HeaderComponent, SpinnerComponent, MainLayoutComponent],
@@ -20,7 +30,14 @@ import { TransactionState } from './store/transaction';
     CommonModule,
     BrowserAnimationsModule,
     RouterModule,
-    NgxsModule.forFeature([UIState, AccountState, AuthState, TransactionState]),
+    NgxsModule.forFeature([
+      UIState,
+      AccountState,
+      AuthState,
+      TransactionState,
+      CategoryState,
+      CurrencyState,
+    ]),
     MatProgressSpinnerModule,
   ],
   exports: [HeaderComponent, SpinnerComponent],
@@ -32,6 +49,9 @@ import { TransactionState } from './store/transaction';
     },
     AccountService,
     AuthService,
+    TransactionService,
+    CategoryService,
+    CurrencyService,
     {
       provide: LOCAL_STORAGE,
       useFactory: localStorageFactory,

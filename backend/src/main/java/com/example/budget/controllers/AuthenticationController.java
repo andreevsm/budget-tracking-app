@@ -5,6 +5,7 @@ import com.example.budget.model.Status;
 import com.example.budget.model.User;
 import com.example.budget.repository.UserRepository;
 import com.example.budget.security.JwtTokenProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,22 +28,17 @@ import java.util.Map;
 @RequestMapping("/api/v1/auth")
 public class AuthenticationController {
 
-    private final AuthenticationManager authenticationManager;
-    private final UserRepository userRepository;
-    private final JwtTokenProvider jwtTokenProvider;
-    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
-    public AuthenticationController(
-            AuthenticationManager authenticationManager,
-            UserRepository userRepository,
-            JwtTokenProvider jwtTokenProvider,
-            PasswordEncoder passwordEncoder
-    ) {
-        this.authenticationManager = authenticationManager;
-        this.userRepository = userRepository;
-        this.jwtTokenProvider = jwtTokenProvider;
-        this.passwordEncoder = passwordEncoder;
-    }
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private JwtTokenProvider jwtTokenProvider;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticate(@RequestBody AuthenticationDTO request) {
@@ -69,6 +65,7 @@ public class AuthenticationController {
     @PostMapping("/signup")
     public ResponseEntity<?> signUp(@RequestBody RegistrationDTO request) {
 
+        // User.builder()
         User newUser = new User(
                 request.getLogin(),
                 passwordEncoder.encode(request.getPassword()),
@@ -82,6 +79,8 @@ public class AuthenticationController {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
             String token = jwtTokenProvider.createToken(user.getId(), request.getEmail(), user.getRole().name());
+
+            // лучше сделать через DTO
             Map<Object, Object> response = new HashMap<>();
             response.put("email", request.getEmail());
             response.put("token", token);

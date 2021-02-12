@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.Date;
 
+// Сделать как в аакаунте
 @Data
 @Entity
 @Table(name = "currencies")

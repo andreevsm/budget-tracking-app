@@ -1,7 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, OnChanges } from '@angular/core';
 import { IAccount, ICategory, ICurrency, ITransaction } from '@core/store';
-import { eachOfInterval } from '@fixtures/last-days';
-import { getDay, parseDateToString, parseDateToUIString } from '@utils/helpers';
+import { getDay, parseDateToString, parseDateToUIString, eachOfInterval } from '@utils/helpers';
 
 @Component({
   selector: 'bg-statistics',

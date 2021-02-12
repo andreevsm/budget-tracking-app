@@ -1,4 +1,4 @@
-import { IAccount, INewAccount, INewCategory } from './account.interface';
+import { IAccount, INewAccount } from './account.interface';
 
 export namespace AccountActions {
   export class LoadAll {
@@ -27,19 +27,5 @@ export namespace AccountActions {
 
   export class LoadCurrencies {
     public static readonly type = '[Accounts] Load Currencies';
-  }
-
-  export class LoadCategories {
-    public static readonly type = '[Accounts] Load Categories';
-  }
-
-  export class DeleteCategory {
-    public static readonly type = '[Accounts] Delete Category';
-    constructor(public id: number) {}
-  }
-
-  export class AddCategory {
-    public static readonly type = '[Accounts] Add Category';
-    constructor(public category: INewCategory) {}
   }
 }

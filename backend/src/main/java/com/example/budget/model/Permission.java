@@ -1,5 +1,7 @@
 package com.example.budget.model;
 
+// Сделать как в аакаунте
+
 public enum Permission {
     DEVELOPERS_READ("developers:read"),
     DEVELOPERS_WRITE("developers:write");

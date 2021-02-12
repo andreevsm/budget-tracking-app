@@ -10,6 +10,8 @@ import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import {
   AccountState,
+  CategoryState,
+  CurrencyState,
   IAccount,
   ICategory,
   ICurrency,
@@ -26,10 +28,10 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionsContainerComponent implements OnInit, OnDestroy {
-  @Select(AccountState.categories) public categories$: Observable<Record<number, ICategory>>;
+  @Select(CategoryState.categories) public categories$: Observable<Record<number, ICategory>>;
   @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
   @Select(AccountState.accountsEntity) public accountsEntity$: Observable<Record<number, IAccount>>;
-  @Select(AccountState.currencies) public currencies$: Observable<Record<number, ICurrency>>;
+  @Select(CurrencyState.currencies) public currencies$: Observable<Record<number, ICurrency>>;
   @Select(TransactionState.transactions) public transactions$: Observable<ITransaction[]>;
 
   public initialtransactions: ITransaction[] = [];

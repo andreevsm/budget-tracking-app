@@ -1,4 +1,4 @@
-import { Action, State, StateContext, Selector, Store } from '@ngxs/store';
+import { Action, State, StateContext, Selector } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -6,27 +6,23 @@ import { makeEntityByKey } from '@utils/helpers';
 
 import { AccountService } from './account.service';
 import { AccountActions } from './account.action';
-import { IAccount, ICategory, ICurrency } from './account.interface';
+import { IAccount } from './account.interface';
 
 export interface IAccountState {
   accountsEntity: Record<number, IAccount>;
   currentAccount: IAccount;
-  categoriesEntity: Record<number, ICategory>;
-  currencies: Record<number, ICurrency>;
 }
 
 @State<IAccountState>({
   name: 'account',
   defaults: {
     accountsEntity: {},
-    categoriesEntity: {},
-    currencies: {},
     currentAccount: null,
   },
 })
 @Injectable()
 export class AccountState {
-  constructor(private accountService: AccountService, private store: Store) {}
+  constructor(private accountService: AccountService) {}
 
   @Selector()
   public static accounts(state: IAccountState): IAccount[] {
@@ -36,21 +32,6 @@ export class AccountState {
   @Selector()
   public static accountsEntity(state: IAccountState): Record<number, IAccount> {
     return state.accountsEntity;
-  }
-
-  @Selector()
-  public static categories(state: IAccountState): Record<number, ICategory> {
-    return state.categoriesEntity;
-  }
-
-  @Selector()
-  public static categoriesList(state: IAccountState): ICategory[] {
-    return Object.values(state.categoriesEntity);
-  }
-
-  @Selector()
-  public static currencies(state: IAccountState): Record<number, ICurrency> {
-    return state.currencies;
   }
 
   @Selector()
@@ -93,46 +74,11 @@ export class AccountState {
     return this.accountService.deleteAccount(id).pipe(
       tap(() => {
         const accountsEntity = { ...getState().accountsEntity };
-
         const accounts = Object.values(accountsEntity).filter((account) => account.id !== id);
 
         setState({
           ...getState(),
           accountsEntity: makeEntityByKey(accounts, (account) => account.id),
-        });
-      }),
-    );
-  }
-
-  @Action(AccountActions.LoadCategories)
-  public loadCategories({
-    setState,
-    getState,
-  }: StateContext<IAccountState>): Observable<ICategory[]> {
-    return this.accountService.loadCategories().pipe(
-      tap((categories) => {
-        const categoriesEntity = makeEntityByKey(categories, (category) => category.id);
-
-        setState({
-          ...getState(),
-          categoriesEntity,
-        });
-      }),
-    );
-  }
-
-  @Action(AccountActions.LoadCurrencies)
-  public loadCurrencies({ setState, getState }: StateContext<IAccountState>): any {
-    return this.accountService.loadCurrencies().pipe(
-      tap((currencyList) => {
-        const currencies = currencyList.reduce((acc, cur) => {
-          acc[cur.id] = cur;
-          return acc;
-        }, {});
-
-        setState({
-          ...getState(),
-          currencies,
         });
       }),
     );
@@ -172,43 +118,6 @@ export class AccountState {
             },
           });
         }
-      }),
-    );
-  }
-
-  @Action(AccountActions.AddCategory)
-  public addCategory(
-    { setState, getState }: StateContext<IAccountState>,
-    { category }: AccountActions.AddCategory,
-  ): Observable<ICategory> {
-    return this.accountService.addCategory(category).pipe(
-      tap((newCategory) => {
-        setState({
-          ...getState(),
-          categoriesEntity: {
-            ...getState().categoriesEntity,
-            [newCategory.id]: newCategory,
-          },
-        });
-      }),
-    );
-  }
-
-  @Action(AccountActions.DeleteCategory)
-  public deleteCategory(
-    { setState, getState }: StateContext<IAccountState>,
-    { id }: AccountActions.DeleteCategory,
-  ): Observable<number> {
-    return this.accountService.deleteCategory(id).pipe(
-      tap(() => {
-        const categoriesEntity = { ...getState().categoriesEntity };
-
-        const categories = Object.values(categoriesEntity).filter((category) => category.id !== id);
-
-        setState({
-          ...getState(),
-          categoriesEntity: makeEntityByKey(categories, (category) => category.id),
-        });
       }),
     );
   }

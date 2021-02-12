@@ -13,6 +13,7 @@ public class BudgetApplication {
         SpringApplication.run(BudgetApplication.class, args);
     }
 
+    // перемести в папку config
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { environment } from '@environments/environment';
+import { ModulesLinks } from '@core/constants';
 
 import { AuthGuard, LoginGuard } from './core/auth';
 import { MainLayoutComponent } from './core/layouts';
@@ -13,28 +13,28 @@ const routes: Routes = [
     canLoad: [AuthGuard],
     canActivate: [AuthGuard],
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'accounts' },
+      { path: '', pathMatch: 'full', redirectTo: ModulesLinks.ACCOUNTS },
       {
-        path: 'accounts',
+        path: ModulesLinks.ACCOUNTS,
         loadChildren: (): Promise<typeof MainModule> =>
           import('./modules/+accounts/accounts.module').then((m) => m.MainModule),
       },
       {
-        path: 'transactions',
+        path: ModulesLinks.TRANSACTIONS,
         loadChildren: (): Promise<typeof TransactionsModule> =>
           import('./modules/+transactions/transactions.module').then((m) => m.TransactionsModule),
       },
     ],
   },
   {
-    path: 'signin',
+    path: ModulesLinks.SIGN_IN,
     canLoad: [LoginGuard],
     canActivate: [LoginGuard],
     loadChildren: (): Promise<typeof SignInModule> =>
       import('./modules/+sign-in/sign-in.module').then((m) => m.SignInModule),
   },
   {
-    path: 'signup',
+    path: ModulesLinks.SIGN_UP,
     canLoad: [LoginGuard],
     canActivate: [LoginGuard],
     loadChildren: (): Promise<typeof SignUpModule> =>
@@ -47,7 +47,6 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       initialNavigation: 'enabledBlocking',
-      // enableTracing: !environment.production,
     }),
   ],
   exports: [RouterModule],

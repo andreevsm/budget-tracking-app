@@ -5,7 +5,7 @@ import { TRANSACTIONS_API } from '@core/constants';
 
 import { INewTransaction, ITransaction } from './transaction.interface';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class TransactionService {
   constructor(private http: HttpClient) {}
 

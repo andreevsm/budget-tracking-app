@@ -12,6 +12,9 @@ import { takeUntil } from 'rxjs/operators';
 import {
   AccountActions,
   AccountState,
+  CategoryActions,
+  CategoryState,
+  CurrencyState,
   IAccount,
   ICategory,
   ICurrency,
@@ -30,9 +33,9 @@ import { CreateAccountComponent, CreateCategoryComponent } from '../../modals';
 export class AccountsContainerComponent implements OnInit, OnDestroy {
   @Select(AccountState.accounts) public accounts$: Observable<IAccount[]>;
   @Select(AccountState.accountsEntity) public accountsEntity$: Observable<Record<number, IAccount>>;
-  @Select(AccountState.categories) public categories$: Observable<Record<number, ICategory>>;
-  @Select(AccountState.categoriesList) public categoriesList$: Observable<ICategory[]>;
-  @Select(AccountState.currencies) public currencies$: Observable<Record<number, ICurrency>>;
+  @Select(CategoryState.categories) public categories$: Observable<Record<number, ICategory>>;
+  @Select(CategoryState.categoriesList) public categoriesList$: Observable<ICategory[]>;
+  @Select(CurrencyState.currencies) public currencies$: Observable<Record<number, ICurrency>>;
   @Select(TransactionState.transactions) public transactions$: Observable<ITransaction[]>;
 
   public accounts: IAccount[] = [];
@@ -107,7 +110,7 @@ export class AccountsContainerComponent implements OnInit, OnDestroy {
   }
 
   public onDeleteCategory(id: number): void {
-    this.store.dispatch(new AccountActions.DeleteCategory(id));
+    this.store.dispatch(new CategoryActions.Delete(id));
   }
 
   private subscribeToAccounts(): void {

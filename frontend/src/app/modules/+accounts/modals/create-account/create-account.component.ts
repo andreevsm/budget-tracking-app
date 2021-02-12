@@ -2,9 +2,10 @@ import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/cor
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
-import { AccountActions, AccountState, IAccount, ICurrency, INewAccount } from '@core/store';
+import { AccountActions, IAccount, ICurrency, INewAccount } from '@core/store';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { takeUntil } from 'rxjs/operators';
+import { CurrencyState } from '@core/store/currency';
 
 @Component({
   selector: 'bg-create-account',
@@ -13,7 +14,7 @@ import { takeUntil } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateAccountComponent implements OnInit {
-  @Select(AccountState.currencies) public currencies$: Observable<Record<number, ICurrency>>;
+  @Select(CurrencyState.currencies) public currencies$: Observable<Record<number, ICurrency>>;
 
   public form: FormGroup;
   public Object = Object;

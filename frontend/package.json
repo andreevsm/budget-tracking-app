@@ -31,7 +31,6 @@
     "@angular/platform-browser-dynamic": "11.1.0",
     "@angular/platform-server": "11.1.0",
     "@angular/router": "11.1.0",
-    "@angular/service-worker": "11.1.0",
     "@nestjs/common": "6.0.0",
     "@nestjs/core": "6.0.0",
     "@nestjs/ng-universal": "3.2.0",

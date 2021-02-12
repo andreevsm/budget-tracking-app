@@ -1,11 +1,16 @@
 package com.example.budget.model;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+// Сделать как в аакаунте
 @Data
 @Entity
+//@Builder
+//@NoArgsConstructor
 @Table(name = "users")
 public class User {
 
@@ -34,6 +39,7 @@ public class User {
 
     }
 
+    // удалить getter и setter
     public int getId() {
         return id;
     }

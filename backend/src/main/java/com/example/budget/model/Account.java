@@ -1,15 +1,16 @@
 package com.example.budget.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "accounts")
 public class Account {
 
@@ -17,6 +18,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    // можно удлать column, так как persistence смапит
     @Column(name = "user_id")
     private int userId;
 
@@ -34,24 +36,4 @@ public class Account {
 
     @Column(name = "amount")
     private Long amount;
-
-    public Account (
-            int id,
-            int userId,
-            String name,
-            String description,
-            int currencyId,
-            Timestamp createdAt,
-            Long amount
-    ) {
-        this.id = id;
-        this.userId = userId;
-        this.name = name;
-        this.description = description;
-        this.currencyId = currencyId;
-        this.createdAt = createdAt;
-        this.amount = amount;
-    }
-
-    public Account() {}
 }

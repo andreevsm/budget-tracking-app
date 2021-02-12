@@ -4,8 +4,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.sql.Timestamp;
+
+// Сделать как в аакаунте
 
 @Data
 @Entity

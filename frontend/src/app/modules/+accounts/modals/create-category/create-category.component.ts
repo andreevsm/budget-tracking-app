@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
-import { AccountActions, INewCategory } from '@core/store';
+import { CategoryActions, INewCategory } from '@core/store';
 
 @Component({
   selector: 'bg-create-category',
@@ -27,7 +27,7 @@ export class CreateCategoryComponent implements OnInit {
       createdAt: new Date(),
     };
 
-    this.store.dispatch(new AccountActions.AddCategory(category));
+    this.store.dispatch(new CategoryActions.Add(category));
   }
 
   private buildForm(): void {

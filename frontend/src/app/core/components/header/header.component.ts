@@ -8,6 +8,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { ModulesLinks, ModulesNames } from '@core/constants';
 import { ReplaySubject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
@@ -22,12 +23,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public links = [
     {
-      label: 'Cчета',
-      href: '/accounts',
+      label: ModulesNames.ACCOUNTS,
+      href: ModulesLinks.ACCOUNTS,
     },
     {
-      label: 'Транзакции',
-      href: '/transactions',
+      label: ModulesNames.TRANSACTIONS,
+      href: ModulesLinks.TRANSACTIONS,
     },
   ];
 

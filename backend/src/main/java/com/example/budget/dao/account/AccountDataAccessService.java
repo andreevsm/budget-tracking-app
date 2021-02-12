@@ -8,7 +8,6 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
 import java.sql.*;
 import java.util.List;
 import java.util.Map;
@@ -82,8 +81,8 @@ public class AccountDataAccessService implements AccountDao {
                     (int) keys.get("user_id"),
                     (String) keys.get("name"),
                     (String) keys.get("description"),
-                    (int) keys.get("currency_id"),
                     (Timestamp) keys.get("created_at"),
+                    (int) keys.get("currency_id"),
                     (long) keys.get("amount")
             );
         }
@@ -101,8 +100,8 @@ public class AccountDataAccessService implements AccountDao {
                     result.getInt("user_id"),
                     result.getString("name"),
                     result.getString("description"),
-                    result.getInt("currency_id"),
                     result.getTimestamp("created_at"),
+                    result.getInt("currency_id"),
                     new Long(Integer.valueOf(result.getInt("amount")).toString())
             );
         });
@@ -121,8 +120,8 @@ public class AccountDataAccessService implements AccountDao {
                             result.getInt("user_id"),
                             result.getString("name"),
                             result.getString("description"),
-                            result.getInt("currency_id"),
                             result.getTimestamp("created_at"),
+                            result.getInt("currency_id"),
                             result.getLong("amount")
                     );
                 }

@@ -5,21 +5,62 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8aa5ebab-8fc5-4803-96a6-4e975aa8ead0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../db/base/16471/pg_internal.init" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../db/global/pg_internal.init" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/security/JwtAuthenticationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/security/JwtAuthenticationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/security/JwtConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/security/JwtConfigurer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/security/JwtTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/security/JwtTokenFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/security/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/security/UserDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/base/16471/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../db/base/16471/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/BudgetApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/BudgetApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/controllers/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/controllers/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/controllers/AuthenticationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/controllers/AuthenticationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/controllers/CurrencyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/controllers/CurrencyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/controllers/RegistrationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/controllers/RegistrationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/account/AccountDataAccessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/account/AccountDataAccessService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/user/UserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/dao/user/UserDataAccessService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/datasource/PostgresDatasource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/datasource/PostgresDatasource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/model/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/model/Currency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/model/Currency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/model/Developer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/model/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/model/Permission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/model/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/budget/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/budget/services/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/../db/global/pg_control" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../db/global/pg_internal.init" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/db_0.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_0.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/db_16471.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/db_16471.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/pg_stat_tmp/global.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_stat_tmp/global.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../db/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/../db/pg_wal/000000010000000000000001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/TODO.md" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/TODO.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/ngsw-config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app.worker.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/components/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/components/header/header.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/constants/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/constants/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/core.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/core.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/layouts/main-layout/main-layout.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/layouts/main-layout/main-layout.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/store/account/account.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/store/account/account.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/store/account/account.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/store/account/account.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/store/account/account.mock.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/store/account/account.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/store/account/account.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/store/account/account.state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/store/account/account.state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/store/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/core/store/transaction/transaction.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/core/store/transaction/transaction.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/fixtures/last-days.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modules/+accounts/components/statistics/statistics.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modules/+accounts/components/statistics/statistics.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modules/+accounts/containers/accounts-container/accounts-container.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modules/+accounts/containers/accounts-container/accounts-container.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modules/+accounts/modals/create-account/create-account.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modules/+accounts/modals/create-account/create-account.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modules/+accounts/modals/create-category/create-category.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modules/+accounts/modals/create-category/create-category.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modules/+transactions/containers/transactions-container/transactions-container.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modules/+transactions/containers/transactions-container/transactions-container.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/src/app.worker.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/utils/helpers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/utils/helpers/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/tsconfig.worker.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,13 +109,15 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -156,6 +199,7 @@
       <workItem from="1612207640591" duration="154000" />
       <workItem from="1612288393252" duration="119000" />
       <workItem from="1612901131932" duration="1997000" />
+      <workItem from="1612982494097" duration="2343000" />
     </task>
     <servers />
   </component>

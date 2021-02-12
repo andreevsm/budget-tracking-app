@@ -15,9 +15,7 @@ public class CurrencyController {
     private final CurrencyService currencyService;
 
     @Autowired
-    public CurrencyController(
-            CurrencyService currencyService
-    ) {
+    public CurrencyController(CurrencyService currencyService) {
         this.currencyService = currencyService;
     }
 
