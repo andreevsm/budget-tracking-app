@@ -49,7 +49,7 @@
                 Сумма
               </span>
               <span *ngIf="account?.value">
-                {{ currencies[account?.value.currencyId].name }}
+                {{ currencies[account?.value.currencyId]?.name }}
               </span>
             </mat-label>
             <input

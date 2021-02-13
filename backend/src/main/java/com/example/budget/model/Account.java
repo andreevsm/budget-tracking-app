@@ -18,22 +18,10 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    // можно удлать column, так как persistence смапит
-    @Column(name = "user_id")
     private int userId;
-
-    @Column(name ="name")
     private String name;
-
-    @Column(name = "description")
     private String description;
-
-    @Column(name = "created_at")
     private Timestamp createdAt;
-
-    @Column(name = "currency_id")
     private int currencyId;
-
-    @Column(name = "amount")
     private Long amount;
 }

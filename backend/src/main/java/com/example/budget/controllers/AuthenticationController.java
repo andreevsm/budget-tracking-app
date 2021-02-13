@@ -1,5 +1,7 @@
 package com.example.budget.controllers;
 
+import com.example.budget.dto.AuthenticationDTO;
+import com.example.budget.dto.RegistrationDTO;
 import com.example.budget.model.Role;
 import com.example.budget.model.Status;
 import com.example.budget.model.User;
@@ -28,17 +30,18 @@ import java.util.Map;
 @RequestMapping("/api/v1/auth")
 public class AuthenticationController {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
+    private final UserRepository userRepository;
+    private final JwtTokenProvider jwtTokenProvider;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private JwtTokenProvider jwtTokenProvider;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    public AuthenticationController(AuthenticationManager authenticationManager, UserRepository userRepository, JwtTokenProvider jwtTokenProvider, PasswordEncoder passwordEncoder) {
+        this.authenticationManager = authenticationManager;
+        this.userRepository = userRepository;
+        this.jwtTokenProvider = jwtTokenProvider;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticate(@RequestBody AuthenticationDTO request) {
@@ -65,14 +68,13 @@ public class AuthenticationController {
     @PostMapping("/signup")
     public ResponseEntity<?> signUp(@RequestBody RegistrationDTO request) {
 
-        // User.builder()
-        User newUser = new User(
-                request.getLogin(),
-                passwordEncoder.encode(request.getPassword()),
-                request.getEmail(),
-                Role.USER,
-                Status.ACTIVE
-        );
+        User newUser = User.builder()
+                .login(request.getLogin())
+                .passwordHash(passwordEncoder.encode(request.getPassword()))
+                .email(request.getEmail())
+                .role(Role.USER)
+                .status(Status.ACTIVE)
+                .build();
 
         User user = userRepository.save(newUser);
 

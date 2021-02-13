@@ -26,7 +26,7 @@ export class CurrencyState {
   }
 
   @Action(CurrencyActions.LoadAll)
-  public loadCurrencies({ setState, getState }: StateContext<ICurrencyState>): any {
+  public loadAll({ setState, getState }: StateContext<ICurrencyState>): any {
     return this.currencyService.loadAll().pipe(
       tap((currencyList) => {
         const currencies = makeEntityByKey(currencyList, (currency) => currency.id);

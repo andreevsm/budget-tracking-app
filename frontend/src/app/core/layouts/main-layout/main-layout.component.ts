@@ -1,7 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngxs/store';
 
-import { AccountActions, AuthActions, CategoryActions, TransactionActions } from '../../store';
+import {
+  AccountActions,
+  AuthActions,
+  CategoryActions,
+  CurrencyActions,
+  TransactionActions,
+} from '../../store';
 
 @Component({
   selector: 'bg-main-layout',
@@ -13,7 +19,7 @@ export class MainLayoutComponent implements OnInit {
 
   public ngOnInit(): void {
     this.store.dispatch(new AccountActions.LoadAll());
-    this.store.dispatch(new AccountActions.LoadCurrencies());
+    this.store.dispatch(new CurrencyActions.LoadAll());
     this.store.dispatch(new CategoryActions.LoadAll());
     this.store.dispatch(new TransactionActions.LoadAll());
   }

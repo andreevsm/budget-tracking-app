@@ -80,17 +80,17 @@ public class TransactionDataAccessService implements TransactionDao {
 
                 int categoryId = keys.get("category_id") != null ? (int) keys.get("category_id") : 0;
 
-                return new Transaction(
-                        (int) keys.get("id"),
-                        (int) keys.get("account_income"),
-                        (int) keys.get("account_outcome"),
-                        (BigDecimal) keys.get("income"),
-                        (BigDecimal) keys.get("outcome"),
-                        (String) keys.get("comment"),
-                        (Timestamp) keys.get("created_at"),
-                        categoryId,
-                        (int) keys.get("user_id")
-                );
+                return Transaction.builder()
+                        .id((int) keys.get("id"))
+                        .accountIncome((int) keys.get("account_income"))
+                        .accountOutcome((int) keys.get("account_outcome"))
+                        .income((BigDecimal) keys.get("income"))
+                        .outcome((BigDecimal) keys.get("outcome"))
+                        .comment((String) keys.get("comment"))
+                        .createdAt((Timestamp) keys.get("created_at"))
+                        .categoryId(categoryId)
+                        .userId((int) keys.get("user_id"))
+                        .build();
             }
         } else {
             final String sql = "INSERT INTO transactions (" +
@@ -103,7 +103,6 @@ public class TransactionDataAccessService implements TransactionDao {
                     "category_id," +
                     "user_id" +
                     ") VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
 
             int result = jdbcTemplate.update(new PreparedStatementCreator() {
                 @Override
@@ -126,17 +125,17 @@ public class TransactionDataAccessService implements TransactionDao {
 
                 Map<String, Object> keys = keyHolder.getKeys();
 
-                return new Transaction(
-                        (int) keys.get("id"),
-                        (int) keys.get("account_income"),
-                        (int) keys.get("account_outcome"),
-                        (BigDecimal) keys.get("income"),
-                        (BigDecimal) keys.get("outcome"),
-                        (String) keys.get("comment"),
-                        (Timestamp) keys.get("created_at"),
-                        (int) keys.get("category_id"),
-                        (int) keys.get("user_id")
-                );
+                return Transaction.builder()
+                        .id((int) keys.get("id"))
+                        .accountIncome((int) keys.get("account_income"))
+                        .accountOutcome((int) keys.get("account_outcome"))
+                        .income((BigDecimal) keys.get("income"))
+                        .outcome((BigDecimal) keys.get("outcome"))
+                        .comment((String) keys.get("comment"))
+                        .createdAt((Timestamp) keys.get("created_at"))
+                        .categoryId((int) keys.get("category_id"))
+                        .userId((int) keys.get("user_id"))
+                        .build();
             }
         }
 

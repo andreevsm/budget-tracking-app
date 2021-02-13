@@ -23,7 +23,6 @@ public class TransactionController {
     @GetMapping
     public List<Transaction> getTransactions(@RequestHeader(value = "Authorization") String authorizationToken) {
         String id = jwtTokenProvider.getUserId(authorizationToken);
-
         return transactionService.getTransactions(Integer.parseInt(id));
     }
 
@@ -35,16 +34,16 @@ public class TransactionController {
 
         String id = jwtTokenProvider.getUserId(authorizationToken);
 
-        Transaction newTransaction = new Transaction(
-                transaction.getAccountIncome(),
-                transaction.getAccountOutcome(),
-                transaction.getIncome(),
-                transaction.getOutcome(),
-                transaction.getComment(),
-                transaction.getCreatedAt(),
-                transaction.getCategoryId(),
-                Integer.parseInt(id)
-        );
+        Transaction newTransaction = Transaction.builder()
+                .accountIncome(transaction.getAccountIncome())
+                .accountOutcome(transaction.getAccountOutcome())
+                .income(transaction.getIncome())
+                .outcome(transaction.getOutcome())
+                .comment(transaction.getComment())
+                .createdAt(transaction.getCreatedAt())
+                .categoryId(transaction.getCategoryId())
+                .userId(Integer.parseInt(id))
+                .build();
 
         return transactionService.addTransaction(newTransaction, Integer.parseInt(id));
     }
@@ -55,7 +54,6 @@ public class TransactionController {
             @RequestHeader(value = "Authorization") String authorizationToken
     ) {
         String userId = jwtTokenProvider.getUserId(authorizationToken);
-
         return transactionService.deleteTransaction(id, Integer.parseInt(userId));
     }
 }

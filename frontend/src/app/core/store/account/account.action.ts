@@ -24,8 +24,4 @@ export namespace AccountActions {
     public static readonly type = '[Accounts] Update account';
     constructor(public account: IAccount) {}
   }
-
-  export class LoadCurrencies {
-    public static readonly type = '[Accounts] Load Currencies';
-  }
 }
