@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { MatSelectionListChange } from '@angular/material/list';
 import { IAccount, ITransaction } from '@core/store';
+import { Currencies } from '@fixtures/currencies';
 import { NgChanges } from '@utils/types';
 
 @Component({
@@ -79,11 +80,11 @@ export class TransactionsFilterComponent implements OnInit, OnChanges {
       }
 
       if (curr.currencyId === 1) {
-        return prev + result * 73;
+        return prev + result * Currencies.USD;
       }
 
       if (curr.currencyId === 3) {
-        return prev + result * 89;
+        return prev + result * Currencies.EURO;
       }
 
       return prev + result;

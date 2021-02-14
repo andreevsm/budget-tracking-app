@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, OnChanges } from '@angular/core';
 import { IAccount, ICategory, ICurrency, ITransaction } from '@core/store';
+import { Currencies } from '@fixtures/currencies';
 import { getDay, parseDateToString, parseDateToUIString, eachOfInterval } from '@utils/helpers';
 
 @Component({
@@ -72,11 +73,11 @@ export class StatisticsComponent implements OnChanges {
         }, initialValue);
 
       if (curr.currencyId === 1) {
-        return prev + result * 73;
+        return prev + result * Currencies.USD;
       }
 
       if (curr.currencyId === 3) {
-        return prev + result * 89;
+        return prev + result * Currencies.USD;
       }
 
       return prev + result;
@@ -91,46 +92,7 @@ export class StatisticsComponent implements OnChanges {
     const lastDays = eachOfInterval(this.daysRange);
 
     const totalAmount = lastDays.map((day) => {
-      return this.accounts.reduce((prev, curr) => {
-        const initialValue =
-          new Date(parseDateToString(new Date(curr.createdAt))).getTime() ===
-          new Date(parseDateToString(day)).getTime()
-            ? curr.amount
-            : 0;
-
-        const filteredTransactions = this.transactions.filter(
-          (transaction) =>
-            new Date(parseDateToString(new Date(transaction.createdAt))).getTime() <=
-              new Date(parseDateToString(day)).getTime() &&
-            [transaction.accountIncome, transaction.accountOutcome].includes(curr.id),
-        );
-
-        const result = filteredTransactions.reduce((prevTrans, currTrans) => {
-          if (currTrans.accountIncome === currTrans.accountOutcome) {
-            return prevTrans + currTrans.income + currTrans.outcome;
-          }
-
-          if (currTrans.accountIncome === curr.id && currTrans.accountOutcome !== curr.id) {
-            return prevTrans + currTrans.income;
-          }
-
-          if (currTrans.accountIncome !== curr.id && currTrans.accountOutcome === curr.id) {
-            return prevTrans + currTrans.outcome;
-          }
-
-          return prev;
-        }, initialValue);
-
-        if (curr.currencyId === 1) {
-          return prev + result * 73;
-        }
-
-        if (curr.currencyId === 3) {
-          return prev + result * 89;
-        }
-
-        return prev + result;
-      }, 0);
+      return this.getBalanceByDate(day);
     });
 
     this.results = [
