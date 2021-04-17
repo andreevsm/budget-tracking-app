@@ -52,6 +52,7 @@ module.exports = {
             ignoreStatic: true,
           },
         ],
+        'import/no-extraneous-dependencies': ["error", {"devDependencies": true}],
       },
     },
     {

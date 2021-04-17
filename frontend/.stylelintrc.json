@@ -2,6 +2,13 @@
   "extends": "stylelint-config-recommended-scss",
   "plugins": ["stylelint-scss"],
   "rules": {
-    "unit-whitelist": ["rem", "%", "vh", "vw", "fr"]
+    "unit-whitelist": [
+      ["rem", "%", "vh", "vw", "fr"],
+      {
+        "ignoreProperties": {
+          "px": ["font-size"]
+        }
+      }
+    ]
   }
 }

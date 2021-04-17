@@ -5,8 +5,6 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
-    "lint": "ng lint --fix",
-    "lint-scss": "stylelint src/app/**/*.scss --fix",
     "prettier": "prettier --write src/**/*.{html,ts,scss}",
     "e2e": "ng e2e",
     "dev:ssr": "ng run frontend:serve-ssr",
@@ -18,7 +16,10 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "lint:ts": "eslint 'src/**/*.ts'",
+    "lint:scss": "stylelint 'src/**/*.scss'",
+    "lint:all": "npm run lint:ts && npm run lint:scss"
   },
   "private": true,
   "dependencies": {

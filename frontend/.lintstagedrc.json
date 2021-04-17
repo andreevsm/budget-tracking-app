@@ -1,4 +1,5 @@
 {
-  "*.{json,md,html}": ["prettier --write"],
-  "*.scss": ["prettier --write", "npm run lint-scss"]
+  "*.{json,md,html,scss}": ["prettier --write"],
+  "*.scss": ["npm run lint:scss"],
+  "*.ts": ["npm run lint:ts"]
 }
