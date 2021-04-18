@@ -53,6 +53,12 @@ module.exports = {
           },
         ],
         'import/no-extraneous-dependencies': ["error", {"devDependencies": true}],
+        'array-callback-return': ['error'],
+        'complexity': ['error'],
+        'consistent-return': ['error'],
+        'curly': ['error'],
+        'default-case': ['error'],
+        'eqeqeq': ['error']
       },
     },
     {
@@ -60,15 +66,6 @@ module.exports = {
       rules: {
         '@typescript-eslint/no-unused-vars': 'off',
       },
-    },
-    {
-      files: ['src/**/*.spec.ts', 'src/**/*.d.ts'],
-      parserOptions: {
-        project: './tsconfig.spec.json',
-      },
-      extends: ['plugin:jasmine/recommended'],
-      plugins: ['jasmine'],
-      env: { jasmine: true },
     },
     {
       files: ['e2e/**/*.e2e-spec.ts', 'e2e/**/*.po.ts'],
