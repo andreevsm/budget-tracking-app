@@ -12,7 +12,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
@@ -22,6 +21,7 @@ import { AppComponent } from './app.component';
     CoreModule,
     HttpClientModule,
   ],
+  declarations: [AppComponent],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
