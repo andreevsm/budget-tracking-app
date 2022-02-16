@@ -4,7 +4,6 @@ export interface IAccountModel {
   name: string;
   description: string;
   created_at: Date;
-  updated_at: Date;
   currency_id: number;
   amount: number;
 }

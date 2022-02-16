@@ -1,3 +1,3 @@
 export class GetAccountsQuery {
-  constructor(public userId: number) { }
+  constructor(public userId: number) {}
 }
